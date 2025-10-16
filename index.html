@@ -258,6 +258,53 @@
                 </div>
             </div>
 
+            <!-- Producto NUEVO: Casa grande multiusos -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('CasaGrandeMultiusos')">
+                    <img id="CasaGrandeMultiusos-main-img" src="https://i.postimg.cc/268TFMzV/image17.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Casa+grande+multiusos+azul';"
+                         alt="Casa grande multiusos">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casa grande multiusos</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casa alta decorativa, ideal para contener luces LED, pequeños regalos o dulces. </p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 8</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CasaGrandeMultiusos')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casa grande multiusos ($8)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto NUEVO: Casa multiusos techo bajo -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('CasaTechoBajo')">
+                    <img id="CasaTechoBajo-main-img" src="https://i.postimg.cc/FRsGg89j/image22.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Casa+multiusos+techo+bajo+azul';"
+                         alt="Casa multiusos techo bajo">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casa multiusos techo bajo</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casa decorativa de un piso con diseño de balcón, para luz LED, pequeños regalos o dulces.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 8</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CasaTechoBajo')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casa multiusos techo bajo ($8)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
 
             <!-- Producto: Ciudad en caja (Más de $10) -->
             <div class="product-card">
@@ -615,7 +662,7 @@
 
             <!-- Producto: Letrero de Santa PEQUEÑO (¡NOMBRE Y PRECIO CAMBIADO!) -->
             <div class="product-card">
-                <div class="image-container" onclick="openModal('LetreroSantaPequeño')">
+                <div class="image-container" onclick="openModal('LetreroSantaPequeno')">
                     <img id="LetreroSantaPequeño-main-img" src="https://i.postimg.cc/kgjchbPX/image52.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Letrero+de+bienvenida+con+figura+de+elfo+PEQUEÑO';"
                          alt="Letrero de santa pequeño">
@@ -1303,6 +1350,32 @@
                     "https://i.postimg.cc/RCQ2TLSY/image15.png"
                 ]
             },
+
+            // NUEVO PRODUCTO: Casa grande multiusos
+            CasaGrandeMultiusos: {
+                title: "Casa grande multiusos",
+                price: "$ 8",
+                description: "Casa alta decorativa (color azul y blanco), ideal para contener luces LED, pequeños regalos y dulces. Diseño de dos pisos con amplias ventanas y techo de nieve.",
+                mainImg: "https://i.postimg.cc/268TFMzV/image17.png",
+                extraImgs: [
+                    "https://i.postimg.cc/jjhZftrV/image16.png",
+                    "https://i.postimg.cc/Jn4Kcv1y/image18.png",
+                    "https://i.postimg.cc/85PwB91s/image19.png"
+                ]
+            },
+
+            // NUEVO PRODUCTO: Casa multiusos techo bajo
+            CasaTechoBajo: {
+                title: "Casa multiusos techo bajo",
+                price: "$ 8",
+                description: "Casa decorativa de un piso con diseño de balcón y techo rústico. Ideal para luces LED, pequeños regalos y dulces. Presentada en color azul y blanco.",
+                mainImg: "https://i.postimg.cc/FRsGg89j/image22.png",
+                extraImgs: [
+                    "https://i.postimg.cc/Hxs34Rpr/image20.png",
+                    "https://i.postimg.cc/ZRKjF2T8/image21.png",
+                    "https://i.postimg.cc/zBt7d7BW/image23.png"
+                ]
+            },
             
             CiudadEnCaja: {
                 title: "Ciudad en caja",
@@ -1614,8 +1687,6 @@
                     "https://i.postimg.cc/d3KmTRrB/image102.jpg"
                 ]
             },
-
-            // Los nuevos items del PPTX ya estaban en el script anterior, pero los actualicé para reflejar los nuevos nombres y precios
 
         };
 
