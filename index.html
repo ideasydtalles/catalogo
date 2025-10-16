@@ -4,36 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo Ideas & D'talles - Creaciones en Madera</title>
-    <!-- ELIMINADO: CDN de Tailwind para evitar advertencias y dependencias externas. -->
     
-    <!-- ESTILOS BÁSICOS INCRUSTADOS (Inline CSS) -->
+    <!-- ESTILOS BÁSICOS Y CORRECCIONES DE ESTÉTICA INCRUSTADOS -->
     <style>
-        /* CSS necesario para que Tailwind funcione sin CDN */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
         
-        /* Definiciones de las clases de Tailwind usadas */
-        .header-bg { background-color: #1f2937; } /* Negro muy oscuro para el contraste del logo */
-        .accent-text { color: #4dc0c0; } /* Turquesa para textos de acento */
-        .accent-bg { background-color: #4dc0c0; }
+        .header-bg { background-color: #1f2937; } 
+        .accent-text { color: #4dc0c0; } /* Turquesa */
+        .header-text { color: #FFFFFF; } /* Texto blanco para el encabezado */
         
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f4f8; 
             margin: 0;
+            line-height: 1.5;
         }
+        
+        /* Contenedor del Grid para Responsividad */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 2rem;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+
+        /* Estilo de la Tarjeta de Producto (UNIFORMIDAD CLAVE) */
         .product-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            min-height: 380px; 
+            min-height: 480px; /* Altura mínima para alinear los pies */
             border-radius: 1rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             border: 1px solid #e5e7eb;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
         }
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px); /* Ajuste para un efecto más sutil */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
+
+        /* Contenedor de Imagen */
         .image-container {
             width: 100%;
             height: 250px; 
@@ -49,1033 +71,1147 @@
             object-fit: contain; 
         }
 
+        /* Estilos del Contenido de la Tarjeta */
+        .card-content {
+            padding: 1.25rem;
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Alineación vertical del contenido */
+        }
+        .card-actions {
+            padding: 0 1.25rem 1.25rem 1.25rem;
+        }
+
+        /* Estilos de Botones */
+        .btn {
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            transition: all 150ms ease-in-out;
+            display: inline-block;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box; /* CLAVE: asegura que el borde no se corte */
+        }
+        .btn-primary {
+            background-color: #4dc0c0;
+            color: white;
+            border: none;
+            margin-bottom: 0.5rem;
+        }
+        .btn-primary:hover { background-color: #349e9e; }
+
+        .btn-secondary {
+            border: 1px solid #4dc0c0;
+            color: #4dc0c0;
+            background-color: transparent;
+            padding: 0.4375rem 1rem; /* Ajuste para compensar el borde */
+        }
+        .btn-secondary:hover {
+            background-color: #4dc0c0;
+            color: white;
+        }
+        
+        /* Ajustes de precio para la uniformidad */
+        .price-label {
+            font-size: 1.5rem; 
+            font-weight: 800; 
+            color: #1f2937; 
+            margin-top: 0.5rem; 
+            margin-bottom: 0.5rem; 
+            flex-shrink: 0;
+        }
+
+
         /* Modal Styles - Mantener fijos */
         .modal { display: none; position: fixed; z-index: 50; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); padding-top: 50px; }
         .modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px; border-radius: 1rem; width: 90%; max-width: 800px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); animation: slideIn 0.3s; }
         .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; transition: 0.3s; cursor: pointer; }
         .close-btn:hover { color: #1f2937; text-decoration: none; }
         @keyframes slideIn { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
-        .modal-gallery-item { display: flex; align-items: center; justify-content: center; height: 150px; background-color: #f0f4f8; border-radius: 0.5rem; overflow: hidden; margin-bottom: 0.75rem; cursor: pointer; }
+        .modal-gallery-item { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 150px; 
+            background-color: #f0f4f8; 
+            border-radius: 0.5rem; 
+            overflow: hidden; 
+            margin-bottom: 0.75rem; 
+            cursor: pointer; 
+            border: 2px solid transparent; 
+            transition: border-color 0.2s;
+        }
+        .modal-gallery-item:hover { border-color: #9f7aea; }
         .modal-gallery-item img { width: 100%; height: 100%; object-fit: contain; }
+        
+        /* Ajustes específicos para el Header */
+        #header-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1.5rem; 
+        }
+        @media (min-width: 640px) {
+            #header-container {
+                flex-direction: row;
+            }
+        }
+        .header-logo-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        @media (min-width: 640px) {
+            .header-logo-info {
+                margin-bottom: 0;
+            }
+        }
+        /* Ajuste para el texto de contacto en el header */
+        .header-contact-text {
+             font-size: 0.875rem; 
+             margin-top: 0.25rem; 
+             font-weight: 500;
+             line-height: 1; /* CLAVE: Alinea mejor el texto */
+             color: white; /* Corregido: Texto del WhatsApp a blanco */
+        }
     </style>
     
-    <!-- Incluyendo las clases de Tailwind restantes (simuladas) -->
-    <!-- NOTA: Usamos clases directas en el HTML para el resto de estilos. -->
-
 </head>
 <body class="antialiased">
 
     <!-- Encabezado Fijo con Logo y Contacto (Fondo Negro Oscuro para Contraste) -->
-    <header class="header-bg text-white p-4 shadow-2xl sticky top-0 z-10">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center">
+    <header class="header-bg header-text shadow-2xl sticky top-0 z-10">
+        <div id="header-container">
 
-            <!-- Logo -->
-            <div class="flex items-center space-x-3 mb-3 sm:mb-0">
-                
-                <!-- COMIENZO DEL BLOQUE DEL LOGO: Aquí puedes colocar tu imagen -->
-                <!-- TAMAÑO AMPLIADO: w-20 h-20 (80px x 80px) -->
-                <a href='https://postimg.cc/SjSPcbC1' target='_blank'>
-                    <img src='https://i.postimg.cc/SjSPcbC1/image19.png' border='0' alt='image19' style="width: 80px; height: 80px; object-fit: contain;" />
+            <!-- Logo y Nombre (Corregido: Logo 100x100) -->
+            <div class="header-logo-info" style="gap: 0.75rem;">
+                <a href='#' title='Ideas & D´talles Logo'>
+                    <img src='https://i.postimg.cc/SjSPcbC1/image19.png' alt='Logo Ideas & D´talles' style="width: 150px; height: 150px; object-fit: contain;" />
                 </a>
-                <!-- FIN DEL BLOQUE DEL LOGO -->
-
-                <div class="text-left">
-                    <h1 class="text-3xl font-extrabold tracking-tight" style="font-size: 1.875rem; font-weight: 800; letter-spacing: -0.025em;">Ideas & D'talles</h1>
-                    <p class="text-xs font-light italic opacity-90" style="font-size: 0.75rem; font-style: italic; opacity: 0.9;">Creaciones con Esencia y Personalidad</p>
+                <div class="text-left header-text">
+                    <h1 style="font-size: 1.875rem; font-weight: 800; letter-spacing: -0.025em; margin: 0; color: white;">Ideas & D'talles</h1>
+                    <p style="font-size: 0.875rem; font-style: italic; opacity: 0.8; margin: 0; color: white;">Creaciones con Esencia y Personalidad</p>
                 </div>
             </div>
 
-            <!-- Botón de Contacto principal -->
-            <div class="flex flex-col items-center" style="display: flex; flex-direction: column; align-items: center;">
-                <a href="https://wa.me/593964206952" target="_blank" class="bg-white text-[#4dc0c0] hover:bg-gray-100 font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105" 
-                   style="background-color: white; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1.5rem; border-radius: 9999px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); transition-duration: 300ms; transform: scale(1.0); text-align: center;">
-                    <span class="inline-block align-middle" style="display: inline-block; vertical-align: middle;">
-                         <!-- Icono de WhatsApp de Lucide -->
-                        <svg style="width: 1.25rem; height: 1.25rem; display: inline-block; margin-right: 0.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            <!-- Botón de Contacto principal (Corregido: Alineación) -->
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <a href="https://wa.me/593964206952" target="_blank" class="btn bg-white text-[#4dc0c0] hover:bg-gray-100" 
+                   style="background-color: white; color: #4dc0c0; padding: 0.5rem 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); text-align: center;">
+                    <span style="display: inline-block; vertical-align: middle;">
+                        <svg style="width: 1.25rem; height: 1.25rem; display: inline-block; margin-right: 0.5rem; color: #4dc0c0;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         ¡Contáctanos ahora!
                     </span>
                 </a>
-                <p class="text-sm mt-1 font-medium" style="font-size: 0.875rem; margin-top: 0.25rem; font-weight: 500;">Whatsapp: 0964206952</p>
+                <p class="header-contact-text">Whatsapp: 0964206952</p>
             </div>
         </div>
     </header>
 
-    <!-- Sección de Introducción y Canales -->
-    <div class="max-w-7xl mx-auto p-6 pt-10" style="max-width: 80rem; margin-left: auto; margin-right: auto; padding: 1.5rem; padding-top: 2.5rem;">
-        <h2 class="text-5xl font-extrabold text-gray-900 mb-4 tracking-tight" style="font-size: 3rem; font-weight: 800; color: #1f2937; margin-bottom: 1rem; letter-spacing: -0.025em;">Catálogo Exclusivo</h2>
-        <p class="text-xl text-gray-600 mb-8 max-w-4xl" style="font-size: 1.25rem; color: #4b5563; margin-bottom: 2rem; max-width: 56rem;">
+    <!-- Sección de Introducción y Canales (Corregido: Espaciado de Redes) -->
+    <div style="max-width: 80rem; margin: 0 auto; padding: 1.5rem 1.5rem 0 1.5rem;">
+        <h2 style="font-size: 3rem; font-weight: 800; color: #1f2937; margin-bottom: 1rem; letter-spacing: -0.025em;">Catálogo Exclusivo</h2>
+        <p style="font-size: 1.25rem; color: #4b5563; margin-bottom: 2rem; max-width: 56rem;">
             Explora nuestra colección de piezas únicas. Recuerda, todos los productos son **<span class="accent-text font-bold" style="color: #4dc0c0; font-weight: 700;">100% Personalizables</span>** y hechos en madera con la mejor calidad.
         </p>
 
-        <div class="flex flex-wrap gap-4 text-sm font-semibold p-4 bg-gray-100 rounded-xl shadow-inner border border-gray-200" style="display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.875rem; font-weight: 600; padding: 1rem; background-color: #f3f4f6; border-radius: 0.75rem; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); border: 1px solid #e5e7eb;">
-            <span class="text-gray-700" style="color: #4b5563;">Canales:</span>
-            <a href="https://instagram.com/ideasdtalles" target="_blank" class="text-pink-600 hover:underline" style="color: #db2777; text-decoration: none;">Instagram: @ideasdtalles</a>
-            <a href="https://tiktok.com/@ideasydtalles" target="_blank" class="text-blue-600 hover:underline" style="color: #2563eb; text-decoration: none;">Tik Tok: @ideasydtalles</a>
+        <!-- Contenedor de Redes Sociales (Alineación y Espaciado Corregidos) -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem 2rem; font-size: 0.875rem; font-weight: 600; padding: 1rem; background-color: #f3f4f6; border-radius: 0.75rem; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); border: 1px solid #e5e7eb; align-items: center;">
+            <span style="color: #4b5563; white-space: nowrap;">Canales:</span>
+            <a href="https://instagram.com/ideasdtalles" target="_blank" style="color: #db2777; text-decoration: underline; white-space: nowrap;">Instagram: @ideasdtalles</a>
+            <a href="https://tiktok.com/@ideasydtalles" target="_blank" style="color: #2563eb; text-decoration: underline; white-space: nowrap;">Tik Tok: @ideasydtalles</a>
         </div>
     </div>
 
-    <!-- Listado de Productos (Grid Responsivo Mejorado) -->
-    <main class="max-w-7xl mx-auto p-6" style="max-width: 80rem; margin-left: auto; margin-right: auto; padding: 1.5rem;">
-        <section id="productos" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" 
-                 style="display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 2rem;">
+    <!-- Listado de Productos (Grid con Estética Fija) -->
+    <main>
+        <section id="productos" class="product-grid">
 
             <!-- Producto: Ciudad en caja (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('CiudadEnCaja')">
-                    <img id="CiudadEnCaja-main-img" data-src="https://i.postimg.cc/KvDQBW9z/image21.png"
-                         src="https://i.postimg.cc/KvDQBW9z/image21.png"
+                    <img id="CiudadEnCaja-main-img" src="https://i.postimg.cc/KvDQBW9z/image21.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Escena+urbana+3D+en+caja';"
-                         alt="Ciudad en caja"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Ciudad en caja">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Ciudad en caja</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pieza decorativa de madera temática (e.g., Navidad).</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Ciudad en caja</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pieza decorativa de madera temática (e.g., Navidad).</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 15</span></p>
-                    <button onclick="openModal('CiudadEnCaja')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 15</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CiudadEnCaja')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Ciudad en caja ($15)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Ciudad en caja ($15)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Escena navideña (Precio simple) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/CLsJk2v5/image22.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Miniatura+de+pino+y+regalos';"
-                         alt="Escena navideña"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Escena navideña">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Escena navideña</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Miniaturas de madera para armar escenas.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Escena navideña</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Miniaturas de madera para armar escenas.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 1,50</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Escena navideña ($1,50)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 1,50</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Escena navideña ($1,50)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Arbolitos (Desde $) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('Arbolitos')">
-                    <img id="Arbolitos-main-img" data-src="https://i.postimg.cc/WbwSgy9b/image23.png"
-                         src="https://i.postimg.cc/WbwSgy9b/image23.png"
+                    <img id="Arbolitos-main-img" src="https://i.postimg.cc/WbwSgy9b/image23.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Varios+modelos+de+árboles+decorativos';"
-                         alt="Arbolitos"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Arbolitos">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Arbolitos</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Modelos de árboles decorativos y estructuras.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Arbolitos</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Modelos de árboles decorativos y estructuras.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio Base: <span class="accent-text" style="color: #4dc0c0;">Desde $ 1</span></p>
-                    <button onclick="openModal('Arbolitos')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Desde: <span class="accent-text" style="color: #4dc0c0;">$ 1</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('Arbolitos')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Arbolito (Desde $1)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Arbolito (Desde $1)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Candelabros (Desde $) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('Candelabros')">
-                    <img id="Candelabros-main-img" data-src="https://i.postimg.cc/kXvwKHj8/image25.png"
-                         src="https://i.postimg.cc/kXvwKHj8/image25.png"
+                    <img id="Candelabros-main-img" src="https://i.postimg.cc/kXvwKHj8/image25.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Portavelas+de+madera+rústica';"
-                         alt="Candelabros"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Candelabros">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Candelabros</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Portavelas decorativos de madera (varios modelos).</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Candelabros</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Portavelas decorativos de madera (varios modelos).</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio Base: <span class="accent-text" style="color: #4dc0c0;">Desde $ 2</span></p>
-                    <button onclick="openModal('Candelabros')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Desde: <span class="accent-text" style="color: #4dc0c0;">$ 2</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('Candelabros')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Candelabro (Desde $2)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Candelabro (Desde $2)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
             
-            <!-- Producto: Arbolito $5 (Estructura) - RESTAURADO -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <!-- Producto: Arbolito $5 (Estructura) -->
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/9FY1Zkx1/image29.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Estructura+de+árbol+grande+para+dulces';"
-                         alt="Arbolito $5"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Arbolito $5">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Arbolito (Estructura)</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Árbol de mesa o estructura para dulces/adornos.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Arbolito (Estructura)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Árbol de mesa o estructura para dulces/adornos.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 5</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Arbolito de $5." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 5</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Arbolito de $5." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Bombillos (Adornos) (Desde $) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('BombillosAdornos')">
-                    <img id="BombillosAdornos-main-img" data-src="https://i.postimg.cc/CLsJk2v4/image28.png"
-                         src="https://i.postimg.cc/CLsJk2v4/image28.png"
+                    <img id="BombillosAdornos-main-img" src="https://i.postimg.cc/CLsJk2v4/image28.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Adornos+redondos+de+madera';"
-                         alt="Bombillos"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Bombillos">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Bombillos (Adornos colgantes)</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adornos decorativos para árbol o espacios.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Bombillos (Adornos colgantes)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adornos decorativos para árbol o espacios.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio Base: <span class="accent-text" style="color: #4dc0c0;">Desde $ 1</span></p>
-                    <button onclick="openModal('BombillosAdornos')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Desde: <span class="accent-text" style="color: #4dc0c0;">$ 1</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('BombillosAdornos')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Bombillo/Adorno (Desde $1)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Bombillo/Adorno (Desde $1)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Caja de árbol (Precio simple) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/GhxzGfMq/image31.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Caja+de+regalo+con+tapa+de+árbol';"
-                         alt="Caja de árbol"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Caja de árbol">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja de árbol</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja con forma de árbol para regalos o dulces.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja de árbol</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja con forma de árbol para regalos o dulces.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 2,00</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja de árbol ($2,00)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 2,00</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja de árbol ($2,00)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
-            <!-- Producto: Caja con copos (Precio simple) - RESTAURADO -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <!-- Producto: Caja con copos (Precio simple) -->
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/P5fy4Mcb/image34.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Caja+calada+con+patrón+de+nieve';"
-                         alt="Caja con copos"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Caja con copos">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja con copos</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja decorativa con calados de copos de nieve.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja con copos</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja decorativa con calados de copos de nieve.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 5,00</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja con copos ($5,00)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 5,00</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja con copos ($5,00)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
-            <!-- Producto: Caja tipo funda (Precio simple) - RESTAURADO -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <!-- Producto: Caja tipo funda (Precio simple) -->
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/Jz7xqQg6/image37.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Caja+de+regalo+alta+con+asa';"
-                         alt="Caja tipo funda"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Caja tipo funda">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja tipo funda</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja para regalo con asa, fácil de transportar.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja tipo funda</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja para regalo con asa, fácil de transportar.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 3,50</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja tipo funda ($3,50)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 3,50</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja tipo funda ($3,50)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
-            <!-- Producto: Casitas (Precio simple) - RESTAURADO -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <!-- Producto: Casitas (Precio simple) -->
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/pLVCZB73/image40.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Mini+casas+de+pueblo+de+madera';"
-                         alt="Casitas"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Casitas">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casitas</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Miniaturas de casas decorativas con detalles de color.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casitas</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Miniaturas de casas decorativas con detalles de color.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 2,50</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casita ($2,50)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 2,50</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casita ($2,50)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
-            <!-- Producto: Casitas navideñas con luz (Precio simple) - RESTAURADO -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <!-- Producto: Casitas navideñas con luz (Precio simple) -->
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/MpZ5DYN2/image42.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Casa+de+madera+iluminada+con+LED';"
-                         alt="Casitas navideñas con luz"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Casitas navideñas con luz">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casitas navideñas con luz</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casitas con espacio para colocar una vela LED.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casitas navideñas con luz</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casitas con espacio para colocar una vela LED.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 4</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casita navideña con luz ($4)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 4</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casita navideña con luz ($4)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
-            <!-- Producto: Farol navideño (Conejos) (Precio simple) - RESTAURADO -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <!-- Producto: Farol navideño (Conejos) (Precio simple) -->
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/W1p8n7CP/image43.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Linterna+de+madera+con+conejos+calados';"
-                         alt="Farol navideño"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Farol navideño">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Farol navideño (Conejos)</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Farol de madera con figuras caladas de animales.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Farol navideño (Conejos)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Farol de madera con figuras caladas de animales.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 5</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Farol navideño ($5)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 5</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Farol navideño ($5)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Casitas navideñas (Desde $) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('CasitasNavidenasDesde')">
-                    <img id="CasitasNavidenasDesde-main-img" data-src="https://i.postimg.cc/fRHKg9nP/image46.png"
-                         src="https://i.postimg.cc/fRHKg9nP/image46.png"
+                    <img id="CasitasNavidenasDesde-main-img" src="https://i.postimg.cc/fRHKg9nP/image46.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Casas+decorativas+para+villas';"
-                         alt="Casitas navideñas (Desde)"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Casitas navideñas (Desde)">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casitas navideñas</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casas variadas, perfectas para decoración de villas.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casitas navideñas</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casas variadas, perfectas para decoración de villas.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio Base: <span class="accent-text" style="color: #4dc0c0;">Desde $ 2</span></p>
-                    <button onclick="openModal('CasitasNavidenasDesde')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Desde: <span class="accent-text" style="color: #4dc0c0;">$ 2</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CasitasNavidenasDesde')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casita navideña (Desde $2)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casita navideña (Desde $2)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
              <!-- Producto: Casas medianas y con adornos (Precio simple) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/mgdw6HWW/image50.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Casas+más+grandes+con+detalles+de+nieve';"
-                         alt="Casas medianas y con adornos"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Casas medianas y con adornos">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casas medianas y con adornos</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Modelos más grandes con detalles de nieve y color.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casas medianas y con adornos</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Modelos más grandes con detalles de nieve y color.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 5</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casa mediana con adornos ($5)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 5</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casa mediana con adornos ($5)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Farol navideño ($6) (¡CON GALERÍA AHORA!) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('FarolNavidenoCuadrado')">
-                    <img id="FarolNavidenoCuadrado-main-img" data-src="https://i.postimg.cc/K89NsMS6/image48.png"
-                         src="https://i.postimg.cc/K89NsMS6/image48.png"
+                    <img id="FarolNavidenoCuadrado-main-img" src="https://i.postimg.cc/K89NsMS6/image48.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Linterna+cuadrada+con+figuras+navideñas';"
-                         alt="Farol navideño $6"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Farol navideño $6">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Farol navideño (Cuadrado)</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Farol de cubo con figuras navideñas caladas.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Farol navideño (Cuadrado)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Farol de cubo con figuras navideñas caladas.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 6</span></p>
-                    <button onclick="openModal('FarolNavidenoCuadrado')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 6</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('FarolNavidenoCuadrado')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Farol navideño de $6." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Farol navideño de $6." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
-            <!-- Producto: Santa surfista (Precio simple) - RESTAURADO -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <!-- Producto: Santa surfista (Precio simple) -->
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/g2MDBZbJ/image54.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Figura+de+Santa+con+tabla+de+surf';"
-                         alt="Santa surfista"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Santa surfista">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Santa surfista</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Figura decorativa de Santa Claus con tabla de surf.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Santa surfista</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Figura decorativa de Santa Claus con tabla de surf.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 3,50</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la figura de Santa surfista ($3,50)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 3,50</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la figura de Santa surfista ($3,50)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
-            <!-- Producto: Letrero de santa (Elfo) (¡CON GALERÍA AHORA!) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
-                <div class="image-container" onclick="openModal('LetreroSantaElfo')">
-                    <img id="LetreroSantaElfo-main-img" data-src="https://i.postimg.cc/kgjchbPX/image52.png"
-                         src="https://i.postimg.cc/kgjchbPX/image52.png"
-                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Letrero+de+bienvenida+con+figura+de+elfo';"
-                         alt="Letrero de santa"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+            <!-- Producto: Letrero de Santa PEQUEÑO (¡NOMBRE Y PRECIO CAMBIADO!) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('LetreroSantaPequeño')">
+                    <img id="LetreroSantaPequeño-main-img" src="https://i.postimg.cc/kgjchbPX/image52.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Letrero+de+bienvenida+con+figura+de+elfo+PEQUEÑO';"
+                         alt="Letrero de santa pequeño">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Letrero de santa (Elfo)</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Letrero con figura de Elfo, ideal para exteriores.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Letrero de Santa Pequeño</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Letrero con figura de Elfo, ideal para decoración de mesa o entrada.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 8,50</span></p>
-                    <button onclick="openModal('LetreroSantaElfo')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 3,50</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('LetreroSantaPequeno')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Letrero de santa ($8,50)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Letrero de Santa Pequeño ($3,50)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto NUEVO: Letrero de Santa Grande -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('LetreroSantaGrande')">
+                    <img id="LetreroSantaGrande-main-img" src="https://i.postimg.cc/CKCqfkcq/image1.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Letrero+de+Santa+Grande+y+Robusto';"
+                         alt="Letrero de Santa Grande">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Letrero de Santa Grande</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Letrero grande con figura de Elfo y base robusta. Más detalles, color y tamaño.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 8,50</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('LetreroSantaGrande')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Letrero de Santa Grande ($8,50)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
              <!-- Producto: Farol cuenta regresiva (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('FarolCuentaRegresiva')">
-                    <img id="FarolCuentaRegresiva-main-img" data-src="https://i.postimg.cc/fRHKg9Q9/image56.png"
-                         src="https://i.postimg.cc/fRHKg9Q9/image56.png"
+                    <img id="FarolCuentaRegresiva-main-img" src="https://i.postimg.cc/fRHKg9Q9/image56.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Farol+calendario+de+Adviento';"
-                         alt="Farol cuenta regresiva"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Farol cuenta regresiva">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Farol cuenta regresiva</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Calendario de adviento de farol para colgar números.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Farol cuenta regresiva</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Calendario de adviento de farol para colgar números.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 15</span></p>
-                    <button onclick="openModal('FarolCuentaRegresiva')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 15</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('FarolCuentaRegresiva')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Farol cuenta regresiva ($15)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Farol cuenta regresiva ($15)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
              <!-- Producto: Carro cuenta regresiva (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('CarroCuentaRegresiva')">
-                    <img id="CarroCuentaRegresiva-main-img" data-src="https://i.postimg.cc/qvmLZ3HK/image57.png"
-                         src="https://i.postimg.cc/qvmLZ3HK/image57.png"
+                    <img id="CarroCuentaRegresiva-main-img" src="https://i.postimg.cc/qvmLZ3HK/image57.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Camioneta+con+calendario+circular';"
-                         alt="Carro cuenta regresiva"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Carro cuenta regresiva">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Carro cuenta regresiva</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Decoración con camioneta y calendario de adviento circular.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Carro cuenta regresiva</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Decoración con camioneta y calendario de adviento circular.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 10</span></p>
-                    <button onclick="openModal('CarroCuentaRegresiva')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 10</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CarroCuentaRegresiva')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Carro cuenta regresiva ($10)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Carro cuenta regresiva ($10)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Producto NUEVO: Calendario de Adviento Árbol con Casas -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('CalendarioAdvientoArbolCasas')">
+                    <img id="CalendarioAdvientoArbolCasas-main-img" src="https://i.postimg.cc/4dJhvy07/image4.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Calendario+árbol+con+casas';"
+                         alt="Calendario de Adviento Árbol con Casas">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Calendario de Adviento Árbol con Casas</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura de exhibición en forma de árbol con 25 casitas para adviento.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 26</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CalendarioAdvientoArbolCasas')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Calendario de Adviento Árbol con Casas ($26)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
-            <!-- Producto: Calendario de adviento (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <!-- Producto: Calendario de adviento (Casa) -->
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('CalendarioAdviento')">
-                    <img id="CalendarioAdviento-main-img" data-src="https://i.postimg.cc/7LfVvZqZ/image59.png"
-                         src="https://i.postimg.cc/7LfVvZqZ/image59.png"
+                    <img id="CalendarioAdviento-main-img" src="https://i.postimg.cc/7LfVvZqZ/image59.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Casa+calendario+con+cajones';"
-                         alt="Calendario de adviento"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Calendario de adviento">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Calendario de adviento (Casa)</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura de cajones con casa y detalles navideños.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Calendario de adviento (Casa)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura de cajones con casa y detalles navideños.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 18</span></p>
-                    <button onclick="openModal('CalendarioAdviento')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 18</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CalendarioAdviento')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Calendario de adviento Casa ($18)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Calendario de adviento Casa ($18)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Trineo calendario de adviento (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('TrineoAdviento')">
-                    <img id="TrineoAdviento-main-img" data-src="https://i.postimg.cc/vmczRZGT/image60.png"
-                         src="https://i.postimg.cc/vmczRZGT/image60.png"
+                    <img id="TrineoAdviento-main-img" src="https://i.postimg.cc/vmczRZGT/image60.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Trineo+elegante+con+pequeños+cajones';"
-                         alt="Trineo calendario de adviento"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Trineo calendario de adviento">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Trineo calendario de adviento</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Elegante calendario con forma de trineo y cajones.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Trineo calendario de adviento</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Elegante calendario con forma de trineo y cajones.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 18</span></p>
-                    <button onclick="openModal('TrineoAdviento')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 18</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('TrineoAdviento')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Trineo calendario de adviento ($18)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Trineo calendario de adviento ($18)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto NUEVO: Árbol con Escena Navideña y Pesebre -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('ArbolEscenaPesebre')">
+                    <img id="ArbolEscenaPesebre-main-img" src="https://i.postimg.cc/ydVShxGF/image8.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Árbol+con+tres+niveles+de+escena';"
+                         alt="Árbol con Escena Navideña y Pesebre">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Árbol con Escena Navideña y Pesebre</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Árbol de tres niveles que integra un pesebre y una villa nevada.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 26</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('ArbolEscenaPesebre')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Árbol con Escena y Pesebre ($26)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Letrero HOHOHO (Precio simple) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/HLV2GkTr/image62.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Letrero+de+mesa+con+letras+y+muñeco';"
-                         alt="Letrero HOHOHO"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Letrero HOHOHO">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Letrero HOHOHO</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Letrero de mesa con letras y muñeco de nieve.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Letrero HOHOHO</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Letrero de mesa con letras y muñeco de nieve.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 4</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Letrero HOHOHO ($4)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 4</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Letrero HOHOHO ($4)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
-            <!-- Producto: Adorno de puerta (Precio simple) - RESTAURADO -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <!-- Producto: Adorno de puerta (Esquinero) -->
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/7LfVvZq2/image63.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Adorno+para+esquina+de+marco';"
-                         alt="Adorno de puerta"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Adorno de puerta">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Adorno de puerta (Esquinero)</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adorno para colocar en la esquina superior de un marco.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Adorno de puerta (Esquinero)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adorno para colocar en la esquina superior de un marco.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 1,50</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Adorno de puerta ($1,50)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 1,50</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Adorno de puerta ($1,50)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Nacimiento andino (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('NacimientoAndino')">
-                    <img id="NacimientoAndino-main-img" data-src="https://i.postimg.cc/1zfHx3yK/image65.png"
-                         src="https://i.postimg.cc/1zfHx3yK/image65.png"
+                    <img id="NacimientoAndino-main-img" src="https://i.postimg.cc/1zfHx3yK/image65.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Pesebre+con+figuras+de+estilo+andino';"
-                         alt="Nacimiento andino"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Nacimiento andino">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Nacimiento andino (Grande)</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pesebre con figuras de estilo andino en caja expositora.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Nacimiento andino (Grande)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pesebre con figuras de estilo andino en caja expositora.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 13</span></p>
-                    <button onclick="openModal('NacimientoAndino')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 13</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('NacimientoAndino')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Nacimiento andino grande ($13)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Nacimiento andino grande ($13)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Nacimiento pequeño (¡CON GALERÍA AHORA!) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('NacimientoPequeno')">
-                    <img id="NacimientoPequeno-main-img" data-src="https://i.postimg.cc/QMHbLdjm/image67.png"
-                         src="https://i.postimg.cc/QMHbLdjm/image67.png"
+                    <img id="NacimientoPequeno-main-img" src="https://i.postimg.cc/QMHbLdjm/image67.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Pesebre+tradicional+o+andino+en+caja';"
-                         alt="Nacimiento pequeño"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Nacimiento pequeño">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Nacimiento pequeño</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Modelo tradicional o andino en caja portátil.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Nacimiento pequeño</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Modelo tradicional o andino en caja portátil.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 9</span></p>
-                    <button onclick="openModal('NacimientoPequeno')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 9</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('NacimientoPequeno')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Nacimiento pequeño ($9)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Nacimiento pequeño ($9)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Buzón con base (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('BuzonConBase')">
-                    <img id="BuzonConBase-main-img" data-src="https://i.postimg.cc/HLRtT1LS/image72.png"
-                         src="https://i.postimg.cc/HLRtT1LS/image72.png"
+                    <img id="BuzonConBase-main-img" src="https://i.postimg.cc/HLRtT1LS/image72.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Buzón+rojo+de+pie+para+cartas';"
-                         alt="Buzón con base"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Buzón con base">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Buzón con base</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Buzón rojo de pie, ideal para cartas a Santa.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Buzón con base</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Buzón rojo de pie, ideal para cartas a Santa.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 12</span></p>
-                    <button onclick="openModal('BuzonConBase')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 12</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('BuzonConBase')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Buzón con base ($12)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Buzón con base ($12)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Buzón navideño (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('BuzonNavideno')">
-                    <img id="BuzonNavideno-main-img" data-src="https://i.postimg.cc/k5zy7P5H/image75.png"
-                         src="https://i.postimg.cc/k5zy7P5H/image75.png"
+                    <img id="BuzonNavideno-main-img" src="https://i.postimg.cc/k5zy7P5H/image75.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Buzón+tipo+barril+decorativo';"
-                         alt="Buzón navideño"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Buzón navideño">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Buzón navideño (Clásico)</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Buzón tipo barril rojo, "Express Mail" o "Deseos".</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Buzón navideño (Clásico)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Buzón estilo barril rojo, "Express Mail" o "Deseos".</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 12</span></p>
-                    <button onclick="openModal('BuzonNavideno')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 12</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('BuzonNavideno')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Buzón navideño clásico ($12)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Buzón navideño clásico ($12)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Árbol con luces (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('ArbolConLuces')">
-                    <img id="ArbolConLuces-main-img" data-src="https://i.postimg.cc/0NFC91Q1/image78.png"
-                         src="https://i.postimg.cc/0NFC91Q1/image78.png"
+                    <img id="ArbolConLuces-main-img" src="https://i.postimg.cc/0NFC91Q1/image78.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Estructura+de+pino+3D+iluminada';"
-                         alt="Árbol con luces"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Árbol con luces">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Árbol con luces (Caja 3D)</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura de pino 3D con escenas interiores y luz.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Árbol con luces (Caja 3D)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura de pino 3D con escenas interiores y luz.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 12</span></p>
-                    <button onclick="openModal('ArbolConLuces')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 12</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('ArbolConLuces')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Árbol con luces ($12)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Árbol con luces ($12)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Bombillos personalizados (Precio simple) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/85hTcghp/bombillos.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Adornos+circulares+grabados';"
-                         alt="Bombillos personalizados"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Bombillos personalizados">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Bombillos personalizados</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adornos circulares con nombres o imágenes (ej. Sofía, Esperanza).</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Bombillos personalizados</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adornos circulares con nombres o imágenes (ej. Sofía, Esperanza).</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 3</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Bombillo personalizado ($3)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 3</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Bombillo personalizado ($3)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Gnomo farol (¡CON GALERÍA AHORA!) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('GnomoFarol')">
-                    <img id="GnomoFarol-main-img" data-src="https://i.postimg.cc/Y9Fz9DGk/image86.png"
-                         src="https://i.postimg.cc/Y9Fz9DGk/image86.png"
+                    <img id="GnomoFarol-main-img" src="https://i.postimg.cc/Y9Fz9DGk/image86.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Figura+de+gnomo+con+linterna';"
-                         alt="Gnomo farol"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Gnomo farol">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Gnomo farol</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Figura de gnomo con espacio para luz en su base.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Gnomo farol</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Figura de gnomo con espacio para luz en su base.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 8</span></p>
-                    <button onclick="openModal('GnomoFarol')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 8</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('GnomoFarol')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Gnomo farol ($8)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Gnomo farol ($8)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
             
             <!-- Producto: Castillo de navidad Smart (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('CastilloNavidad')">
-                    <img id="CastilloNavidad-main-img" data-src="https://i.postimg.cc/bJn9JVDh/image85.png"
-                         src="https://i.postimg.cc/bJn9JVDh/image85.png"
+                    <img id="CastilloNavidad-main-img" src="https://i.postimg.cc/bJn9JVDh/image85.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Estructura+detallada+de+castillo';"
-                         alt="Castillo de navidad Smart"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Castillo de navidad Smart">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Castillo de navidad Smart</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura detallada de un castillo navideño, compatible con Alexa y Google Home.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Castillo de navidad Smart</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura detallada de un castillo navideño, compatible con Alexa y Google Home.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 34</span></p>
-                    <button onclick="openModal('CastilloNavidad')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 34</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CastilloNavidad')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Castillo de navidad Smart ($34)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Castillo de navidad Smart ($34)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Rueda de la fortuna (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('RuedaFortuna')">
-                    <img id="RuedaFortuna-main-img" data-src="https://i.postimg.cc/V6tW6Zr6/image89.png"
-                         src="https://i.postimg.cc/V6tW6Zr6/image89.png"
+                    <img id="RuedaFortuna-main-img" src="https://i.postimg.cc/V6tW6Zr6/image89.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Rueda+armable+de+madera';"
-                         alt="Rueda de la fortuna"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Rueda de la fortuna">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Rueda de la fortuna</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Juguete o adorno armable de madera.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Rueda de la fortuna</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Juguete o adorno armable de madera.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 20</span></p>
-                    <button onclick="openModal('RuedaFortuna')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 20</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('RuedaFortuna')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Rueda de la fortuna ($20)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Rueda de la fortuna ($20)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
-            <!-- Producto: Nacimiento colgante (Precio simple) - RESTAURADO -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <!-- Producto: Nacimiento colgante (Precio simple) -->
+            <div class="product-card">
                 <div class="image-container">
                     <img src="https://i.postimg.cc/4dcQd277/image91.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Adorno+redondo+de+pesebre+para+colgar';"
-                         alt="Nacimiento colgante"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Nacimiento colgante">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Nacimiento colgante</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adorno circular de pesebre para colgar o base.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Nacimiento colgante</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adorno circular de pesebre para colgar o base.</p>
                     </div>
-                    <p class="text-3xl font-extrabold accent-text mt-3 mb-2" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-top: 0.75rem; margin-bottom: 0.5rem;">$ 2</p>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Nacimiento colgante ($2)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 2</span></p>
+                </div>
+                <div class="card-actions">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Nacimiento colgante ($2)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
              <!-- Caja cultural: Mama Negra (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('MamaNegra')">
-                    <img id="MamaNegra-main-img" data-src="https://i.postimg.cc/2yFddq7g/image112.png"
-                         src="https://i.postimg.cc/2yFddq7g/image112.png"
+                    <img id="MamaNegra-main-img" src="https://i.postimg.cc/2yFddq7g/image112.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Escena+folclórica+Mama+Negra';"
-                         alt="Caja Mama Negra"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Caja Mama Negra">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja Mama Negra</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural ecuatoriana en caja expositora.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja Mama Negra</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural ecuatoriana en caja expositora.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 15</span></p>
-                    <button onclick="openModal('MamaNegra')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 15</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('MamaNegra')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja Mama Negra ($15)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja Mama Negra ($15)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
              <!-- Caja cultural: Diablada de Pillaro (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('DiabladaPillaro')">
-                    <img id="DiabladaPillaro-main-img" data-src="https://i.postimg.cc/GtJPPBj1/image115.png"
-                         src="https://i.postimg.cc/GtJPPBj1/image115.png"
+                    <img id="DiabladaPillaro-main-img" src="https://i.postimg.cc/GtJPPBj1/image115.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Escena+folclórica+Diablada+Pillaro';"
-                         alt="Caja Diablada de Pillaro"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Caja Diablada de Pillaro">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja Diablada de Pillaro</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural ecuatoriana en caja expositora.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja Diablada de Pillaro</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural ecuatoriana en caja expositora.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 15</span></p>
-                    <button onclick="openModal('DiabladaPillaro')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 15</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('DiabladaPillaro')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja Diablada de Pillaro ($15)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja Diablada de Pillaro ($15)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Caja cultural: Carnaval de Guaranda (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('CarnavalGuaranda')">
-                    <img id="CarnavalGuaranda-main-img" data-src="https://i.postimg.cc/J0c33yQh/image119.png"
-                         src="https://i.postimg.cc/J0c33yQh/image119.png"
+                    <img id="CarnavalGuaranda-main-img" src="https://i.postimg.cc/J0c33yQh/image119.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Escena+folclórica+Carnaval+Guaranda';"
-                         alt="Caja Carnaval de Guaranda"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Caja Carnaval de Guaranda">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja Carnaval de Guaranda</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural ecuatoriana en caja expositora.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja Carnaval de Guaranda</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural ecuatoriana en caja expositora.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 15</span></p>
-                    <button onclick="openModal('CarnavalGuaranda')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 15</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CarnavalGuaranda')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja Carnaval de Guaranda ($15)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja Carnaval de Guaranda ($15)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Caja Halloween (Más de $10) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('CajaHalloween')">
-                    <img id="CajaHalloween-main-img" data-src="https://i.postimg.cc/nVv1f5fB/image122.png"
-                         src="https://i.postimg.cc/nVv1f5fB/image122.png"
+                    <img id="CajaHalloween-main-img" src="https://i.postimg.cc/nVv1f5fB/image122.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Caja+temática+para+dulces';"
-                         alt="Caja Halloween con y sin dulces"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Caja Halloween con y sin dulces">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja Halloween</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja temática para dulces o decoración.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja Halloween</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja temática para dulces o decoración.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio Base: <span class="accent-text" style="color: #4dc0c0;">Desde $ 15</span></p>
-                    <button onclick="openModal('CajaHalloween')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Desde: <span class="accent-text" style="color: #4dc0c0;">$ 15</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CajaHalloween')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja Halloween (Desde $15)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja Halloween (Desde $15)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Cajas para toda ocasión (Desde $) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('CajasOcasion')">
-                    <img id="CajasOcasion-main-img" data-src="https://i.postimg.cc/J0WcB3ZN/image100.png"
-                         src="https://i.postimg.cc/J0WcB3ZN/image100.png"
+                    <img id="CajasOcasion-main-img" src="https://i.postimg.cc/J0WcB3ZN/image100.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Cajas+decorativas+genéricas';"
-                         alt="Cajas para toda ocasión"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Cajas para toda ocasión">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Cajas para toda ocasión</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Cajas decorativas personalizables (corazones, calados).</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Cajas para toda ocasión</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Cajas decorativas personalizables (corazones, calados).</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio Base: <span class="accent-text" style="color: #4dc0c0;">Desde $ 2</span></p>
-                    <button onclick="openModal('CajasOcasion')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Desde: <span class="accent-text" style="color: #4dc0c0;">$ 2</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CajasOcasion')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesan las Cajas para toda ocasión (Desde $2)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesan las Cajas para toda ocasión (Desde $2)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Producto: Velas con diseños y logos (Desde $) -->
-            <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100" style="background-color: white;">
+            <div class="product-card">
                 <div class="image-container" onclick="openModal('VelasDisenos')">
-                    <img id="VelasDisenos-main-img" data-src="https://i.postimg.cc/JnJjh06J/Velas.png"
-                         src="https://i.postimg.cc/JnJjh06J/Velas.png"
+                    <img id="VelasDisenos-main-img" src="https://i.postimg.cc/JnJjh06J/Velas.png"
                          onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Velas+impresas+para+eventos';"
-                         alt="Velas con diseños y logos"
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         alt="Velas con diseños y logos">
                 </div>
-                <div class="p-5 flex flex-col justify-between h-auto" style="padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="card-content">
                     <div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-1" style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Velas con diseños y logos</h3>
-                        <p class="text-sm text-gray-500 mb-3" style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Velas impresas para bautizos, Navidad o eventos corporativos.</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Velas con diseños y logos</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Velas impresas para bautizos, Navidad o eventos corporativos.</p>
                     </div>
-                    <p class="text-2xl font-extrabold text-gray-900 mt-2 mb-2" style="font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-top: 0.5rem; margin-bottom: 0.5rem;">Precio: <span class="accent-text" style="color: #4dc0c0;">¡Consultar!</span></p>
-                    <button onclick="openModal('VelasDisenos')" class="accent-bg text-white font-bold py-2 px-4 rounded-full w-full hover:bg-opacity-90 transition duration-150 mb-2"
-                            style="background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; transition-duration: 150ms; margin-bottom: 0.5rem; border: none;">
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">¡Consultar!</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('VelasDisenos')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesan las Velas con diseños y logos (¡Consultar!)." target="_blank" class="border border-[#4dc0c0] text-[#4dc0c0] font-bold py-2 px-4 rounded-full w-full text-center hover:bg-[#4dc0c0] hover:text-white transition duration-150"
-                       style="border: 1px solid #4dc0c0; color: #4dc0c0; font-weight: 700; padding: 0.5rem 1rem; border-radius: 9999px; width: 100%; text-align: center; text-decoration: none; transition-duration: 150ms;">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesan las Velas con diseños y logos (¡Consultar!)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
             </div>
 
             <!-- Tarjeta de Promoción/Información Adicional (Ocupa las 4 columnas en desktop) -->
-            <div class="bg-gradient-to-r from-[#d1e7e7] to-[#e9d8fd] p-8 rounded-2xl shadow-xl border-4 border-[#4dc0c0] lg:col-span-4 text-center mt-6" 
-                 style="background-image: linear-gradient(to right, #d1e7e7, #e9d8fd); padding: 2rem; border-radius: 1rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); border: 4px solid #4dc0c0; grid-column: span 4 / span 4; margin-top: 1.5rem; text-align: center;">
-                <h3 class="text-3xl font-extrabold accent-text mb-4" style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-bottom: 1rem;">¡Tu Visión, Nuestra Creación!</h3>
-                <p class="text-xl text-gray-700 mb-4" style="font-size: 1.25rem; color: #4b5563; margin-bottom: 1rem;">
+            <div style="background-image: linear-gradient(to right, #d1e7e7, #e9d8fd); padding: 2rem; border-radius: 1rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); border: 4px solid #4dc0c0; grid-column: 1 / -1; margin-top: 1.5rem; text-align: center;">
+                <h3 style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-bottom: 1rem;">¡Tu Visión, Nuestra Creación!</h3>
+                <p style="font-size: 1.25rem; color: #4b5563; margin-bottom: 1rem;">
                     Todos nuestros productos son **Regalos Personalizados** diseñados a tu medida.
                 </p>
-                <ul class="text-lg text-gray-700 font-medium space-y-2 inline-block text-left" style="font-size: 1.125rem; color: #4b5563; font-weight: 500; margin-bottom: 0.5rem; display: inline-block; text-align: left;">
+                <ul style="font-size: 1.125rem; color: #4b5563; font-weight: 500; margin-bottom: 0.5rem; display: inline-block; text-align: left; list-style: none; padding: 0;">
                     <li style="margin-bottom: 0.5rem;"><span class="accent-text font-bold mr-2" style="color: #4dc0c0; font-weight: 700; margin-right: 0.5rem;">✓</span> Ofrecemos Recuerdos religiosos para toda ocasión.</li>
                     <li style="margin-bottom: 0.5rem;"><span class="accent-text font-bold mr-2" style="color: #4dc0c0; font-weight: 700; margin-right: 0.5rem;">✓</span> Pregunta por nuestro **Descuento en casas para formar ciudades** (¡Stock limitado!).</li>
                 </ul>
-                <a href="https://wa.me/593964206952" target="_blank" class="mt-6 inline-block accent-bg text-white hover:bg-[#349e9e] font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
-                   style="margin-top: 1.5rem; display: inline-block; background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.75rem 2rem; border-radius: 9999px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); transition-duration: 300ms; transform: scale(1.0); text-decoration: none;">
+                <a href="https://wa.me/593964206952" target="_blank" class="btn btn-primary"
+                   style="margin-top: 1.5rem; display: inline-block; padding: 0.75rem 2rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); text-decoration: none;">
                     Envíanos tu Diseño Personalizado
                 </a>
             </div>
@@ -1090,27 +1226,27 @@
             
             <h2 id="modal-title" style="font-size: 1.875rem; font-weight: 800; color: #1f2937; margin-bottom: 1rem;" class="text-3xl font-extrabold text-gray-900 mb-4 accent-text"></h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" style="display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 1.5rem;">
+            <div style="display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 1.5rem;">
                 
                 <!-- Columna de Imagen Principal -->
                 <div>
                     <div class="image-container !h-96" style="height: 24rem !important;">
                         <img id="modal-main-img" src="" alt="Imagen Principal" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
-                    <p id="modal-price" class="text-4xl font-extrabold text-right accent-text mt-4" style="font-size: 2.25rem; font-weight: 800; color: #4dc0c0; margin-top: 1rem; text-align: right;"></p>
+                    <p id="modal-price" style="font-size: 2.25rem; font-weight: 800; color: #4dc0c0; margin-top: 1rem; text-align: right;"></p>
                 </div>
 
                 <!-- Columna de Galería y Detalles -->
                 <div>
-                    <p id="modal-description" class="text-lg text-gray-700 mb-4" style="font-size: 1.125rem; color: #4b5563; margin-bottom: 1rem;"></p>
+                    <p id="modal-description" style="font-size: 1.125rem; color: #4b5563; margin-bottom: 1rem;"></p>
                     
-                    <h4 class="text-lg font-bold text-gray-900 mb-3 border-b pb-1" style="font-size: 1.125rem; font-weight: 700; color: #1f2937; margin-bottom: 0.75rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.25rem;">Galería / Opciones</h4>
-                    <div id="modal-gallery" class="grid grid-cols-2 gap-3" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem;">
+                    <h4 style="font-size: 1.125rem; font-weight: 700; color: #1f2937; margin-bottom: 0.75rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.25rem;">Galería / Opciones</h4>
+                    <div id="modal-gallery" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem;">
                         <!-- Aquí se insertarán las imágenes secundarias dinámicamente -->
                     </div>
 
-                    <a id="modal-contact-btn" href="#" target="_blank" class="mt-6 inline-block accent-bg text-white hover:bg-[#349e9e] font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
-                       style="margin-top: 1.5rem; display: inline-block; background-color: #4dc0c0; color: white; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 9999px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); transition-duration: 300ms; transform: scale(1.0); text-decoration: none; text-align: center;">
+                    <a id="modal-contact-btn" href="#" target="_blank" class="btn btn-primary"
+                       style="margin-top: 1.5rem; display: inline-block; padding: 0.75rem 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); text-decoration: none; text-align: center;">
                         <svg style="width: 1.25rem; height: 1.25rem; display: inline-block; margin-right: 0.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         Personalizar y Cotizar
                     </a>
@@ -1121,8 +1257,8 @@
     </div>
 
     <!-- Pie de página -->
-    <footer class="header-bg text-white p-6 mt-16 text-center shadow-inner" style="background-color: #1f2937; color: white; padding: 1.5rem; margin-top: 4rem; text-align: center;">
-        <p class="text-sm opacity-90" style="font-size: 0.875rem; opacity: 0.9;">&copy; 2024 Ideas & D'talles. Todos los derechos reservados.</p>
+    <footer class="header-bg header-text p-6 mt-16 text-center shadow-inner" style="background-color: #1f2937; color: white; padding: 1.5rem; margin-top: 4rem; text-align: center;">
+        <p style="font-size: 0.875rem; opacity: 0.9;">&copy; 2024 Ideas & D'talles. Todos los derechos reservados.</p>
     </footer>
 
     <script>
@@ -1134,9 +1270,9 @@
                 description: "Pieza decorativa de madera 3D de alta complejidad, ideal para decoración navideña temática o urbana. Piezas totalmente personalizables en grabado y color.",
                 mainImg: "https://i.postimg.cc/KvDQBW9z/image21.png",
                 extraImgs: [
-                    "https://i.postimg.cc/KvDQBW9z/image21.png", // URL para Vista Interior
-                    "https://i.postimg.cc/wTQFLrWB/image20.png", // URL para Vista Lateral
-                    "https://i.postimg.cc/MX2mzRmS/131032a6-819a-43c6-b9e8-88e84062a788.png"  // URL para Vista Desarmada
+                    "https://i.postimg.cc/KvDQBW9z/image21.png", 
+                    "https://i.postimg.cc/wTQFLrWB/image20.png", 
+                    "https://i.postimg.cc/MX2mzRmS/131032a6-819a-43c6-b9e8-88e84062a788.png"
                 ]
             },
             Arbolitos: {
@@ -1232,16 +1368,60 @@
                     "https://i.postimg.cc/BnZJMz2F/d804b0c3-400f-4c80-8669-855c50ac0258.png"
                 ]
             },
-            LetreroSantaElfo: { // NUEVO ITEM
-                title: "Letrero de Santa (Elfo)",
-                price: "$ 8,50",
-                description: "Letrero con la figura de un Elfo y el mensaje 'Santa Please Stop Here'. Ideal para decoración de mesa o entrada, con detalles de color, proximamente otras opciones.",
-                mainImg: "https://i.postimg.cc/kgjchbPX/image52.png",
+            
+            // CAMBIO: Letrero de Santa PEQUEÑO (Antes 'LetreroSantaElfo')
+            LetreroSantaPequeno: {
+                title: "Letrero de Santa Pequeño",
+                price: "$ 3,50", // Nuevo precio
+                description: "Letrero compacto con figura de Elfo y base, ideal para decoración de mesa. Perfecto para colocar junto al árbol.",
+                mainImg: "https://i.postimg.cc/kgjchbPX/image52.png", // Imagen anterior
                 extraImgs: [
-                    "https://i.postimg.cc/kgjchbPX/image52.png",
-                    "https://i.postimg.cc/sgnc0hCy/image51.png"
+                    "https://i.postimg.cc/sgnc0hCy/image51.png",
+                    "https://i.postimg.cc/kgjchbPX/image52.png"
+
                 ]
             },
+
+            // NUEVO PRODUCTO: Letrero de Santa GRANDE
+            LetreroSantaGrande: {
+                title: "Letrero de Santa Grande",
+                price: "$ 8,50", // Precio anterior
+                description: "Letrero robusto de mayor tamaño con Elfo. Presenta más detalles de grabado y color, ideal para la entrada o el exterior",
+                mainImg: "https://i.postimg.cc/CKCqfkcq/image1.png", // Imagen del PPTX
+                extraImgs: [
+                    "https://i.postimg.cc/CKCqfkcq/image1.png", 
+                    "https://i.postimg.cc/Pxt8bJ7C/image2.png",
+                    "https://i.postimg.cc/26zBdytV/image3.png" 
+                ]
+            },
+
+            // NUEVO PRODUCTO: Calendario de Adviento Árbol con Casas
+            CalendarioAdvientoArbolCasas: {
+                title: "Calendario de Adviento Árbol con Casas",
+                price: "$ 26",
+                description: "Espectacular estructura de adviento multinivel con forma de árbol. Incluye 25 casitas numeradas que sirven como pequeños cajones o exhibidores.",
+                mainImg: "https://i.postimg.cc/4dJhvy07/image4.png", 
+                extraImgs: [
+                    "https://i.postimg.cc/4dJhvy07/image4.png",
+                    "https://i.postimg.cc/50xF5yrF/image6.png",
+                    "https://i.postimg.cc/G2csPtfy/image7.png"
+                ]
+            },
+
+            // NUEVO PRODUCTO: Árbol con Escena Navideña y Pesebre
+            ArbolEscenaPesebre: {
+                title: "Árbol con Escena Navideña y Pesebre",
+                price: "$ 26",
+                description: "Árbol decorativo de madera en 3 niveles que exhibe una escena navideña completa: pesebre, Reyes Magos y una pequeña villa. Perfecto como centro de mesa.",
+                mainImg: "https://i.postimg.cc/ydVShxGF/image8.png", 
+                extraImgs: [
+                    "https://i.postimg.cc/ydVShxGF/image8.png",
+                    "https://i.postimg.cc/zBJRwvQC/image9.png",
+                    "https://i.postimg.cc/V6Yb9vhW/image10.png" 
+                ]
+            },
+
+            // Resto de productos originales (Mantienen IDs)
             NacimientoAndino: {
                 title: "Nacimiento Andino (Grande)",
                 price: "$ 13",
@@ -1393,7 +1573,11 @@
                     "https://i.postimg.cc/nrtYQKBg/image107.png",
                     "https://i.postimg.cc/d3KmTRrB/image102.jpg"
                 ]
-            }
+            },
+
+            // Los nuevos items del PPTX ya estaban en el script anterior, pero los actualicé para reflejar los nuevos nombres y precios
+        
+
         };
 
         const modal = document.getElementById('productModal');
@@ -1411,8 +1595,17 @@
 
             // 1. Llenar contenido de la mini-ventana
             modalTitle.textContent = data.title;
+            
+            // Uniformidad de precios en el modal
+            if (data.price.includes('Desde')) {
+                modalPrice.textContent = `Desde: ${data.price.replace('Desde ', '')}`;
+            } else if (data.price.includes('Consultar')) {
+                modalPrice.textContent = `Precio: ${data.price}`;
+            } else {
+                modalPrice.textContent = `Precio: ${data.price}`; 
+            }
+
             modalDescription.textContent = data.description;
-            modalPrice.textContent = `Precio Base: ${data.price}`; // Etiqueta 'Precio Base' en el modal
             
             // Usar la imagen principal
             modalMainImg.src = data.mainImg;
@@ -1424,7 +1617,6 @@
                 const itemDiv = document.createElement('div');
                 itemDiv.className = 'modal-gallery-item cursor-pointer';
                 itemDiv.onclick = () => {
-                    // Al hacer clic en miniatura, se convierte en la principal
                     modalMainImg.src = src;
                     modalMainImg.alt = `Galería ${index + 1} de ${data.title}`;
                 };
