@@ -179,7 +179,7 @@
              margin-top: 0.25rem; 
              font-weight: 500;
              line-height: 1; /* CLAVE: Alinea mejor el texto */
-             color: white; /* Corregido: Texto del WhatsApp a blanco */
+             color: white; /* Texto del WhatsApp a blanco */
         }
     </style>
     
@@ -193,7 +193,7 @@
             <!-- Logo y Nombre (Corregido: Logo 100x100) -->
             <div class="header-logo-info" style="gap: 0.75rem;">
                 <a href='#' title='Ideas & D´talles Logo'>
-                    <img src='https://i.postimg.cc/SjSPcbC1/image19.png' alt='Logo Ideas & D´talles' style="width: 150px; height: 150px; object-fit: contain;" />
+                    <img src='https://i.postimg.cc/SjSPcbC1/image19.png' alt='Logo Ideas & D´talles' style="width: 100px; height: 100px; object-fit: contain;" />
                 </a>
                 <div class="text-left header-text">
                     <h1 style="font-size: 1.875rem; font-weight: 800; letter-spacing: -0.025em; margin: 0; color: white;">Ideas & D'talles</h1>
@@ -233,6 +233,31 @@
     <!-- Listado de Productos (Grid con Estética Fija) -->
     <main>
         <section id="productos" class="product-grid">
+
+            <!-- Producto NUEVO: Ciudad Completa (14 Casas, Tren, Puente) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('CiudadCompleta')">
+                    <img id="CiudadCompleta-main-img" src="https://i.postimg.cc/TPsTfqLQ/image13.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Ciudad+Navideña+14+Casas';"
+                         alt="Ciudad Completa 14 Casas">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Ciudad Completa (14 Casas)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Set de 14 casas, tren, puente y letreros. Kit de decoración avanzado</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 35</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CiudadCompleta')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Ciudad Completa (14 Casas, $35)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
 
             <!-- Producto: Ciudad en caja (Más de $10) -->
             <div class="product-card">
@@ -997,7 +1022,7 @@
                 <div class="card-content">
                     <div>
                         <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Castillo de navidad Smart</h3>
-                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura detallada de un castillo navideño, con iluminación multicolor compatible con Alexa y Google Home.</p>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura detallada de un castillo navideño, compatible con Alexa y Google Home.</p>
                     </div>
                     <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 34</span></p>
                 </div>
@@ -1264,6 +1289,21 @@
     <script>
         // Data de los productos que necesitan galería/más detalles (Más de $10 o "Desde $")
         const productData = {
+            
+            // NUEVO PRODUCTO MÁS GRANDE: Ciudad Completa
+            CiudadCompleta: {
+                title: "Ciudad Completa (14 Casas, Tren, Puente)",
+                price: "$ 35",
+                description: "Kit de decoración avanzado que incluye 14 casas, un tren, un puente, letreros decorativos y un farol o un faro. Piezas detalladas ideales para crear una gran villa navideña.",
+                mainImg: "https://i.postimg.cc/TPsTfqLQ/image13.png",
+                extraImgs: [
+                    "https://i.postimg.cc/SKPmk72M/image12.png",
+                    "https://i.postimg.cc/TPsTfqLQ/image13.png",
+                    "https://i.postimg.cc/BvzJ4cLB/image14.png",
+                    "https://i.postimg.cc/RCQ2TLSY/image15.png"
+                ]
+            },
+            
             CiudadEnCaja: {
                 title: "Ciudad en caja",
                 price: "$ 15",
@@ -1576,7 +1616,6 @@
             },
 
             // Los nuevos items del PPTX ya estaban en el script anterior, pero los actualicé para reflejar los nuevos nombres y precios
-        
 
         };
 
@@ -1651,4 +1690,3 @@
     </script>
 </body>
 </html>
-
