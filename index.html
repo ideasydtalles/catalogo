@@ -33,14 +33,14 @@
             .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (min-width: 1024px) { /* lg breakpoint */
-            .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } /* Mantenemos 3 columnas */
         }
 
         /* Estilo de la Tarjeta de Producto (UNIFORMIDAD CLAVE) */
         .product-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            min-height: 480px; /* Altura mínima para alinear los pies */
+            min-height: 480px; 
             border-radius: 1rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -51,7 +51,7 @@
             justify-content: space-between; 
         }
         .product-card:hover {
-            transform: translateY(-5px); /* Ajuste para un efecto más sutil */
+            transform: translateY(-5px); 
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
@@ -68,6 +68,7 @@
         .image-container img {
             width: 100%;
             height: 100%;
+            /* CORREGIDO: 'cover' a 'contain' para asegurar que se vea todo el producto */
             object-fit: contain; 
         }
 
@@ -77,7 +78,7 @@
             flex-grow: 1; 
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Alineación vertical del contenido */
+            justify-content: space-between; 
         }
         .card-actions {
             padding: 0 1.25rem 1.25rem 1.25rem;
@@ -94,7 +95,7 @@
             transition: all 150ms ease-in-out;
             display: inline-block;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-            box-sizing: border-box; /* CLAVE: asegura que el borde no se corte */
+            box-sizing: border-box; 
         }
         .btn-primary {
             background-color: #4dc0c0;
@@ -108,14 +109,13 @@
             border: 1px solid #4dc0c0;
             color: #4dc0c0;
             background-color: transparent;
-            padding: 0.4375rem 1rem; /* Ajuste para compensar el borde */
+            padding: 0.4375rem 1rem; 
         }
         .btn-secondary:hover {
             background-color: #4dc0c0;
             color: white;
         }
         
-        /* Ajustes de precio para la uniformidad */
         .price-label {
             font-size: 1.5rem; 
             font-weight: 800; 
@@ -126,7 +126,7 @@
         }
 
 
-        /* Modal Styles - Mantener fijos */
+        /* Modal Styles */
         .modal { display: none; position: fixed; z-index: 50; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); padding-top: 50px; }
         .modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px; border-radius: 1rem; width: 90%; max-width: 800px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); animation: slideIn 0.3s; }
         .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; transition: 0.3s; cursor: pointer; }
@@ -148,7 +148,7 @@
         .modal-gallery-item:hover { border-color: #9f7aea; }
         .modal-gallery-item img { width: 100%; height: 100%; object-fit: contain; }
         
-        /* Ajustes específicos para el Header */
+        /* Header Styles */
         #header-container {
             max-width: 80rem;
             margin: 0 auto;
@@ -173,24 +173,22 @@
                 margin-bottom: 0;
             }
         }
-        /* Ajuste para el texto de contacto en el header */
         .header-contact-text {
              font-size: 0.875rem; 
              margin-top: 0.25rem; 
              font-weight: 500;
-             line-height: 1; /* CLAVE: Alinea mejor el texto */
-             color: white; /* Texto del WhatsApp a blanco */
+             line-height: 1; 
+             color: white; 
         }
     </style>
     
 </head>
 <body class="antialiased">
 
-    <!-- Encabezado Fijo con Logo y Contacto (Fondo Negro Oscuro para Contraste) -->
+    <!-- Encabezado Fijo con Logo y Contacto -->
     <header class="header-bg header-text shadow-2xl sticky top-0 z-10">
         <div id="header-container">
-
-            <!-- Logo y Nombre (Corregido: Logo 100x100) -->
+            <!-- Logo y Nombre -->
             <div class="header-logo-info" style="gap: 0.75rem;">
                 <a href='#' title='Ideas & D´talles Logo'>
                     <img src='https://i.postimg.cc/SjSPcbC1/image19.png' alt='Logo Ideas & D´talles' style="width: 100px; height: 100px; object-fit: contain;" />
@@ -201,7 +199,7 @@
                 </div>
             </div>
 
-            <!-- Botón de Contacto principal (Corregido: Alineación) -->
+            <!-- Botón de Contacto principal -->
             <div style="display: flex; flex-direction: column; align-items: center;">
                 <a href="https://wa.me/593964206952" target="_blank" class="btn bg-white text-[#4dc0c0] hover:bg-gray-100" 
                    style="background-color: white; color: #4dc0c0; padding: 0.5rem 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); text-align: center;">
@@ -215,14 +213,14 @@
         </div>
     </header>
 
-    <!-- Sección de Introducción y Canales (Corregido: Espaciado de Redes) -->
+    <!-- Sección de Introducción y Canales -->
     <div style="max-width: 80rem; margin: 0 auto; padding: 1.5rem 1.5rem 0 1.5rem;">
         <h2 style="font-size: 3rem; font-weight: 800; color: #1f2937; margin-bottom: 1rem; letter-spacing: -0.025em;">Catálogo Exclusivo</h2>
         <p style="font-size: 1.25rem; color: #4b5563; margin-bottom: 2rem; max-width: 56rem;">
             Explora nuestra colección de piezas únicas. Recuerda, todos los productos son **<span class="accent-text font-bold" style="color: #4dc0c0; font-weight: 700;">100% Personalizables</span>** y hechos en madera con la mejor calidad.
         </p>
 
-        <!-- Contenedor de Redes Sociales (Alineación y Espaciado Corregidos) -->
+        <!-- Contenedor de Redes Sociales -->
         <div style="display: flex; flex-wrap: wrap; gap: 1rem 2rem; font-size: 0.875rem; font-weight: 600; padding: 1rem; background-color: #f3f4f6; border-radius: 0.75rem; box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); border: 1px solid #e5e7eb; align-items: center;">
             <span style="color: #4b5563; white-space: nowrap;">Canales:</span>
             <a href="https://instagram.com/ideasdtalles" target="_blank" style="color: #db2777; text-decoration: underline; white-space: nowrap;">Instagram: @ideasdtalles</a>
@@ -230,12 +228,12 @@
         </div>
     </div>
 
-    <!-- Listado de Productos (Grid con Estética Fija - REORDENADO v2) -->
+    <!-- Listado de Productos (Grid con Estética Fija - REORDENADO v3) -->
     <main>
         <section id="productos" class="product-grid">
 
             <!-- ======================================================== -->
-            <!-- == GRUPO A: CALENDARIOS Y CUENTA REGRESIVA (ADVIENTO) == -->
+            <!-- == GRUPO 1: CALENDARIOS Y CUENTA REGRESIVA (ADVIENTO) == -->
             <!-- ======================================================== -->
 
             <!-- Producto: Calendario de Adviento Árbol con Casas - $26 -->
@@ -359,7 +357,7 @@
             </div>
 
             <!-- ========================================================== -->
-            <!-- == GRUPO B: GRANDES ESTRUCTURAS Y VILLAS (NAVIDAD/EXHIBICIÓN) == -->
+            <!-- == GRUPO 2: GRANDES ESTRUCTURAS Y VILLAS (EXHIBICIÓN) == -->
             <!-- ========================================================== -->
             
             <!-- Producto: Ciudad Completa (14 Casas, Tren, Puente) - $35 -->
@@ -459,7 +457,7 @@
             </div>
 
             <!-- ========================================================== -->
-            <!-- == GRUPO C: ESCENAS DECORATIVAS (NAVIDAD/CULTURAL) == -->
+            <!-- == GRUPO 3: ESCENAS Y NACIMIENTOS (CULTURAL/NAVIDAD) == -->
             <!-- ========================================================== -->
 
             <!-- Producto: Ciudad en caja - $15 -->
@@ -534,7 +532,7 @@
                 </div>
             </div>
 
-            <!-- NUEVO: Nacimiento por niveles con luz led - $10 -->
+            <!-- Nacimiento por niveles con luz led - $10 -->
             <div class="product-card">
                 <div class="image-container" onclick="openModal('NacimientoNivelesLed')">
                     <img id="NacimientoNivelesLed-main-img" src="https://i.postimg.cc/7LC9ycfB/IMG-20251028-153343-Editado.png"
@@ -582,6 +580,34 @@
                 </div>
             </div>
             
+            <!-- Producto: Nacimiento colgante - $2 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('NacimientoColgante')">
+                    <img src="https://i.postimg.cc/4dcQd277/image91.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Adorno+redondo+de+pesebre+para+colgar';"
+                         alt="Nacimiento colgante">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Nacimiento colgante</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adorno circular de pesebre para colgar o base.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 2</span></p>
+                </div>
+                <div class="card-actions">
+                     <button onclick="openModal('NacimientoColgante')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Nacimiento colgante ($2)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- ========================================================== -->
+            <!-- == GRUPO 4: CAJAS CULTURALES (FIESTAS ECUADOR) == -->
+            <!-- ========================================================== -->
+
             <!-- Caja cultural: Mama Negra - $15 -->
             <div class="product-card">
                 <div class="image-container" onclick="openModal('MamaNegra')">
@@ -655,7 +681,7 @@
             </div>
 
             <!-- ========================================================== -->
-            <!-- == GRUPO D: CAJAS DE REGALO Y TEMÁTICAS (NAVIDAD/FIESTAS) == -->
+            <!-- == GRUPO 5: CAJAS DE REGALO Y DULCES (NAVIDAD/FIESTAS) == -->
             <!-- ========================================================== -->
 
             <!-- Producto: Casa Juguetería Multiusos - $13 -->
@@ -779,6 +805,54 @@
                 </div>
             </div>
 
+            <!-- Producto: Casa grande multiusos - $8 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('CasaGrandeMultiusos')">
+                    <img id="CasaGrandeMultiusos-main-img" src="https://i.postimg.cc/268TFMzV/image17.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Casa+grande+multiusos+azul';"
+                         alt="Casa grande multiusos">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casa grande multiusos</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casa alta decorativa, ideal para contener luces LED, pequeños regalos y dulces. </p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 8</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CasaGrandeMultiusos')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casa grande multiusos ($8)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto: Casa multiusos techo bajo - $8 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('CasaTechoBajo')">
+                    <img id="CasaTechoBajo-main-img" src="https://i.postimg.cc/FRsGg89j/image22.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Casa+multiusos+techo+bajo+azul';"
+                         alt="Casa multiusos techo bajo">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casa multiusos techo bajo</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casa decorativa de un piso con diseño de balcón, para luz LED, pequeños regalos y dulces.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 8</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CasaTechoBajo')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casa multiusos techo bajo ($8)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
             <!-- Producto: Caja Halloween (Desde $) -->
             <div class="product-card">
                 <div class="image-container" onclick="openModal('CajaHalloween')">
@@ -827,8 +901,80 @@
                 </div>
             </div>
 
+            <!-- Producto: Caja con copos - $5,00 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('CajaCopos')">
+                    <img src="https://i.postimg.cc/P5fy4Mcb/image34.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Caja+calada+con+patrón+de+nieve';"
+                         alt="Caja con copos">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja con copos</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja decorativa con calados de copos de nieve.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 5,00</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CajaCopos')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja con copos ($5,00)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Producto: Caja tipo funda - $3,50 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('CajaFunda')">
+                    <img src="https://i.postimg.cc/Jz7xqQg6/image37.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Caja+de+regalo+alta+con+asa';"
+                         alt="Caja tipo funda">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja tipo funda</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja para regalo con asa, fácil de transportar.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 3,50</span></p>
+                </div>
+                <div class="card-actions">
+                     <button onclick="openModal('CajaFunda')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja tipo funda ($3,50)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto: Caja de árbol - $2,00 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('CajaArbol')">
+                    <img src="https://i.postimg.cc/GhxzGfMq/image31.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Caja+de+regalo+con+tapa+de+árbol';"
+                         alt="Caja de árbol">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Caja de árbol</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja con forma de árbol para regalos o dulces.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 2,00</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CajaArbol')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Caja de árbol ($2,00)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
             <!-- ========================================================== -->
-            <!-- == GRUPO E: DECORACIÓN FUNCIONAL E ILUMINADA (NAVIDAD) == -->
+            <!-- == GRUPO 6: DECORACIÓN FUNCIONAL E ILUMINADA (NAVIDAD) == -->
             <!-- ========================================================== -->
 
             <!-- Producto: Buzón con base - $12 -->
@@ -927,7 +1073,31 @@
                 </div>
             </div>
 
-            <!-- NUEVO: Estrella con decoración iluminada grande - $6,50 -->
+            <!-- Producto: Gnomo farol - $8 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('GnomoFarol')">
+                    <img id="GnomoFarol-main-img" src="https://i.postimg.cc/Y9Fz9DGk/image86.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Figura+de+gnomo+con+linterna';"
+                         alt="Gnomo farol">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Gnomo farol</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Figura de gnomo con espacio para luz en su base.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 8</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('GnomoFarol')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Gnomo farol ($8)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Estrella con decoración iluminada grande - $6,50 -->
             <div class="product-card">
                 <div class="image-container" onclick="openModal('EstrellaGrandeIluminada')">
                     <img id="EstrellaGrandeIluminada-main-img" src="https://i.postimg.cc/PqB4f4Df/IMG-20251028-162644-Editado.png"
@@ -951,8 +1121,104 @@
                 </div>
             </div>
 
+            <!-- Producto: Farol navideño (Cuadrado) - $6 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('FarolNavidenoCuadrado')">
+                    <img id="FarolNavidenoCuadrado-main-img" src="https://i.postimg.cc/K89NsMS6/image48.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Linterna+cuadrada+con+figuras+navideñas';"
+                         alt="Farol navideño $6">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Farol navideño (Cuadrado)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Farol de cubo con figuras navideñas caladas.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 6</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('FarolNavidenoCuadrado')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Farol navideño de $6." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto: Farol navideño (Conejos) - $5 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('FarolConejos')">
+                    <img src="https://i.postimg.cc/W1p8n7CP/image43.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Linterna+de+madera+con+conejos+calados';"
+                         alt="Farol navideño">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Farol navideño (Conejos)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Farol de madera con figuras caladas de animales.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 5</span></p>
+                </div>
+                <div class="card-actions">
+                     <button onclick="openModal('FarolConejos')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Farol navideño ($5)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto: Casitas navideñas con luz - $4 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('CasitasLuz')">
+                    <img src="https://i.postimg.cc/MpZ5DYN2/image42.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Casa+de+madera+iluminada+con+LED';"
+                         alt="Casitas navideñas con luz">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casitas navideñas con luz</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casitas con espacio para colocar una vela LED.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 4</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CasitasLuz')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casita navideña con luz ($4)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto: Candelabros (Desde $) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('Candelabros')">
+                    <img id="Candelabros-main-img" src="https://i.postimg.cc/kXvwKHj8/image25.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Portavelas+de+madera+rústica';"
+                         alt="Candelabros">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Candelabros</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Portavelas decorativos de madera (varios modelos).</p>
+                    </div>
+                    <p class="price-label">Desde: <span class="accent-text" style="color: #4dc0c0;">$ 2</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('Candelabros')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Candelabro (Desde $2)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
             <!-- ================================================= -->
-            <!-- == GRUPO F: DECORACIÓN PEQUEÑA Y MISCELÁNEA == -->
+            <!-- == GRUPO 7: DECORACIÓN PEQUEÑA Y ADORNOS == -->
             <!-- ================================================= -->
 
             <!-- Producto: Letrero de Santa Grande - $8,50 -->
@@ -1003,7 +1269,55 @@
                 </div>
             </div>
 
-            <!-- NUEVO: Estrella con decoración pequeña tipo bombillo - $3,50 -->
+            <!-- Producto: Letrero HOHOHO - $4 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('LetreroHOHOHO')">
+                    <img src="https://i.postimg.cc/HLV2GkTr/image62.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Letrero+de+mesa+con+letras+y+muñeco';"
+                         alt="Letrero HOHOHO">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Letrero HOHOHO</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Letrero de mesa con letras y muñeco de nieve.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 4</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('LetreroHOHOHO')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Letrero HOHOHO ($4)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto: Santa surfista - $3,50 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('SantaSurfista')">
+                    <img src="https://i.postimg.cc/g2MDBZbJ/image54.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Figura+de+Santa+con+tabla+de+surf';"
+                         alt="Santa surfista">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Santa surfista</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Figura decorativa de Santa Claus con tabla de surf.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 3,50</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('SantaSurfista')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la figura de Santa surfista ($3,50)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Estrella con decoración pequeña tipo bombillo - $3,50 -->
             <div class="product-card">
                 <div class="image-container" onclick="openModal('EstrellaPequenaBombillo')">
                      <img id="EstrellaPequenaBombillo-main-img" src="https://i.postimg.cc/fb6KWK9f/IMG-20251028-153746-Editado.png"
@@ -1027,25 +1341,49 @@
                 </div>
             </div>
 
-            <!-- Producto: Candelabros (Desde $) -->
+            <!-- Producto: Casas medianas y con adornos - $5 (AÑADIDO FALTANTE) -->
             <div class="product-card">
-                <div class="image-container" onclick="openModal('Candelabros')">
-                    <img id="Candelabros-main-img" src="https://i.postimg.cc/kXvwKHj8/image25.png"
-                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Portavelas+de+madera+rústica';"
-                         alt="Candelabros">
+                <div class="image-container" onclick="openModal('CasasMedianas')">
+                    <img src="https://i.postimg.cc/mgdw6HWW/image50.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Casas+más+grandes+con+detalles+de+nieve';"
+                         alt="Casas medianas y con adornos">
                 </div>
                 <div class="card-content">
                     <div>
-                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Candelabros</h3>
-                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Portavelas decorativos de madera (varios modelos).</p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casas medianas y con adornos</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Modelos más grandes con detalles de nieve y color.</p>
                     </div>
-                    <p class="price-label">Desde: <span class="accent-text" style="color: #4dc0c0;">$ 2</span></p>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 5</span></p>
                 </div>
                 <div class="card-actions">
-                    <button onclick="openModal('Candelabros')" class="btn btn-primary">
+                    <button onclick="openModal('CasasMedianas')" class="btn btn-primary">
                         Ver Galería / Más Opciones
                     </button>
-                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Candelabro (Desde $2)." target="_blank" class="btn btn-secondary">
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casa mediana con adornos ($5)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto: Casitas - $2,50 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('CasitasMini')">
+                    <img src="https://i.postimg.cc/pLVCZB73/image40.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Mini+casas+de+pueblo+de+madera';"
+                         alt="Casitas">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casitas (Miniaturas $2.50)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Miniaturas de casas decorativas con detalles de color.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 2,50</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('CasitasMini')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Casita ($2,50)." target="_blank" class="btn btn-secondary">
                         Comprar / Pedir
                     </a>
                 </div>
@@ -1075,6 +1413,30 @@
                 </div>
             </div>
 
+            <!-- Producto: Arbolito (Estructura) - $5 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('ArbolitoEstructura')">
+                    <img src="https://i.postimg.cc/9FY1Zkx1/image29.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Estructura+de+árbol+grande+para+dulces';"
+                         alt="Arbolito $5">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Arbolito (Estructura)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Árbol de mesa o estructura para dulces/adornos.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 5</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('ArbolitoEstructura')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Arbolito de $5." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+            
             <!-- Producto: Arbolitos (Desde $) -->
             <div class="product-card">
                 <div class="image-container" onclick="openModal('Arbolitos')">
@@ -1123,6 +1485,58 @@
                 </div>
             </div>
 
+            <!-- Producto: Adorno de puerta (Esquinero) - $1,50 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('AdornoPuerta')">
+                    <img src="https://i.postimg.cc/7LfVvZq2/image63.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Adorno+para+esquina+de+marco';"
+                         alt="Adorno de puerta">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Adorno de puerta (Esquinero)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adorno para colocar en la esquina superior de un marco.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 1,50</span></p>
+                </div>
+                <div class="card-actions">
+                    <button onclick="openModal('AdornoPuerta')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa el Adorno de puerta ($1,50)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- Producto: Escena navideña - $1,50 (AÑADIDO FALTANTE) -->
+            <div class="product-card">
+                <div class="image-container" onclick="openModal('EscenaNavidenaMini')">
+                    <img src="https://i.postimg.cc/CLsJk2v5/image22.png"
+                         onerror="this.onerror=null;this.src='https://placehold.co/600x400/4dc0c0/ffffff?text=Miniatura+de+pino+y+regalos';"
+                         alt="Escena navideña">
+                </div>
+                <div class="card-content">
+                    <div>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Escena navideña (Miniatura)</h3>
+                        <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Miniaturas de madera para armar escenas.</p>
+                    </div>
+                    <p class="price-label">Precio: <span class="accent-text" style="color: #4dc0c0;">$ 1,50</span></p>
+                </div>
+                <div class="card-actions">
+                     <button onclick="openModal('EscenaNavidenaMini')" class="btn btn-primary">
+                        Ver Galería / Más Opciones
+                    </button>
+                    <a href="https://wa.me/593964206952?text=Hola, me interesa la Escena navideña ($1,50)." target="_blank" class="btn btn-secondary">
+                        Comprar / Pedir
+                    </a>
+                </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- == GRUPO 8: OTROS (GENERAL) == -->
+            <!-- ================================================= -->
+
             <!-- Producto: Velas con diseños y logos (Consultar) -->
             <div class="product-card">
                 <div class="image-container" onclick="openModal('VelasDisenos')">
@@ -1147,7 +1561,7 @@
                 </div>
             </div>
 
-            <!-- Tarjeta de Promoción/Información Adicional (Ocupa las 4 columnas en desktop) -->
+            <!-- Tarjeta de Promoción/Información Adicional -->
             <div style="background-image: linear-gradient(to right, #d1e7e7, #e9d8fd); padding: 2rem; border-radius: 1rem; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); border: 4px solid #4dc0c0; grid-column: 1 / -1; margin-top: 1.5rem; text-align: center;">
                 <h3 style="font-size: 1.875rem; font-weight: 800; color: #4dc0c0; margin-bottom: 1rem;">¡Tu Visión, Nuestra Creación!</h3>
                 <p style="font-size: 1.25rem; color: #4b5563; margin-bottom: 1rem;">
@@ -1211,9 +1625,10 @@
     <script>
         // Data de los productos que necesitan galería/más detalles
         // NOTA: El orden en este objeto NO afecta el orden de visualización. Solo el orden en el HTML importa.
+        // AÑADIDOS TODOS LOS 52 PRODUCTOS
         const productData = {
             
-            // GRUPO A: CALENDARIOS Y CUENTA REGRESIVA
+            // GRUPO 1: CALENDARIOS Y CUENTA REGRESIVA
             CalendarioAdvientoArbolCasas: {
                 title: "Calendario de Adviento Árbol con Casas",
                 price: "$ 26",
@@ -1221,8 +1636,8 @@
                 mainImg: "https://i.postimg.cc/4dJhvy07/image4.png", 
                 extraImgs: [
                     "https://i.postimg.cc/4dJhvy07/image4.png",
-                    "https://i.postimg.cc/50xF5yrF/image6.png",
-                    "https://i.postimg.cc/G2csPtfy/image7.png"
+                    "https_//i.postimg.cc/50xF5yrF/image6.png",
+                    "https_//i.postimg.cc/G2csPtfy/image7.png"
                 ]
             },
              CalendarioAdviento: {
@@ -1268,7 +1683,7 @@
                 ]
             },
 
-            // GRUPO B: GRANDES ESTRUCTURAS Y VILLAS
+            // GRUPO 2: GRANDES ESTRUCTURAS Y VILLAS
             CiudadCompleta: {
                 title: "Ciudad Completa (14 Casas, Tren, Puente)",
                 price: "$ 35",
@@ -1314,7 +1729,7 @@
                 ]
             },
 
-            // GRUPO C: ESCENAS DECORATIVAS (NAVIDAD/CULTURAL)
+            // GRUPO 3: ESCENAS Y NACIMIENTOS
             CiudadEnCaja: {
                 title: "Ciudad en caja",
                 price: "$ 15",
@@ -1349,16 +1764,16 @@
                     "https://i.postimg.cc/R0NRrZvw/image64.png"
                 ]
             },
-            NacimientoNivelesLed: { // NUEVO PRODUCTO
+            NacimientoNivelesLed: {
                 title: "Nacimiento por niveles con luz led",
                 price: "$ 10",
                 description: "Pesebre de madera cortada a láser con figuras estilo 'chibi' distribuidas en varios niveles. Incluye iluminación LED cálida.",
-                mainImg: "https://i.postimg.cc/7LC9ycfB/IMG-20251028-153343-Editado.png", // Placeholder
+                mainImg: "https://i.postimg.cc/7LC9ycfB/IMG-20251028-153343-Editado.png", 
                 extraImgs: [
-                     "https://i.postimg.cc/dtv5T4xt/IMG-20251028-153319-Editado.png", // Placeholder
-                     "https://i.postimg.cc/tC52dWKq/IMG-20251028-153235-Editado.png", // Placeholder
-                     "https://i.postimg.cc/HLJzCKVz/IMG-20251028-153351-Editado.png", // Placeholder
-                     "https://i.postimg.cc/GpBK1NHP/IMG-20251028-153310-Editado.png" // Placeholder
+                     "https://i.postimg.cc/dtv5T4xt/IMG-20251028-153319-Editado.png", 
+                     "https://i.postimg.cc/tC52dWKq/IMG-20251028-153235-Editado.png", 
+                     "https://i.postimg.cc/HLJzCKVz/IMG-20251028-153351-Editado.png", 
+                     "https://i.postimg.cc/GpBK1NHP/IMG-20251028-153310-Editado.png" 
                 ]
             },
              NacimientoPequeno: {
@@ -1372,6 +1787,17 @@
                     "https://i.postimg.cc/y6Tp295H/image31.png" 
                 ]
             },
+            NacimientoColgante: { // AÑADIDO FALTANTE
+                title: "Nacimiento colgante",
+                price: "$ 2",
+                description: "Adorno circular de pesebre para colgar o base.",
+                mainImg: "https://i.postimg.cc/4dcQd277/image91.png",
+                extraImgs: [
+                    "https://i.postimg.cc/4dcQd277/image91.png"
+                ]
+            },
+
+            // GRUPO 4: CAJAS CULTURALES
             MamaNegra: {
                 title: "Caja Mama Negra (Cultural)",
                 price: "$ 15",
@@ -1407,7 +1833,7 @@
                 ]
             },
 
-            // GRUPO D: CAJAS DE REGALO Y TEMÁTICAS
+            // GRUPO 5: CAJAS DE REGALO Y DULCES
             CasaJugueteria: {
                 title: "Casa Juguetería Multiusos",
                 price: "$ 13",
@@ -1472,6 +1898,28 @@
                     "https://i.postimg.cc/7hBjdqrx/d0da9c4a-01f8-4383-8270-b144dab0fa94.png"  
                 ]
             },
+            CasaGrandeMultiusos: { // AÑADIDO FALTANTE
+                title: "Casa grande multiusos",
+                price: "$ 8",
+                description: "Casa alta decorativa (color azul y blanco), ideal para contener luces LED, pequeños regalos y dulces. Diseño de dos pisos con amplias ventanas y techo de nieve.",
+                mainImg: "https://i.postimg.cc/268TFMzV/image17.png",
+                extraImgs: [
+                    "https://i.postimg.cc/jjhZftrV/image16.png",
+                    "https_//i.postimg.cc/Jn4Kcv1y/image18.png",
+                    "https_//i.postimg.cc/85PwB91s/image19.png"
+                ]
+            },
+            CasaTechoBajo: { // AÑADIDO FALTANTE
+                title: "Casa multiusos techo bajo",
+                price: "$ 8",
+                description: "Casa decorativa de un piso con diseño de balcón y techo rústico. Ideal para luces LED, pequeños regalos y dulces. Presentada en color azul y blanco.",
+                mainImg: "https://i.postimg.cc/FRsGg89j/image22.png",
+                extraImgs: [
+                    "https://i.postimg.cc/Hxs34Rpr/image20.png",
+                    "https_//i.postimg.cc/ZRKjF2T8/image21.png",
+                    "https_//i.postimg.cc/zBt7d7BW/image23.png"
+                ]
+            },
             CajaHalloween: {
                 title: "Caja Halloween (Para Dulces)",
                 price: "Desde $ 15",
@@ -1494,8 +1942,35 @@
                     "https://i.postimg.cc/brjH20kG/image96.png"
                 ]
             },
+            CajaCopos: { // AÑADIDO FALTANTE
+                title: "Caja con copos",
+                price: "$ 5,00",
+                description: "Caja decorativa con calados de copos de nieve.",
+                mainImg: "https://i.postimg.cc/P5fy4Mcb/image34.png",
+                extraImgs: [
+                    "https://i.postimg.cc/P5fy4Mcb/image34.png"
+                ]
+            },
+            CajaFunda: { // AÑADIDO FALTANTE
+                title: "Caja tipo funda",
+                price: "$ 3,50",
+                description: "Caja para regalo con asa, fácil de transportar.",
+                mainImg: "https://i.postimg.cc/Jz7xqQg6/image37.png",
+                extraImgs: [
+                    "https://i.postimg.cc/Jz7xqQg6/image37.png"
+                ]
+            },
+            CajaArbol: { // AÑADIDO FALTANTE
+                title: "Caja de árbol",
+                price: "$ 2,00",
+                description: "Caja con forma de árbol para regalos o dulces.",
+                mainImg: "https://i.postimg.cc/GhxzGfMq/image31.png",
+                extraImgs: [
+                    "https://i.postimg.cc/GhxzGfMq/image31.png"
+                ]
+            },
 
-            // GRUPO E: DECORACIÓN FUNCIONAL E ILUMINADA
+            // GRUPO 6: DECORACIÓN FUNCIONAL E ILUMINADA
             BuzonConBase: {
                 title: "Buzón de Deseos con Base",
                 price: "$ 12",
@@ -1540,48 +2015,53 @@
                     "https://i.postimg.cc/D0GDbY6x/image37.png"
                 ]
             },
-            EstrellaGrandeIluminada: { // NUEVO PRODUCTO
+            GnomoFarol: { // AÑADIDO FALTANTE
+                title: "Gnomo farol",
+                price: "$ 8",
+                description: "Figura decorativa de Gnomo con gorro rojo y espacio para luz en su base. El gorro tiene detalles calados de copos de nieve.",
+                mainImg: "https://i.postimg.cc/Y9Fz9DGk/image86.png",
+                extraImgs: [
+                    "https://i.postimg.cc/Y9Fz9DGk/image86.png",
+                    "https://i.postimg.cc/hjm1jZzP/image87.png"
+                ]
+            },
+            EstrellaGrandeIluminada: { 
                 title: "Estrella con decoración iluminada grande",
                 price: "$ 6,50",
                 description: "Decoración en forma de estrella con escena navideña o nacimiento en capas. Incluye luz LED para un efecto nocturno.",
-                mainImg: "https://i.postimg.cc/PqB4f4Df/IMG-20251028-162644-Editado.png", // Placeholder
+                mainImg: "https://i.postimg.cc/PqB4f4Df/IMG-20251028-162644-Editado.png", 
                 extraImgs: [
-                    "https://i.postimg.cc/PqB4f4Df/IMG-20251028-162644-Editado.png", // Placeholder
-                    "https://i.postimg.cc/fb6KWK98/IMG-20251028-162707-Editado.png", // Placeholder
-                    "https://i.postimg.cc/9fvpXp71/IMG-20251028-153816-Editado.png" // Placeholder
+                    "https://i.postimg.cc/PqB4f4Df/IMG-20251028-162644-Editado.png", 
+                    "https://i.postimg.cc/fb6KWK98/IMG-20251028-162707-Editado.png", 
+                    "https://i.postimg.cc/9fvpXp71/IMG-20251028-153816-Editado.png" 
                 ]
             },
-
-            // GRUPO F: DECORACIÓN PEQUEÑA Y MISCELÁNEA
-            LetreroSantaGrande: {
-                title: "Letrero de Santa Grande",
-                price: "$ 8,50", 
-                description: "Letrero robusto de mayor tamaño con Elfo. Presenta más detalles de grabado y color, ideal para la entrada o el exterior",
-                mainImg: "https://i.postimg.cc/CKCqfkcq/image1.png", 
+            FarolNavidenoCuadrado: { // AÑADIDO FALTANTE
+                title: "Farol navideño (Cuadrado)",
+                price: "$ 6",
+                description: "Farol de cubo con figuras navideñas caladas y espacio para luz interior. Ideal para decoración de mesa o repisa.",
+                mainImg: "https://i.postimg.cc/K89NsMS6/image48.png",
                 extraImgs: [
-                    "https://i.postimg.cc/CKCqfkcq/image1.png", 
-                    "https://i.postimg.cc/Pxt8bJ7C/image2.png",
-                    "https://i.postimg.cc/26zBdytV/image3.png" 
+                    "https://i.postimg.cc/K89NsMS6/image48.png", 
+                    "https://i.postimg.cc/nhdkwDfb/image49.png"
                 ]
             },
-             LetreroSantaPequeno: {
-                title: "Letrero de Santa Pequeño",
-                price: "$ 3,50", 
-                description: "Letrero compacto con figura de Elfo y base, ideal para decoración de mesa. Perfecto para colocar junto al árbol.",
-                mainImg: "https://i.postimg.cc/kgjchbPX/image52.png", 
+            FarolConejos: { // AÑADIDO FALTANTE
+                title: "Farol navideño (Conejos)",
+                price: "$ 5",
+                description: "Farol de madera con figuras caladas de animales.",
+                mainImg: "https://i.postimg.cc/W1p8n7CP/image43.png",
                 extraImgs: [
-                    "https://i.postimg.cc/sgnc0hCy/image51.png",
-                    "https://i.postimg.cc/kgjchbPX/image52.png"
+                    "https://i.postimg.cc/W1p8n7CP/image43.png"
                 ]
             },
-             EstrellaPequenaBombillo: { // NUEVO PRODUCTO
-                title: "Estrella con decoración pequeña tipo bombillo",
-                price: "$ 3,50",
-                description: "Adorno colgante tipo bombillo en forma de estrella con escena navideña o nacimiento en su interior. Ideal para el árbol.",
-                mainImg: "https://i.postimg.cc/fb6KWK9f/IMG-20251028-153746-Editado.png", // Placeholder
-                extraImgs: [ // Usando placeholders similares al grande por ahora
-                     "https://i.postimg.cc/q7twdYzF/IMG-20251028-153549-Editado.png", // Placeholder
-                     "https://i.postimg.cc/yNJjz5kF/IMG-20251028-153541-Editado.png" // Placeholder
+            CasitasLuz: { // AÑADIDO FALTANTE
+                title: "Casitas navideñas con luz",
+                price: "$ 4",
+                description: "Casitas con espacio para colocar una vela LED.",
+                mainImg: "https://i.postimg.cc/MpZ5DYN2/image42.png",
+                extraImgs: [
+                    "https://i.postimg.cc/MpZ5DYN2/image42.png"
                 ]
             },
             Candelabros: {
@@ -1591,7 +2071,76 @@
                 mainImg: "https://i.postimg.cc/kXvwKHj8/image25.png",
                 extraImgs: [
                     "https://i.postimg.cc/kXvwKHj8/image25.png",
-                    "https://i.postimg.cc/sD4K7Ln7/image26.png"
+                    "https_//i.postimg.cc/sD4K7Ln7/image26.png"
+                ]
+            },
+
+            // GRUPO 7: DECORACIÓN PEQUEÑA Y ADORNOS
+            LetreroSantaGrande: {
+                title: "Letrero de Santa Grande",
+                price: "$ 8,50", 
+                description: "Letrero robusto de mayor tamaño con Elfo. Presenta más detalles de grabado y color, ideal para la entrada o el exterior",
+                mainImg: "https://i.postimg.cc/CKCqfkcq/image1.png", 
+                extraImgs: [
+                    "https://i.postimg.cc/CKCqfkcq/image1.png", 
+                    "https_//i.postimg.cc/Pxt8bJ7C/image2.png",
+                    "https_//i.postimg.cc/26zBdytV/image3.png" 
+                ]
+            },
+             LetreroSantaPequeno: {
+                title: "Letrero de Santa Pequeño",
+                price: "$ 3,50", 
+                description: "Letrero compacto con figura de Elfo y base, ideal para decoración de mesa. Perfecto para colocar junto al árbol.",
+                mainImg: "https://i.postimg.cc/kgjchbPX/image52.png", 
+                extraImgs: [
+                    "https://i.postimg.cc/sgnc0hCy/image51.png",
+                    "https_//i.postimg.cc/kgjchbPX/image52.png"
+                ]
+            },
+            LetreroHOHOHO: { // AÑADIDO FALTANTE
+                title: "Letrero HOHOHO",
+                price: "$ 4",
+                description: "Letrero de mesa con letras y muñeco de nieve.",
+                mainImg: "https://i.postimg.cc/HLV2GkTr/image62.png",
+                extraImgs: [
+                    "https://i.postimg.cc/HLV2GkTr/image62.png"
+                ]
+            },
+            SantaSurfista: { // AÑADIDO FALTANTE
+                title: "Santa surfista",
+                price: "$ 3,50",
+                description: "Figura decorativa de Santa Claus con tabla de surf.",
+                mainImg: "https://i.postimg.cc/g2MDBZbJ/image54.png",
+                extraImgs: [
+                    "https://i.postimg.cc/g2MDBZbJ/image54.png"
+                ]
+            },
+             EstrellaPequenaBombillo: { 
+                title: "Estrella con decoración pequeña tipo bombillo",
+                price: "$ 3,50",
+                description: "Adorno colgante tipo bombillo en forma de estrella con escena navideña o nacimiento en su interior. Ideal para el árbol.",
+                mainImg: "https://i.postimg.cc/fb6KWK9f/IMG-20251028-153746-Editado.png", 
+                extraImgs: [ 
+                     "https://i.postimg.cc/q7twdYzF/IMG-20251028-153549-Editado.png", 
+                     "https://i.postimg.cc/yNJjz5kF/IMG-20251028-153541-Editado.png" 
+                ]
+            },
+            CasasMedianas: { // AÑADIDO FALTANTE
+                title: "Casas medianas y con adornos",
+                price: "$ 5",
+                description: "Modelos más grandes con detalles de nieve y color.",
+                mainImg: "https://i.postimg.cc/mgdw6HWW/image50.png",
+                extraImgs: [
+                    "https://i.postimg.cc/mgdw6HWW/image50.png"
+                ]
+            },
+            CasitasMini: { // AÑADIDO FALTANTE
+                title: "Casitas (Miniaturas $2.50)",
+                price: "$ 2,50",
+                description: "Miniaturas de casas decorativas con detalles de color.",
+                mainImg: "https://i.postimg.cc/pLVCZB73/image40.png",
+                extraImgs: [
+                    "https://i.postimg.cc/pLVCZB73/image40.png"
                 ]
             },
             CasitasNavidenasDesde: {
@@ -1601,8 +2150,17 @@
                 mainImg: "https://i.postimg.cc/fRHKg9nP/image46.png",
                 extraImgs: [
                     "https://i.postimg.cc/3xLBbv56/image45.png",
-                    "https://i.postimg.cc/fRHKg9nP/image46.png",
-                    "https://i.postimg.cc/RZvwGvP8/c8f9b333-cecb-4ca7-b80b-9934f048ccf5.png"
+                    "https_//i.postimg.cc/fRHKg9nP/image46.png",
+                    "https_//i.postimg.cc/RZvwGvP8/c8f9b333-cecb-4ca7-b80b-9934f048ccf5.png"
+                ]
+            },
+            ArbolitoEstructura: { // AÑADIDO FALTANTE
+                title: "Arbolito (Estructura)",
+                price: "$ 5",
+                description: "Árbol de mesa o estructura para dulces/adornos.",
+                mainImg: "https://i.postimg.cc/9FY1Zkx1/image29.png",
+                extraImgs: [
+                    "https://i.postimg.cc/9FY1Zkx1/image29.png"
                 ]
             },
             Arbolitos: {
@@ -1612,7 +2170,7 @@
                 mainImg: "https://i.postimg.cc/WbwSgy9b/image23.png",
                 extraImgs: [
                     "https://i.postimg.cc/jd4vP18f/image24.png",
-                    "https://i.postimg.cc/WbwSgy9b/image23.png"
+                    "https_//i.postimg.cc/WbwSgy9b/image23.png"
                 ]
             },
             BombillosAdornos: {
@@ -1622,9 +2180,29 @@
                 mainImg: "https://i.postimg.cc/CLsJk2v4/image28.png",
                 extraImgs: [
                     "https://i.postimg.cc/yYyncGfh/image27.png",
-                    "https://i.postimg.cc/CLsJk2v4/image28.png"
+                    "https_//i.postimg.cc/CLsJk2v4/image28.png"
                 ]
             },
+            AdornoPuerta: { // AÑADIDO FALTANTE
+                title: "Adorno de puerta (Esquinero)",
+                price: "$ 1,50",
+                description: "Adorno para colocar en la esquina superior de un marco.",
+                mainImg: "https://i.postimg.cc/7LfVvZq2/image63.png",
+                extraImgs: [
+                    "https://i.postimg.cc/7LfVvZq2/image63.png"
+                ]
+            },
+            EscenaNavidenaMini: { // AÑADIDO FALTANTE
+                title: "Escena navideña (Miniatura)",
+                price: "$ 1,50",
+                description: "Miniaturas de madera para armar escenas.",
+                mainImg: "https://i.postimg.cc/CLsJk2v5/image22.png",
+                extraImgs: [
+                    "https://i.postimg.cc/CLsJk2v5/image22.png"
+                ]
+            },
+
+            // GRUPO 8: OTROS
             VelasDisenos: {
                 title: "Velas con Diseños y Logos",
                 price: "¡Consultar!",
@@ -1688,7 +2266,7 @@
                     modalGallery.appendChild(itemDiv);
                 });
             } else {
-                 modalGallery.style.display = 'none';
+                 modalGallery.style.display = 'none'; // Ocultar si no hay imágenes extra
             }
             
             // Actualizar botón de contacto
