@@ -95,6 +95,7 @@
             display: inline-block;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
             box-sizing: border-box; /* CLAVE: asegura que el borde no se corte */
+            cursor: pointer; /* Asegurarse que los botones parezcan clickables */
         }
         .btn-primary {
             background-color: #4dc0c0;
@@ -205,7 +206,7 @@
 
         /* Modal Styles - Mantener fijos */
         .modal { display: none; position: fixed; z-index: 50; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); padding-top: 50px; }
-        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px; border-radius: 1rem; width: 90%; max-width: 800px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); animation: slideIn 0.3s; }
+        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px; border-radius: 1rem; width: 90%; max-width: 900px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); animation: slideIn 0.3s; }
         .close-btn { color: #aaa; float: right; font-size: 28px; font-weight: bold; transition: 0.3s; cursor: pointer; }
         .close-btn:hover { color: #1f2937; text-decoration: none; }
         @keyframes slideIn { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
@@ -243,7 +244,176 @@
              line-height: 1; /* CLAVE: Alinea mejor el texto */
              color: white; /* Texto del WhatsApp a blanco */
         }
-    
+
+        /* --- ESTILOS DEL CARRITO DE COMPRAS --- */
+        #cart-icon-container {
+            position: relative;
+            cursor: pointer;
+            color: white;
+        }
+        #cart-icon-container svg {
+            width: 2.5rem; /* 40px */
+            height: 2.5rem; /* 40px */
+            transition: transform 0.2s;
+        }
+        #cart-icon-container:hover svg {
+            transform: scale(1.1);
+        }
+
+        #cart-count-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: #4dc0c0; /* Turquesa */
+            color: white;
+            font-size: 0.875rem; /* 14px */
+            font-weight: 700;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: none; /* Se muestra con JS */
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #1f2937; /* Fondo del header */
+            box-sizing: border-box;
+        }
+
+        /* Estilos del Modal del Carrito */
+        #cart-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: 400px; 
+            overflow-y: auto; 
+            border-bottom: 1px solid #e5e7eb; 
+            padding-bottom: 1rem; 
+            margin-bottom: 1rem;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 1.125rem; /* 18px */
+        }
+        .cart-item-details {
+            flex: 1;
+        }
+        .cart-item-details p {
+            margin: 0;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        .cart-item-details .cart-item-price {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+        .cart-item-controls button {
+            background-color: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            color: #1f2937;
+            font-weight: 800;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .cart-item-controls button:hover {
+            background-color: #e5e7eb;
+        }
+        .cart-item-controls .cart-item-quantity {
+            font-size: 1.125rem;
+            font-weight: 700;
+            min-width: 20px;
+            text-align: center;
+        }
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ef4444; /* Rojo */
+            font-weight: 700;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0 0.5rem;
+            line-height: 1;
+        }
+        .cart-item-remove:hover {
+            color: #b91c1c; /* Rojo oscuro */
+        }
+
+        /* Mensaje de carrito vacío */
+        #cart-empty-message {
+            text-align: center;
+            font-size: 1.125rem;
+            color: #6b7280;
+            padding: 2rem 0;
+        }
+
+        /* Ocultar botón de WhatsApp si el carrito está vacío */
+        #whatsapp-checkout-btn.disabled {
+            background-color: #9ca3af; /* Gris */
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.7;
+            border: none;
+        }
+        #whatsapp-checkout-btn.disabled:hover {
+            background-color: #9ca3af;
+        }
+    #whatsapp-checkout-btn.disabled:hover {
+            background-color: #9ca3af;
+        }
+
+        /* --- NUEVO: Estilos del Carrito Flotante --- */
+        #floating-cart-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4dc0c0; /* Turquesa */
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: none; /* Se muestra con JS si hay items */
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            z-index: 40; /* Debajo del modal (50) pero encima de todo lo demás */
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        #floating-cart-btn:hover {
+            background-color: #349e9e; /* Turquesa más oscuro */
+            transform: scale(1.05);
+        }
+        #floating-cart-btn svg {
+            width: 1.5rem; /* 24px */
+            height: 1.5rem;
+        }
+        #floating-cart-count {
+            background-color: white;
+            color: #4dc0c0;
+            font-size: 0.875rem;
+            font-weight: 800;
+            border-radius: 50%;
+            min-width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
+            box-sizing: border-box;
+        }
 </style>
 </head>
 <body class="antialiased">
@@ -260,8 +430,10 @@
 <p style="font-size: 0.875rem; font-style: italic; opacity: 0.8; margin: 0; color: white;">Creaciones con Esencia y Personalidad</p>
 </div>
 </div>
-<!-- Botón de Contacto principal (Corregido: Alineación) -->
+
+<!-- ### SECCIÓN MODIFICADA: Contacto y Carrito ### -->
 <div style="display: flex; align-items: center; gap: 1.5rem;">
+    <!-- Botón de Contacto (existente) -->
     <div style="display: flex; flex-direction: column; align-items: center;">
         <a class="btn bg-white text-[#4dc0c0] hover:bg-gray-100" href="https://wa.me/593964206952" style="background-color: white; color: #4dc0c0; padding: 0.5rem 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); text-align: center;" target="_blank">
         <span style="display: inline-block; vertical-align: middle;">
@@ -272,11 +444,14 @@
         <p class="header-contact-text">Whatsapp: 0964206952</p>
     </div>
 
-    <div id="cart-icon-container" onclick="openCartModal()">
+    <!-- NUEVO: Ícono del Carrito -->
+    <div id="cart-icon-container" onclick="openCartModal()" title="Ver mi pedido">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6 22C4.89543 22 4 21.1046 4 20C4 18.8954 4.89543 18 6 18C7.10457 18 8 18.8954 8 20C8 21.1046 7.10457 22 6 22ZM18 22C16.8954 22 16 21.1046 16 20C16 18.8954 16.8954 18 18 18C19.1046 18 20 18.8954 20 20C20 21.1046 19.1046 22 18 22ZM6.39014 4L7.81585 15.2329C7.9132 16.2205 8.76996 17 9.77194 17H17.2031C18.1506 17 18.963 16.302 19.1342 15.367L21.0501 4.35823C21.0631 4.28892 21.0696 4.21852 21.0696 4.14815C21.0696 3.52386 20.5457 3 19.9214 3H5.03194C4.46765 3 4.00232 3.4907 4.03058 4.05312L4.0958 5.3958L6.39014 4Z"></path></svg>
         <span id="cart-count-badge">0</span>
     </div>
 </div>
+<!-- ### FIN DE SECCIÓN MODIFICADA ### -->
+
 </div>
 </header>
 <!-- Sección de Introducción y Canales (Corregido: Espaciado de Redes) -->
@@ -312,9 +487,9 @@
 <button class="btn btn-primary" onclick="openModal('CiudadCompleta')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Ciudad Completa (14 Casas, $35)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CiudadCompleta')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- INICIO PRODUCTO NUEVO CORREGIDO -->
@@ -335,9 +510,9 @@
 <button class="btn btn-primary" onclick="openModal('TrenAColor')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Tren a color ($ 30)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('TrenAColor')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- FIN PRODUCTO NUEVO CORREGIDO -->
@@ -357,9 +532,9 @@
 <button class="btn btn-primary" onclick="openModal('CastilloNavidad')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Castillo de navidad Smart ($34)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CastilloNavidad')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Rueda de la fortuna (Color) - $24 -->
@@ -378,9 +553,9 @@
 <button class="btn btn-primary" onclick="openModal('RuedaFortunaColor')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Rueda de la fortuna a todo color ($24)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('RuedaFortunaColor')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Rueda de la fortuna - $20 -->
@@ -399,9 +574,9 @@
 <button class="btn btn-primary" onclick="openModal('RuedaFortuna')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Rueda de la fortuna ($20)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('RuedaFortuna')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- ========================================================== -->
@@ -424,9 +599,9 @@
 <button class="btn btn-primary" onclick="openModal('CalendarioAdvientoArbolCasas')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Calendario de Adviento Árbol con Casas ($26)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CalendarioAdvientoArbolCasas')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Calendario de adviento (Farol) a color - $22 -->
@@ -445,9 +620,9 @@
 <button class="btn btn-primary" onclick="openModal('CalendarioAdvientoColor')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Calendario de adviento a color ($22)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CalendarioAdvientoColor')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Calendario de adviento (Casa Cruda) - $18 -->
@@ -466,9 +641,9 @@
 <button class="btn btn-primary" onclick="openModal('CalendarioAdviento')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Calendario de adviento (Casa Cruda, $18)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CalendarioAdviento')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Trineo calendario de adviento - $18 -->
@@ -487,9 +662,9 @@
 <button class="btn btn-primary" onclick="openModal('TrineoAdviento')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Trineo calendario de adviento ($18)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('TrineoAdviento')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- INICIO PRODUCTO NUEVO CORREGIDO -->
@@ -509,9 +684,9 @@
 <button class="btn btn-primary" onclick="openModal('TrineoDeAdvientoAColor')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Trineo de adviento a color ($ 22)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('TrineoDeAdvientoAColor')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Trineo con renos - $10 -->
@@ -530,9 +705,9 @@
 <button class="btn btn-primary" onclick="openModal('TrineoConRenos')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Trineo con renos ($ 10)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('TrineoConRenos')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- FIN PRODUCTO NUEVO CORREGIDO -->
@@ -553,9 +728,9 @@
 <button class="btn btn-primary" onclick="openModal('FarolCuentaRegresiva')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Farol cuenta regresiva ($8)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('FarolCuentaRegresiva')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Carro cuenta regresiva - $10 -->
@@ -574,9 +749,9 @@
 <button class="btn btn-primary" onclick="openModal('CarroCuentaRegresiva')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Carro cuenta regresiva ($10)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CarroCuentaRegresiva')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Grupo: Nacimientos y Escenas -->
@@ -596,9 +771,9 @@
 <button class="btn btn-primary" onclick="openModal('ArbolEscenaPesebre')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Árbol con Escena y Pesebre ($26)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('ArbolEscenaPesebre')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Casa escena navideña - $13 -->
@@ -617,9 +792,9 @@
 <button class="btn btn-primary" onclick="openModal('CajaEscenaNavidena')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casa escena navideña ($13)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CajaEscenaNavidena')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Nacimiento andino (Grande) - $13 -->
@@ -638,9 +813,9 @@
 <button class="btn btn-primary" onclick="openModal('NacimientoAndino')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Nacimiento andino grande ($13)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('NacimientoAndino')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Nacimiento pequeño - $9 -->
@@ -659,9 +834,9 @@
 <button class="btn btn-primary" onclick="openModal('NacimientoPequeno')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Nacimiento pequeño ($9)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('NacimientoPequeno')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Nacimiento por niveles con luz led - $10 -->
@@ -680,9 +855,9 @@
 <button class="btn btn-primary" onclick="openModal('NacimientoNivelesLed')">
                             Ver Galería / Más Opciones
                             </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Nacimiento por niveles con luz led ($10)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('NacimientoNivelesLed')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Nacimiento colgante - $2 (AÑADIDO FALTANTE) -->
@@ -701,9 +876,9 @@
 <button class="btn btn-primary" onclick="openModal('NacimientoColgante')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Nacimiento colgante ($2)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('NacimientoColgante')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- ========================================================== -->
@@ -725,9 +900,9 @@
 <button class="btn btn-primary" onclick="openModal('MamaNegra')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Caja Mama Negra ($15)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('MamaNegra')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Caja cultural: Diablada de Pillaro - $15 -->
@@ -746,9 +921,9 @@
 <button class="btn btn-primary" onclick="openModal('DiabladaPillaro')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Caja Diablada de Pillaro ($15)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('DiabladaPillaro')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Caja cultural: Carnaval de Guaranda - $15 -->
@@ -767,9 +942,9 @@
 <button class="btn btn-primary" onclick="openModal('CarnavalGuaranda')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Caja Carnaval de Guaranda ($15)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CarnavalGuaranda')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- ========================================================== -->
@@ -791,9 +966,9 @@
 <button class="btn btn-primary" onclick="openModal('EscenaNavidenaMini')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Escena navideña ($1,500)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('EscenaNavidenaMini')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- INICIO PRODUCTO NUEVO CORREGIDO -->
@@ -813,9 +988,9 @@
 <button class="btn btn-primary" onclick="openModal('EscenaNavidenaAColor')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Escena navideña a color ($ 3)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('EscenaNavidenaAColor')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- FIN PRODUCTO NUEVO CORREGIDO -->
@@ -839,9 +1014,9 @@
 <button class="btn btn-primary" onclick="openModal('ArbolConLuces')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Árbol con luces opción 1 ($12)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('ArbolConLuces')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Árbol con luces y escena 2 - $12 -->
@@ -860,9 +1035,9 @@
 <button class="btn btn-primary" onclick="openModal('ArbolConLuces2')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Árbol con luces opción 2 ($12)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('ArbolConLuces2')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- INICIO: GRUPO 4: CAJAS Y REGALOS DE VALOR BAJO/MEDIO -->
@@ -882,9 +1057,9 @@
 <button class="btn btn-primary" onclick="openModal('GnomoFarol')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Gnomo farol ($8)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('GnomoFarol')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Estrella con decoración iluminada grande - $6,500 -->
@@ -903,9 +1078,9 @@
 <button class="btn btn-primary" onclick="openModal('EstrellaGrandeIluminada')">
                         Ver Galería / Más Opciones
                     </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Estrella con decoración iluminada grande ($6,500)." target="_blank">
-                        Comprar / Pedir
-                    </a>
+<button class="btn btn-secondary" onclick="addToCart('EstrellaGrandeIluminada')">
+                        Añadir al Carrito
+                    </button>
 </div>
 </div>
 <!-- Producto: Farol navideño (Cuadrado) - $6 -->
@@ -924,9 +1099,9 @@
 <button class="btn btn-primary" onclick="openModal('FarolNavidenoCuadrado')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Farol navideño de $6." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('FarolNavidenoCuadrado')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Arbolito $5 (Estructura) -->
@@ -942,9 +1117,9 @@
 <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 11.5 centímetros, ancho 11.5 centímetros, altura 30 centímetros.</p><p class="price-label">Precio: $ 5</p>
 </div>
 <div class="card-actions">
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Arbolito (Estructura, $5)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('ArbolitoSimple')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- INICIO: GRUPO 5: ARTÍCULOS BASE Y ECONÓMICOS -->
@@ -964,9 +1139,9 @@
 <button class="btn btn-primary" onclick="openModal('FarolNavidenoConejos')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Farol navideño ($5)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('FarolNavidenoConejos')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Casitas navideñas con luz - $4 (AÑADIDO FALTANTE) -->
@@ -985,9 +1160,9 @@
 <button class="btn btn-primary" onclick="openModal('CasitasLuz')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casita navideña con luz ($4)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasitasLuz')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Arbolitos (Desde $) -->
@@ -1006,9 +1181,9 @@
 <button class="btn btn-primary" onclick="openModal('Arbolitos')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Arbolito (Desde $1)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('Arbolitos')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Grupo: Ciudades y Casas decorativas -->
@@ -1028,9 +1203,9 @@
 <button class="btn btn-primary" onclick="openModal('CiudadEnCaja')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Ciudad en caja ($15)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CiudadEnCaja')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Casa Juguetería Multiusos - $13 -->
@@ -1049,9 +1224,9 @@
 <button class="btn btn-primary" onclick="openModal('CasaJugueteria')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casa Juguetería Multiusos ($13)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasaJugueteria')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Casa de caramelos - $10 -->
@@ -1070,9 +1245,9 @@
 <button class="btn btn-primary" onclick="openModal('CasaCaramelos')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casa de caramelos ($10)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasaCaramelos')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Casa grande multiusos - $8 -->
@@ -1091,9 +1266,9 @@
 <button class="btn btn-primary" onclick="openModal('CasaGrandeMultiusos')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casa grande multiusos ($8)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasaGrandeMultiusos')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Casa multiusos techo bajo - $8 -->
@@ -1112,9 +1287,9 @@
 <button class="btn btn-primary" onclick="openModal('CasaTechoBajo')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casa multiusos techo bajo ($8)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasaTechoBajo')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Casa para dulces verde - $7,500 -->
@@ -1133,9 +1308,9 @@
 <button class="btn btn-primary" onclick="openModal('CasaParaDulcesVerde')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casa para dulces verde ($7,500)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasaParaDulcesVerde')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Casa multiusos roja - $6,500 -->
@@ -1154,9 +1329,9 @@
 <button class="btn btn-primary" onclick="openModal('CasaMultiusosRoja')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casa multiusos roja ($6,500)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasaMultiusosRoja')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Casa pequeña para dulces - $5 -->
@@ -1176,9 +1351,9 @@
 <button class="btn btn-primary" onclick="openModal('CasaPequenaDulces')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casa pequeña para dulces ($5)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasaPequenaDulces')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- INICIO PRODUCTO NUEVO CORREGIDO -->
@@ -1198,9 +1373,9 @@
 <button class="btn btn-primary" onclick="openModal('CasaMultiusosCafe')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casa multiusos café ($ 3,5)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasaMultiusosCafe')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- FIN PRODUCTO NUEVO CORREGIDO -->
@@ -1220,9 +1395,9 @@
 <button class="btn btn-primary" onclick="openModal('CasasMedianas')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casa mediana con adornos ($5)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasasMedianas')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Casitas navideñas (Desde $) -->
@@ -1241,9 +1416,9 @@
 <button class="btn btn-primary" onclick="openModal('CasitasNavidenasDesde')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casita navideña (Desde $2)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasitasNavidenasDesde')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Grupo: Buzones -->
@@ -1263,9 +1438,9 @@
 <button class="btn btn-primary" onclick="openModal('BuzonConBase')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Buzón con base ($12)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('BuzonConBase')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Buzón navideño - $12 -->
@@ -1284,9 +1459,9 @@
 <button class="btn btn-primary" onclick="openModal('BuzonNavideno')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Buzón navideño clásico ($12)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('BuzonNavideno')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- INICIO PRODUCTO NUEVO CORREGIDO -->
@@ -1306,9 +1481,9 @@
 <button class="btn btn-primary" onclick="openModal('BuzonNavidenoLargo')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Buzón navideño Largo ($ 16)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('BuzonNavidenoLargo')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- FIN PRODUCTO NUEVO CORREGIDO -->
@@ -1329,9 +1504,9 @@
 <button class="btn btn-primary" onclick="openModal('CajaHalloween')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Caja Halloween (Desde $15)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CajaHalloween')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Caja con copos - $5,00 (AÑADIDO FALTANTE) -->
@@ -1350,9 +1525,9 @@
 <button class="btn btn-primary" onclick="openModal('CajaCopos')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Caja con copos ($5)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CajaCopos')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Caja tipo funda - $3,500 (AÑADIDO FALTANTE) -->
@@ -1371,9 +1546,9 @@
 <button class="btn btn-primary" onclick="openModal('CajaFunda')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Caja tipo funda ($3,500)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CajaFunda')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Caja de árbol - $2,00 (AÑADIDO FALTANTE) -->
@@ -1392,9 +1567,9 @@
 <button class="btn btn-primary" onclick="openModal('CajaArbol')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Caja de árbol ($2,00)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CajaArbol')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- ========================================================== -->
@@ -1416,9 +1591,9 @@
 <button class="btn btn-primary" onclick="openModal('CajasOcasion')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesan las Cajas para toda ocasión (Desde $2)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CajasOcasion')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Grupo: Letreros y Adornos -->
@@ -1438,9 +1613,9 @@
 <button class="btn btn-primary" onclick="openModal('LetreroSantaGrande')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Letrero de Santa Grande ($8,500)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('LetreroSantaGrande')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Letrero HOHOHO - $4 (AÑADIDO FALTANTE) -->
@@ -1459,9 +1634,9 @@
 <button class="btn btn-primary" onclick="openModal('LetreroHOHOHO')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Letrero HOHOHO ($4)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('LetreroHOHOHO')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- INICIO PRODUCTO NUEVO CORREGIDO -->
@@ -1481,9 +1656,9 @@
 <button class="btn btn-primary" onclick="openModal('Cascanueces')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Cascanueces ($ 6)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('Cascanueces')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Cascanueces tambor - $6 -->
@@ -1502,9 +1677,9 @@
 <button class="btn btn-primary" onclick="openModal('CascanuecesTambor')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Cascanueces tambor ($ 6)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CascanuecesTambor')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- FIN PRODUCTO NUEVO CORREGIDO -->
@@ -1524,9 +1699,9 @@
 <button class="btn btn-primary" onclick="openModal('LetreroSantaPequeno')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Letrero de Santa Pequeño ($3,500)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('LetreroSantaPequeno')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Santa surfista - $3,500 (AÑADIDO FALTANTE) -->
@@ -1545,9 +1720,9 @@
 <button class="btn btn-primary" onclick="openModal('SantaSurfista')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la figura de Santa surfista ($3,500)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('SantaSurfista')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Estrella con decoración pequeña tipo bombillo - $3,500 -->
@@ -1566,9 +1741,9 @@
 <button class="btn btn-primary" onclick="openModal('EstrellaPequenaBombillo')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Estrella con decoración pequeña ($3,500)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('EstrellaPequenaBombillo')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Adorno de puerta (Esquinero) - $1,500 (AÑADIDO FALTANTE) -->
@@ -1587,9 +1762,9 @@
 <button class="btn btn-primary" onclick="openModal('AdornoPuerta')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Adorno de puerta ($1,500)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('AdornoPuerta')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Producto: Bombillos (Adornos) (Desde $) -->
@@ -1608,9 +1783,9 @@
 <button class="btn btn-primary" onclick="openModal('BombillosAdornos')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Bombillo/Adorno (Desde $1)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('BombillosAdornos')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Grupo: Miniaturas y Colgantes -->
@@ -1630,9 +1805,9 @@
 <button class="btn btn-primary" onclick="openModal('CasitasMini')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casita ($2,500)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('CasitasMini')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Grupo: Velas y Personalizados -->
@@ -1652,9 +1827,9 @@
 <button class="btn btn-primary" onclick="openModal('VelasDisenos')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesan las Velas con diseños y logos (¡Consultar!)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('VelasDisenos')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Grupo: Otros -->
@@ -1674,9 +1849,9 @@
 <button class="btn btn-primary" onclick="openModal('Candelabros')">
                                     Ver Galería / Más Opciones
                                 </button>
-<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Candelabro (Desde $2)." target="_blank">
-                                    Comprar / Pedir
-                                </a>
+<button class="btn btn-secondary" onclick="addToCart('Candelabros')">
+                                    Añadir al Carrito
+                                </button>
 </div>
 </div>
 <!-- Tarjeta de Promoción/Información Adicional (Ocupa las 4 columnas en desktop) -->
@@ -1720,18 +1895,69 @@
 <div id="modal-gallery" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem;">
 <!-- Aquí se insertarán las imágenes secundarias dinámicamente -->
 </div>
+<p style="font-size: 0.875rem; color: #4b5563; text-align: center; margin-top: 1.5rem; font-style: italic;">
+    Costos de envío no incluidos, se incluirán al finalizar la compra por Whatsapp.
+</p>
+
 <a class="btn btn-primary" href="#" id="modal-contact-btn" style="margin-top: 1.5rem; display: inline-block; padding: 0.75rem 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); text-decoration: none; text-align: center;" target="_blank">
 <svg fill="none" stroke="currentColor" style="width: 1.25rem; height: 1.25rem; display: inline-block; margin-right: 0.5rem;" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
                         Personalizar y Cotizar
                     </a>
+<!-- ### NUEVO BOTÓN AÑADIDO AL MODAL ### -->
+<button class="btn btn-secondary" id="modal-add-to-cart-btn" onclick="addToCartFromModal()" style="margin-top: 0.5rem;">
+    Añadir al Carrito
+</button>
+</div>
+
 </div>
 </div>
 </div>
+
+<!-- ### NUEVO HTML: Modal del Carrito ### -->
+<div class="modal" id="cartModal">
+    <div class="modal-content" style="max-width: 600px;">
+        <span class="close-btn" onclick="closeCartModal()">×</span>
+        <h2 style="font-size: 1.875rem; font-weight: 800; color: #1f2937; margin-bottom: 1.5rem;">Mi Pedido</h2>
+        
+        <div id="cart-items-list">
+            <!-- Los items del carrito se insertarán aquí dinámicamente -->
+        </div>
+        
+        <div id="cart-total-section" style="text-align: right; font-size: 1.5rem; font-weight: 800; color: #1f2937; margin-bottom: 1.5rem; margin-top: 1rem;">
+            <span style="color: #4b5563; font-weight: 700;">Total:</span>
+            <span id="cart-total-price" class="accent-text" style="color: #4dc0c0;">$ 0.00</span>
+        </div>
+
+        <!-- ### NUEVA NOTA DE ENVÍO EN CARRITO ### -->
+        <p style="font-size: 0.875rem; color: #4b5563; text-align: center; margin-top: -0.75rem; margin-bottom: 1.5rem; font-style: italic;">
+            Costos de envío no incluidos, se incluirán al finalizar la compra por Whatsapp.
+        </p>
+        
+        <a class="btn btn-primary" id="whatsapp-checkout-btn" onclick="generateWhatsAppMessage()" style="text-decoration: none; text-align: center; margin-bottom: 0.5rem; cursor: pointer; display: inline-block; width: 100%; box-sizing: border-box;">
+            Finalizar Pedido por WhatsApp
+        </a>
+        <button class="btn btn-secondary" onclick="closeCartModal()">
+            Seguir Comprando
+        </button>
+    </div>
 </div>
+<!-- ### FIN DE NUEVO HTML ### -->
+
+
 <!-- Pie de página -->
 <footer class="header-bg header-text p-6 mt-16 text-center shadow-inner" style="background-color: #1f2937; color: white; padding: 1.5rem; margin-top: 4rem; text-align: center;">
-<p style="font-size: 0.875rem; opacity: 0.9;">© 2024 Ideas &amp; D'talles. Todos los derechos reservados.</p>
+<p style="font-size: 0.875rem; opacity: 0.9;">© 2025 Ideas &amp; D'talles. Todos los derechos reservados.</p>
 </footer>
+
+<!-- ### NUEVO HTML: Carrito Flotante ### -->
+<div id="floating-cart-btn" onclick="openCartModal()" title="Ver mi pedido">
+    <span>Ver Carrito</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6 22C4.89543 22 4 21.1046 4 20C4 18.8954 4.89543 18 6 18C7.10457 18 8 18.8954 8 20C8 21.1046 7.10457 22 6 22ZM18 22C16.8954 22 16 21.1046 16 20C16 18.8954 16.8954 18 18 18C19.1046 18 20 18.8954 20 20C20 21.1046 19.1046 22 18 22ZM6.39014 4L7.81585 15.2329C7.9132 16.2205 8.76996 17 9.77194 17H17.2031C18.1506 17 18.963 16.302 19.1342 15.367L21.0501 4.35823C21.0631 4.28892 21.0696 4.21852 21.0696 4.14815C21.0696 3.52386 20.5457 3 19.9214 3H5.03194C4.46765 3 4.00232 3.4907 4.03058 4.05312L4.0958 5.3958L6.39014 4Z"></path></svg>
+    <span id="floating-cart-count">0</span>
+</div>
+<!-- ### FIN DE NUEVO HTML ### -->
+
+<!-- ### SCRIPT MODIFICADO Y OPTIMIZADO ### -->
 <script>
         // --- Variables Globales para Galería y Zoom ---
         let currentGalleryImages = [];
@@ -1744,6 +1970,16 @@
         const modalGallery = document.getElementById("modal-gallery");
         const modalContactBtn = document.getElementById("modal-contact-btn");
         const zoomWrapper = document.querySelector('.main-image-wrapper');
+
+        // --- NUEVO: Variables Globales del Carrito ---
+        const cartModal = document.getElementById("cartModal");
+        const cartCountBadge = document.getElementById("cart-count-badge");
+        const cartItemsList = document.getElementById("cart-items-list");
+        const cartTotalPrice = document.getElementById("cart-total-price");
+        const whatsappBtn = document.getElementById("whatsapp-checkout-btn");
+        const floatingCartBtn = document.getElementById("floating-cart-btn"); // <-- AÑADIR
+        const floatingCartCount = document.getElementById("floating-cart-count"); // <-- AÑADIR
+        let cart = []; // Variable global del carrito
 
         // --- Funciones de Navegación y Zoom ---
 
@@ -1769,11 +2005,7 @@
             // Actualizar la clase 'active-thumb' en las miniaturas
             const thumbnails = modalGallery.querySelectorAll('.modal-gallery-item');
             thumbnails.forEach((thumb, i) => {
-                if (i === index) {
-                    thumb.classList.add('active-thumb');
-                } else {
-                    thumb.classList.remove('active-thumb');
-                }
+                thumb.classList.toggle('active-thumb', i === index);
             });
         }
 
@@ -1801,11 +2033,12 @@
         // Asignar el evento de click para el zoom
         modalMainImg.onclick = toggleZoom;
 
-        // --- Funcionalidad del Modal ---
+        // --- Funcionalidad del Modal de Producto ---
 
         function openModal(productId) {
             const product = productData[productId];
             if (!product) return;
+            modal.dataset.productId = productId; // <-- ### AÑADE ESTA LÍNEA ###
 
             modalTitle.textContent = product.title;
             modalDescription.textContent = product.description;
@@ -1882,14 +2115,200 @@
             modalMainImg.style.transformOrigin = 'center center';
         }
 
-        // Cerrar el modal si se hace clic fuera del contenido
+        function addToCartFromModal() {
+            const productId = modal.dataset.productId;
+            if (productId) {
+                addToCart(productId);
+                // Opcional: Cierra el modal de producto y abre el del carrito
+                // closeModal();
+                // openCartModal();
+            }
+        }
+
+        // --- NUEVA LÓGICA DEL CARRITO ---
+
+        // Función de ayuda para convertir precios como "$ 3,50" o "$ 35" a números
+        function parsePrice(priceStr) {
+            if (!priceStr) return 0;
+            // Maneja precios "Desde $ 1" (toma el número) y "$ 3,50" (convierte coma)
+            const cleanedStr = priceStr.replace('Desde', '').replace('$', '').replace(' ', '').replace(',', '.');
+            return parseFloat(cleanedStr) || 0;
+        }
+
+        // Cargar Carrito desde localStorage al iniciar
+        function initCart() {
+            const savedCart = localStorage.getItem('ideasDtallesCart');
+            cart = savedCart ? JSON.parse(savedCart) : [];
+            updateCartUI();
+        }
+
+        // Guardar Carrito en localStorage
+        function saveCart() {
+            localStorage.setItem('ideasDtallesCart', JSON.stringify(cart));
+        }
+
+        // Función Maestra para actualizar toda la UI del carrito
+        function updateCartUI() {
+            updateCartIcon();
+            renderCartModalItems();
+            updateCartTotal();
+        }
+
+        // Añadir producto al carrito
+        function addToCart(productId) {
+            const product = productData[productId];
+            if (!product) {
+                console.error("Producto no encontrado:", productId);
+                return;
+            }
+
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                const price = parsePrice(product.price);
+                cart.push({
+                    id: productId,
+                    title: product.title,
+                    price: price,
+                    quantity: 1
+                });
+            }
+            
+            saveCart();
+            updateCartUI();
+            
+            // Opcional: Mostrar una pequeña confirmación visual (ej. animar el ícono)
+            cartCountBadge.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                cartCountBadge.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // Actualizar el ícono del carrito (badge)
+        function updateCartIcon() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            // Actualizar badge del header
+            cartCountBadge.textContent = totalItems;
+            cartCountBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+
+            // NUEVO: Actualizar badge del botón flotante
+            floatingCartCount.textContent = totalItems;
+            floatingCartBtn.style.display = totalItems > 0 ? 'flex' : 'none'; // Mostrar/ocultar el botón flotante
+        }
+
+        // Abrir el modal del carrito
+        function openCartModal() {
+            updateCartUI(); // Siempre actualiza al abrir
+            cartModal.style.display = 'block';
+        }
+
+        // Cerrar el modal del carrito
+        function closeCartModal() {
+            cartModal.style.display = 'none';
+        }
+
+        // Actualizar cantidad de un item
+        function updateCartQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (!item) return;
+
+            item.quantity += change;
+
+            if (item.quantity <= 0) {
+                // Eliminar si la cantidad es 0 o menos
+                cart = cart.filter(item => item.id !== productId);
+            }
+            
+            saveCart();
+            updateCartUI();
+        }
+
+        // Eliminar un item del carrito
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart();
+            updateCartUI();
+        }
+
+        // Renderizar los items en el modal del carrito
+        function renderCartModalItems() {
+            cartItemsList.innerHTML = ''; // Limpiar lista
+
+            if (cart.length === 0) {
+                cartItemsList.innerHTML = '<p id="cart-empty-message">Tu carrito está vacío.</p>';
+                return;
+            }
+
+            cart.forEach(item => {
+                const itemEl = document.createElement('div');
+                itemEl.className = 'cart-item';
+                
+                itemEl.innerHTML = `
+                    <div class="cart-item-details">
+                        <p>${item.title}</p>
+                        <span class="cart-item-price">$${item.price.toFixed(2)} c/u</span>
+                    </div>
+                    <div class="cart-item-controls">
+                        <button onclick="updateCartQuantity('${item.id}', -1)" title="Quitar uno">-</button>
+                        <span class="cart-item-quantity">${item.quantity}</span>
+                        <button onclick="updateCartQuantity('${item.id}', 1)" title="Añadir uno">+</button>
+                        <button class="cart-item-remove" onclick="removeFromCart('${item.id}')" title="Quitar del carrito">×</button>
+                    </div>
+                `;
+                cartItemsList.appendChild(itemEl);
+            });
+        }
+
+        // Actualizar el precio total
+        function updateCartTotal() {
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotalPrice.textContent = `$ ${total.toFixed(2)}`;
+
+            // Desactivar botón de WhatsApp si el carrito está vacío
+            if (total === 0) {
+                whatsappBtn.classList.add('disabled');
+            } else {
+                whatsappBtn.classList.remove('disabled');
+            }
+        }
+
+        // Generar y enviar el mensaje de WhatsApp
+        function generateWhatsAppMessage() {
+            if (cart.length === 0) return; // No hacer nada si el carrito está vacío
+
+            let message = "¡Hola Ideas & D'talles! ✨\nMe gustaría cotizar el siguiente pedido:\n\n";
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                message += `*${item.quantity} x* ${item.title} ($${item.price.toFixed(2)} c/u) - Subtotal: $${itemTotal.toFixed(2)}\n`;
+                total += itemTotal;
+            });
+
+            message += `\n*TOTAL (Estimado): $${total.toFixed(2)}*\n\n`;
+            message += "Quedo atento/a a su confirmación. ¡Gracias!";
+
+            const whatsappURL = `https://wa.me/593964206952?text=${encodeURIComponent(message)}`;
+            
+            // Abrir en una nueva pestaña
+            window.open(whatsappURL, '_blank');
+        }
+
+
+        // --- MODIFICADO: Manejador de Clicks Global ---
         window.onclick = function(event) {
             if (event.target == modal) {
                 closeModal();
             }
+            if (event.target == cartModal) {
+                closeCartModal();
+            }
         }
         
-        // --- DATA DE PRODUCTOS ---
+        // --- DATA DE PRODUCTOS (Copiada de tu archivo) ---
         const productData = {
             
             // GRUPO 1: ESTRUCTURAS Y CALENDARIOS DE ALTO VALOR
@@ -2033,7 +2452,7 @@
             // GRUPO 3: DECORACIÓN ILUMINADA Y BUZONES
             FarolCuentaRegresiva: {
                 title: "Farol Cuenta Regresiva",
-                price: "$ 15",
+                price: "$ 3,50", // Precio corregido de tu archivo original
                 description: "Calendario de adviento interactivo con forma de farol. Permite cambiar manually las placas de números. Un elemento decorativo y funcional para la cuenta atrás navideña.",
                 mainImg: "https://i.postimg.cc/fRHKg9Q9/image56.png",
                 extraImgs: [
@@ -2171,7 +2590,7 @@
             },
             EstrellaGrandeIluminada: { 
                 title: "Estrella con decoración iluminada grande",
-                price: "$ 6,500",
+                price: "$ 6,50",
                 description: "Decoración en forma de estrella con escena navideña o nacimiento en capas. Incluye luz LED para un efecto nocturno.",
                 mainImg: "https://i.postimg.cc/PqB4f4Df/IMG-20251028-162644-Editado.png", 
                 extraImgs: [
@@ -2193,7 +2612,7 @@
             },
             LetreroSantaGrande: {
                 title: "Letrero de Santa Grande",
-                price: "$ 8,500", 
+                price: "$ 8,50", 
                 description: "Letrero robusto de mayor tamaño con Elfo. Presenta más detalles de grabado y color, ideal para la entrada o el exterior",
                 mainImg: "https://i.postimg.cc/CKCqfkcq/image1.png", 
                 extraImgs: [
@@ -2236,7 +2655,7 @@
             },
             CasaParaDulcesVerde: {
                 title: "Casa para dulces verde",
-                price: "$ 7,500",
+                price: "$ 7,50",
                 description: "Caja con diseño de casa rústica en color verde y tejado de nieve, con asa para llevar. Ideal para dulces o pequeños obsequios.",
                 mainImg: "https://i.postimg.cc/FFgrGSfV/IMG-20251028-103651-Editado.png",
                 extraImgs: [
@@ -2473,4 +2892,3 @@
     </script>
 <!-- LOS MODALES INCORRECTOS Y SCRIPTS ADICIONALES SE HAN ELIMINADO -->
 </body>
-</html>
