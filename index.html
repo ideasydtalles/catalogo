@@ -243,7 +243,8 @@
              line-height: 1; /* CLAVE: Alinea mejor el texto */
              color: white; /* Texto del WhatsApp a blanco */
         }
-    </style>
+    
+</style>
 </head>
 <body class="antialiased">
 <!-- Encabezado Fijo con Logo y Contacto (Fondo Negro Oscuro para Contraste) -->
@@ -260,14 +261,21 @@
 </div>
 </div>
 <!-- Botón de Contacto principal (Corregido: Alineación) -->
-<div style="display: flex; flex-direction: column; align-items: center;">
-<a class="btn bg-white text-[#4dc0c0] hover:bg-gray-100" href="https://wa.me/593964206952" style="background-color: white; color: #4dc0c0; padding: 0.5rem 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); text-align: center;" target="_blank">
-<span style="display: inline-block; vertical-align: middle;">
+<div style="display: flex; align-items: center; gap: 1.5rem;">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <a class="btn bg-white text-[#4dc0c0] hover:bg-gray-100" href="https://wa.me/593964206952" style="background-color: white; color: #4dc0c0; padding: 0.5rem 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); text-align: center;" target="_blank">
+        <span style="display: inline-block; vertical-align: middle;">
 <svg fill="none" stroke="currentColor" style="width: 1.25rem; height: 1.25rem; display: inline-block; margin-right: 0.5rem; color: #4dc0c0;" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
                         ¡Contáctanos ahora!
                     </span>
-</a>
-<p class="header-contact-text">Whatsapp: 0964206952</p>
+        </a>
+        <p class="header-contact-text">Whatsapp: 0964206952</p>
+    </div>
+
+    <div id="cart-icon-container" onclick="openCartModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M6 22C4.89543 22 4 21.1046 4 20C4 18.8954 4.89543 18 6 18C7.10457 18 8 18.8954 8 20C8 21.1046 7.10457 22 6 22ZM18 22C16.8954 22 16 21.1046 16 20C16 18.8954 16.8954 18 18 18C19.1046 18 20 18.8954 20 20C20 21.1046 19.1046 22 18 22ZM6.39014 4L7.81585 15.2329C7.9132 16.2205 8.76996 17 9.77194 17H17.2031C18.1506 17 18.963 16.302 19.1342 15.367L21.0501 4.35823C21.0631 4.28892 21.0696 4.21852 21.0696 4.14815C21.0696 3.52386 20.5457 3 19.9214 3H5.03194C4.46765 3 4.00232 3.4907 4.03058 4.05312L4.0958 5.3958L6.39014 4Z"></path></svg>
+        <span id="cart-count-badge">0</span>
+    </div>
 </div>
 </div>
 </header>
@@ -309,6 +317,30 @@
                                 </a>
 </div>
 </div>
+<!-- INICIO PRODUCTO NUEVO CORREGIDO -->
+<!-- Producto: Tren a color - $30 -->
+<div class="product-card">
+<div class="image-container" onclick="openModal('TrenAColor')">
+<img alt="Tren a color" id="TrenAColor-main-img" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Tren+a+color';" src="https://i.postimg.cc/1z3QbSpt/1762739111950-Editado.png"/>
+</div>
+<div class="card-content">
+<div>
+<h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Tren a color</h3>
+<p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pieza decorativa en madera de corte preciso, ideal para complementar tu colección.</p>
+</div>
+<p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 73 centímetros, ancho 14 centímetros, altura 18 centímetros.</p>
+<p class="price-label">Precio: $ 30</p>
+</div>
+<div class="card-actions">
+<button class="btn btn-primary" onclick="openModal('TrenAColor')">
+                                    Ver Galería / Más Opciones
+                                </button>
+<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Tren a color ($ 30)." target="_blank">
+                                    Comprar / Pedir
+                                </a>
+</div>
+</div>
+<!-- FIN PRODUCTO NUEVO CORREGIDO -->
 <!-- Producto: Castillo de navidad Smart - $34 -->
 <div class="product-card">
 <div class="image-container" onclick="openModal('CastilloNavidad')">
@@ -460,6 +492,50 @@
                                 </a>
 </div>
 </div>
+<!-- INICIO PRODUCTO NUEVO CORREGIDO -->
+<!-- Producto: Trineo de adviento a color - $22 -->
+<div class="product-card">
+<div class="image-container" onclick="openModal('TrineoDeAdvientoAColor')">
+<img alt="Trineo de adviento a color" id="TrineoDeAdvientoAColor-main-img" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Trineo+de+adviento+a+color';" src="https://i.postimg.cc/qBY9QnbH/1762739112060-Editado.png"/>
+</div>
+<div class="card-content">
+<div>
+<h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Trineo de adviento a color</h3>
+<p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pieza decorativa en madera de corte preciso, ideal para complementar tu colección.</p>
+</div>
+<p class="price-label">Precio: $ 22</p>
+</div>
+<div class="card-actions">
+<button class="btn btn-primary" onclick="openModal('TrineoDeAdvientoAColor')">
+                                    Ver Galería / Más Opciones
+                                </button>
+<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Trineo de adviento a color ($ 22)." target="_blank">
+                                    Comprar / Pedir
+                                </a>
+</div>
+</div>
+<!-- Producto: Trineo con renos - $10 -->
+<div class="product-card">
+<div class="image-container" onclick="openModal('TrineoConRenos')">
+<img alt="Trineo con renos" id="TrineoConRenos-main-img" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Trineo+con+renos';" src="https://i.postimg.cc/15DsqJmx/1762739112375-Editado.png"/>
+</div>
+<div class="card-content">
+<div>
+<h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Trineo con renos</h3>
+<p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pieza decorativa en madera de corte preciso, ideal para complementar tu colección.</p>
+</div>
+<p class="price-label">Precio: $ 10</p>
+</div>
+<div class="card-actions">
+<button class="btn btn-primary" onclick="openModal('TrineoConRenos')">
+                                    Ver Galería / Más Opciones
+                                </button>
+<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Trineo con renos ($ 10)." target="_blank">
+                                    Comprar / Pedir
+                                </a>
+</div>
+</div>
+<!-- FIN PRODUCTO NUEVO CORREGIDO -->
 <!-- INICIO: GRUPO 3: DECORACIÓN ILUMINADA Y BUZONES -->
 <!-- Producto: Farol cuenta regresiva - $15 -->
 <div class="product-card">
@@ -720,6 +796,29 @@
                                 </a>
 </div>
 </div>
+<!-- INICIO PRODUCTO NUEVO CORREGIDO -->
+<!-- Producto: Escena navideña a color - $3 -->
+<div class="product-card">
+<div class="image-container" onclick="openModal('EscenaNavidenaAColor')">
+<img alt="Escena navideña a color" id="EscenaNavidenaAColor-main-img" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Escena+navideña+a+color';" src="https://i.postimg.cc/25wsxKMr/1762739112226-Editado.png"/>
+</div>
+<div class="card-content">
+<div>
+<h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Escena navideña a color</h3>
+<p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pieza decorativa en madera de corte preciso, ideal para complementar tu colección.</p>
+</div>
+<p class="price-label">Precio: $ 3</p>
+</div>
+<div class="card-actions">
+<button class="btn btn-primary" onclick="openModal('EscenaNavidenaAColor')">
+                                    Ver Galería / Más Opciones
+                                </button>
+<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Escena navideña a color ($ 3)." target="_blank">
+                                    Comprar / Pedir
+                                </a>
+</div>
+</div>
+<!-- FIN PRODUCTO NUEVO CORREGIDO -->
 <!-- ================================================= -->
 <!-- == GRUPO 8: OTROS (GENERAL) == -->
 <!-- ================================================= -->
@@ -1082,6 +1181,29 @@
                                 </a>
 </div>
 </div>
+<!-- INICIO PRODUCTO NUEVO CORREGIDO -->
+<!-- Producto: Casa multiusos café - $3,5 -->
+<div class="product-card">
+<div class="image-container" onclick="openModal('CasaMultiusosCafe')">
+<img alt="Casa multiusos café" id="CasaMultiusosCafe-main-img" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Casa+multiusos+café';" src="https://i.postimg.cc/vBKSqFvt/1762739112355-Editado.png"/>
+</div>
+<div class="card-content">
+<div>
+<h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Casa multiusos café</h3>
+<p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pieza decorativa en madera de corte preciso, ideal para complementar tu colección.</p>
+</div>
+<p class="price-label">Precio: $ 3,50</p>
+</div>
+<div class="card-actions">
+<button class="btn btn-primary" onclick="openModal('CasaMultiusosCafe')">
+                                    Ver Galería / Más Opciones
+                                </button>
+<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa la Casa multiusos café ($ 3,5)." target="_blank">
+                                    Comprar / Pedir
+                                </a>
+</div>
+</div>
+<!-- FIN PRODUCTO NUEVO CORREGIDO -->
 <!-- Producto: Casas medianas y con adornos - $5 (AÑADIDO FALTANTE) -->
 <div class="product-card">
 <div class="image-container" onclick="openModal('CasasMedianas')">
@@ -1167,6 +1289,29 @@
                                 </a>
 </div>
 </div>
+<!-- INICIO PRODUCTO NUEVO CORREGIDO -->
+<!-- Producto: Buzón navideño Largo - $16 -->
+<div class="product-card">
+<div class="image-container" onclick="openModal('BuzonNavidenoLargo')">
+<img alt="Buzón navideño Largo" id="BuzonNavidenoLargo-main-img" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Buzón+navideño+Largo';" src="https://i.postimg.cc/zvJ3c6XC/1762788500808-Editado.png"/>
+</div>
+<div class="card-content">
+<div>
+<h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Buzón navideño Largo</h3>
+<p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pieza decorativa en madera de corte preciso, ideal para complementar tu colección.</p>
+</div>
+<p class="price-label">Precio: $ 16</p>
+</div>
+<div class="card-actions">
+<button class="btn btn-primary" onclick="openModal('BuzonNavidenoLargo')">
+                                    Ver Galería / Más Opciones
+                                </button>
+<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Buzón navideño Largo ($ 16)." target="_blank">
+                                    Comprar / Pedir
+                                </a>
+</div>
+</div>
+<!-- FIN PRODUCTO NUEVO CORREGIDO -->
 <!-- Grupo: Cajas para regalo -->
 <!-- Producto: Caja Halloween (Desde $) -->
 <div class="product-card">
@@ -1319,6 +1464,50 @@
                                 </a>
 </div>
 </div>
+<!-- INICIO PRODUCTO NUEVO CORREGIDO -->
+<!-- Producto: Cascanueces - $6 -->
+<div class="product-card">
+<div class="image-container" onclick="openModal('Cascanueces')">
+<img alt="Cascanueces" id="Cascanueces-main-img" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Cascanueces';" src="https://i.postimg.cc/sx6f02Nm/1762788501393-Editado.png"/>
+</div>
+<div class="card-content">
+<div>
+<h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Cascanueces</h3>
+<p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pieza decorativa en madera de corte preciso, ideal para complementar tu colección.</p>
+</div>
+<p class="price-label">Precio: $ 6</p>
+</div>
+<div class="card-actions">
+<button class="btn btn-primary" onclick="openModal('Cascanueces')">
+                                    Ver Galería / Más Opciones
+                                </button>
+<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Cascanueces ($ 6)." target="_blank">
+                                    Comprar / Pedir
+                                </a>
+</div>
+</div>
+<!-- Producto: Cascanueces tambor - $6 -->
+<div class="product-card">
+<div class="image-container" onclick="openModal('CascanuecesTambor')">
+<img alt="Cascanueces tambor" id="CascanuecesTambor-main-img" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Cascanueces+tambor';" src="https://i.postimg.cc/TYNhtk8X/1762788501262-Editado.png"/>
+</div>
+<div class="card-content">
+<div>
+<h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Cascanueces tambor</h3>
+<p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pieza decorativa en madera de corte preciso, ideal para complementar tu colección.</p>
+</div>
+<p class="price-label">Precio: $ 6</p>
+</div>
+<div class="card-actions">
+<button class="btn btn-primary" onclick="openModal('CascanuecesTambor')">
+                                    Ver Galería / Más Opciones
+                                </button>
+<a class="btn btn-secondary" href="https://wa.me/593964206952?text=Hola, me interesa el Cascanueces tambor ($ 6)." target="_blank">
+                                    Comprar / Pedir
+                                </a>
+</div>
+</div>
+<!-- FIN PRODUCTO NUEVO CORREGIDO -->
 <!-- Producto: Letrero de Santa Pequeño - $3,500 -->
 <div class="product-card">
 <div class="image-container" onclick="openModal('LetreroSantaPequeno')">
@@ -1504,6 +1693,7 @@
                                 Envíanos tu Diseño Personalizado
                             </a>
 </div>
+<!-- LOS PRODUCTOS ANTIGUOS Y ROTOS SE ELIMINARON DE AQUÍ -->
 </section>
 </main>
 <!-- Modal Base (Mini-Ventana) -->
@@ -2187,8 +2377,100 @@
                     "https://i.postimg.cc/nrtYQKBg/image107.png",
                     "https://i.postimg.cc/d3KmTRrB/image102.jpg"
                 ]
+            },
+
+            // --- INICIO DE PRODUCTOS NUEVOS AÑADIDOS AL SCRIPT ---
+            TrenAColor: {
+                title: "Tren a color",
+                price: "$ 30",
+                description: "Colorido tren navideño de madera con vagones. Ideal como centro de mesa o para complementar la ciudad navideña. Medidas: 73cm largo, 14cm ancho, 18cm alto.",
+                mainImg: "https://i.postimg.cc/1z3QbSpt/1762739111950-Editado.png",
+                extraImgs: [
+                    "https://i.postimg.cc/mDVTtDBg/1762739111763-Editado.png",
+                    "https://i.postimg.cc/Xv1bbP8n/1762739111716-Editado.png",
+                    "https://i.postimg.cc/vTBb9sZv/1762739111820-Editado.png",
+                    "https://i.postimg.cc/GpFLnKf8/1762746804230-Editado.png"
+                ]
+            },
+            TrineoDeAdvientoAColor: {
+                title: "Trineo de adviento a color",
+                price: "$ 22",
+                description: "Versión a color del trineo de adviento. Incluye 24 cajones numerados para la cuenta regresiva.",
+                mainImg: "https://i.postimg.cc/qBY9QnbH/1762739112060-Editado.png",
+                extraImgs: [
+                    "https://i.postimg.cc/vmsyh9mG/1762739111978-Editado.png",
+                    "https://i.postimg.cc/T3mGnQTY/1762739112033-Editado.png"
+                ]
+            },
+            EscenaNavidenaAColor: {
+                title: "Escena navideña a color",
+                price: "$ 3",
+                description: "Pequeña escena navideña a color. Perfecta para escritorios, repisas o como un detalle económico.",
+                mainImg: "https://i.postimg.cc/25wsxKMr/1762739112226-Editado.png",
+                extraImgs: [
+                    "https://i.postimg.cc/TwNBzWTW/1762739112115-Editado.png",
+                    "https://i.postimg.cc/TwNBzWTW/1762739112115-Editado.png",
+                ]
+            },
+            CasaMultiusosCafe: {
+                title: "Casa multiusos café",
+                price: "$ 3,50",
+                description: "Casa multiusos en tonos café (madera natural o pintada). Ideal para dulces o como un pequeño regalo.",
+                mainImg: "https://i.postimg.cc/vBKSqFvt/1762739112355-Editado.png",
+                extraImgs: [
+                    "https://i.postimg.cc/TPCsbW5T/1762739112308-Editado.png",
+                    "https://i.postimg.cc/jS6ms1sS/1762739112281-Editado.png",
+                    "https://i.postimg.cc/x1Gh0Z0q/1762739112240-Editado.png"
+                ]
+            },
+            TrineoConRenos: {
+                title: "Trineo con renos",
+                price: "$ 10",
+                description: "Decoración clásica de trineo de Santa con renos. Una pieza elegante para cualquier espacio.",
+                mainImg: "https://i.postimg.cc/15DsqJmx/1762739112375-Editado.png",
+                extraImgs: [
+                    "https://i.postimg.cc/MpxxbVHw/1762739112479-Editado.png",
+                    "https://i.postimg.cc/mgRRNCkk/1762739112525-Editado.png"
+                ]
+            },
+            BuzonNavidenoLargo: {
+                title: "Buzón navideño Largo",
+                price: "$ 16",
+                description: "Buzón navideño de mayor tamaño (largo), perfecto para recolectar cartas o como pieza central decorativa.",
+                mainImg: "https://i.postimg.cc/zvJ3c6XC/1762788500808-Editado.png",
+                extraImgs: [
+                    "https://i.postimg.cc/NG4KHsp5/1762788500735-Editado.png",
+                    "https://i.postimg.cc/zvJ3c6X0/1762788500721-Editado.png",
+                    "https://i.postimg.cc/vTQDNkHn/1762788500721-Editado2.png",
+                    "https://i.postimg.cc/d3qDxptd/1762788500735-Editado2.png"
+                ]
+            },
+            Cascanueces: {
+                title: "Cascanueces",
+                price: "$ 6",
+                description: "Figura clásica de cascanueces de madera. Un ícono de la decoración navideña.",
+                mainImg: "https://i.postimg.cc/sx6f02Nm/1762788501393-Editado.png",
+                extraImgs: [
+                    "https://i.postimg.cc/qqbBZ75F/1762788501375-Editado.png",
+                    "https://i.postimg.cc/zBNfy6Wr/1762788501324-Editado.png",
+                    "https://i.postimg.cc/DwW0HqFr/1762788500826-Editado.png",
+                    "https://i.postimg.cc/SQDKKZx6/1762788501411-Editado.png"
+                ]
+            },
+            CascanuecesTambor: {
+                title: "Cascanueces tambor",
+                price: "$ 6",
+                description: "Figura de cascanueces con un tambor. Detalle clásico para coleccionistas y decoración.",
+                mainImg: "https://i.postimg.cc/TYNhtk8X/1762788501262-Editado.png",
+                extraImgs: [
+                    "https://i.postimg.cc/YCJ0HhCc/1762788501135-Editado.png",
+                    "https://i.postimg.cc/DzLZynSr/1762788501093-Editado.png",
+                    "https://i.postimg.cc/VkSvpj1g/1762788500876-Editado.png"
+                ]
             }
+            // --- FIN DE PRODUCTOS NUEVOS ---
         };
     </script>
+<!-- LOS MODALES INCORRECTOS Y SCRIPTS ADICIONALES SE HAN ELIMINADO -->
 </body>
 </html>
