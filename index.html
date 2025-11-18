@@ -2551,6 +2551,26 @@
 <div class="modal" id="cartModal">
     <div class="modal-content" style="max-width: 600px;">
         <span class="close-btn" onclick="closeCartModal()">×</span>
+        <div id="payment-selection" style="background-color: #e3f8f8; padding: 1rem; border-radius: 0.75rem; margin-bottom: 1.5rem; border: 1px solid #4dc0c0;">
+            <h3 style="font-size: 1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.75rem;">Seleccionar Método de Pago:</h3>
+            <div style="display: flex; gap: 1.5rem;">
+                <!-- Opción 1: Efectivo/Transferencia (Aplica Black Friday) -->
+                <label style="display: flex; align-items: center; font-weight: 600; cursor: pointer;">
+                    <input type="radio" name="paymentType" value="cash" checked onchange="updateCartTotal()" style="margin-right: 0.5rem; accent-color: #4dc0c0;">
+                    Efectivo / Transferencia (BF)
+                </label>
+                <!-- Opción 2: Tarjeta (Precio Normal) -->
+                <label style="display: flex; align-items: center; font-weight: 600; cursor: pointer;">
+                    <input type="radio" name="paymentType" value="card" onchange="updateCartTotal()" style="margin-right: 0.5rem; accent-color: #4dc0c0;">
+                    Tarjeta (Precio Normal)
+                </label>
+            </div>
+            <p id="payment-warning" style="font-size: 0.875rem; color: #ef4444; font-weight: 500; margin-top: 0.5rem;">¡Descuento Black Friday aplicado solo para Efectivo/Transferencia!</p>
+        </div>
+
+        <div id="cart-items-list">
+            <!-- Los items del carrito se insertarán aquí dinámicamente -->
+        </div>
         <h2 style="font-size: 1.875rem; font-weight: 800; color: #1f2937; margin-bottom: 1.5rem;">Mi Pedido</h2>
         
         <div id="cart-items-list">
@@ -2672,13 +2692,31 @@
         function openModal(productId) {
             const product = productData[productId];
             if (!product) return;
-            modal.dataset.productId = productId; // <-- ### AÑADE ESTA LÍNEA ###
+            modal.dataset.productId = productId;
 
             modalTitle.textContent = product.title;
             modalDescription.textContent = product.description;
-            modalPrice.textContent = product.price;
+            
+            // --- CAMBIO: Lógica para mostrar ambos precios (Oferta y Normal) en el modal ---
+            if (product.normalPrice) {
+                // Si existe precio normal (es oferta), inyectamos el HTML de doble precio
+                // Alineamos a la derecha (flex-end) para coincidir con el diseño del modal
+                modalPrice.innerHTML = `
+                    <div class="price-label-oferta" style="align-items: flex-end; width: 100%;">
+                        <span class="badge-oferta" style="font-size: 1rem;">¡OFERTA BLACK FRIDAY!</span>
+                        <div class="precios-oferta" style="justify-content: flex-end;">
+                            <span class="precio-anterior" style="font-size: 1.5rem; margin-right: 10px;">${product.normalPrice}</span>
+                            <span class="precio-final" style="font-size: 2.5rem; color: #4dc0c0;">${product.price}</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Si no hay precio normal, mostramos solo el precio actual
+                modalPrice.textContent = product.price;
+            }
+            // ---------------------------------------------------------------------------
 
-            // Generar enlace de WhatsApp
+            // Generar enlace de WhatsApp predeterminado con el precio de oferta
             const defaultText = `Hola, me interesa el producto: ${product.title} (${product.price}).`;
             modalContactBtn.href = `https://wa.me/593964206952?text=${encodeURIComponent(defaultText)}`;
 
@@ -2714,7 +2752,7 @@
             document.querySelector('.gallery-nav.prev').style.display = showNav ? 'block' : 'none';
             document.querySelector('.gallery-nav.next').style.display = showNav ? 'block' : 'none';
             
-            // Ocultar/Mostrar sección de miniaturas
+            // Ocultar/Mostrar sección de miniaturas (Título H4 y Grid)
             const gallerySectionTitle = document.querySelector('#modal-gallery').previousElementSibling;
             if (showNav) {
                 modalGallery.style.display = 'grid';
@@ -2875,15 +2913,23 @@
                 cartItemsList.innerHTML = '<p id="cart-empty-message">Tu carrito está vacío.</p>';
                 return;
             }
-
+            
+            // Obtener el tipo de pago seleccionado
+            const paymentType = document.querySelector('input[name="paymentType"]:checked')?.value || 'cash';
+            
             cart.forEach(item => {
+                const productDefinition = productData[item.id];
+                const priceKey = paymentType === 'cash' ? 'price' : 'normalPrice';
+                // Usar el precio correcto del producto para mostrarlo
+                const itemDisplayPrice = parsePrice(productDefinition[priceKey]);
+
                 const itemEl = document.createElement('div');
                 itemEl.className = 'cart-item';
                 
                 itemEl.innerHTML = `
                     <div class="cart-item-details">
                         <p>${item.title}</p>
-                        <span class="cart-item-price">$${item.price.toFixed(2)} c/u</span>
+                        <span class="cart-item-price">$${itemDisplayPrice.toFixed(2)} c/u</span>
                     </div>
                     <div class="cart-item-controls">
                         <button onclick="updateCartQuantity('${item.id}', -1)" title="Quitar uno">-</button>
@@ -2898,8 +2944,31 @@
 
         // Actualizar el precio total
         function updateCartTotal() {
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            // Obtener el tipo de pago seleccionado
+            const paymentType = document.querySelector('input[name="paymentType"]:checked')?.value || 'cash';
+            
+            let total = 0;
+            const priceKey = paymentType === 'cash' ? 'price' : 'normalPrice'; // 'price' = Oferta (cash), 'normalPrice' = Normal (card)
+
+            cart.forEach(item => {
+                const productDefinition = productData[item.id];
+                if (productDefinition) {
+                    const itemPrice = parsePrice(productDefinition[priceKey]);
+                    total += itemPrice * item.quantity;
+                }
+            });
+
             cartTotalPrice.textContent = `$ ${total.toFixed(2)}`;
+
+            // Actualizar el mensaje de advertencia
+            const warningText = document.getElementById('payment-warning');
+            if (paymentType === 'cash') {
+                warningText.textContent = '¡Descuento Black Friday aplicado solo para Efectivo/Transferencia!';
+                warningText.style.color = '#10b981'; // Green for success/discount
+            } else {
+                warningText.textContent = 'Atención: Se está usando el Precio Normal para pago con Tarjeta.';
+                warningText.style.color = '#ef4444'; // Red for warning
+            }
 
             // Desactivar botón de WhatsApp si el carrito está vacío
             if (total === 0) {
@@ -2907,23 +2976,34 @@
             } else {
                 whatsappBtn.classList.remove('disabled');
             }
+
+            // Re-renderizar los items para reflejar el cambio de precio por unidad
+            renderCartModalItems();
         }
 
         // Generar y enviar el mensaje de WhatsApp
         function generateWhatsAppMessage() {
             if (cart.length === 0) return; // No hacer nada si el carrito está vacío
 
-            let message = "¡Hola Ideas & D'talles! ✨\nMe gustaría cotizar el siguiente pedido:\n\n";
+            const paymentType = document.querySelector('input[name="paymentType"]:checked')?.value || 'cash';
+            const priceKey = paymentType === 'cash' ? 'price' : 'normalPrice';
+            const paymentName = paymentType === 'cash' ? 'Efectivo/Transferencia (Precio BF)' : 'Tarjeta (Precio Normal)';
+
+            let message = `¡Hola Ideas & D'talles! ✨\nQuisiera realizar un pedido y pagar con *${paymentName}*.\n\nEl detalle del pedido es:\n\n`;
             let total = 0;
 
             cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                message += `*${item.quantity} x* ${item.title} ($${item.price.toFixed(2)} c/u) - Subtotal: $${itemTotal.toFixed(2)}\n`;
-                total += itemTotal;
+                const productDefinition = productData[item.id];
+                if (productDefinition) {
+                    const itemPrice = parsePrice(productDefinition[priceKey]);
+                    const itemTotal = itemPrice * item.quantity;
+                    message += `*${item.quantity} x* ${item.title} ($${itemPrice.toFixed(2)} c/u) - Subtotal: $${itemTotal.toFixed(2)}\n`;
+                    total += itemTotal;
+                }
             });
 
-            message += `\n*TOTAL (Estimado): $${total.toFixed(2)}*\n\n`;
-            message += "Quedo atento/a a su confirmación. ¡Gracias!";
+            message += `\n*TOTAL FINAL A PAGAR: $${total.toFixed(2)}*\n\n`;
+            message += "Por favor, indíquenme los pasos para continuar con el pago. ¡Gracias!";
 
             const whatsappURL = `https://wa.me/593964206952?text=${encodeURIComponent(message)}`;
             
@@ -2943,12 +3023,14 @@
         }
         
         // --- DATA DE PRODUCTOS (Copiada de tu archivo) ---
-        const productData = {
+        // --- DATA DE PRODUCTOS (Actualizada con Precios de Black Friday) ---
+const productData = {
             
             // GRUPO 1: ESTRUCTURAS Y CALENDARIOS DE ALTO VALOR
             CiudadCompleta: {
                 title: "Ciudad Completa (14 Casas, Tren, Puente)",
-                price: "$ 35",
+                price: "$ 30", // Oferta Efectivo
+                normalPrice: "$ 35", // Tarjeta
                 description: "Kit de decoración avanzado que incluye 14 casas, un tren, un puente, letreros decorativos y un farol o un faro. Piezas detalladas ideales para crear una gran villa navideña.",
                 mainImg: "https://i.postimg.cc/TPsTfqLQ/image13.png",
                 extraImgs: [
@@ -2960,7 +3042,8 @@
             },
             CastilloNavidad: {
                 title: "Castillo de navidad Smart",
-                price: "$ 34",
+                price: "$ 29", // Oferta Efectivo
+                normalPrice: "$ 34", // Tarjeta
                 description: "Estructura detallada y armable de un castillo navideño, con múltiples niveles y figuras (gnomo). Compatible con sistemas Smart Home como Alexa y Google Home (requiere integración aparte). Una pieza de gran tamaño y decoración.",
                 mainImg: "https://i.postimg.cc/bJn9JVDh/image85.png",
                 extraImgs: [
@@ -2970,7 +3053,8 @@
             },
             CalendarioAdvientoArbolCasas: {
                 title: "Calendario de Adviento Árbol con Casas",
-                price: "$ 26",
+                price: "$ 22", // Oferta Efectivo
+                normalPrice: "$ 26", // Tarjeta
                 description: "Espectacular estructura de adviento multinivel con forma de árbol. Incluye 25 casitas numeradas que sirven como pequeños cajones o exhibidores.",
                 mainImg: "https://i.postimg.cc/4dJhvy07/image4.png", 
                 extraImgs: [
@@ -2981,7 +3065,8 @@
             },
             ArbolEscenaPesebre: {
                 title: "Árbol con Escena Navideña y Pesebre",
-                price: "$ 26",
+                price: "$ 22", // Oferta Efectivo
+                normalPrice: "$ 26", // Tarjeta
                 description: "Árbol decorativo de madera en 3 niveles que exhibe una escena navideña completa: pesebre, Reyes Magos y una pequeña villa. Perfecto como centro de mesa.",
                 mainImg: "https://i.postimg.cc/ydVShxGF/image8.png", 
                 extraImgs: [
@@ -2992,7 +3077,8 @@
             },
             RuedaFortuna: {
                 title: "Rueda de la Fortuna (Cruda)",
-                price: "$ 20",
+                price: "$ 17", // Oferta Efectivo
+                normalPrice: "$ 20", // Tarjeta
                 description: "Rueda de la Fortuna armable de gran tamaño (versión sin pintar). Una pieza de ingeniería en madera, perfecta para exhibición o para regalo. Funcional y detallada.",
                 mainImg: "https://i.postimg.cc/V6tW6Zr6/image89.png",
                 extraImgs: [
@@ -3001,10 +3087,10 @@
                     "https://i.postimg.cc/gcfdbJ89/1ff4f97a-3c2f-4579-b418-f49a25e4cfd9.png"
                 ]
             },
-            // NUEVO JS
             RuedaFortunaColor: {
                 title: "Rueda de la fortuna a todo color",
-                price: "$ 24",
+                price: "$ 20", // Oferta Efectivo
+                normalPrice: "$ 24", // Tarjeta
                 description: "Versión a todo color (verde, rojo, dorado) de la rueda armable. Incluye copo de nieve dorado y caseta de entrada.",
                 mainImg: "https://i.postimg.cc/0QG9bCh5/1762286450907-Editado.png",
                 extraImgs: [
@@ -3014,7 +3100,8 @@
             },
             CalendarioAdviento: {
                 title: "Calendario de Adviento (Casa Cruda)",
-                price: "$ 18",
+                price: "$ 15", // Oferta Efectivo
+                normalPrice: "$ 18", // Tarjeta
                 description: "Elegante calendario con forma de casa (versión sin pintar) y pequeños cajones numerados (1-24) para esconder dulces o regalos pequeños. Ideal para crear tradiciones familiares.",
                 mainImg: "https://i.postimg.cc/7LfVvZqZ/image59.png",
                 extraImgs: [
@@ -3023,10 +3110,10 @@
                     "https://i.postimg.cc/C1svPcGs/017d3e9c-6c06-4e7f-9231-d4090e579566.png"
                 ]
             },
-            // NUEVO JS
             CalendarioAdvientoColor: {
                 title: "Calendario de adviento (Farol) a color",
-                price: "$ 22",
+                price: "$ 19", // Oferta Efectivo
+                normalPrice: "$ 22", // Tarjeta
                 description: "Versión a todo color (rojo, blanco, plata) con casa, trineo y pino en la parte superior. Incluye 24 cajones numerados.",
                 mainImg: "https://i.postimg.cc/KYB2HNG9/1762286448639-Editado.png",
                 extraImgs: [
@@ -3037,7 +3124,8 @@
             },
             TrineoAdviento: {
                 title: "Trineo Calendario de Adviento",
-                price: "$ 18",
+                price: "$ 15", // Oferta Efectivo
+                normalPrice: "$ 18", // Tarjeta
                 description: "Calendario de adviento con diseño de trineo de Santa en color rojo y detalles de madera. Incluye 24 pequeños cajones para regalos.",
                 mainImg: "https://i.postimg.cc/vmczRZGT/image60.png",
                 extraImgs: [
@@ -3050,7 +3138,8 @@
             // GRUPO 2: CAJAS CULTURALES Y TEMÁTICAS
             MamaNegra: {
                 title: "Caja Mama Negra",
-                price: "$ 15",
+                price: "$ 12,75", // Oferta Efectivo
+                normalPrice: "$ 15", // Tarjeta
                 description: "Escena cultural de la Fiesta de la Mama Negra (Ecuador) en formato de caja expositora. Incluye figuras coloridas y detalladas con fondo escénico.",
                 mainImg: "https://i.postimg.cc/2yFddq7g/image112.png",
                 extraImgs: [
@@ -3061,7 +3150,8 @@
             },
             DiabladaPillaro: {
                 title: "Caja Diablada de Píllaro",
-                price: "$ 15",
+                price: "$ 12,75", // Oferta Efectivo
+                normalPrice: "$ 15", // Tarjeta
                 description: "Escena cultural de la Diablada de Píllaro (Ecuador) en caja expositora. Figuras de diablos y personajes folclóricos detallados y coloridos, con fondo de callejón.",
                 mainImg: "https://i.postimg.cc/9XwsSr2P/image49.png",
                 extraImgs: [
@@ -3072,9 +3162,10 @@
                 ]
             },
             CarnavalGuaranda: {
-                title: "Caja Carnaval de Guaranda",
-                price: "$ 15",
-                description: "Escena cultural del Carnaval de Guaranda (Ecuador). Incluye figuras representativas como el Taita Carnaval y la Reina del Carnaval, con fondo de plaza de pueblo.",
+                title: "Caja Carnaval de Guaranda (Cultural)",
+                price: "$ 12,75", // Oferta Efectivo
+                normalPrice: "$ 15", // Tarjeta
+                description: "Escena cultural ecuatoriana del Carnaval de Guaranda en caja expositora.",
                 mainImg: "https://i.postimg.cc/J0c33yQh/image119.png",
                 extraImgs: [
                     "https://i.postimg.cc/ZnFPP9Lm/image117.jpg",
@@ -3086,7 +3177,8 @@
             // GRUPO 3: DECORACIÓN ILUMINADA Y BUZONES
             FarolCuentaRegresiva: {
                 title: "Farol Cuenta Regresiva",
-                price: "$ 3,50", // Precio corregido de tu archivo original
+                price: "$ 3", // Oferta Efectivo
+                normalPrice: "$ 3,50", // Tarjeta
                 description: "Calendario de adviento interactivo con forma de farol. Permite cambiar manually las placas de números. Un elemento decorativo y funcional para la cuenta atrás navideña.",
                 mainImg: "https://i.postimg.cc/fRHKg9Q9/image56.png",
                 extraImgs: [
@@ -3097,7 +3189,8 @@
             },
             CiudadEnCaja: {
                 title: "Ciudad en caja",
-                price: "$ 15",
+                price: "$ 13", // Oferta Efectivo
+                normalPrice: "$ 15", // Tarjeta
                 description: "Pieza decorativa de madera 3D de alta complejidad, ideal para decoración navideña temática o urbana. Piezas totalmente personalizables en grabado y color.",
                 mainImg: "https://i.postimg.cc/KvDQBW9z/image21.png",
                 extraImgs: [
@@ -3108,7 +3201,8 @@
             },
             CajaEscenaNavidena: {
                 title: "Caja escena navideña",
-                price: "$ 13",
+                price: "$ 11", // Oferta Efectivo
+                normalPrice: "$ 13", // Tarjeta
                 description: "Caja expositora con figuras navideñas (Santa, Reno, Sra. Claus) en dos niveles.",
                 mainImg: "https://i.postimg.cc/xTrBSnjm/image52.png",
                 extraImgs: [
@@ -3120,7 +3214,8 @@
             },
             NacimientoAndino: {
                 title: "Nacimiento Andino (Grande)",
-                price: "$ 13",
+                price: "$ 11", // Oferta Efectivo
+                normalPrice: "$ 13", // Tarjeta
                 description: "Pesebre con un diseño cultural único, figuras en estilo andino con vestimenta colorida. Presentado en una caja expositora que simula un entorno andino. Incluye todas las figuras tradicionales.",
                 mainImg: "https://i.postimg.cc/1zfHx3yK/image65.png",
                 extraImgs: [
@@ -3131,7 +3226,8 @@
             },
             CasaJugueteria: {
                 title: "Casa Juguetería Multiusos",
-                price: "$ 13",
+                price: "$ 11", // Oferta Efectivo
+                normalPrice: "$ 13", // Tarjeta
                 description: "Caja multiusos con diseño temático de tienda de juguetes ('Toy Store'). Ideal para guardar o entregar peluches y otros regalos.",
                 mainImg: "https://i.postimg.cc/MTBTzrpz/40a9594a-472f-45cd-a01d-a88ad10aedad.png",
                 extraImgs: [
@@ -3144,7 +3240,8 @@
             },
             BuzonConBase: {
                 title: "Buzón de Deseos con Base",
-                price: "$ 12",
+                price: "$ 10,50", // Oferta Efectivo
+                normalPrice: "$ 12", // Tarjeta
                 description: "Buzón rojo de madera sobre una base alta, ideal para colocar cartas a Santa o mensajes de deseos. Diseño clásico americano.",
                 mainImg: "https://i.postimg.cc/HLRtT1LS/image72.png",
                 extraImgs: [
@@ -3155,7 +3252,8 @@
             },
             BuzonNavideno: {
                 title: "Buzón Navideño (Clásico)",
-                price: "$ 12",
+                price: "$ 10,50", // Oferta Efectivo
+                normalPrice: "$ 12", // Tarjeta
                 description: "Buzón estilo barril 'Express Mail' o 'Buzón de los Deseos'. Decoración navideña de madera pintada de rojo, ideal para la mesa o la entrada.",
                 mainImg: "https://i.postimg.cc/k5zy7P5H/image75.png",
                 extraImgs: [
@@ -3166,7 +3264,8 @@
             },
             ArbolConLuces: {
                 title: "Árbol de navidad con Luces y escena 1",
-                price: "$ 12",
+                price: "$ 10,50", // Oferta Efectivo
+                normalPrice: "$ 12", // Tarjeta
                 description: "Estructura de un típico árbol navideño pintado de verde con escenas interiores caladas (muñecos de nieve, renos). Diseñado con luces LED internas.",
                 mainImg: "https://i.postimg.cc/0NFC91Q1/image78.png",
                 extraImgs: [
@@ -3177,7 +3276,8 @@
             },
             ArbolConLuces2: {
                 title: "Árbol de navidad con Luces y escena 2",
-                price: "$ 12",
+                price: "$ 10,50", // Oferta Efectivo
+                normalPrice: "$ 12", // Tarjeta
                 description: "Estructura de un típico árbol navideño pintado de verde con escenas interiores caladas (muñecos de nieve, renos). Diseñado con luces LED internas.",
                 mainImg: "https://i.postimg.cc/0jS3JHnZ/image36.png",
                 extraImgs: [
@@ -3190,7 +3290,8 @@
             // GRUPO 4: CAJAS Y REGALOS DE VALOR BAJO/MEDIO
             CarroCuentaRegresiva: {
                 title: "Carro Cuenta Regresiva",
-                price: "$ 10",
+                price: "$ 8,50", // Oferta Efectivo
+                normalPrice: "$ 10", // Tarjeta
                 description: "Decoración con camioneta y calendario de adviento circular integrado. Un diseño rústico y moderno para la cuenta regresiva hasta Navidad.",
                 mainImg: "https://i.postimg.cc/qvmLZ3HK/image57.png",
                 extraImgs: [
@@ -3199,7 +3300,8 @@
             },
             CasaCaramelos: {
                 title: "Casa de caramelos (Gingerbread)",
-                price: "$ 10",
+                price: "$ 8,50", // Oferta Efectivo
+                normalPrice: "$ 10", // Tarjeta
                 description: "Caja de regalo temática con diseño de casa de jengibre. Ideal para dulces y pequeños obsequios navideños.",
                 mainImg: "https://i.postimg.cc/SRQwgJ5W/IMG-20251028-102912-Editado.png",
                 extraImgs: [
@@ -3212,7 +3314,8 @@
             },
             NacimientoNivelesLed: {
                 title: "Nacimiento por niveles con luz led",
-                price: "$ 10",
+                price: "$ 8,50", // Oferta Efectivo
+                normalPrice: "$ 10", // Tarjeta
                 description: "Pesebre de madera cortada a láser con figuras estilo 'chibi' distribuidas en varios niveles. Incluye iluminación LED cálida.",
                 mainImg: "https://i.postimg.cc/7LC9ycfB/IMG-20251028-153343-Editado.png", 
                 extraImgs: [
@@ -3224,7 +3327,8 @@
             },
             EstrellaGrandeIluminada: { 
                 title: "Estrella con decoración iluminada grande",
-                price: "$ 6,50",
+                price: "$ 5,50", // Oferta Efectivo
+                normalPrice: "$ 6,50", // Tarjeta
                 description: "Decoración en forma de estrella con escena navideña o nacimiento en capas. Incluye luz LED para un efecto nocturno.",
                 mainImg: "https://i.postimg.cc/PqB4f4Df/IMG-20251028-162644-Editado.png", 
                 extraImgs: [
@@ -3235,7 +3339,8 @@
             },
             NacimientoPequeno: {
                 title: "Nacimiento pequeño",
-                price: "$ 9",
+                price: "$ 8", // Oferta Efectivo
+                normalPrice: "$ 9", // Tarjeta
                 description: "Modelo tradicional o andino en caja portátil. Perfecto para espacios pequeños o como regalo. Figuras detalladas.",
                 mainImg: "https://i.postimg.cc/gjh56Bsj/image32.png",
                 extraImgs: [
@@ -3246,7 +3351,8 @@
             },
             LetreroSantaGrande: {
                 title: "Letrero de Santa Grande",
-                price: "$ 8,50", 
+                price: "$ 7,25", // Oferta Efectivo
+                normalPrice: "$ 8,50", // Tarjeta
                 description: "Letrero robusto de mayor tamaño con Elfo. Presenta más detalles de grabado y color, ideal para la entrada o el exterior",
                 mainImg: "https://i.postimg.cc/CKCqfkcq/image1.png", 
                 extraImgs: [
@@ -3257,7 +3363,8 @@
             },
             CasaGrandeMultiusos: {
                 title: "Casa grande multiusos",
-                price: "$ 8",
+                price: "$ 5", // Oferta Efectivo
+                normalPrice: "$ 8", // Tarjeta
                 description: "Casa alta decorativa (color azul y blanco), ideal para contener luces LED, pequeños regalos y dulces. Diseño de dos pisos con amplias ventanas y techo de nieve.",
                 mainImg: "https://i.postimg.cc/268TFMzV/image17.png",
                 extraImgs: [
@@ -3268,7 +3375,8 @@
             },
             CasaTechoBajo: {
                 title: "Casa multiusos techo bajo",
-                price: "$ 8",
+                price: "$ 5", // Oferta Efectivo
+                normalPrice: "$ 8", // Tarjeta
                 description: "Casa decorativa de un piso con diseño de balcón y techo rústico. Ideal para luces LED, pequeños regalos y dulces. Presentada en color azul y blanco.",
                 mainImg: "https://i.postimg.cc/FRsGg89j/image22.png",
                 extraImgs: [
@@ -3279,7 +3387,8 @@
             },
             GnomoFarol: {
                 title: "Gnomo farol",
-                price: "$ 8",
+                price: "$ 7", // Oferta Efectivo
+                normalPrice: "$ 8", // Tarjeta
                 description: "Figura decorativa de Gnomo con gorro rojo y espacio para luz en su base. El gorro tiene detalles calados de copos de nieve.",
                 mainImg: "https://i.postimg.cc/Y9Fz9DGk/image86.png",
                 extraImgs: [
@@ -3289,7 +3398,8 @@
             },
             CasaParaDulcesVerde: {
                 title: "Casa para dulces verde",
-                price: "$ 7,50",
+                price: "$ 6,50", // Oferta Efectivo
+                normalPrice: "$ 7,50", // Tarjeta
                 description: "Caja con diseño de casa rústica en color verde y tejado de nieve, con asa para llevar. Ideal para dulces o pequeños obsequios.",
                 mainImg: "https://i.postimg.cc/FFgrGSfV/IMG-20251028-103651-Editado.png",
                 extraImgs: [
@@ -3300,7 +3410,8 @@
             },
             CasaMultiusosRoja: {
                 title: "Casa multiusos roja",
-                price: "$ 6,500",
+                price: "$ 5,50", // Oferta Efectivo
+                normalPrice: "$ 6,50", // Tarjeta
                 description: "Caja con diseño de casa simple en color rojo, ideal como envoltorio de regalo o caja de dulces. Incluye asa.",
                 mainImg: "https://i.postimg.cc/t41H0ngk/IMG-20251028-103214-Editado.png",
                 extraImgs: [
@@ -3311,7 +3422,8 @@
             },
             FarolNavidenoCuadrado: {
                 title: "Farol navideño (Cuadrado)",
-                price: "$ 6",
+                price: "$ 5", // Oferta Efectivo
+                normalPrice: "$ 6", // Tarjeta
                 description: "Farol de cubo con figuras navideñas caladas y espacio para luz interior. Ideal para decoración de mesa o repisa.",
                 mainImg: "https://i.postimg.cc/K89NsMS6/image48.png",
                 extraImgs: [
@@ -3321,7 +3433,8 @@
             },
             FarolNavidenoConejos: {
                 title: "Farol navideño (Conejos)",
-                price: "$ 5",
+                price: "$ 4,50", // Oferta Efectivo
+                normalPrice: "$ 5", // Tarjeta
                 description: "Farol de madera con figuras caladas de animales. Ideal para luz LED interior.",
                 mainImg: "https://i.postimg.cc/W1p8n7CP/image43.png",
                 extraImgs: [
@@ -3329,7 +3442,8 @@
             },
             CasaPequenaDulces: {
                 title: "Casa pequeña para dulces",
-                price: "$ 5",
+                price: "$ 4,25", // Oferta Efectivo
+                normalPrice: "$ 5", // Tarjeta
                 description: "Caja pequeña y económica con forma de casa roja y tejado de nieve. Perfecta para cajas de dulces y regalos pequeños.",
                 mainImg: "https://i.postimg.cc/VsBf4tSg/IMG-20251028-103430-Editado.png",
                 extraImgs: [
@@ -3340,7 +3454,8 @@
             },
             ArbolitoSimple: {
                 title: "Arbolito (Estructura)",
-                price: "$ 5",
+                price: "$ 4,50", // Oferta Efectivo
+                normalPrice: "$ 5", // Tarjeta
                 description: "Estructura de pino 3D (Sin pintar). Incluye estrella.",
                 mainImg: "https://i.postimg.cc/9FY1Zkx1/image29.png",
                 extraImgs: []
@@ -3349,7 +3464,8 @@
             // GRUPO 5: ARTÍCULOS BASE Y ECONÓMICOS
             LetreroSantaPequeno: {
                 title: "Letrero de Santa Pequeño",
-                price: "$ 3,500",
+                price: "$ 3", // Oferta Efectivo
+                normalPrice: "$ 3,50", // Tarjeta
                 description: "Letrero compacto con figura de Elfo y base, ideal para decoración de mesa. Perfecto para colocar junto al árbol.",
                 mainImg: "https://i.postimg.cc/kgjchbPX/image52.png", 
                 extraImgs: [
@@ -3359,7 +3475,8 @@
             },
             CajasOcasion: {
                 title: "Cajas Decorativas (Toda Ocasión)",
-                price: "Desde $ 2",
+                price: "$ 1,70", // Oferta Efectivo
+                normalPrice: "$ 2", // Tarjeta
                 description: "Amplia gama de cajas de regalo y organizadoras de madera. Incluye modelos con tapas caladas, cierres de corazón y diferentes formas. Precio base para el modelo más sencillo.",
                 mainImg: "https://i.postimg.cc/J0WcB3ZN/image100.png",
                 extraImgs: [
@@ -3370,7 +3487,8 @@
             },
             Candelabros: {
                 title: "Candelabros y Portavelas",
-                price: "Desde $ 2",
+                price: "$ 1,70", // Oferta Efectivo
+                normalPrice: "$ 2", // Tarjeta
                 description: "Portavelas decorativos de madera en varios modelos y tamaños. Ideal para velas LED o pequeñas. Los precios varían según el diseño simple o con casitas integradas.",
                 mainImg: "https://i.postimg.cc/kXvwKHj8/image25.png",
                 extraImgs: [
@@ -3380,7 +3498,8 @@
             },
             CasitasNavidenasDesde: {
                 title: "Casitas Navideñas (Varios Modelos)",
-                price: "Desde $ 2",
+                price: "$ 1,70", // Oferta Efectivo
+                normalPrice: "$ 2", // Tarjeta
                 description: "Gran variedad de casas y estructuras de pueblo para armar villas navideñas. Los modelos más pequeños inician en $2. Ideales para decorar repisas o maquetas.",
                 mainImg: "https://i.postimg.cc/fRHKg9nP/image46.png",
                 extraImgs: [
@@ -3391,7 +3510,8 @@
             },
             Arbolitos: {
                 title: "Arbolitos (Diferentes Estilos)",
-                price: "Desde $ 1",
+                price: "$ 0,85", // Oferta Efectivo
+                normalPrice: "$ 1", // Tarjeta
                 description: "Colección de diferentes modelos de árboles decorativos y bases. Incluye modelos sencillos desde $1 y estructuras complejas. Pregunte por modelos personalizables.",
                 mainImg: "https://i.postimg.cc/WbwSgy9b/image23.png",
                 extraImgs: [
@@ -3401,7 +3521,8 @@
             },
             BombillosAdornos: {
                 title: "Bombillos / Adornos Colgantes",
-                price: "Desde $ 1",
+                price: "$ 0,85", // Oferta Efectivo
+                normalPrice: "$ 1", // Tarjeta
                 description: "Adornos decorativos de madera para árbol o espacios, desde diseños sencillos ($1) hasta diseños calados complejos o pintados. Totalmente personalizables en forma y grabado.",
                 mainImg: "https://i.postimg.cc/CLsJk2v4/image28.png",
                 extraImgs: [
@@ -3411,7 +3532,8 @@
             },
             CajaHalloween: {
                 title: "Caja Halloween (Para Dulces)",
-                price: "Desde $ 15",
+                price: "$ 12,75", // Oferta Efectivo
+                normalPrice: "$ 15", // Tarjeta
                 description: "Caja temática de Halloween para decoración o como dispensador de dulces. Se ofrece con y sin dulces, el precio varía según el contenido.",
                 mainImg: "https://i.postimg.cc/nVv1f5fB/image122.png",
                 extraImgs: [
@@ -3422,7 +3544,8 @@
             },
             VelasDisenos: {
                 title: "Velas con Diseños y Logos",
-                price: "¡Consultar!",
+                price: "$ 2,50", // Oferta Efectivo
+                normalPrice: "$ 3", // Tarjeta
                 description: "Velas impresas para bautizos, Navidad o eventos corporativos. El precio varía según el tamaño, diseño y cantidad.",
                 mainImg: "https://i.postimg.cc/JnJjh06J/Velas.png",
                 extraImgs: [
@@ -3432,10 +3555,109 @@
                 ]
             },
 
-            // --- INICIO DE PRODUCTOS NUEVOS AÑADIDOS AL SCRIPT ---
+            // --- PRODUCTOS ADICIONALES (con ambos precios) ---
+            NacimientoColgante: {
+                title: "Nacimiento colgante",
+                price: "$ 1,70", // Oferta Efectivo
+                normalPrice: "$ 2", // Tarjeta
+                description: "Adorno circular de pesebre para colgar o base.",
+                mainImg: "https://i.postimg.cc/4dcQd277/image91.png",
+                extraImgs: []
+            },
+            EscenaNavidenaMini: {
+                title: "Escena navideña (Miniatura)",
+                price: "$ 1,25", // Oferta Efectivo
+                normalPrice: "$ 1,50", // Tarjeta
+                description: "Miniaturas de madera para armar escenas.",
+                mainImg: "https://i.postimg.cc/CLsJk2v5/image22.png",
+                extraImgs: []
+            },
+            CasitasLuz: {
+                title: "Casitas navideñas con luz",
+                price: "$ 3,50", // Oferta Efectivo
+                normalPrice: "$ 4", // Tarjeta
+                description: "Casitas con espacio para colocar una vela LED.",
+                mainImg: "https://i.postimg.cc/MpZ5DYN2/image42.png",
+                extraImgs: []
+            },
+            CasasMedianas: {
+                title: "Casas medianas y con adornos",
+                price: "$ 4,25", // Oferta Efectivo
+                normalPrice: "$ 5", // Tarjeta
+                description: "Modelos más grandes con detalles de nieve y color.",
+                mainImg: "https://i.postimg.cc/mgdw6HWW/image50.png",
+                extraImgs: []
+            },
+            CajaCopos: {
+                title: "Caja con copos",
+                price: "$ 4,50", // Oferta Efectivo
+                normalPrice: "$ 5", // Tarjeta
+                description: "Caja decorativa con calados de copos de nieve.",
+                mainImg: "https://i.postimg.cc/P5fy4Mcb/image34.png",
+                extraImgs: []
+            },
+            CajaFunda: {
+                title: "Caja tipo funda",
+                price: "$ 3", // Oferta Efectivo
+                normalPrice: "$ 3,50", // Tarjeta
+                description: "Caja para regalo con asa, fácil de transportar.",
+                mainImg: "https://i.postimg.cc/Jz7xqQg6/image37.png",
+                extraImgs: []
+            },
+            CajaArbol: {
+                title: "Caja de árbol",
+                price: "$ 3,50", // Oferta Efectivo
+                normalPrice: "$ 4", // Tarjeta
+                description: "Caja con forma de árbol para regalos o dulces.",
+                mainImg: "https://i.postimg.cc/GhxzGfMq/image31.png",
+                extraImgs: []
+            },
+            LetreroHOHOHO: {
+                title: "Letrero HOHOHO",
+                price: "$ 3,25", // Oferta Efectivo
+                normalPrice: "$ 4", // Tarjeta
+                description: "Letrero de mesa con letras y muñeco de nieve.",
+                mainImg: "https://i.postimg.cc/HLV2GkTr/image62.png",
+                extraImgs: []
+            },
+            SantaSurfista: {
+                title: "Santa surfista",
+                price: "$ 3", // Oferta Efectivo
+                normalPrice: "$ 3,50", // Tarjeta
+                description: "Figura decorativa de Santa Claus con tabla de surf.",
+                mainImg: "https://i.postimg.cc/g2MDBZbJ/image54.png",
+                extraImgs: []
+            },
+            EstrellaPequenaBombillo: {
+                title: "Estrella con decoración pequeña tipo bombillo",
+                price: "$ 3", // Oferta Efectivo
+                normalPrice: "$ 3,50", // Tarjeta
+                description: "Adorno colgante tipo bombillo en forma de estrella con escena navideña o nacimiento.",
+                mainImg: "https://i.postimg.cc/fb6KWK9f/IMG-20251028-153746-Editado.png",
+                extraImgs: []
+            },
+            AdornoPuerta: {
+                title: "Adorno de puerta (Esquinero)",
+                price: "$ 1,25", // Oferta Efectivo
+                normalPrice: "$ 1,50", // Tarjeta
+                description: "Adorno para colocar en la esquina superior de un marco.",
+                mainImg: "https://i.postimg.cc/7LfVvZq2/image63.png",
+                extraImgs: []
+            },
+            CasitasMini: {
+                title: "Casitas (Miniaturas $2.50)",
+                price: "$ 2", // Oferta Efectivo
+                normalPrice: "$ 2,50", // Tarjeta
+                description: "Miniaturas de casas decorativas con detalles de color.",
+                mainImg: "https://i.postimg.cc/pLVCZB73/image40.png",
+                extraImgs: []
+            },
+            
+            // --- PRODUCTOS NUEVOS CON AMBOS PRECIOS ---
             TrenAColor: {
                 title: "Tren a color",
-                price: "$ 30",
+                price: "$ 25", // Oferta Efectivo
+                normalPrice: "$ 30", // Tarjeta
                 description: "Colorido tren navideño de madera con vagones. Ideal como centro de mesa o para complementar la ciudad navideña. Medidas: 73cm largo, 14cm ancho, 18cm alto.",
                 mainImg: "https://i.postimg.cc/1z3QbSpt/1762739111950-Editado.png",
                 extraImgs: [
@@ -3447,7 +3669,8 @@
             },
             TrineoDeAdvientoAColor: {
                 title: "Trineo de adviento a color",
-                price: "$ 22",
+                price: "$ 19", // Oferta Efectivo
+                normalPrice: "$ 22", // Tarjeta
                 description: "Versión a color del trineo de adviento. Incluye 24 cajones numerados para la cuenta regresiva.",
                 mainImg: "https://i.postimg.cc/qBY9QnbH/1762739112060-Editado.png",
                 extraImgs: [
@@ -3457,7 +3680,8 @@
             },
             EscenaNavidenaAColor: {
                 title: "Escena navideña a color",
-                price: "$ 3",
+                price: "$ 2,50", // Oferta Efectivo
+                normalPrice: "$ 3", // Tarjeta
                 description: "Pequeña escena navideña a color. Perfecta para escritorios, repisas o como un detalle económico.",
                 mainImg: "https://i.postimg.cc/25wsxKMr/1762739112226-Editado.png",
                 extraImgs: [
@@ -3467,7 +3691,8 @@
             },
             CasaMultiusosCafe: {
                 title: "Casa multiusos café",
-                price: "$ 3,50",
+                price: "$ 3", // Oferta Efectivo
+                normalPrice: "$ 3,50", // Tarjeta
                 description: "Casa multiusos en tonos café (madera natural o pintada). Ideal para dulces o como un pequeño regalo.",
                 mainImg: "https://i.postimg.cc/vBKSqFvt/1762739112355-Editado.png",
                 extraImgs: [
@@ -3478,7 +3703,8 @@
             },
             TrineoConRenos: {
                 title: "Trineo con renos",
-                price: "$ 10",
+                price: "$ 8,50", // Oferta Efectivo
+                normalPrice: "$ 10", // Tarjeta
                 description: "Decoración clásica de trineo de Santa con renos. Una pieza elegante para cualquier espacio.",
                 mainImg: "https://i.postimg.cc/15DsqJmx/1762739112375-Editado.png",
                 extraImgs: [
@@ -3488,7 +3714,8 @@
             },
             BuzonNavidenoLargo: {
                 title: "Buzón navideño Largo",
-                price: "$ 16",
+                price: "$ 14", // Oferta Efectivo
+                normalPrice: "$ 16", // Tarjeta
                 description: "Buzón navideño de mayor tamaño (largo), perfecto para recolectar cartas o como pieza central decorativa.",
                 mainImg: "https://i.postimg.cc/zvJ3c6XC/1762788500808-Editado.png",
                 extraImgs: [
@@ -3500,7 +3727,8 @@
             },
             Cascanueces: {
                 title: "Cascanueces",
-                price: "$ 6",
+                price: "$ 5", // Oferta Efectivo
+                normalPrice: "$ 6", // Tarjeta
                 description: "Figura clásica de cascanueces de madera. Un ícono de la decoración navideña.",
                 mainImg: "https://i.postimg.cc/sx6f02Nm/1762788501393-Editado.png",
                 extraImgs: [
@@ -3512,7 +3740,8 @@
             },
             CascanuecesTambor: {
                 title: "Cascanueces tambor",
-                price: "$ 6",
+                price: "$ 5", // Oferta Efectivo
+                normalPrice: "$ 6", // Tarjeta
                 description: "Figura de cascanueces con un tambor. Detalle clásico para coleccionistas y decoración.",
                 mainImg: "https://i.postimg.cc/TYNhtk8X/1762788501262-Editado.png",
                 extraImgs: [
@@ -3520,12 +3749,11 @@
                     "https://i.postimg.cc/DzLZynSr/1762788501093-Editado.png",
                     "https://i.postimg.cc/VkSvpj1g/1762788500876-Editado.png"
                 ]
-            }
-            // --- FIN DE PRODUCTOS NUEVOS ---
-            , // <-- IMPORTANTE: Añade esta coma después del } de CascanuecesTambor
+            },
             NacimientoAndinoOtavalo: {
                 title: "Nacimiento Andino Otavalo",
-                price: "$ 11", // <-- Precio final de Black Friday
+                price: "$ 11", // Oferta Efectivo
+                normalPrice: "$ 13", // Tarjeta
                 description: "Escena cultural del tradicional nacimiento Andino, con figuras vestidas con los icónicos ponchos y trajes de Otavalo. Una pieza colorida que celebra la Navidad con identidad ecuatoriana.",
                 mainImg: "https://i.postimg.cc/fySWkdFJ/IMG_20251115_185609_Editado.png",
                 extraImgs: [
@@ -3537,7 +3765,8 @@
             },
             NacimientoAndinoSaraguro: {
                 title: "Nacimiento Andino Saraguro",
-                price: "$ 11", // <-- Precio final de Black Friday
+                price: "$ 11", // Oferta Efectivo
+                normalPrice: "$ 13", // Tarjeta
                 description: "Escena cultural que representa el nacimiento de Jesús con las distintivas vestimentas negras, ponchos y sombreros del pueblo Saraguro. Un homenaje a las tradiciones andinas en una pieza decorativa.",
                 mainImg: "https://i.postimg.cc/13hXnWyR/IMG_20251115_185349_Editado.png",
                 extraImgs: [
@@ -3549,7 +3778,8 @@
             },
             TrenMedianoDelExpresoPolar: {
                 title: "Tren mediano del expreso polar",
-                price: "$ 16", // <-- Precio final de Black Friday
+                price: "$ 16", // Oferta Efectivo
+                normalPrice: "$ 19", // Tarjeta
                 description: "Inspirado en el clásico cuento navideño, este tren de tamaño mediano es perfecto para decorar bajo el árbol o como centro de mesa. Incluye locomotora y vagones con detalles festivos.",
                 mainImg: "https://i.postimg.cc/RV3Jn6fy/1763252484552_Editado.png",
                 extraImgs: [
@@ -3560,7 +3790,8 @@
             },
             ArbolMinimalistaDeLujoConIluminacin: {
                 title: "Arbol minimalista de lujo con iluminación",
-                price: "$ 47", // <-- Precio final de Black Friday
+                price: "$ 47", // Oferta Efectivo
+                normalPrice: "$ 55", // Tarjeta
                 description: "Un árbol de Navidad de gran formato (105 cm) con un diseño moderno y minimalista. Fabricado en madera de alta calidad, incluye un sistema de iluminación LED con diversos modos para crear un ambiente lujoso y contemporáneo.",
                 mainImg: "https://i.postimg.cc/15Ln0mrZ/1763252484635_Editado.png",
                 extraImgs: [
@@ -3570,7 +3801,8 @@
             },
             CajaDiabladaMiniatura: {
                 title: "Caja Diablada Pillaro (Miniatura)",
-                price: "$ 8,50", // <-- Precio final de Black Friday
+                price: "$ 8,50", // Oferta Efectivo
+                normalPrice: "$ 10", // Tarjeta
                 description: "Versión miniatura de la popular caja cultural 'Diablada de Píllaro'. Una escena folclórica detallada en formato compacto (10x10 cm).",
                 mainImg: "https://i.postimg.cc/j5Fdsc8N/IMG_20251115_190100_Editado.png",
                 extraImgs: [
