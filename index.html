@@ -413,42 +413,6 @@
             padding: 0 4px;
             box-sizing: border-box;
         }
-/* --- INICIO: ESTILOS DE OFERTA BLACK FRIDAY --- */
-        .price-label-oferta {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            line-height: 1.2;
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .price-label-oferta .badge-oferta {
-            font-size: 0.875rem; 
-            color: white; 
-            background-color: #ef4444; /* Rojo */
-            padding: 2px 8px; 
-            border-radius: 4px; 
-            font-weight: 700; 
-            margin-bottom: 4px;
-            display: inline-block;
-        }
-        .price-label-oferta .precios-oferta {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-        .price-label-oferta .precio-anterior {
-            font-size: 1.25rem; 
-            font-weight: 600; 
-            color: #9ca3af; /* Gris */
-            text-decoration: line-through;
-        }
-        .price-label-oferta .precio-final {
-            font-size: 1.6rem; 
-            font-weight: 800; 
-            color: #1f2937; /* Negro Oscuro */
-        }
-        /* --- FIN: ESTILOS DE OFERTA BLACK FRIDAY --- */
 </style>
 </head>
 <body class="antialiased">
@@ -457,7 +421,7 @@
 <div id="header-container">
 <!-- Logo y Nombre (Corregido: Logo 100x100) -->
 <div class="header-logo-info" style="gap: 0.75rem;">
-<a href="#" title="Ideas &amp; D´talles Logo">
+<a href="#" title="Ideas &amp; D'talles Logo">
 <img alt="Logo Ideas &amp; D´talles" src="https://i.postimg.cc/SjSPcbC1/image19.png" style="width: 100px; height: 100px; object-fit: contain;"/>
 </a>
 <div class="text-left header-text">
@@ -516,13 +480,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Kit de decoración avanzado que incluye 14 casas, un tren, un puente, letreros decorativos y un farol o un faro. Piezas detalladas ideales para crear una gran villa navideña.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 5 centímetros, ancho 4 centímetros, altura 6 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 35</span>
-                <span class="precio-final">$ 30</span>
-            </div>
-        </div>
+        <div class="price-label">$ 35</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CiudadCompleta')">
@@ -537,7 +495,7 @@
 <!-- Producto: Castillo de navidad Smart -->
 <div class="product-card">
     <div class="image-container" onclick="openModal('CastilloNavidad')">
-        <img alt="Castillo de navidad Smart" id="CastilloNavidad-main-img" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Castillo+de+navidad+Smart';" src="https://i.postimg.cc/bJn9JVDh/image85.png"/>
+        <img alt="Castillo de navidad Smart" id="CastilloNavidad-main-img" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Castillo+de+navidad+Smart';" src="https://i.postimg.cc/Pq4b03Kh/IMG_20251124_182252_036_Editada.png"/>
     </div>
     <div class="card-content">
         <div>
@@ -545,13 +503,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura detallada y armable de un castillo navideño, con múltiples niveles y figuras (gnomo). Compatible con sistemas Smart Home como Alexa y Google Home (requiere integración aparte). Una pieza de gran tamaño y decoración.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 20 centímetros, ancho 10 centímetros, altura 30 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 34</span>
-                <span class="precio-final">$ 29</span>
-            </div>
-        </div>
+        <div class="price-label">$ 34</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CastilloNavidad')">
@@ -574,13 +526,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Versión a todo color (verde, rojo, dorado) de la rueda armable. Incluye copo de nieve dorado y caseta de entrada.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 24 centímetros, ancho 16 centímetros, altura 29 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 24</span>
-                <span class="precio-final">$ 20</span>
-            </div>
-        </div>
+        <div class="price-label">$ 24</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('RuedaFortunaColor')">
@@ -603,13 +549,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Rueda de la Fortuna armable de gran tamaño (versión sin pintar). Una pieza de ingeniería en madera, perfecta para exhibición o para regalo. Funcional y detallada.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 24 centímetros, ancho 16 centímetros, altura 29 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 20</span>
-                <span class="precio-final">$ 17</span>
-            </div>
-        </div>
+        <div class="price-label">$ 20</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('RuedaFortuna')">
@@ -632,13 +572,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Colorido tren navideño de madera con vagones. Ideal como centro de mesa o para complementar la ciudad navideña. Medidas: 73cm largo, 14cm ancho, 18cm alto.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 73 centímetros, ancho 14 centímetros, altura 18 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 30</span>
-                <span class="precio-final">$ 25</span>
-            </div>
-        </div>
+        <div class="price-label">$ 30</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('TrenAColor')">
@@ -661,13 +595,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Inspirado en el clásico cuento navideño, este tren de tamaño mediano es perfecto para decorar bajo el árbol o como centro de mesa. Incluye locomotora y vagones con detalles festivos..</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;"></p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 19</span>
-                <span class="precio-final">$ 16</span>
-            </div>
-        </div>
+        <div class="price-label">$ 19</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('TrenMedianoDelExpresoPolar')">
@@ -692,13 +620,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Figura de cascanueces con un tambor. Detalle clásico para coleccionistas y decoración.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 11,50 centímetros, ancho 7,50 centímetros, altura 31 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 6</span>
-                <span class="precio-final">$ 5</span>
-            </div>
-        </div>
+        <div class="price-label">$ 6</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CascanuecesTambor')">
@@ -721,13 +643,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Figura clásica de cascanueces de madera. Un ícono de la decoración navideña.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 7,50 centímetros, ancho 7,50 centímetros, altura 31,50 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 6</span>
-                <span class="precio-final">$ 5</span>
-            </div>
-        </div>
+        <div class="price-label">$ 6</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('Cascanueces')">
@@ -752,13 +668,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Espectacular estructura de adviento multinivel con forma de árbol. Incluye 25 casitas numeradas que sirven como pequeños cajones o exhibidores.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 27 centímetros, ancho 27 centímetros, altura 40 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 26</span>
-                <span class="precio-final">$ 22</span>
-            </div>
-        </div>
+        <div class="price-label">$ 26</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CalendarioAdvientoArbolCasas')">
@@ -781,13 +691,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Versión a todo color (rojo, blanco, plata) con casa, trineo y pino en la parte superior. Incluye 24 cajones numerados.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 30 centímetros, ancho 20 centímetros, altura 20 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 22</span>
-                <span class="precio-final">$ 19</span>
-            </div>
-        </div>
+        <div class="price-label">$ 22</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CalendarioAdvientoColor')">
@@ -810,13 +714,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Elegante calendario con forma de casa (versión sin pintar) y pequeños cajones numerados (1-24) para esconder dulces o regalos pequeños. Ideal para crear tradiciones familiares.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 30 centímetros, ancho 20 centímetros, altura 20 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 18</span>
-                <span class="precio-final">$ 15</span>
-            </div>
-        </div>
+        <div class="price-label">$ 18</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CalendarioAdviento')">
@@ -839,13 +737,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Calendario de adviento con diseño de trineo de Santa en color rojo y detalles de madera. Incluye 24 pequeños cajones para regalos.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 40 centímetros, ancho 12 centímetros, altura 27 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 18</span>
-                <span class="precio-final">$ 15</span>
-            </div>
-        </div>
+        <div class="price-label">$ 18</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('TrineoAdviento')">
@@ -867,13 +759,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Versión a color del trineo de adviento. Incluye 24 cajones numerados para la cuenta regresiva.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 40 centímetros, ancho 12 centímetros, altura 27 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 22</span>
-                <span class="precio-final">$ 19</span>
-            </div>
-        </div>
+        <div class="price-label">$ 22</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('TrineoDeAdvientoAColor')">
@@ -896,13 +782,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Decoración clásica de trineo de Santa con renos. Una pieza elegante para cualquier espacio.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 32 centímetros, ancho 10,50 centímetros, altura 15 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 10</span>
-                <span class="precio-final">$ 8,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 10</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('TrineoConRenos')">
@@ -925,13 +805,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Calendario de adviento interactivo con forma de farol. Permite cambiar manually las placas de números. Un elemento decorativo y funcional para la cuenta atrás navideña.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 13 centímetros, ancho 8 centímetros, altura 17 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 3,50</span>
-                <span class="precio-final">$ 3</span>
-            </div>
-        </div>
+        <div class="price-label">$ 3,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('FarolCuentaRegresiva')">
@@ -954,13 +828,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Decoración con camioneta y calendario de adviento circular integrado. Un diseño rústico y moderno para la cuenta regresiva hasta Navidad.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 30 centímetros, ancho 2 centímetros, altura 40 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 10</span>
-                <span class="precio-final">$ 8,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 10</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CarroCuentaRegresiva')">
@@ -983,13 +851,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Un árbol de Navidad de gran formato (105 cm) con un diseño moderno y minimalista. Fabricado en madera de alta calidad, incluye un sistema de iluminación LED con diversos modos para crear un ambiente lujoso y contemporáneo..</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 52 centímetros, ancho 48 centímetros, altura 105 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 55</span>
-                <span class="precio-final">$ 47</span>
-            </div>
-        </div>
+        <div class="price-label">$ 55</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('ArbolMinimalistaDeLujoConIluminacin')">
@@ -1012,13 +874,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Árbol decorativo de madera en 3 niveles que exhibe una escena navideña completa: pesebre, Reyes Magos y una pequeña villa. Perfecto como centro de mesa.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 34 centímetros, ancho 16 centímetros, altura 43 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 26</span>
-                <span class="precio-final">$ 22</span>
-            </div>
-        </div>
+        <div class="price-label">$ 26</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('ArbolEscenaPesebre')">
@@ -1041,13 +897,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja expositora con figuras navideñas (Santa, Reno, Sra. Claus) en dos niveles.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 15 centímetros, ancho 15 centímetros, altura 13 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 13</span>
-                <span class="precio-final">$ 11</span>
-            </div>
-        </div>
+        <div class="price-label">$ 13</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CajaEscenaNavidena')">
@@ -1070,13 +920,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pesebre con un diseño cultural único, figuras en estilo andino con vestimenta colorida. Presentado en una caja expositora que simula un entorno andino. Incluye todas las figuras tradicionales.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 15 centímetros, ancho 15 centímetros, altura 13 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 13</span>
-                <span class="precio-final">$ 11</span>
-            </div>
-        </div>
+        <div class="price-label">$ 13</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('NacimientoAndino')">
@@ -1099,13 +943,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural del tradicional nacimiento Andino, con figuras vestidas con los icónicos ponchos y trajes de Otavalo. Una pieza colorida que celebra la Navidad con identidad ecuatoriana.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 15 centímetros, ancho 15 centímetros, altura 13 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 13</span>
-                <span class="precio-final">$ 11</span>
-            </div>
-        </div>
+        <div class="price-label">$ 13</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('NacimientoAndinoOtavalo')">
@@ -1128,13 +966,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural que representa el nacimiento de Jesús con las distintivas vestimentas negras, ponchos y sombreros del pueblo Saraguro. Un homenaje a las tradiciones andinas en una pieza decorativa.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 15 centímetros, ancho 15 centímetros, altura 13 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 13</span>
-                <span class="precio-final">$ 11</span>
-            </div>
-        </div>
+        <div class="price-label">$ 13</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('NacimientoAndinoSaraguro')">
@@ -1157,13 +989,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Modelo tradicional o andino en caja portátil. Perfecto para espacios pequeños o como regalo. Figuras detalladas.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 10 centímetros, ancho 10 centímetros, altura 8 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 9</span>
-                <span class="precio-final">$ 8</span>
-            </div>
-        </div>
+        <div class="price-label">$ 9</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('NacimientoPequeno')">
@@ -1186,13 +1012,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural del tradicional nacimiento en formato Andino, con figuras vestidas con los icónicos ponchos y trajes de Otavalo. Una pieza colorida que celebra la Navidad con identidad ecuatoriana en su versión más pequeña, también lo puedes pedir en estilo Saraguro.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 10 centímetros, ancho 10 centímetros, altura 8 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 10</span>
-                <span class="precio-final">$ 9</span>
-            </div>
-        </div>
+        <div class="price-label">$ 10</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('NacimientoAndinoOtavalo1')">
@@ -1215,13 +1035,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pesebre de madera cortada a láser con figuras estilo 'chibi' distribuidas en varios niveles. Incluye iluminación LED cálida.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 25 centímetros, ancho 11 centímetros, altura 24 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 10</span>
-                <span class="precio-final">$ 8,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 10</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('NacimientoNivelesLed')">
@@ -1244,13 +1058,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adorno circular de pesebre para colgar o base.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 15,50 centímetros, ancho 6,50 centímetros, altura 22 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 2</span>
-                <span class="precio-final">$ 1,70</span>
-            </div>
-        </div>
+        <div class="price-label">$ 2</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('NacimientoColgante')">
@@ -1273,13 +1081,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Miniaturas de madera para armar escenas.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 13 centímetros, ancho 7 centímetros, altura 22,50 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 1,50</span>
-                <span class="precio-final">$ 1,25</span>
-            </div>
-        </div>
+        <div class="price-label">$ 1,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('EscenaNavidenaMini')">
@@ -1302,13 +1104,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura de un típico árbol navideño pintado de verde con escenas interiores caladas (muñecos de nieve, renos). Diseñado con luces LED internas.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 18 centímetros, ancho 5 centímetros, altura 22 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 12</span>
-                <span class="precio-final">$ 10,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 12</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('ArbolConLuces')">
@@ -1331,13 +1127,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura de un típico árbol navideño pintado de verde con escenas interiores caladas (muñecos de nieve, renos). Diseñado con luces LED internas.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 18 centímetros, ancho 5 centímetros, altura 22 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 12</span>
-                <span class="precio-final">$ 10,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 12</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('ArbolConLuces2')">
@@ -1360,13 +1150,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Figura decorativa de Gnomo con gorro rojo y espacio para luz en su base. El gorro tiene detalles calados de copos de nieve.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 20 centímetros, ancho 10,50 centímetros, altura 32 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 8</span>
-                <span class="precio-final">$ 7</span>
-            </div>
-        </div>
+        <div class="price-label">$ 8</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('GnomoFarol')">
@@ -1389,13 +1173,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Decoración en forma de estrella con escena navideña o nacimiento en capas. Incluye luz LED para un efecto nocturno.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 18 centímetros, ancho 3 centímetros, altura 8 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 6,50</span>
-                <span class="precio-final">$ 5,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 6,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('EstrellaGrandeIluminada')">
@@ -1418,13 +1196,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adorno colgante tipo bombillo en forma de estrella con escena navideña o nacimiento.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 10 centímetros, ancho 2 centímetros, altura 10 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 3,50</span>
-                <span class="precio-final">$ 3</span>
-            </div>
-        </div>
+        <div class="price-label">$ 3,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('EstrellaPequenaBombillo')">
@@ -1447,13 +1219,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pequeña escena navideña a color. Perfecta para escritorios, repisas o como un detalle económico.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 24 centímetros, ancho 8 centímetros, altura 8 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 3</span>
-                <span class="precio-final">$ 2,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 3</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('EscenaNavidenaAColor')">
@@ -1476,13 +1242,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Farol de cubo con figuras navideñas caladas y espacio para luz interior. Ideal para decoración de mesa o repisa.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 12,50 centímetros, ancho 12,50 centímetros, altura 16 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 6</span>
-                <span class="precio-final">$ 5</span>
-            </div>
-        </div>
+        <div class="price-label">$ 6</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('FarolNavidenoCuadrado')">
@@ -1505,13 +1265,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Estructura de pino 3D (Sin pintar). Incluye estrella.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 11,50 centímetros, ancho 11,50 centímetros, altura 30 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 5</span>
-                <span class="precio-final">$ 4,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 5</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('ArbolitoSimple')">
@@ -1534,13 +1288,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Farol de madera con figuras caladas de animales. Ideal para luz LED interior.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 10 centímetros, ancho 10 centímetros, altura 22,50 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 5</span>
-                <span class="precio-final">$ 4,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 5</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('FarolNavidenoConejos')">
@@ -1563,13 +1311,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casitas con espacio para colocar una vela LED.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 9,50 centímetros, ancho 9,50 centímetros, altura 10 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 4</span>
-                <span class="precio-final">$ 3,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 4</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasitasLuz')">
@@ -1592,13 +1334,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Colección de diferentes modelos de árboles decorativos y bases. Incluye modelos sencillos desde $1 y estructuras complejas. Pregunte por modelos personalizables.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 4 centímetros, ancho 4 centímetros, altura 7 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 1</span>
-                <span class="precio-final">$ 0,85</span>
-            </div>
-        </div>
+        <div class="price-label">$ 1</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('Arbolitos')">
@@ -1621,13 +1357,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Pieza decorativa de madera 3D de alta complejidad, ideal para decoración navideña temática o urbana. Piezas totalmente personalizables en grabado y color.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 28 centímetros, ancho 7 centímetros, altura 19 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 15</span>
-                <span class="precio-final">$ 13</span>
-            </div>
-        </div>
+        <div class="price-label">$ 15</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CiudadEnCaja')">
@@ -1650,13 +1380,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja multiusos con diseño temático de tienda de juguetes ('Toy Store'). Ideal para guardar o entregar peluches y otros regalos.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 26 centímetros, ancho 19 centímetros, altura 16 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 13</span>
-                <span class="precio-final">$ 11</span>
-            </div>
-        </div>
+        <div class="price-label">$ 13</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasaJugueteria')">
@@ -1679,13 +1403,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja de regalo temática con diseño de casa de jengibre. Ideal para dulces y pequeños obsequios navideños.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 15 centímetros, ancho 15 centímetros, altura 25 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 10</span>
-                <span class="precio-final">$ 8,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 10</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasaCaramelos')">
@@ -1708,13 +1426,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casa alta decorativa (color azul y blanco), ideal para contener luces LED, pequeños regalos y dulces. Diseño de dos pisos con amplias ventanas y techo de nieve.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 14 centímetros, ancho 10 centímetros, altura 23 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 8</span>
-                <span class="precio-final">$ 5</span>
-            </div>
-        </div>
+        <div class="price-label">$ 8</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasaGrandeMultiusos')">
@@ -1737,13 +1449,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casa decorativa de un piso con diseño de balcón y techo rústico. Ideal para luces LED, pequeños regalos y dulces. Presentada en color azul y blanco.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 14 centímetros, ancho 10 centímetros, altura 14 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 8</span>
-                <span class="precio-final">$ 5</span>
-            </div>
-        </div>
+        <div class="price-label">$ 8</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasaTechoBajo')">
@@ -1766,13 +1472,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja con diseño de casa rústica en color verde y tejado de nieve, con asa para llevar. Ideal para dulces o pequeños obsequios.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 13 centímetros, ancho 12 centímetros, altura 20 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 7,50</span>
-                <span class="precio-final">$ 6,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 7,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasaParaDulcesVerde')">
@@ -1795,13 +1495,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja con diseño de casa simple en color rojo, ideal como envoltorio de regalo o caja de dulces. Incluye asa.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 12 centímetros, ancho 11 centímetros, altura 18 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 6,50</span>
-                <span class="precio-final">$ 5,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 6,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasaMultiusosRoja')">
@@ -1824,13 +1518,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja pequeña y económica con forma de casa roja y tejado de nieve. Perfecta para cajas de dulces y regalos pequeños.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 15 centímetros, ancho 15 centímetros, altura 13 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 5</span>
-                <span class="precio-final">$ 4,25</span>
-            </div>
-        </div>
+        <div class="price-label">$ 5</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasaPequenaDulces')">
@@ -1852,13 +1540,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Casa multiusos en tonos café (madera natural o pintada). Ideal para dulces o como un pequeño regalo.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 12 centímetros, ancho 9 centímetros, altura 16,50 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 3,50</span>
-                <span class="precio-final">$ 3</span>
-            </div>
-        </div>
+        <div class="price-label">$ 3,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasaMultiusosCafe')">
@@ -1881,13 +1563,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Modelos más grandes con detalles de nieve y color.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 10 centímetros, ancho 7 centímetros, altura 8 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 5</span>
-                <span class="precio-final">$ 4,25</span>
-            </div>
-        </div>
+        <div class="price-label">$ 5</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasasMedianas')">
@@ -1910,13 +1586,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Gran variedad de casas y estructuras de pueblo para armar villas navideñas. Los modelos más pequeños inician en $2. Ideales para decorar repisas o maquetas.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 11 centímetros, ancho 6,50 centímetros, altura 7,50 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 2</span>
-                <span class="precio-final">$ 1,70</span>
-            </div>
-        </div>
+        <div class="price-label">$ 2</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasitasNavidenasDesde')">
@@ -1939,13 +1609,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Buzón rojo de madera sobre una base alta, ideal para colocar cartas a Santa o mensajes de deseos. Diseño clásico americano.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 20 centímetros, ancho 13 centímetros, altura 44 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 12</span>
-                <span class="precio-final">$ 10,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 12</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('BuzonConBase')">
@@ -1968,13 +1632,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Buzón navideño de mayor tamaño (largo), perfecto para recolectar cartas o como pieza central decorativa.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 20 centímetros, ancho 20 centímetros, altura 96 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 16</span>
-                <span class="precio-final">$ 14</span>
-            </div>
-        </div>
+        <div class="price-label">$ 16</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('BuzonNavidenoLargo')">
@@ -1997,13 +1655,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Buzón estilo barril 'Express Mail' o 'Buzón de los Deseos'. Decoración navideña de madera pintada de rojo, ideal para la mesa o la entrada.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 19 centímetros, ancho 16 centímetros, altura 25 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 12</span>
-                <span class="precio-final">$ 10,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 12</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('BuzonNavideno')">
@@ -2028,13 +1680,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja decorativa con calados de copos de nieve.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 11 centímetros, ancho 10 centímetros, altura 10 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 5</span>
-                <span class="precio-final">$ 4,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 5</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CajaCopos')">
@@ -2057,13 +1703,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja para regalo con asa, fácil de transportar.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 4,50 centímetros, ancho 9 centímetros, altura 13,50 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 3,50</span>
-                <span class="precio-final">$ 3</span>
-            </div>
-        </div>
+        <div class="price-label">$ 3,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CajaFunda')">
@@ -2086,13 +1726,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Caja con forma de árbol para regalos o dulces.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 17 centímetros, ancho 5,50 centímetros, altura 22 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 4</span>
-                <span class="precio-final">$ 3,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 4</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CajaArbol')">
@@ -2115,13 +1749,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Amplia gama de cajas de regalo y organizadoras de madera. Incluye modelos con tapas caladas, cierres de corazón y diferentes formas. Precio base para el modelo más sencillo.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;"></p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 2</span>
-                <span class="precio-final">$ 1,70</span>
-            </div>
-        </div>
+        <div class="price-label">$ 2</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CajasOcasion')">
@@ -2144,13 +1772,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Letrero robusto de mayor tamaño con Elfo. Presenta más detalles de grabado y color, ideal para la entrada o el exterior</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 36 centímetros, ancho 12 centímetros, altura 36 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 8,50</span>
-                <span class="precio-final">$ 7,25</span>
-            </div>
-        </div>
+        <div class="price-label">$ 8,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('LetreroSantaGrande')">
@@ -2173,13 +1795,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Letrero de mesa con letras y muñeco de nieve.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 36,50 centímetros, ancho 8 centímetros, altura 11,50 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 4</span>
-                <span class="precio-final">$ 3,25</span>
-            </div>
-        </div>
+        <div class="price-label">$ 4</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('LetreroHOHOHO')">
@@ -2202,13 +1818,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Letrero compacto con figura de Elfo y base, ideal para decoración de mesa. Perfecto para colocar junto al árbol.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 14 centímetros, ancho 3 centímetros, altura 12 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 3,50</span>
-                <span class="precio-final">$ 3</span>
-            </div>
-        </div>
+        <div class="price-label">$ 3,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('LetreroSantaPequeno')">
@@ -2231,13 +1841,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Figura decorativa de Santa Claus con tabla de surf.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 15 centímetros, ancho 3 centímetros, altura 15,50 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 3,50</span>
-                <span class="precio-final">$ 3</span>
-            </div>
-        </div>
+        <div class="price-label">$ 3,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('SantaSurfista')">
@@ -2260,13 +1864,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adorno para colocar en la esquina superior de un marco.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 25 centímetros, ancho 0,30 centímetros, altura 27,50 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 1,50</span>
-                <span class="precio-final">$ 1,25</span>
-            </div>
-        </div>
+        <div class="price-label">$ 1,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('AdornoPuerta')">
@@ -2289,13 +1887,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Adornos decorativos de madera para árbol o espacios, desde diseños sencillos ($1) hasta diseños calados complejos o pintados. Totalmente personalizables en forma y grabado.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 8 centímetros, ancho 0,40 centímetros, altura 8 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 1</span>
-                <span class="precio-final">$ 0,85</span>
-            </div>
-        </div>
+        <div class="price-label">$ 1</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('BombillosAdornos')">
@@ -2318,13 +1910,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Miniaturas de casas decorativas con detalles de color.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 4,50 centímetros, ancho 4,50 centímetros, altura 7,50 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 2,50</span>
-                <span class="precio-final">$ 2</span>
-            </div>
-        </div>
+        <div class="price-label">$ 2,50</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CasitasMini')">
@@ -2347,13 +1933,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Velas impresas para bautizos, Navidad o eventos corporativos. El precio varía según el tamaño, diseño y cantidad.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;"></p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 3</span>
-                <span class="precio-final">$ 2,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 3</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('VelasDisenos')">
@@ -2376,13 +1956,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Portavelas decorativos de madera en varios modelos y tamaños. Ideal para velas LED o pequeñas. Los precios varían según el diseño simple o con casitas integradas.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 10 centímetros, ancho 6 centímetros, altura 8 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 2</span>
-                <span class="precio-final">$ 1,70</span>
-            </div>
-        </div>
+        <div class="price-label">$ 2</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('Candelabros')">
@@ -2407,13 +1981,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural de la Fiesta de la Mama Negra (Ecuador) en formato de caja expositora. Incluye figuras coloridas y detalladas con fondo escénico.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 18 centímetros, ancho 18 centímetros, altura 15 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 15</span>
-                <span class="precio-final">$ 12,75</span>
-            </div>
-        </div>
+        <div class="price-label">$ 15</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('MamaNegra')">
@@ -2436,13 +2004,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural de la Diablada de Píllaro (Ecuador) en caja expositora. Figuras de diablos y personajes folclóricos detallados y coloridos, con fondo de callejón.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 18 centímetros, ancho 18 centímetros, altura 15 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 15</span>
-                <span class="precio-final">$ 12,75</span>
-            </div>
-        </div>
+        <div class="price-label">$ 15</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('DiabladaPillaro')">
@@ -2464,13 +2026,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Versión miniatura de la popular caja cultural 'Diablada de Píllaro'. Una escena folclórica detallada en formato compacto (10x10 cm).</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 10 centímetros, ancho 10 centímetros, altura 8 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 10</span>
-                <span class="precio-final">$ 8,50</span>
-            </div>
-        </div>
+        <div class="price-label">$ 10</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CajaDiabladaMiniatura')">
@@ -2493,13 +2049,7 @@
             <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Escena cultural ecuatoriana del Carnaval de Guaranda en caja expositora.</p>
         </div>
         <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 18 centímetros, ancho 18 centímetros, altura 15 centímetros.</p>
-        <div class="price-label price-label-oferta">
-            <span class="badge-oferta">¡OFERTA BLACK FRIDAY!</span>
-            <div class="precios-oferta">
-                <span class="precio-anterior">$ 15</span>
-                <span class="precio-final">$ 12,75</span>
-            </div>
-        </div>
+        <div class="price-label">$ 15</div>
     </div>
     <div class="card-actions">
         <button class="btn btn-primary" onclick="openModal('CarnavalGuaranda')">
@@ -2582,22 +2132,8 @@
 <div class="modal" id="cartModal">
     <div class="modal-content" style="max-width: 600px;">
         <span class="close-btn" onclick="closeCartModal()">×</span>
-        <div id="payment-selection" style="background-color: #e3f8f8; padding: 1rem; border-radius: 0.75rem; margin-bottom: 1.5rem; border: 1px solid #4dc0c0;">
-            <h3 style="font-size: 1rem; font-weight: 700; color: #1f2937; margin-bottom: 0.75rem;">Seleccionar Método de Pago:</h3>
-            <div style="display: flex; gap: 1.5rem;">
-                <!-- Opción 1: Efectivo/Transferencia (Aplica Black Friday) -->
-                <label style="display: flex; align-items: center; font-weight: 600; cursor: pointer;">
-                    <input type="radio" name="paymentType" value="cash" checked onchange="updateCartTotal()" style="margin-right: 0.5rem; accent-color: #4dc0c0;">
-                    Efectivo / Transferencia (BF)
-                </label>
-                <!-- Opción 2: Tarjeta (Precio Normal) -->
-                <label style="display: flex; align-items: center; font-weight: 600; cursor: pointer;">
-                    <input type="radio" name="paymentType" value="card" onchange="updateCartTotal()" style="margin-right: 0.5rem; accent-color: #4dc0c0;">
-                    Tarjeta (Precio Normal)
-                </label>
-            </div>
-            <p id="payment-warning" style="font-size: 0.875rem; color: #ef4444; font-weight: 500; margin-top: 0.5rem;">¡Descuento Black Friday aplicado solo para Efectivo/Transferencia!</p>
-        </div>
+        
+        <!-- SECCIÓN DE PAGO ELIMINADA -->
 
         <div id="cart-items-list">
             <!-- Los items del carrito se insertarán aquí dinámicamente -->
@@ -2728,23 +2264,8 @@
             modalTitle.textContent = product.title;
             modalDescription.textContent = product.description;
             
-            // --- CAMBIO: Lógica para mostrar ambos precios (Oferta y Normal) en el modal ---
-            if (product.normalPrice) {
-                // Si existe precio normal (es oferta), inyectamos el HTML de doble precio
-                // Alineamos a la derecha (flex-end) para coincidir con el diseño del modal
-                modalPrice.innerHTML = `
-                    <div class="price-label-oferta" style="align-items: flex-end; width: 100%;">
-                        <span class="badge-oferta" style="font-size: 1rem;">¡OFERTA BLACK FRIDAY!</span>
-                        <div class="precios-oferta" style="justify-content: flex-end;">
-                            <span class="precio-anterior" style="font-size: 1.5rem; margin-right: 10px;">${product.normalPrice}</span>
-                            <span class="precio-final" style="font-size: 2.5rem; color: #4dc0c0;">${product.price}</span>
-                        </div>
-                    </div>
-                `;
-            } else {
-                // Si no hay precio normal, mostramos solo el precio actual
-                modalPrice.textContent = product.price;
-            }
+            // --- CAMBIO: Simplificado para mostrar solo el precio normal ---
+            modalPrice.textContent = product.price;
             // ---------------------------------------------------------------------------
 
             // Generar enlace de WhatsApp predeterminado con el precio de oferta
@@ -2945,14 +2466,10 @@
                 return;
             }
             
-            // Obtener el tipo de pago seleccionado
-            const paymentType = document.querySelector('input[name="paymentType"]:checked')?.value || 'cash';
-            
             cart.forEach(item => {
                 const productDefinition = productData[item.id];
-                const priceKey = paymentType === 'cash' ? 'price' : 'normalPrice';
-                // Usar el precio correcto del producto para mostrarlo
-                const itemDisplayPrice = parsePrice(productDefinition[priceKey]);
+                // Usar precio normal
+                const itemDisplayPrice = parsePrice(productDefinition.price);
 
                 const itemEl = document.createElement('div');
                 itemEl.className = 'cart-item';
@@ -2975,31 +2492,17 @@
 
         // Actualizar el precio total
         function updateCartTotal() {
-            // Obtener el tipo de pago seleccionado
-            const paymentType = document.querySelector('input[name="paymentType"]:checked')?.value || 'cash';
-            
             let total = 0;
-            const priceKey = paymentType === 'cash' ? 'price' : 'normalPrice'; // 'price' = Oferta (cash), 'normalPrice' = Normal (card)
-
+            
             cart.forEach(item => {
                 const productDefinition = productData[item.id];
                 if (productDefinition) {
-                    const itemPrice = parsePrice(productDefinition[priceKey]);
+                    const itemPrice = parsePrice(productDefinition.price);
                     total += itemPrice * item.quantity;
                 }
             });
 
             cartTotalPrice.textContent = `$ ${total.toFixed(2)}`;
-
-            // Actualizar el mensaje de advertencia
-            const warningText = document.getElementById('payment-warning');
-            if (paymentType === 'cash') {
-                warningText.textContent = '¡Descuento Black Friday aplicado solo para Efectivo/Transferencia!';
-                warningText.style.color = '#10b981'; // Green for success/discount
-            } else {
-                warningText.textContent = 'Atención: Se está usando el Precio Normal para pago con Tarjeta.';
-                warningText.style.color = '#ef4444'; // Red for warning
-            }
 
             // Desactivar botón de WhatsApp si el carrito está vacío
             if (total === 0) {
@@ -3016,17 +2519,13 @@
         function generateWhatsAppMessage() {
             if (cart.length === 0) return; // No hacer nada si el carrito está vacío
 
-            const paymentType = document.querySelector('input[name="paymentType"]:checked')?.value || 'cash';
-            const priceKey = paymentType === 'cash' ? 'price' : 'normalPrice';
-            const paymentName = paymentType === 'cash' ? 'Efectivo/Transferencia (Precio BF)' : 'Tarjeta (Precio Normal)';
-
-            let message = `¡Hola Ideas & D'talles! ✨\nQuisiera realizar un pedido y pagar con *${paymentName}*.\n\nEl detalle del pedido es:\n\n`;
+            let message = `¡Hola Ideas & D'talles! ✨\nQuisiera realizar un pedido.\n\nEl detalle del pedido es:\n\n`;
             let total = 0;
 
             cart.forEach(item => {
                 const productDefinition = productData[item.id];
                 if (productDefinition) {
-                    const itemPrice = parsePrice(productDefinition[priceKey]);
+                    const itemPrice = parsePrice(productDefinition.price);
                     const itemTotal = itemPrice * item.quantity;
                     message += `*${item.quantity} x* ${item.title} ($${itemPrice.toFixed(2)} c/u) - Subtotal: $${itemTotal.toFixed(2)}\n`;
                     total += itemTotal;
@@ -3041,7 +2540,6 @@
             // Abrir en una nueva pestaña
             window.open(whatsappURL, '_blank');
         }
-
 
         // --- MODIFICADO: Manejador de Clicks Global ---
         window.onclick = function(event) {
@@ -3060,8 +2558,8 @@ const productData = {
             // GRUPO 1: ESTRUCTURAS Y CALENDARIOS DE ALTO VALOR
             CiudadCompleta: {
                 title: "Ciudad Completa (14 Casas, Tren, Puente)",
-                price: "$ 30", // Oferta Efectivo
-                normalPrice: "$ 35", // Tarjeta
+                price: "$ 35", 
+                normalPrice: "$ 35", 
                 description: "Kit de decoración avanzado que incluye 14 casas, un tren, un puente, letreros decorativos y un farol o un faro. Piezas detalladas ideales para crear una gran villa navideña.",
                 mainImg: "https://i.postimg.cc/TPsTfqLQ/image13.png",
                 extraImgs: [
@@ -3073,19 +2571,24 @@ const productData = {
             },
             CastilloNavidad: {
                 title: "Castillo de navidad Smart",
-                price: "$ 29", // Oferta Efectivo
-                normalPrice: "$ 34", // Tarjeta
-                description: "Estructura detallada y armable de un castillo navideño, con múltiples niveles y figuras (gnomo). Compatible con sistemas Smart Home como Alexa y Google Home (requiere integración aparte). Una pieza de gran tamaño y decoración.",
-                mainImg: "https://i.postimg.cc/bJn9JVDh/image85.png",
+                price: "$ 34", 
+                normalPrice: "$ 34", 
+                description: "Estructura detallada y armable de un castillo navideño, con múltiples niveles y figuras a todo color. Compatible con sistemas Smart Home como Alexa y Google Home (requiere integración aparte). Una pieza de gran tamaño y decoración.",
+                mainImg: "https://i.postimg.cc/Pq4b03Kh/IMG_20251124_182252_036_Editada.png",
                 extraImgs: [
+                    "https://i.postimg.cc/5t35D7pj/IMG_20251124_182444_616_Editada.png",
+                    "https://i.postimg.cc/KjKnkZbv/IMG_20251124_182127_055_Editada.png",
+                    "https://i.postimg.cc/kGVx6nC7/IMG_20251124_182138_957_Editada.png",
+                    "https://i.postimg.cc/R0R12sGN/IMG_20251124_182423_895_Editada.png",
                     "https://i.postimg.cc/9M9YMgRf/image88.png",
                     "https://i.postimg.cc/bJn9JVDh/image85.png"
+
                 ]
             },
             CalendarioAdvientoArbolCasas: {
                 title: "Calendario de Adviento Árbol con Casas",
-                price: "$ 22", // Oferta Efectivo
-                normalPrice: "$ 26", // Tarjeta
+                price: "$ 26", 
+                normalPrice: "$ 26", 
                 description: "Espectacular estructura de adviento multinivel con forma de árbol. Incluye 25 casitas numeradas que sirven como pequeños cajones o exhibidores.",
                 mainImg: "https://i.postimg.cc/4dJhvy07/image4.png", 
                 extraImgs: [
@@ -3096,8 +2599,8 @@ const productData = {
             },
             ArbolEscenaPesebre: {
                 title: "Árbol con Escena Navideña y Pesebre",
-                price: "$ 22", // Oferta Efectivo
-                normalPrice: "$ 26", // Tarjeta
+                price: "$ 26", 
+                normalPrice: "$ 26", 
                 description: "Árbol decorativo de madera en 3 niveles que exhibe una escena navideña completa: pesebre, Reyes Magos y una pequeña villa. Perfecto como centro de mesa.",
                 mainImg: "https://i.postimg.cc/ydVShxGF/image8.png", 
                 extraImgs: [
@@ -3108,8 +2611,8 @@ const productData = {
             },
             RuedaFortuna: {
                 title: "Rueda de la Fortuna (Cruda)",
-                price: "$ 17", // Oferta Efectivo
-                normalPrice: "$ 20", // Tarjeta
+                price: "$ 20", 
+                normalPrice: "$ 20", 
                 description: "Rueda de la Fortuna armable de gran tamaño (versión sin pintar). Una pieza de ingeniería en madera, perfecta para exhibición o para regalo. Funcional y detallada.",
                 mainImg: "https://i.postimg.cc/V6tW6Zr6/image89.png",
                 extraImgs: [
@@ -3120,8 +2623,8 @@ const productData = {
             },
             RuedaFortunaColor: {
                 title: "Rueda de la fortuna a todo color",
-                price: "$ 20", // Oferta Efectivo
-                normalPrice: "$ 24", // Tarjeta
+                price: "$ 24", 
+                normalPrice: "$ 24", 
                 description: "Versión a todo color (verde, rojo, dorado) de la rueda armable. Incluye copo de nieve dorado y caseta de entrada.",
                 mainImg: "https://i.postimg.cc/0QG9bCh5/1762286450907-Editado.png",
                 extraImgs: [
@@ -3131,8 +2634,8 @@ const productData = {
             },
             CalendarioAdviento: {
                 title: "Calendario de Adviento (Casa Cruda)",
-                price: "$ 15", // Oferta Efectivo
-                normalPrice: "$ 18", // Tarjeta
+                price: "$ 18", 
+                normalPrice: "$ 18", 
                 description: "Elegante calendario con forma de casa (versión sin pintar) y pequeños cajones numerados (1-24) para esconder dulces o regalos pequeños. Ideal para crear tradiciones familiares.",
                 mainImg: "https://i.postimg.cc/7LfVvZqZ/image59.png",
                 extraImgs: [
@@ -3143,8 +2646,8 @@ const productData = {
             },
             CalendarioAdvientoColor: {
                 title: "Calendario de adviento (Farol) a color",
-                price: "$ 19", // Oferta Efectivo
-                normalPrice: "$ 22", // Tarjeta
+                price: "$ 22", 
+                normalPrice: "$ 22", 
                 description: "Versión a todo color (rojo, blanco, plata) con casa, trineo y pino en la parte superior. Incluye 24 cajones numerados.",
                 mainImg: "https://i.postimg.cc/KYB2HNG9/1762286448639-Editado.png",
                 extraImgs: [
@@ -3155,8 +2658,8 @@ const productData = {
             },
             TrineoAdviento: {
                 title: "Trineo Calendario de Adviento",
-                price: "$ 15", // Oferta Efectivo
-                normalPrice: "$ 18", // Tarjeta
+                price: "$ 18", 
+                normalPrice: "$ 18", 
                 description: "Calendario de adviento con diseño de trineo de Santa en color rojo y detalles de madera. Incluye 24 pequeños cajones para regalos.",
                 mainImg: "https://i.postimg.cc/vmczRZGT/image60.png",
                 extraImgs: [
@@ -3169,8 +2672,8 @@ const productData = {
             // GRUPO 2: CAJAS CULTURALES Y TEMÁTICAS
             MamaNegra: {
                 title: "Caja Mama Negra",
-                price: "$ 12,75", // Oferta Efectivo
-                normalPrice: "$ 15", // Tarjeta
+                price: "$ 15", 
+                normalPrice: "$ 15", 
                 description: "Escena cultural de la Fiesta de la Mama Negra (Ecuador) en formato de caja expositora. Incluye figuras coloridas y detalladas con fondo escénico.",
                 mainImg: "https://i.postimg.cc/2yFddq7g/image112.png",
                 extraImgs: [
@@ -3181,8 +2684,8 @@ const productData = {
             },
             DiabladaPillaro: {
                 title: "Caja Diablada de Píllaro",
-                price: "$ 12,75", // Oferta Efectivo
-                normalPrice: "$ 15", // Tarjeta
+                price: "$ 15", 
+                normalPrice: "$ 15", 
                 description: "Escena cultural de la Diablada de Píllaro (Ecuador) en caja expositora. Figuras de diablos y personajes folclóricos detallados y coloridos, con fondo de callejón.",
                 mainImg: "https://i.postimg.cc/9XwsSr2P/image49.png",
                 extraImgs: [
@@ -3194,8 +2697,8 @@ const productData = {
             },
             CarnavalGuaranda: {
                 title: "Caja Carnaval de Guaranda (Cultural)",
-                price: "$ 12,75", // Oferta Efectivo
-                normalPrice: "$ 15", // Tarjeta
+                price: "$ 15", 
+                normalPrice: "$ 15", 
                 description: "Escena cultural ecuatoriana del Carnaval de Guaranda en caja expositora.",
                 mainImg: "https://i.postimg.cc/J0c33yQh/image119.png",
                 extraImgs: [
@@ -3208,8 +2711,8 @@ const productData = {
             // GRUPO 3: DECORACIÓN ILUMINADA Y BUZONES
             FarolCuentaRegresiva: {
                 title: "Farol Cuenta Regresiva",
-                price: "$ 3", // Oferta Efectivo
-                normalPrice: "$ 3,50", // Tarjeta
+                price: "$ 3,50", 
+                normalPrice: "$ 3,50", 
                 description: "Calendario de adviento interactivo con forma de farol. Permite cambiar manually las placas de números. Un elemento decorativo y funcional para la cuenta atrás navideña.",
                 mainImg: "https://i.postimg.cc/fRHKg9Q9/image56.png",
                 extraImgs: [
@@ -3220,8 +2723,8 @@ const productData = {
             },
             CiudadEnCaja: {
                 title: "Ciudad en caja",
-                price: "$ 13", // Oferta Efectivo
-                normalPrice: "$ 15", // Tarjeta
+                price: "$ 15", 
+                normalPrice: "$ 15", 
                 description: "Pieza decorativa de madera 3D de alta complejidad, ideal para decoración navideña temática o urbana. Piezas totalmente personalizables en grabado y color.",
                 mainImg: "https://i.postimg.cc/KvDQBW9z/image21.png",
                 extraImgs: [
@@ -3232,8 +2735,8 @@ const productData = {
             },
             CajaEscenaNavidena: {
                 title: "Caja escena navideña",
-                price: "$ 11", // Oferta Efectivo
-                normalPrice: "$ 13", // Tarjeta
+                price: "$ 13", 
+                normalPrice: "$ 13", 
                 description: "Caja expositora con figuras navideñas (Santa, Reno, Sra. Claus) en dos niveles.",
                 mainImg: "https://i.postimg.cc/xTrBSnjm/image52.png",
                 extraImgs: [
@@ -3245,8 +2748,8 @@ const productData = {
             },
             NacimientoAndino: {
                 title: "Nacimiento Andino (Grande)",
-                price: "$ 11", // Oferta Efectivo
-                normalPrice: "$ 13", // Tarjeta
+                price: "$ 13", 
+                normalPrice: "$ 13", 
                 description: "Pesebre con un diseño cultural único, figuras en estilo andino con vestimenta colorida. Presentado en una caja expositora que simula un entorno andino. Incluye todas las figuras tradicionales.",
                 mainImg: "https://i.postimg.cc/1zfHx3yK/image65.png",
                 extraImgs: [
@@ -3257,8 +2760,8 @@ const productData = {
             },
             CasaJugueteria: {
                 title: "Casa Juguetería Multiusos",
-                price: "$ 11", // Oferta Efectivo
-                normalPrice: "$ 13", // Tarjeta
+                price: "$ 13", 
+                normalPrice: "$ 13", 
                 description: "Caja multiusos con diseño temático de tienda de juguetes ('Toy Store'). Ideal para guardar o entregar peluches y otros regalos.",
                 mainImg: "https://i.postimg.cc/MTBTzrpz/40a9594a-472f-45cd-a01d-a88ad10aedad.png",
                 extraImgs: [
@@ -3271,8 +2774,8 @@ const productData = {
             },
             BuzonConBase: {
                 title: "Buzón de Deseos con Base",
-                price: "$ 10,50", // Oferta Efectivo
-                normalPrice: "$ 12", // Tarjeta
+                price: "$ 12", 
+                normalPrice: "$ 12", 
                 description: "Buzón rojo de madera sobre una base alta, ideal para colocar cartas a Santa o mensajes de deseos. Diseño clásico americano.",
                 mainImg: "https://i.postimg.cc/HLRtT1LS/image72.png",
                 extraImgs: [
@@ -3283,8 +2786,8 @@ const productData = {
             },
             BuzonNavideno: {
                 title: "Buzón Navideño (Clásico)",
-                price: "$ 10,50", // Oferta Efectivo
-                normalPrice: "$ 12", // Tarjeta
+                price: "$ 12", 
+                normalPrice: "$ 12", 
                 description: "Buzón estilo barril 'Express Mail' o 'Buzón de los Deseos'. Decoración navideña de madera pintada de rojo, ideal para la mesa o la entrada.",
                 mainImg: "https://i.postimg.cc/k5zy7P5H/image75.png",
                 extraImgs: [
@@ -3295,8 +2798,8 @@ const productData = {
             },
             ArbolConLuces: {
                 title: "Árbol de navidad con Luces y escena 1",
-                price: "$ 10,50", // Oferta Efectivo
-                normalPrice: "$ 12", // Tarjeta
+                price: "$ 12", 
+                normalPrice: "$ 12", 
                 description: "Estructura de un típico árbol navideño pintado de verde con escenas interiores caladas (muñecos de nieve, renos). Diseñado con luces LED internas.",
                 mainImg: "https://i.postimg.cc/0NFC91Q1/image78.png",
                 extraImgs: [
@@ -3307,8 +2810,8 @@ const productData = {
             },
             ArbolConLuces2: {
                 title: "Árbol de navidad con Luces y escena 2",
-                price: "$ 10,50", // Oferta Efectivo
-                normalPrice: "$ 12", // Tarjeta
+                price: "$ 12", 
+                normalPrice: "$ 12", 
                 description: "Estructura de un típico árbol navideño pintado de verde con escenas interiores caladas (muñecos de nieve, renos). Diseñado con luces LED internas.",
                 mainImg: "https://i.postimg.cc/0jS3JHnZ/image36.png",
                 extraImgs: [
@@ -3321,8 +2824,8 @@ const productData = {
             // GRUPO 4: CAJAS Y REGALOS DE VALOR BAJO/MEDIO
             CarroCuentaRegresiva: {
                 title: "Carro Cuenta Regresiva",
-                price: "$ 8,50", // Oferta Efectivo
-                normalPrice: "$ 10", // Tarjeta
+                price: "$ 10", 
+                normalPrice: "$ 10", 
                 description: "Decoración con camioneta y calendario de adviento circular integrado. Un diseño rústico y moderno para la cuenta regresiva hasta Navidad.",
                 mainImg: "https://i.postimg.cc/qvmLZ3HK/image57.png",
                 extraImgs: [
@@ -3331,8 +2834,8 @@ const productData = {
             },
             CasaCaramelos: {
                 title: "Casa de caramelos (Gingerbread)",
-                price: "$ 8,50", // Oferta Efectivo
-                normalPrice: "$ 10", // Tarjeta
+                price: "$ 10", 
+                normalPrice: "$ 10", 
                 description: "Caja de regalo temática con diseño de casa de jengibre. Ideal para dulces y pequeños obsequios navideños.",
                 mainImg: "https://i.postimg.cc/SRQwgJ5W/IMG-20251028-102912-Editado.png",
                 extraImgs: [
@@ -3345,8 +2848,8 @@ const productData = {
             },
             NacimientoNivelesLed: {
                 title: "Nacimiento por niveles con luz led",
-                price: "$ 8,50", // Oferta Efectivo
-                normalPrice: "$ 10", // Tarjeta
+                price: "$ 10", 
+                normalPrice: "$ 10", 
                 description: "Pesebre de madera cortada a láser con figuras estilo 'chibi' distribuidas en varios niveles. Incluye iluminación LED cálida.",
                 mainImg: "https://i.postimg.cc/7LC9ycfB/IMG-20251028-153343-Editado.png", 
                 extraImgs: [
@@ -3358,8 +2861,8 @@ const productData = {
             },
             EstrellaGrandeIluminada: { 
                 title: "Estrella con decoración iluminada grande",
-                price: "$ 5,50", // Oferta Efectivo
-                normalPrice: "$ 6,50", // Tarjeta
+                price: "$ 6,50", 
+                normalPrice: "$ 6,50", 
                 description: "Decoración en forma de estrella con escena navideña o nacimiento en capas. Incluye luz LED para un efecto nocturno.",
                 mainImg: "https://i.postimg.cc/PqB4f4Df/IMG-20251028-162644-Editado.png", 
                 extraImgs: [
@@ -3370,8 +2873,8 @@ const productData = {
             },
             NacimientoPequeno: {
                 title: "Nacimiento pequeño",
-                price: "$ 8", // Oferta Efectivo
-                normalPrice: "$ 9", // Tarjeta
+                price: "$ 9", 
+                normalPrice: "$ 9", 
                 description: "Modelo tradicional o andino en caja portátil. Perfecto para espacios pequeños o como regalo. Figuras detalladas.",
                 mainImg: "https://i.postimg.cc/gjh56Bsj/image32.png",
                 extraImgs: [
@@ -3382,8 +2885,8 @@ const productData = {
             },
             LetreroSantaGrande: {
                 title: "Letrero de Santa Grande",
-                price: "$ 7,25", // Oferta Efectivo
-                normalPrice: "$ 8,50", // Tarjeta
+                price: "$ 8,50", 
+                normalPrice: "$ 8,50", 
                 description: "Letrero robusto de mayor tamaño con Elfo. Presenta más detalles de grabado y color, ideal para la entrada o el exterior",
                 mainImg: "https://i.postimg.cc/CKCqfkcq/image1.png", 
                 extraImgs: [
@@ -3394,8 +2897,8 @@ const productData = {
             },
             CasaGrandeMultiusos: {
                 title: "Casa grande multiusos",
-                price: "$ 5", // Oferta Efectivo
-                normalPrice: "$ 8", // Tarjeta
+                price: "$ 8", 
+                normalPrice: "$ 8", 
                 description: "Casa alta decorativa (color azul y blanco), ideal para contener luces LED, pequeños regalos y dulces. Diseño de dos pisos con amplias ventanas y techo de nieve.",
                 mainImg: "https://i.postimg.cc/268TFMzV/image17.png",
                 extraImgs: [
@@ -3406,8 +2909,8 @@ const productData = {
             },
             CasaTechoBajo: {
                 title: "Casa multiusos techo bajo",
-                price: "$ 5", // Oferta Efectivo
-                normalPrice: "$ 8", // Tarjeta
+                price: "$ 8", 
+                normalPrice: "$ 8", 
                 description: "Casa decorativa de un piso con diseño de balcón y techo rústico. Ideal para luces LED, pequeños regalos y dulces. Presentada en color azul y blanco.",
                 mainImg: "https://i.postimg.cc/FRsGg89j/image22.png",
                 extraImgs: [
@@ -3418,8 +2921,8 @@ const productData = {
             },
             GnomoFarol: {
                 title: "Gnomo farol",
-                price: "$ 7", // Oferta Efectivo
-                normalPrice: "$ 8", // Tarjeta
+                price: "$ 8", 
+                normalPrice: "$ 8", 
                 description: "Figura decorativa de Gnomo con gorro rojo y espacio para luz en su base. El gorro tiene detalles calados de copos de nieve.",
                 mainImg: "https://i.postimg.cc/Y9Fz9DGk/image86.png",
                 extraImgs: [
@@ -3429,8 +2932,8 @@ const productData = {
             },
             CasaParaDulcesVerde: {
                 title: "Casa para dulces verde",
-                price: "$ 6,50", // Oferta Efectivo
-                normalPrice: "$ 7,50", // Tarjeta
+                price: "$ 7,50", 
+                normalPrice: "$ 7,50", 
                 description: "Caja con diseño de casa rústica en color verde y tejado de nieve, con asa para llevar. Ideal para dulces o pequeños obsequios.",
                 mainImg: "https://i.postimg.cc/FFgrGSfV/IMG-20251028-103651-Editado.png",
                 extraImgs: [
@@ -3441,8 +2944,8 @@ const productData = {
             },
             CasaMultiusosRoja: {
                 title: "Casa multiusos roja",
-                price: "$ 5,50", // Oferta Efectivo
-                normalPrice: "$ 6,50", // Tarjeta
+                price: "$ 6,50", 
+                normalPrice: "$ 6,50", 
                 description: "Caja con diseño de casa simple en color rojo, ideal como envoltorio de regalo o caja de dulces. Incluye asa.",
                 mainImg: "https://i.postimg.cc/t41H0ngk/IMG-20251028-103214-Editado.png",
                 extraImgs: [
@@ -3453,8 +2956,8 @@ const productData = {
             },
             FarolNavidenoCuadrado: {
                 title: "Farol navideño (Cuadrado)",
-                price: "$ 5", // Oferta Efectivo
-                normalPrice: "$ 6", // Tarjeta
+                price: "$ 6", 
+                normalPrice: "$ 6", 
                 description: "Farol de cubo con figuras navideñas caladas y espacio para luz interior. Ideal para decoración de mesa o repisa.",
                 mainImg: "https://i.postimg.cc/K89NsMS6/image48.png",
                 extraImgs: [
@@ -3464,8 +2967,8 @@ const productData = {
             },
             FarolNavidenoConejos: {
                 title: "Farol navideño (Conejos)",
-                price: "$ 4,50", // Oferta Efectivo
-                normalPrice: "$ 5", // Tarjeta
+                price: "$ 5", 
+                normalPrice: "$ 5", 
                 description: "Farol de madera con figuras caladas de animales. Ideal para luz LED interior.",
                 mainImg: "https://i.postimg.cc/W1p8n7CP/image43.png",
                 extraImgs: [
@@ -3473,8 +2976,8 @@ const productData = {
             },
             CasaPequenaDulces: {
                 title: "Casa pequeña para dulces",
-                price: "$ 4,25", // Oferta Efectivo
-                normalPrice: "$ 5", // Tarjeta
+                price: "$ 5", 
+                normalPrice: "$ 5", 
                 description: "Caja pequeña y económica con forma de casa roja y tejado de nieve. Perfecta para cajas de dulces y regalos pequeños.",
                 mainImg: "https://i.postimg.cc/VsBf4tSg/IMG-20251028-103430-Editado.png",
                 extraImgs: [
@@ -3485,8 +2988,8 @@ const productData = {
             },
             ArbolitoSimple: {
                 title: "Arbolito (Estructura)",
-                price: "$ 4,50", // Oferta Efectivo
-                normalPrice: "$ 5", // Tarjeta
+                price: "$ 5", 
+                normalPrice: "$ 5", 
                 description: "Estructura de pino 3D (Sin pintar). Incluye estrella.",
                 mainImg: "https://i.postimg.cc/9FY1Zkx1/image29.png",
                 extraImgs: []
@@ -3495,8 +2998,8 @@ const productData = {
             // GRUPO 5: ARTÍCULOS BASE Y ECONÓMICOS
             LetreroSantaPequeno: {
                 title: "Letrero de Santa Pequeño",
-                price: "$ 3", // Oferta Efectivo
-                normalPrice: "$ 3,50", // Tarjeta
+                price: "$ 3,50", 
+                normalPrice: "$ 3,50", 
                 description: "Letrero compacto con figura de Elfo y base, ideal para decoración de mesa. Perfecto para colocar junto al árbol.",
                 mainImg: "https://i.postimg.cc/kgjchbPX/image52.png", 
                 extraImgs: [
@@ -3506,8 +3009,8 @@ const productData = {
             },
             CajasOcasion: {
                 title: "Cajas Decorativas (Toda Ocasión)",
-                price: "$ 1,70", // Oferta Efectivo
-                normalPrice: "$ 2", // Tarjeta
+                price: "$ 2", 
+                normalPrice: "$ 2", 
                 description: "Amplia gama de cajas de regalo y organizadoras de madera. Incluye modelos con tapas caladas, cierres de corazón y diferentes formas. Precio base para el modelo más sencillo.",
                 mainImg: "https://i.postimg.cc/J0WcB3ZN/image100.png",
                 extraImgs: [
@@ -3518,8 +3021,8 @@ const productData = {
             },
             Candelabros: {
                 title: "Candelabros y Portavelas",
-                price: "$ 1,70", // Oferta Efectivo
-                normalPrice: "$ 2", // Tarjeta
+                price: "$ 2", 
+                normalPrice: "$ 2", 
                 description: "Portavelas decorativos de madera en varios modelos y tamaños. Ideal para velas LED o pequeñas. Los precios varían según el diseño simple o con casitas integradas.",
                 mainImg: "https://i.postimg.cc/kXvwKHj8/image25.png",
                 extraImgs: [
@@ -3529,8 +3032,8 @@ const productData = {
             },
             CasitasNavidenasDesde: {
                 title: "Casitas Navideñas (Varios Modelos)",
-                price: "$ 1,70", // Oferta Efectivo
-                normalPrice: "$ 2", // Tarjeta
+                price: "$ 2", 
+                normalPrice: "$ 2", 
                 description: "Gran variedad de casas y estructuras de pueblo para armar villas navideñas. Los modelos más pequeños inician en $2. Ideales para decorar repisas o maquetas.",
                 mainImg: "https://i.postimg.cc/fRHKg9nP/image46.png",
                 extraImgs: [
@@ -3541,8 +3044,8 @@ const productData = {
             },
             Arbolitos: {
                 title: "Arbolitos (Diferentes Estilos)",
-                price: "$ 0,85", // Oferta Efectivo
-                normalPrice: "$ 1", // Tarjeta
+                price: "$ 1", 
+                normalPrice: "$ 1", 
                 description: "Colección de diferentes modelos de árboles decorativos y bases. Incluye modelos sencillos desde $1 y estructuras complejas. Pregunte por modelos personalizables.",
                 mainImg: "https://i.postimg.cc/WbwSgy9b/image23.png",
                 extraImgs: [
@@ -3552,8 +3055,8 @@ const productData = {
             },
             BombillosAdornos: {
                 title: "Bombillos / Adornos Colgantes",
-                price: "$ 0,85", // Oferta Efectivo
-                normalPrice: "$ 1", // Tarjeta
+                price: "$ 1", 
+                normalPrice: "$ 1", 
                 description: "Adornos decorativos de madera para árbol o espacios, desde diseños sencillos ($1) hasta diseños calados complejos o pintados. Totalmente personalizables en forma y grabado.",
                 mainImg: "https://i.postimg.cc/CLsJk2v4/image28.png",
                 extraImgs: [
@@ -3563,8 +3066,8 @@ const productData = {
             },
             CajaHalloween: {
                 title: "Caja Halloween (Para Dulces)",
-                price: "$ 12,75", // Oferta Efectivo
-                normalPrice: "$ 15", // Tarjeta
+                price: "$ 15", 
+                normalPrice: "$ 15", 
                 description: "Caja temática de Halloween para decoración o como dispensador de dulces. Se ofrece con y sin dulces, el precio varía según el contenido.",
                 mainImg: "https://i.postimg.cc/nVv1f5fB/image122.png",
                 extraImgs: [
@@ -3575,8 +3078,8 @@ const productData = {
             },
             VelasDisenos: {
                 title: "Velas con Diseños y Logos",
-                price: "$ 2,50", // Oferta Efectivo
-                normalPrice: "$ 3", // Tarjeta
+                price: "$ 3", 
+                normalPrice: "$ 3", 
                 description: "Velas impresas para bautizos, Navidad o eventos corporativos. El precio varía según el tamaño, diseño y cantidad.",
                 mainImg: "https://i.postimg.cc/JnJjh06J/Velas.png",
                 extraImgs: [
@@ -3589,96 +3092,96 @@ const productData = {
             // --- PRODUCTOS ADICIONALES (con ambos precios) ---
             NacimientoColgante: {
                 title: "Nacimiento colgante",
-                price: "$ 1,70", // Oferta Efectivo
-                normalPrice: "$ 2", // Tarjeta
+                price: "$ 2", 
+                normalPrice: "$ 2", 
                 description: "Adorno circular de pesebre para colgar o base.",
                 mainImg: "https://i.postimg.cc/4dcQd277/image91.png",
                 extraImgs: []
             },
             EscenaNavidenaMini: {
                 title: "Escena navideña (Miniatura)",
-                price: "$ 1,25", // Oferta Efectivo
-                normalPrice: "$ 1,50", // Tarjeta
+                price: "$ 1,50", 
+                normalPrice: "$ 1,50", 
                 description: "Miniaturas de madera para armar escenas.",
                 mainImg: "https://i.postimg.cc/CLsJk2v5/image22.png",
                 extraImgs: []
             },
             CasitasLuz: {
                 title: "Casitas navideñas con luz",
-                price: "$ 3,50", // Oferta Efectivo
-                normalPrice: "$ 4", // Tarjeta
+                price: "$ 4", 
+                normalPrice: "$ 4", 
                 description: "Casitas con espacio para colocar una vela LED.",
                 mainImg: "https://i.postimg.cc/MpZ5DYN2/image42.png",
                 extraImgs: []
             },
             CasasMedianas: {
                 title: "Casas medianas y con adornos",
-                price: "$ 4,25", // Oferta Efectivo
-                normalPrice: "$ 5", // Tarjeta
+                price: "$ 5", 
+                normalPrice: "$ 5", 
                 description: "Modelos más grandes con detalles de nieve y color.",
                 mainImg: "https://i.postimg.cc/mgdw6HWW/image50.png",
                 extraImgs: []
             },
             CajaCopos: {
                 title: "Caja con copos",
-                price: "$ 4,50", // Oferta Efectivo
-                normalPrice: "$ 5", // Tarjeta
+                price: "$ 5", 
+                normalPrice: "$ 5", 
                 description: "Caja decorativa con calados de copos de nieve.",
                 mainImg: "https://i.postimg.cc/P5fy4Mcb/image34.png",
                 extraImgs: []
             },
             CajaFunda: {
                 title: "Caja tipo funda",
-                price: "$ 3", // Oferta Efectivo
-                normalPrice: "$ 3,50", // Tarjeta
+                price: "$ 3,50", 
+                normalPrice: "$ 3,50", 
                 description: "Caja para regalo con asa, fácil de transportar.",
                 mainImg: "https://i.postimg.cc/Jz7xqQg6/image37.png",
                 extraImgs: []
             },
             CajaArbol: {
                 title: "Caja de árbol",
-                price: "$ 3,50", // Oferta Efectivo
-                normalPrice: "$ 4", // Tarjeta
+                price: "$ 4", 
+                normalPrice: "$ 4", 
                 description: "Caja con forma de árbol para regalos o dulces.",
                 mainImg: "https://i.postimg.cc/GhxzGfMq/image31.png",
                 extraImgs: []
             },
             LetreroHOHOHO: {
                 title: "Letrero HOHOHO",
-                price: "$ 3,25", // Oferta Efectivo
-                normalPrice: "$ 4", // Tarjeta
+                price: "$ 4", 
+                normalPrice: "$ 4", 
                 description: "Letrero de mesa con letras y muñeco de nieve.",
                 mainImg: "https://i.postimg.cc/HLV2GkTr/image62.png",
                 extraImgs: []
             },
             SantaSurfista: {
                 title: "Santa surfista",
-                price: "$ 3", // Oferta Efectivo
-                normalPrice: "$ 3,50", // Tarjeta
+                price: "$ 3,50", 
+                normalPrice: "$ 3,50", 
                 description: "Figura decorativa de Santa Claus con tabla de surf.",
                 mainImg: "https://i.postimg.cc/g2MDBZbJ/image54.png",
                 extraImgs: []
             },
             EstrellaPequenaBombillo: {
                 title: "Estrella con decoración pequeña tipo bombillo",
-                price: "$ 3", // Oferta Efectivo
-                normalPrice: "$ 3,50", // Tarjeta
+                price: "$ 3,50", 
+                normalPrice: "$ 3,50", 
                 description: "Adorno colgante tipo bombillo en forma de estrella con escena navideña o nacimiento.",
                 mainImg: "https://i.postimg.cc/fb6KWK9f/IMG-20251028-153746-Editado.png",
                 extraImgs: []
             },
             AdornoPuerta: {
                 title: "Adorno de puerta (Esquinero)",
-                price: "$ 1,25", // Oferta Efectivo
-                normalPrice: "$ 1,50", // Tarjeta
+                price: "$ 1,50", 
+                normalPrice: "$ 1,50", 
                 description: "Adorno para colocar en la esquina superior de un marco.",
                 mainImg: "https://i.postimg.cc/7LfVvZq2/image63.png",
                 extraImgs: []
             },
             CasitasMini: {
                 title: "Casitas (Miniaturas $2.50)",
-                price: "$ 2", // Oferta Efectivo
-                normalPrice: "$ 2,50", // Tarjeta
+                price: "$ 2,50", 
+                normalPrice: "$ 2,50", 
                 description: "Miniaturas de casas decorativas con detalles de color.",
                 mainImg: "https://i.postimg.cc/pLVCZB73/image40.png",
                 extraImgs: []
@@ -3687,8 +3190,8 @@ const productData = {
             // --- PRODUCTOS NUEVOS CON AMBOS PRECIOS ---
             TrenAColor: {
                 title: "Tren a color",
-                price: "$ 25", // Oferta Efectivo
-                normalPrice: "$ 30", // Tarjeta
+                price: "$ 30", 
+                normalPrice: "$ 30", 
                 description: "Colorido tren navideño de madera con vagones. Ideal como centro de mesa o para complementar la ciudad navideña. Medidas: 73cm largo, 14cm ancho, 18cm alto.",
                 mainImg: "https://i.postimg.cc/1z3QbSpt/1762739111950-Editado.png",
                 extraImgs: [
@@ -3700,8 +3203,8 @@ const productData = {
             },
             TrineoDeAdvientoAColor: {
                 title: "Trineo de adviento a color",
-                price: "$ 19", // Oferta Efectivo
-                normalPrice: "$ 22", // Tarjeta
+                price: "$ 22", 
+                normalPrice: "$ 22", 
                 description: "Versión a color del trineo de adviento. Incluye 24 cajones numerados para la cuenta regresiva.",
                 mainImg: "https://i.postimg.cc/qBY9QnbH/1762739112060-Editado.png",
                 extraImgs: [
@@ -3711,8 +3214,8 @@ const productData = {
             },
             EscenaNavidenaAColor: {
                 title: "Escena navideña a color",
-                price: "$ 2,50", // Oferta Efectivo
-                normalPrice: "$ 3", // Tarjeta
+                price: "$ 3", 
+                normalPrice: "$ 3", 
                 description: "Pequeña escena navideña a color. Perfecta para escritorios, repisas o como un detalle económico.",
                 mainImg: "https://i.postimg.cc/25wsxKMr/1762739112226-Editado.png",
                 extraImgs: [
@@ -3722,8 +3225,8 @@ const productData = {
             },
             CasaMultiusosCafe: {
                 title: "Casa multiusos café",
-                price: "$ 3", // Oferta Efectivo
-                normalPrice: "$ 3,50", // Tarjeta
+                price: "$ 3,50", 
+                normalPrice: "$ 3,50", 
                 description: "Casa multiusos en tonos café (madera natural o pintada). Ideal para dulces o como un pequeño regalo.",
                 mainImg: "https://i.postimg.cc/vBKSqFvt/1762739112355-Editado.png",
                 extraImgs: [
@@ -3734,8 +3237,8 @@ const productData = {
             },
             TrineoConRenos: {
                 title: "Trineo con renos",
-                price: "$ 8,50", // Oferta Efectivo
-                normalPrice: "$ 10", // Tarjeta
+                price: "$ 10", 
+                normalPrice: "$ 10", 
                 description: "Decoración clásica de trineo de Santa con renos. Una pieza elegante para cualquier espacio.",
                 mainImg: "https://i.postimg.cc/15DsqJmx/1762739112375-Editado.png",
                 extraImgs: [
@@ -3745,8 +3248,8 @@ const productData = {
             },
             BuzonNavidenoLargo: {
                 title: "Buzón navideño Largo",
-                price: "$ 14", // Oferta Efectivo
-                normalPrice: "$ 16", // Tarjeta
+                price: "$ 16", 
+                normalPrice: "$ 16", 
                 description: "Buzón navideño de mayor tamaño (largo), perfecto para recolectar cartas o como pieza central decorativa.",
                 mainImg: "https://i.postimg.cc/zvJ3c6XC/1762788500808-Editado.png",
                 extraImgs: [
@@ -3758,8 +3261,8 @@ const productData = {
             },
             Cascanueces: {
                 title: "Cascanueces",
-                price: "$ 5", // Oferta Efectivo
-                normalPrice: "$ 6", // Tarjeta
+                price: "$ 6", 
+                normalPrice: "$ 6", 
                 description: "Figura clásica de cascanueces de madera. Un ícono de la decoración navideña.",
                 mainImg: "https://i.postimg.cc/sx6f02Nm/1762788501393-Editado.png",
                 extraImgs: [
@@ -3771,8 +3274,8 @@ const productData = {
             },
             CascanuecesTambor: {
                 title: "Cascanueces tambor",
-                price: "$ 5", // Oferta Efectivo
-                normalPrice: "$ 6", // Tarjeta
+                price: "$ 6", 
+                normalPrice: "$ 6", 
                 description: "Figura de cascanueces con un tambor. Detalle clásico para coleccionistas y decoración.",
                 mainImg: "https://i.postimg.cc/TYNhtk8X/1762788501262-Editado.png",
                 extraImgs: [
@@ -3783,8 +3286,8 @@ const productData = {
             },
             NacimientoAndinoOtavalo: {
                 title: "Nacimiento Andino Otavalo",
-                price: "$ 11", // Oferta Efectivo
-                normalPrice: "$ 13", // Tarjeta
+                price: "$ 13", 
+                normalPrice: "$ 13", 
                 description: "Escena cultural del tradicional nacimiento Andino, con figuras vestidas con los icónicos ponchos y trajes de Otavalo. Una pieza colorida que celebra la Navidad con identidad ecuatoriana.",
                 mainImg: "https://i.postimg.cc/fySWkdFJ/IMG_20251115_185609_Editado.png",
                 extraImgs: [
@@ -3796,8 +3299,8 @@ const productData = {
             },
             NacimientoAndinoOtavalo1: {
                 title: "Nacimiento Andino versión pequeña",
-                price: "$ 9", // Oferta Efectivo
-                normalPrice: "$10 ", // Tarjeta
+                price: "$ 10", 
+                normalPrice: "$ 10 ", 
                 description: "Escena cultural del tradicional nacimiento Andino, con figuras vestidas con los icónicos ponchos y trajes de Otavalo. Una pieza colorida que celebra la Navidad con identidad ecuatoriana, en formato más pequeño, también lo puedes pedir de la cultura Saraguro.",
                 mainImg: "https://i.postimg.cc/fySWkdFJ/IMG_20251115_185609_Editado.png",
                 extraImgs: [
@@ -3809,8 +3312,8 @@ const productData = {
             },
             NacimientoAndinoSaraguro: {
                 title: "Nacimiento Andino Saraguro",
-                price: "$ 11", // Oferta Efectivo
-                normalPrice: "$ 13", // Tarjeta
+                price: "$ 13", 
+                normalPrice: "$ 13", 
                 description: "Escena cultural que representa el nacimiento de Jesús con las distintivas vestimentas negras, ponchos y sombreros del pueblo Saraguro. Un homenaje a las tradiciones andinas en una pieza decorativa.",
                 mainImg: "https://i.postimg.cc/13hXnWyR/IMG_20251115_185349_Editado.png",
                 extraImgs: [
@@ -3822,8 +3325,8 @@ const productData = {
             },
             TrenMedianoDelExpresoPolar: {
                 title: "Tren mediano del expreso polar",
-                price: "$ 16", // Oferta Efectivo
-                normalPrice: "$ 19", // Tarjeta
+                price: "$ 19", 
+                normalPrice: "$ 19", 
                 description: "Inspirado en el clásico cuento navideño, este tren de tamaño mediano es perfecto para decorar bajo el árbol o como centro de mesa. Incluye locomotora y vagones con detalles festivos.",
                 mainImg: "https://i.postimg.cc/RV3Jn6fy/1763252484552_Editado.png",
                 extraImgs: [
@@ -3834,8 +3337,8 @@ const productData = {
             },
             ArbolMinimalistaDeLujoConIluminacin: {
                 title: "Arbol minimalista de lujo con iluminación",
-                price: "$ 47", // Oferta Efectivo
-                normalPrice: "$ 55", // Tarjeta
+                price: "$ 55", 
+                normalPrice: "$ 55", 
                 description: "Un árbol de Navidad de gran formato (105 cm) con un diseño moderno y minimalista. Fabricado en madera de alta calidad, incluye un sistema de iluminación LED con diversos modos para crear un ambiente lujoso y contemporáneo.",
                 mainImg: "https://i.postimg.cc/15Ln0mrZ/1763252484635_Editado.png",
                 extraImgs: [
@@ -3845,8 +3348,8 @@ const productData = {
             },
             CajaDiabladaMiniatura: {
                 title: "Caja Diablada Pillaro (Miniatura)",
-                price: "$ 8,50", // Oferta Efectivo
-                normalPrice: "$ 10", // Tarjeta
+                price: "$ 10", 
+                normalPrice: "$ 10", 
                 description: "Versión miniatura de la popular caja cultural 'Diablada de Píllaro'. Una escena folclórica detallada en formato compacto (10x10 cm).",
                 mainImg: "https://i.postimg.cc/j5Fdsc8N/IMG_20251115_190100_Editado.png",
                 extraImgs: [
