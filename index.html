@@ -469,6 +469,28 @@
 <!-- Listado de Productos (Grid con Estética Fija) -->
 <main>
 <section class="product-grid" id="productos">
+    <div class="product-card">
+    <div class="image-container" onclick="openModal('KitCuarentaQuito')">
+        <!-- REEMPLAZA 'LINK_IMAGEN_PRINCIPAL_AQUI' CON EL LINK DE TU FOTO PRINCIPAL -->
+        <img alt="Kit Viva Quito (Juego de 40)" id="KitCuarentaQuito-main-img" onerror="this.onerror=null;this.src='https://placehold.co/600x400/9f7aea/ffffff?text=Kit+Viva+Quito';" src="https://i.postimg.cc/bNYvTqF5/IMG_20251121_WA0012_Editada.png"/>
+    </div>
+    <div class="card-content">
+        <div>
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem;">Kit Viva Quito (Juego de 40)</h3>
+            <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 0.75rem;">Kit de lujo para jugar cuarenta. Caja ilustrada a todo color con el Panecillo y la Chiva. Incluye fichas con frases típicas, monedas para llevar el marcador del juego y baraja.</p>
+        </div>
+        <p class="dimensions" style="font-size: 0.875rem; color: #374151; margin-top: 0.25rem;">Medidas: largo 21 cm, ancho 10 cm, altura 3.4 cm.</p>
+        <div class="price-label">$ 10</div>
+    </div>
+    <div class="card-actions">
+        <button class="btn btn-primary" onclick="openModal('KitCuarentaQuito')">
+            Ver Galería / Más Opciones
+        </button>
+        <button class="btn btn-secondary" onclick="addToCart('KitCuarentaQuito')">
+            Añadir al Carrito
+        </button>
+    </div>
+</div>
 <!-- Producto: Ciudad Completa (14 Casas) -->
 <div class="product-card">
     <div class="image-container" onclick="openModal('CiudadCompleta')">
@@ -3356,6 +3378,22 @@ const productData = {
                     "https://i.postimg.cc/3N0rWG6k/IMG_20251115_190112_Editado.png",
                     "https://i.postimg.cc/668CCmxh/IMG_20251115_190148_Editado.png",
                     "https://i.postimg.cc/G36GKxb7/IMG_20251115_190202_Editado.png"
+                ]
+            },
+            KitCuarentaQuito: {
+                title: "Kit Viva Quito (Juego de 40)",
+                price: "$ 10",
+                normalPrice: "$ 10",
+                description: "Celebra las fiestas con este espectacular Kit para jugar cuarenta a todo color. Presentado en una hermosa caja de madera ilustrada con íconos de la ciudad como la Virgen del Panecillo, la mitad del mundo y la Chiva Quiteña. El set incluye baraja y un juego de fichas temáticas con frases tradicionales como '¡2 por shunsho!', '¡Marido tiene!', '¡2 de ronda!' y '¡38 que no juega!', también incluye monedas para llevar el marcador del juego. Perfecto para regalar o disfrutar en familia.",
+                // REEMPLAZA LOS LINKS ABAJO CON LAS URLS DE TUS FOTOS
+                mainImg: "https://i.postimg.cc/bNYvTqF5/IMG_20251121_WA0012_Editada.png", 
+                extraImgs: [
+                    "https://i.postimg.cc/JhH0kKYv/IMG_20251122_173006_Editada.png",
+                    "https://i.postimg.cc/DwMm0R5K/IMG_20251121_WA0011_Editada.png",
+                    "https://i.postimg.cc/BnVtbRN9/IMG_20251121_WA0008_Editada.png",
+                    "https://i.postimg.cc/QxNMbjyr/IMG_20251121_WA0014_Editada.png",
+                    "https://i.postimg.cc/Bbpn0ztr/IMG_20251122_002246_Editada.png",
+                    "https://i.postimg.cc/ZKYqcJDH/IMG_20251124_184944_405_Editada_Editada.png"
                 ]
             }
         };
