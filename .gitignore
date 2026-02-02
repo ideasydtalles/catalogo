@@ -1,0 +1,8 @@
+# Streamlit secrets (NO subir)
+.streamlit/secrets.toml
+secrets.toml
+
+# Opcional: caches / basura
+__pycache__/
+*.pyc
+.DS_Store
