@@ -739,6 +739,72 @@
                 "./imagenes/prod_1770064301_e9646bec.png",
                 "./imagenes/prod_1770064301_fdc01581.png"
             ]
+        },
+        "Cuadroparacoleccionistafullcol4452": {
+            "title": "Cuadro para coleccionista full color",
+            "price": 8.5,
+            "description": "¡Lleva tu colección al siguiente nivel! Este imponente cuadro de madera es el aliado perfecto para los coleccionistas de autos a escala. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas.  El complemento definitivo para quienes viven la pasión por los autos y el modelismo",
+            "mainImg": "./imagenes/prod_1770064452_52b3d12e.png",
+            "extraImgs": [
+                "./imagenes/prod_1770064452_31122b4d.png",
+                "./imagenes/prod_1770064452_d7b2ce70.png",
+                "./imagenes/prod_1770064452_7aa2fbd0.png"
+            ]
+        },
+        "Cuadroparacoleccionistafullcol4753": {
+            "title": "Cuadro para coleccionista full color",
+            "price": 8.5,
+            "description": "¡Lleva tu colección al siguiente nivel! Este imponente cuadro de madera es el aliado perfecto para los coleccionistas de autos a escala. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas.  El complemento definitivo para quienes viven la pasión por los autos y el modelismo",
+            "mainImg": "./imagenes/prod_1770064753_8035f9c7.png",
+            "extraImgs": [
+                "./imagenes/prod_1770064753_4017eaf7.png",
+                "./imagenes/prod_1770064753_6f6cfe18.png",
+                "./imagenes/prod_1770064753_b6c63f61.png"
+            ]
+        },
+        "Cuadroparacoleccindeautosaesca5397": {
+            "title": "Cuadro para colección de autos a escala",
+            "price": 8.5,
+            "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
+            "mainImg": "./imagenes/prod_1770065397_768cce4a.png",
+            "extraImgs": [
+                "./imagenes/prod_1770065397_5930ccb9.png",
+                "./imagenes/prod_1770065397_39fd15f1.png",
+                "./imagenes/prod_1770065397_c5cc98f8.png"
+            ]
+        },
+        "Cuadroparacoleccionismodeautos5559": {
+            "title": "Cuadro para coleccionismo de autos a escala",
+            "price": 8.5,
+            "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
+            "mainImg": "./imagenes/prod_1770065559_91b8e40a.png",
+            "extraImgs": [
+                "./imagenes/prod_1770065559_9f3b1056.png",
+                "./imagenes/prod_1770065559_c81a48cb.png",
+                "./imagenes/prod_1770065559_b2717ef0.png"
+            ]
+        },
+        "Cuadroparacoleccionismoautosae6270": {
+            "title": "Cuadro para coleccionismo autos a escala",
+            "price": 8.5,
+            "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
+            "mainImg": "./imagenes/prod_1770066270_9f452e3a.png",
+            "extraImgs": [
+                "./imagenes/prod_1770066270_4363f9f5.png",
+                "./imagenes/prod_1770066270_20a05950.png",
+                "./imagenes/prod_1770066270_d1bb793f.png"
+            ]
+        },
+        "Cuadroparacoleccionismoautosae6766": {
+            "title": "Cuadro para coleccionismo autos a escala",
+            "price": 8.5,
+            "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
+            "mainImg": "./imagenes/prod_1770066766_37222f31.png",
+            "extraImgs": [
+                "./imagenes/prod_1770066766_585c4970.png",
+                "./imagenes/prod_1770066766_a527e22e.png",
+                "./imagenes/prod_1770066766_ea137177.png"
+            ]
         }
     },
     "categories": {
@@ -773,6 +839,12 @@
             "RompecabezasDiablada"
         ],
         "fandom": [
+            "Cuadroparacoleccionismoautosae6766",
+            "Cuadroparacoleccionismoautosae6270",
+            "Cuadroparacoleccionismodeautos5559",
+            "Cuadroparacoleccindeautosaesca5397",
+            "Cuadroparacoleccionistafullcol4753",
+            "Cuadroparacoleccionistafullcol4452",
             "Cuadroparacoleccionistafullcol4301",
             "Cuadrodecarro164coleccionista3596",
             "CajaMorat",
