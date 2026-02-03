@@ -300,48 +300,332 @@
 </div>
 
 <script>
- // --- VARIABLES GLOBALES ---
-    let productData = {};
-    let categories = {};
+// =========================================================
+// VARIABLES GLOBALES
+// =========================================================
+let productData = {};
+let categories = {};
 
-    const categoryTitles = {
-        amor: "❤️ San Valentín & Amor",
-        cultura: "🇪🇨 Cultura Ecuatoriana",
-        fandom: "🎵 Fandom: Música & Anime",
-        eventos: "✝️ Eventos & Religioso",
-        infantil: "🧸 Infantil & Bebés",
-        navidad: "Otros productos"
-    };
+const categoryTitles = {
+  amor: "❤️ San Valentín & Amor",
+  cultura: "🇪🇨 Cultura Ecuatoriana",
+  fandom: "🎵 Fandom: Música & Anime",
+  eventos: "✝️ Eventos & Religioso",
+  infantil: "🧸 Infantil & Bebés",
+  navidad: "Otros productos"
+};
 
-    // --- CARGAR DATOS EXTERNOS ---
-    async function loadCatalogData() {
-        try {
-            // Un "cache buster" (?v=...) evita que el navegador guarde versiones viejas del JSON
-            const response = await fetch('productos.json?v=' + new Date().getTime());
-            const data = await response.json();
-            
-            productData = data.products;
-            categories = data.categories;
-            
-            renderCatalog(); // Renderiza solo cuando los datos llegaron
-            updateCartUI();  // Actualiza el carrito si había algo guardado
-        } catch (error) {
-            console.error("Error cargando el catálogo:", error);
-            document.getElementById('main-content').innerHTML = "<p style='text-align:center'>Error cargando productos. Por favor recarga la página.</p>";
-        }
-    }
+// =========================================================
+// CARRITO (persistencia)
+// =========================================================
+let cart = JSON.parse(localStorage.getItem('cart_v6') || '[]');
+let currentGallery = [];
+let currentProductId = null;
 
-    // --- RENDERIZADO (Sin cambios mayores, solo llamamos a loadCatalogData al inicio) ---
-    document.addEventListener('DOMContentLoaded', () => {
-        loadCatalogData(); // <--- AQUÍ INICIA TODO AHORA
-        
-        // Highlight active nav
-        window.addEventListener('scroll', () => {
-             // ... (resto de tu código de scroll igual) ...
-        });
+// =========================================================
+// HELPERS DE PRECIO
+// =========================================================
+function parsePrice(priceVal) {
+  if (priceVal === null || priceVal === undefined) return 0;
+  if (typeof priceVal === 'number') return priceVal;
+
+  const s = String(priceVal)
+    .replace('$', '')
+    .replace(/\s+/g, '')
+    .replace(',', '.');
+
+  const n = parseFloat(s);
+  return Number.isFinite(n) ? n : 0;
+}
+
+function formatPrice(priceVal) {
+  if (priceVal === null || priceVal === undefined) return '';
+  if (typeof priceVal === 'number') return `$${priceVal.toFixed(2)}`;
+
+  const s = String(priceVal).trim();
+  if (s.startsWith('$')) return s;
+
+  const n = parseFloat(s.replace(',', '.'));
+  return Number.isFinite(n) ? `$${n.toFixed(2)}` : s;
+}
+
+// =========================================================
+// CARGAR DATOS EXTERNOS
+// =========================================================
+async function loadCatalogData() {
+  try {
+    const response = await fetch('productos.json?v=' + Date.now(), { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status} al cargar productos.json`);
+
+    const data = await response.json();
+    productData = data.products || {};
+    categories  = data.categories || {};
+
+    renderCatalog();
+    updateCartUI();
+    setupScrollSpy();
+  } catch (error) {
+    console.error("Error cargando el catálogo:", error);
+    document.getElementById('main-content').innerHTML =
+      "<p style='text-align:center'>Error cargando productos. Por favor recarga la página.</p>";
+  }
+}
+
+// =========================================================
+// RENDERIZADO
+// =========================================================
+function renderCatalog() {
+  const container = document.getElementById('main-content');
+  container.innerHTML = '';
+
+  for (const [key, items] of Object.entries(categories)) {
+    const sectionHeader = document.createElement('div');
+    sectionHeader.className = 'section-title-container';
+    sectionHeader.id = `cat-${key}`;
+    sectionHeader.innerHTML = `
+      <div class="section-divider"></div>
+      <div class="section-title">${categoryTitles[key] || key}</div>
+    `;
+    container.appendChild(sectionHeader);
+
+    const grid = document.createElement('div');
+    grid.className = 'product-grid';
+
+    (items || []).forEach(id => {
+      const p = productData[id];
+      if (!p) return;
+
+      const priceHtml = `<div class="price-normal">${formatPrice(p.price)}</div>`;
+
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <div class="image-container" onclick="openModal('${id}', '${key}')">
+          <img src="${p.mainImg}" alt="${p.title}" loading="lazy">
+        </div>
+        <div class="card-content">
+          <div>
+            <div class="card-title">${p.title}</div>
+            <div class="card-desc">${p.description}</div>
+          </div>
+          ${priceHtml}
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-outline" onclick="openModal('${id}', '${key}')">Ver Detalles</button>
+          <button class="btn btn-primary" onclick="addToCart('${id}', '${key}')">Añadir</button>
+        </div>
+      `;
+      grid.appendChild(card);
     });
 
-    // ... (Mantén el resto de tus funciones: renderCatalog, openModal, addToCart, etc. IGUALES) ...
+    container.appendChild(grid);
+  }
+}
+
+// =========================================================
+// MODAL PRODUCTO
+// =========================================================
+function openModal(id, catKey) {
+  const p = productData[id];
+  if (!p) return;
+
+  currentProductId = id;
+
+  document.getElementById('modal-title').textContent = p.title;
+  document.getElementById('modal-desc').textContent = p.description;
+
+  const priceEl = document.getElementById('modal-price');
+  priceEl.innerHTML = `<span style="font-size: 2.5rem; color: var(--primary);">${formatPrice(p.price)}</span>`;
+
+  const msg = `Hola, me interesa: ${p.title} (${formatPrice(p.price)})`;
+  document.getElementById('modal-whatsapp').href =
+    `https://wa.me/593964206952?text=${encodeURIComponent(msg)}`;
+
+  currentGallery = [p.mainImg, ...(p.extraImgs || [])];
+  const mainImg = document.getElementById('modal-main-img');
+  const thumbs  = document.getElementById('modal-gallery');
+
+  mainImg.src = currentGallery[0] || '';
+  thumbs.innerHTML = '';
+
+  if (currentGallery.length > 1) {
+    currentGallery.forEach((src, i) => {
+      const t = document.createElement('div');
+      t.className = `thumb ${i === 0 ? 'active' : ''}`;
+      t.innerHTML = `<img src="${src}" alt="thumb" loading="lazy" onclick="switchImg('${src}', this)">`;
+      thumbs.appendChild(t);
+    });
+  }
+
+  const primaryBtn = document.querySelector('#productModal .btn-primary');
+  if (primaryBtn) {
+    primaryBtn.onclick = () => { addToCart(id, catKey); closeModal(); };
+  }
+
+  const wrapper = document.querySelector('.main-image-wrapper');
+  if (wrapper) wrapper.classList.remove('zoomed');
+
+  document.getElementById('productModal').style.display = 'block';
+}
+
+window.switchImg = function(src, el) {
+  document.getElementById('modal-main-img').src = src;
+  document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+  if (el && el.parentElement) el.parentElement.classList.add('active');
+  const wrapper = document.querySelector('.main-image-wrapper');
+  if (wrapper) wrapper.classList.remove('zoomed');
+};
+
+function closeModal() {
+  document.getElementById('productModal').style.display = 'none';
+  const wrapper = document.querySelector('.main-image-wrapper');
+  if (wrapper) wrapper.classList.remove('zoomed');
+}
+
+// zoom toggle
+(function bindZoomToggle(){
+  const wrapper = document.querySelector('.main-image-wrapper');
+  const img = document.getElementById('modal-main-img');
+  if (wrapper && img) {
+    img.addEventListener('click', () => wrapper.classList.toggle('zoomed'));
+  }
+})();
+
+function addToCartFromModal() {
+  if (currentProductId) addToCart(currentProductId);
+}
+
+// =========================================================
+// CARRITO
+// =========================================================
+function addToCart(id, catKey) {
+  const p = productData[id];
+  if (!p) return;
+
+  const exist = cart.find(i => i.id === id);
+  if (exist) exist.qty++;
+  else cart.push({ id, title: p.title, price: parsePrice(p.price), qty: 1 });
+
+  saveCart();
+
+  const btn = document.getElementById('floating-cart');
+  btn.style.transform = 'scale(1.2)';
+  setTimeout(() => btn.style.transform = 'scale(1)', 200);
+}
+
+function updateQty(id, chg) {
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    item.qty += chg;
+    if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+    saveCart();
+  }
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(i => i.id !== id);
+  saveCart();
+}
+
+function saveCart() {
+  localStorage.setItem('cart_v6', JSON.stringify(cart));
+  updateCartUI();
+}
+
+function updateCartUI() {
+  const qty = cart.reduce((s, i) => s + i.qty, 0);
+  const total = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+
+  document.getElementById('cart-count').textContent = qty;
+  document.getElementById('cart-total').textContent = `$${total.toFixed(2)}`;
+
+  const list = document.getElementById('cart-items-list');
+  list.innerHTML = '';
+
+  if (cart.length === 0) {
+    list.innerHTML = '<p style="text-align:center; color:#9ca3af; margin-top:1rem;">Carrito vacío</p>';
+    return;
+  }
+
+  cart.forEach(i => {
+    list.innerHTML += `
+      <div class="cart-item">
+        <div>
+          <div style="font-weight:700">${i.title}</div>
+          <div style="font-size:0.9rem; color:#6b7280">$${i.price.toFixed(2)} x ${i.qty}</div>
+        </div>
+        <div style="display:flex; align-items:center;">
+          <div class="cart-controls">
+            <button onclick="updateQty('${i.id}', -1)">-</button>
+            <span style="margin:0 0.5rem; font-weight:600">${i.qty}</span>
+            <button onclick="updateQty('${i.id}', 1)">+</button>
+          </div>
+          <button class="cart-remove" onclick="removeFromCart('${i.id}')">×</button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function openCartModal() {
+  document.getElementById('cartModal').style.display = 'block';
+}
+
+function closeCartModal() {
+  document.getElementById('cartModal').style.display = 'none';
+}
+
+function sendWhatsAppOrder() {
+  if (cart.length === 0) return;
+
+  let msg = "¡Hola! Deseo realizar el siguiente pedido:\n\n";
+  let total = 0;
+
+  cart.forEach(i => {
+    const sub = i.price * i.qty;
+    msg += `• ${i.qty}x ${i.title} - $${sub.toFixed(2)}\n`;
+    total += sub;
+  });
+
+  msg += `\n*TOTAL: $${total.toFixed(2)}*`;
+  window.open(`https://wa.me/593964206952?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// =========================================================
+// Scroll Spy (nav activa)
+// =========================================================
+function setupScrollSpy() {
+  window.addEventListener('scroll', () => {
+    let current = '';
+    document.querySelectorAll('.section-title-container').forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (scrollY >= sectionTop - 150) current = section.getAttribute('id');
+    });
+
+    document.querySelectorAll('.cat-link').forEach(a => {
+      a.classList.remove('active');
+      if (current && a.getAttribute('href').includes(current)) a.classList.add('active');
+    });
+  });
+}
+
+// =========================================================
+// Cierres por click afuera
+// =========================================================
+window.onclick = function(e) {
+  if (e.target && e.target.classList && e.target.classList.contains('modal')) {
+    e.target.style.display = 'none';
+    const wrapper = document.querySelector('.main-image-wrapper');
+    if (wrapper) wrapper.classList.remove('zoomed');
+  }
+};
+
+// =========================================================
+// INICIO
+// =========================================================
+document.addEventListener('DOMContentLoaded', () => {
+  loadCatalogData();
+});
 </script>
 </body>
 </html>
