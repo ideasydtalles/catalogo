@@ -728,6 +728,18 @@
                 "./imagenes/prod_1770083847_e268ccf5.png",
                 "./imagenes/prod_1770083847_b6515cea.png"
             ]
+        },
+        "Cuadroparacoleccionistaautosed8417": {
+            "title": "Cuadro para coleccionista autos edición Tesla",
+            "price": 8.5,
+            "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64, modelo Tesla. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
+            "mainImg": "./imagenes/prod_1770138416_3944bc1d.png",
+            "extraImgs": [
+                "./imagenes/prod_1770138416_2d90f89f.png",
+                "./imagenes/prod_1770138416_3aa84c35.png",
+                "./imagenes/prod_1770138416_d3301a43.png",
+                "./imagenes/prod_1770138417_ca57c7ab.png"
+            ]
         }
     },
     "categories": {
@@ -762,6 +774,7 @@
             "RompecabezasDiablada"
         ],
         "fandom": [
+            "Cuadroparacoleccionistaautosed8417",
             "Cuadroparacoleccionistaautos3847",
             "CajaMorat",
             "CajaBTS",
