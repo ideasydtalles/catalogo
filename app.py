@@ -11,10 +11,7 @@ import streamlit as st
 from PIL import Image, UnidentifiedImageError
 
 from git import Repo, GitCommandError, InvalidGitRepositoryError, NoSuchPathError
-try:
-    from openai import OpenAI
-except ImportError:
-    OpenAI = None
+from openai import OpenAI
 
 
 # =========================================================
@@ -69,6 +66,51 @@ def get_secret(key: str, default=None):
     except Exception:
         pass
     return os.environ.get(key, default)
+
+# =========================================================
+# SSH para Git en Streamlit Cloud (evita: Host key verification failed)
+# =========================================================
+import tempfile
+import stat
+
+def configure_git_ssh():
+    """
+    Configura GIT_SSH_COMMAND para que Git use una deploy key (privada)
+    y un known_hosts pre-cargado (GitHub).
+
+    Secrets esperados en st.secrets:
+      - GIT_SSH_PRIVATE_KEY (contenido de la llave privada)
+      - GIT_KNOWN_HOSTS (líneas known_hosts oficiales de GitHub)
+      - (opcional) GIT_REMOTE_SSH_URL (git@github.com:OWNER/REPO.git)
+    """
+    priv = get_secret('GIT_SSH_PRIVATE_KEY', '')
+    if not str(priv).strip():
+        return
+
+    known = get_secret('GIT_KNOWN_HOSTS', '')
+
+    tmpdir = Path(tempfile.gettempdir())
+    key_path = tmpdir / 'deploy_key_catalogo'
+    key_path.write_text(str(priv).strip() + '\n', encoding='utf-8')
+    key_path.chmod(stat.S_IRUSR | stat.S_IWUSR)  # 600
+
+    if str(known).strip():
+        known_path = tmpdir / 'known_hosts'
+        known_path.write_text(str(known).strip() + '\n', encoding='utf-8')
+        known_path.chmod(stat.S_IRUSR | stat.S_IWUSR)
+        os.environ['GIT_SSH_COMMAND'] = (
+            f"ssh -i {key_path} -o IdentitiesOnly=yes "
+            f"-o StrictHostKeyChecking=yes -o UserKnownHostsFile={known_path}"
+        )
+    else:
+        # Modo rápido (menos estricto): acepta host nuevo automáticamente
+        os.environ['GIT_SSH_COMMAND'] = (
+            f"ssh -i {key_path} -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
+        )
+
+# Llamar una vez al iniciar
+configure_git_ssh()
+
 
 
 # =========================================================
@@ -237,8 +279,6 @@ def save_images(uploaded_files, main_name: str):
 # Nota: es preview, no visión. Solo usa categoría+notas+nombres archivo.
 # =========================================================
 def ai_preview_generate(category: str, notes: str, filenames: list[str]) -> tuple[str, str]:
-    if OpenAI is None:
-        raise RuntimeError("Falta la librería 'openai'. Agrega 'openai' a requirements.txt o desactiva la función IA.")
     if not OPENAI_API_KEY:
         raise RuntimeError("No hay OPENAI_API_KEY (secrets o env).")
 
@@ -391,6 +431,13 @@ def git_sync_commit_push(commit_message: str):
     ensure_gitignore()
 
     repo = open_repo_or_fail()
+    # Fuerza URL SSH del remote si se proporciona (evita remotes https en Cloud)
+    ssh_url = get_secret('GIT_REMOTE_SSH_URL', '')
+    if ssh_url:
+        try:
+            repo.remote(name=GIT_REMOTE_NAME).set_url(ssh_url)
+        except Exception:
+            pass
     git_checkout_branch(repo, GIT_TARGET_BRANCH)
 
     if GIT_PULL_BEFORE_PUSH:
