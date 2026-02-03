@@ -1,6 +1,13 @@
 # Streamlit secrets (NO subir)
 .streamlit/secrets.toml
 secrets.toml
+# SSH / Keys (prevención)
+.ssh/
+id_rsa
+id_rsa.*
+*.pem
+*.key
+*.p12
 
 # Opcional: caches / basura
 __pycache__/

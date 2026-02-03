@@ -11,7 +11,10 @@ import streamlit as st
 from PIL import Image, UnidentifiedImageError
 
 from git import Repo, GitCommandError, InvalidGitRepositoryError, NoSuchPathError
-from openai import OpenAI
+try:
+    from openai import OpenAI
+except ImportError:
+    OpenAI = None
 
 
 # =========================================================
@@ -234,6 +237,8 @@ def save_images(uploaded_files, main_name: str):
 # Nota: es preview, no visión. Solo usa categoría+notas+nombres archivo.
 # =========================================================
 def ai_preview_generate(category: str, notes: str, filenames: list[str]) -> tuple[str, str]:
+    if OpenAI is None:
+        raise RuntimeError("Falta la librería 'openai'. Agrega 'openai' a requirements.txt o desactiva la función IA.")
     if not OPENAI_API_KEY:
         raise RuntimeError("No hay OPENAI_API_KEY (secrets o env).")
 
