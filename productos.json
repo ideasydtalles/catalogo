@@ -740,6 +740,16 @@
                 "./imagenes/prod_1770138416_d3301a43.png",
                 "./imagenes/prod_1770138417_ca57c7ab.png"
             ]
+        },
+        "CuadrocoleccionistaNewBeet1556": {
+            "title": "Cuadro coleccionista New Beetle",
+            "price": 8.5,
+            "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
+            "mainImg": "./imagenes/prod_1770241555_2c7ddecc.png",
+            "extraImgs": [
+                "./imagenes/prod_1770241556_2f28e62c.png",
+                "./imagenes/prod_1770241556_020ba3ee.png"
+            ]
         }
     },
     "categories": {
@@ -774,6 +784,7 @@
             "RompecabezasDiablada"
         ],
         "fandom": [
+            "CuadrocoleccionistaNewBeet1556",
             "Cuadroparacoleccionistaautosed8417",
             "Cuadroparacoleccionistaautos3847",
             "CajaMorat",
