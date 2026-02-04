@@ -66,6 +66,7 @@ def login_gate():
     """Gate opcional: bloquea app si no se autentica.
 
     Secrets esperados:
+      ENABLE_AUTH = "true"
       [auth]
       salt = "..."
       users = {"usuario":"sha256(salt+password)", ...}
@@ -75,7 +76,6 @@ def login_gate():
     if not ENABLE_AUTH:
         return
 
-    auth = {}
     try:
         auth = st.secrets.get("auth", {})
     except Exception:
@@ -136,8 +136,6 @@ OPENAI_API_KEY = get_secret("OPENAI_API_KEY", "")
 
 # =========================================================
 # SSH para Git en Streamlit Cloud
-# (Evita: Host key verification failed)
-# GitHub publica entradas known_hosts oficiales.
 # =========================================================
 
 def configure_git_ssh():
@@ -467,7 +465,7 @@ def git_sync_commit_push(commit_message: str):
     return f"Push exitoso a '{GIT_TARGET_BRANCH}'."
 
 # =========================================================
-# Helpers de catálogo: edición / eliminación
+# Helpers de catálogo: edición / eliminación / orden / duplicado
 # =========================================================
 
 def product_categories(data_obj, prod_id: str) -> list[str]:
@@ -535,6 +533,49 @@ def delete_local_images_if_unused(data_obj, prod_id: str, paths: list[str]):
     return deleted, skipped
 
 
+def move_in_category(data_obj, cat: str, prod_id: str, direction: int) -> bool:
+    """Mueve un producto dentro de la lista de una categoría.
+    direction = -1 (subir), +1 (bajar)
+    """
+    arr = data_obj.get("categories", {}).get(cat, []) or []
+    if prod_id not in arr:
+        return False
+    i = arr.index(prod_id)
+    j = i + direction
+    if j < 0 or j >= len(arr):
+        return False
+    arr[i], arr[j] = arr[j], arr[i]
+    data_obj["categories"][cat] = arr
+    return True
+
+
+def move_to_position(data_obj, cat: str, prod_id: str, new_index: int) -> bool:
+    """Mueve prod_id a una posición específica dentro de una categoría."""
+    arr = data_obj.get("categories", {}).get(cat, []) or []
+    if prod_id not in arr:
+        return False
+    arr = [x for x in arr if x != prod_id]
+    new_index = max(0, min(int(new_index), len(arr)))
+    arr.insert(new_index, prod_id)
+    data_obj["categories"][cat] = arr
+    return True
+
+
+def generate_unique_product_id(data_obj, title: str) -> str:
+    """Genera un ID único y estable (no editable) para un producto nuevo o duplicado."""
+    base = re.sub(r"[^a-zA-Z0-9]", "", title)[:26]
+    suffix = str(int(time.time()))[-4:]
+    candidate = f"{base}{suffix}"
+    k = 0
+    while candidate in (data_obj.get("products", {}) or {}):
+        k += 1
+        candidate = f"{base}{suffix}{k}"
+        if k > 50:
+            candidate = f"{base}{suffix}{int(time.time())}"
+            break
+    return candidate
+
+
 # =========================================================
 # UI principal (Tabs)
 # =========================================================
@@ -574,7 +615,6 @@ with TAB_ADD:
         st.markdown("---")
         st.markdown("### 2) Datos del producto")
 
-        # Recomendación: categorías deben existir
         if not isinstance(data.get("categories", {}), dict) or not data["categories"]:
             st.error("No hay categorías en productos.json (data['categories']).")
             st.stop()
@@ -605,7 +645,6 @@ with TAB_ADD:
 
             if save_btn:
                 with file_lock(LOCK_PATH, timeout_s=20.0):
-                    # fallback a sugerencias
                     if not nuevo_titulo.strip():
                         nuevo_titulo = st.session_state.get("title_suggested", "").strip()
                     if not nueva_desc.strip():
@@ -614,14 +653,12 @@ with TAB_ADD:
                         st.error("Falta el título.")
                         st.stop()
 
-                    # 1) Guardar imágenes
                     mainImg, extraImgs = save_images(uploaded_files, main_choice)
                     if not mainImg:
-                        st.error("No se pudo guardar la imagen principal (imagen inválida o error).")
+                        st.error("No se pudo guardar la imagen principal.")
                         st.stop()
 
-                    # 2) ID estable (NO editable luego)
-                    prod_id = re.sub(r"[^a-zA-Z0-9]", "", nuevo_titulo)[:30] + str(int(time.time()))[-4:]
+                    prod_id = generate_unique_product_id(data, nuevo_titulo)
 
                     nuevo_obj = {
                         "title": nuevo_titulo.strip(),
@@ -633,7 +670,6 @@ with TAB_ADD:
 
                     data["products"][prod_id] = nuevo_obj
 
-                    # Enforce: producto pertenece a una sola categoría (la seleccionada)
                     remove_product_from_all_categories(data, prod_id)
                     ensure_in_category(data, prod_id, nueva_cat, position=0)
 
@@ -650,20 +686,92 @@ with TAB_ADD:
                         st.error(f"Error en Git (pero el producto quedó guardado localmente): {e}")
 
 # ---------------------------------------------------------
-# TAB 2: Administrar productos (editar/eliminar)
+# TAB 2: Administrar productos (reordenar / duplicar / editar / eliminar)
 # ---------------------------------------------------------
 with TAB_MANAGE:
-    st.markdown("### Administrar Productos (Editar / Eliminar)")
-    st.caption("El ID NO se modifica. Puedes editar campos e imágenes. Al eliminar, se borran imágenes locales del repo si no están usadas por otros productos.")
+    st.markdown("### Administrar Productos")
+    st.caption("El ID NO se modifica. Puedes reordenar, duplicar, editar y eliminar. Al eliminar, se borran imágenes locales del repo si NO están usadas por otro producto.")
 
     products = data.get("products", {}) or {}
     categories = data.get("categories", {}) or {}
     cat_list = list(categories.keys())
 
+    # ---------- Reordenar ----------
+    st.markdown("---")
+    st.markdown("#### 🔃 Reordenar productos por categoría")
+    st.caption("El orden en categories define el orden de salida en el catálogo.")
+
+    if not cat_list:
+        st.warning("No hay categorías definidas.")
+    else:
+        cat_reorder = st.selectbox("Categoría a reordenar", options=cat_list, key="cat_reorder")
+        arr = categories.get(cat_reorder, []) or []
+        if not arr:
+            st.info("Esa categoría está vacía.")
+        else:
+            ordered_labels = []
+            for i, pid0 in enumerate(arr):
+                title0 = (products.get(pid0, {}) or {}).get("title", pid0)
+                ordered_labels.append(f"{i+1:02d}. {pid0} — {title0}")
+
+            sel_move = st.selectbox("Producto a mover", options=ordered_labels, key="sel_move_prod")
+            sel_pid = sel_move.split(". ", 1)[1].split(" — ", 1)[0]
+
+            cA, cB, cC, cD = st.columns(4)
+            with cA:
+                up_btn = st.button("⬆️ Subir", key="btn_up")
+            with cB:
+                down_btn = st.button("⬇️ Bajar", key="btn_down")
+            with cC:
+                top_btn = st.button("⤒ Al inicio", key="btn_top")
+            with cD:
+                bottom_btn = st.button("⤓ Al final", key="btn_bottom")
+
+            pos_col1, pos_col2 = st.columns([1, 1])
+            with pos_col1:
+                new_pos = st.number_input(
+                    "Mover a posición (1..N)",
+                    min_value=1,
+                    max_value=len(arr),
+                    value=min(arr.index(sel_pid) + 1, len(arr)),
+                    key="move_pos",
+                )
+            with pos_col2:
+                go_btn = st.button("Mover", key="btn_move_pos")
+
+            if up_btn or down_btn or top_btn or bottom_btn or go_btn:
+                with file_lock(LOCK_PATH, timeout_s=20.0):
+                    if up_btn:
+                        moved = move_in_category(data, cat_reorder, sel_pid, -1)
+                    elif down_btn:
+                        moved = move_in_category(data, cat_reorder, sel_pid, +1)
+                    elif top_btn:
+                        moved = move_to_position(data, cat_reorder, sel_pid, 0)
+                    elif bottom_btn:
+                        moved = move_to_position(data, cat_reorder, sel_pid, 10**9)
+                    else:
+                        moved = move_to_position(data, cat_reorder, sel_pid, int(new_pos) - 1)
+
+                    if moved:
+                        save_data(data)
+                        try:
+                            msg = git_sync_commit_push(f"Auto: Reordenar {cat_reorder} ({sel_pid})")
+                            st.success("✅ Orden actualizado y publicado.")
+                            st.info(msg)
+                        except Exception as e:
+                            st.error(f"Error en Git (pero el orden quedó guardado localmente): {e}")
+                    else:
+                        st.warning("No se pudo mover (ya estaba en el borde o no se encontró).")
+
+                st.rerun()
+
+    # ---------- Gestión por producto ----------
+    st.markdown("---")
+    st.markdown("#### 🧩 Seleccionar producto")
+
     if not products:
         st.info("No hay productos cargados.")
     else:
-        # filtros
         c1, c2 = st.columns([2, 1])
         with c1:
             q = st.text_input("Buscar (título o descripción)", value="", key="q_manage")
@@ -671,8 +779,7 @@ with TAB_MANAGE:
             cat_filter = st.selectbox("Filtrar categoría", ["(todas)"] + cat_list, key="cat_manage")
 
         def _in_cat(pid: str, cat: str) -> bool:
-            arr = categories.get(cat, []) or []
-            return pid in arr
+            return pid in (categories.get(cat, []) or [])
 
         def _match(pid: str, p: dict) -> bool:
             txt = f"{p.get('title','')} {p.get('description','')}".lower()
@@ -682,10 +789,7 @@ with TAB_MANAGE:
                 ok_cat = _in_cat(pid, cat_filter)
             return ok_q and ok_cat
 
-        options = []
-        for pid, p in products.items():
-            if _match(pid, p):
-                options.append((pid, p.get("title", "(sin título)")))
+        options = [(pid, p.get("title", "(sin título)")) for pid, p in products.items() if _match(pid, p)]
         options.sort(key=lambda x: x[1].lower())
 
         if not options:
@@ -696,14 +800,16 @@ with TAB_MANAGE:
             pid = label_map[selected_label]
             p = products[pid]
 
-            # mostrar resumen
+            current_cats = product_categories(data, pid)
+            default_cat = current_cats[0] if current_cats else (cat_list[0] if cat_list else "")
+
+            # resumen
             left, right = st.columns([1, 2])
             with left:
                 if p.get("mainImg"):
                     st.image(p["mainImg"], use_container_width=True)
                 st.caption(f"ID: {pid}")
-                st.caption(f"Categorías: {', '.join(product_categories(data, pid)) or '(ninguna)'}")
-
+                st.caption(f"Categorías: {', '.join(current_cats) or '(ninguna)'}")
             with right:
                 st.write(f"**{p.get('title','')}**")
                 st.write(p.get("description", ""))
@@ -713,11 +819,48 @@ with TAB_MANAGE:
                     st.write("Extras:")
                     st.image(extras[:6], width=120)
 
+            # ---------- Duplicar ----------
             st.markdown("---")
-            st.markdown("#### Editar")
+            st.markdown("#### 📄 Duplicar")
+            st.caption("Crea una copia con nuevo ID. Reutiliza imágenes (evita duplicación de archivos).")
 
-            current_cats = product_categories(data, pid)
-            default_cat = current_cats[0] if current_cats else (cat_list[0] if cat_list else "")
+            dup_title_suffix = st.text_input("Sufijo para el título de la copia", value=" (Copia)", key=f"dup_suf_{pid}")
+            dup_to_cat = st.selectbox(
+                "Categoría destino de la copia",
+                options=cat_list,
+                index=cat_list.index(default_cat) if default_cat in cat_list else 0,
+                key=f"dup_cat_{pid}",
+            )
+            if st.button("📄 Duplicar producto", key=f"dup_btn_{pid}"):
+                with file_lock(LOCK_PATH, timeout_s=20.0):
+                    src_prod = data["products"].get(pid, {})
+                    new_id = generate_unique_product_id(data, (src_prod.get("title", "Producto") + "Copia"))
+
+                    copy_obj = {
+                        "title": (src_prod.get("title", "") + dup_title_suffix).strip(),
+                        "price": float(src_prod.get("price", 0.0) or 0.0),
+                        "description": (src_prod.get("description", "") or "").strip(),
+                        "mainImg": src_prod.get("mainImg", ""),
+                        "extraImgs": list(src_prod.get("extraImgs", []) or []),
+                    }
+
+                    data["products"][new_id] = copy_obj
+                    remove_product_from_all_categories(data, new_id)
+                    ensure_in_category(data, new_id, dup_to_cat, position=0)
+                    save_data(data)
+
+                    try:
+                        msg = git_sync_commit_push(f"Auto: Duplicar producto {pid} -> {new_id}")
+                        st.success(f"✅ Duplicado creado: {new_id}")
+                        st.info(msg)
+                    except Exception as e:
+                        st.error(f"Error en Git (pero el duplicado quedó guardado localmente): {e}")
+
+                st.rerun()
+
+            # ---------- Editar ----------
+            st.markdown("---")
+            st.markdown("#### ✏️ Editar")
 
             with st.form(f"edit_{pid}", clear_on_submit=False):
                 col1, col2 = st.columns(2)
@@ -729,10 +872,8 @@ with TAB_MANAGE:
                     new_desc = st.text_area("Descripción", value=p.get("description", ""))
 
                 st.markdown("##### Imágenes")
-                st.caption("Puedes: agregar nuevas, reemplazar main, quitar extras, o pasar una extra a main.")
-
-                # opción: convertir una extra existente en principal
                 extras = p.get("extraImgs", []) or []
+
                 main_option = st.radio(
                     "Acción para imagen principal",
                     options=["Mantener principal", "Reemplazar principal con nueva imagen", "Usar una imagen extra existente como principal"],
@@ -760,71 +901,57 @@ with TAB_MANAGE:
 
             if save_btn:
                 with file_lock(LOCK_PATH, timeout_s=20.0):
-                    # recarga referencia
                     p2 = data["products"][pid]
                     old_main = p2.get("mainImg", "")
-                    old_extras = list(p2.get("extraImgs", []) or [])
 
-                    # 1) aplicar cambios básicos (ID NO cambia)
+                    # campos
                     p2["title"] = new_title.strip()
                     p2["price"] = float(new_price)
                     p2["description"] = new_desc.strip()
 
-                    # 2) mover a una sola categoría
+                    # categoría única
                     remove_product_from_all_categories(data, pid)
                     ensure_in_category(data, pid, new_cat, position=0)
 
-                    # 3) quitar extras seleccionadas
+                    # quitar extras
                     if remove_extras:
                         p2["extraImgs"] = [x for x in (p2.get("extraImgs", []) or []) if x not in set(remove_extras)]
-                        # borrar archivos locales no usados
                         delete_local_images_if_unused(data, pid, remove_extras)
 
-                    # 4) subir nuevas imágenes si existen
+                    # subir nuevas
                     new_main_path = None
                     new_extra_paths = []
                     if new_imgs:
-                        # guardamos todas; si se eligió una como main, se respeta
                         if chosen_new_main:
                             main_rel, extra_rel = save_images(new_imgs, chosen_new_main)
                         else:
-                            # default: primera como main_rel, pero NO cambiaremos main si no se pidió
                             main_rel, extra_rel = save_images(new_imgs, new_imgs[0].name)
-                        # guardados
-                        # main_rel siempre existe si la imagen elegida fue válida
-                        if main_rel:
-                            new_main_path = main_rel
-                        new_extra_paths = extra_rel
 
-                        # si no se eligió main de nuevas, y queremos tratarlas como extras, incluimos main_rel como extra
-                        if not chosen_new_main and main_rel:
-                            new_extra_paths = [main_rel] + new_extra_paths
+                        if chosen_new_main and main_rel:
+                            new_main_path = main_rel
+                            new_extra_paths = extra_rel
+                        else:
+                            new_extra_paths = ([main_rel] if main_rel else []) + extra_rel
 
                         p2["extraImgs"] = (p2.get("extraImgs", []) or []) + new_extra_paths
 
-                    # 5) acción sobre imagen principal
+                    # acción sobre main
                     if main_option == "Reemplazar principal con nueva imagen":
                         if not new_imgs or not chosen_new_main:
                             st.error("Para reemplazar principal debes subir imágenes y escoger una como principal.")
                         else:
-                            # main_rel de la elegida quedó en new_main_path
                             if new_main_path:
                                 p2["mainImg"] = new_main_path
-                                # opcional: borrar anterior si local y no se usa
                                 delete_local_images_if_unused(data, pid, [old_main])
 
                     elif main_option == "Usar una imagen extra existente como principal":
                         if chosen_existing_extra_as_main:
-                            # mover: la elegida pasa a main y el main actual se vuelve extra
                             p2_main = p2.get("mainImg", "")
                             p2["mainImg"] = chosen_existing_extra_as_main
-                            # quita la nueva main de extras
                             p2["extraImgs"] = [x for x in (p2.get("extraImgs", []) or []) if x != chosen_existing_extra_as_main]
-                            # agrega el antiguo main como extra si existía
                             if p2_main:
                                 p2["extraImgs"] = [p2_main] + (p2.get("extraImgs", []) or [])
 
-                    # 6) guardar
                     data["products"][pid] = p2
                     save_data(data)
 
@@ -837,9 +964,10 @@ with TAB_MANAGE:
 
                 st.rerun()
 
+            # ---------- Eliminar ----------
             st.markdown("---")
-            st.markdown("#### Eliminar")
-            st.error("⚠️ Eliminará el producto del catálogo. Se borrarán imágenes locales del repo que no estén usadas por otros productos.")
+            st.markdown("#### 🗑️ Eliminar")
+            st.error("⚠️ Eliminará el producto del catálogo. Se borrarán imágenes locales del repo que NO estén usadas por otros productos.")
             confirm = st.checkbox("Confirmo que quiero eliminar este producto", value=False, key=f"conf_del_{pid}")
 
             if st.button("🗑️ Eliminar producto", disabled=not confirm, key=f"btn_del_{pid}"):
@@ -850,11 +978,9 @@ with TAB_MANAGE:
                         paths.append(pdel.get("mainImg"))
                     paths.extend(pdel.get("extraImgs", []) or [])
 
-                    # elimina referencias
                     data["products"].pop(pid, None)
                     remove_product_from_all_categories(data, pid)
 
-                    # borra imágenes locales del repo si no están usadas por otros productos
                     deleted, skipped = delete_local_images_if_unused(data, pid, paths)
 
                     save_data(data)
@@ -865,7 +991,7 @@ with TAB_MANAGE:
                         if deleted:
                             st.info(f"🧹 Imágenes eliminadas: {len(deleted)}")
                         if skipped:
-                            st.warning(f"Algunas imágenes no se borraron porque se usan en otros productos o no eran locales: {len(skipped)}")
+                            st.warning(f"Algunas imágenes no se borraron (se usan en otros productos o no eran locales): {len(skipped)}")
                         st.info(msg)
                     except Exception as e:
                         st.error(f"Error en Git (pero el producto quedó eliminado localmente): {e}")
