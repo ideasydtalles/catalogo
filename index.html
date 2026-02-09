@@ -306,6 +306,14 @@
 let productData = {};
 let categories = {};
 
+function findCategoryForProduct(prodId) {
+  for (const [cat, ids] of Object.entries(categories || {})) {
+    if ((ids || []).includes(prodId)) return cat;
+  }
+  return null;
+}
+
+
 const categoryTitles = {
   amor: "❤️ San Valentín & Amor",
   cultura: "🇪🇨 Cultura Ecuatoriana",
@@ -624,7 +632,19 @@ window.onclick = function(e) {
 // INICIO
 // =========================================================
 document.addEventListener('DOMContentLoaded', () => {
-  loadCatalogData();
+  (async () => {
+    await loadCatalogData();
+
+    // Abrir producto directamente desde el enlace ?p=ID
+    const params = new URLSearchParams(window.location.search);
+    const pid = params.get('p');
+    if (pid && productData[pid]) {
+      const cat = findCategoryForProduct(pid) || 'amor';
+      const section = document.getElementById(`cat-${cat}`);
+      if (section) section.scrollIntoView({ behavior: 'smooth' });
+      openModal(pid, cat);
+    }
+  })();
 });
 </script>
 </body>

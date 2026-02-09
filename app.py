@@ -38,6 +38,14 @@ IMG_DIR.mkdir(exist_ok=True)
 STREAMLIT_DIR.mkdir(exist_ok=True)
 
 # =========================================================
+# GitHub Pages base (para URLs absolutas de imágenes y links)
+# =========================================================
+PAGES_BASE_URL = get_secret("PAGES_BASE_URL", "https://ideasydtalles.github.io/catalogo")
+CATALOG_CURRENCY = get_secret("CATALOG_CURRENCY", "USD")
+CATALOG_BRAND = get_secret("CATALOG_BRAND", "Ideas & D'talles")
+
+
+# =========================================================
 # Helpers: secrets/env (SIN hardcode)
 # =========================================================
 
@@ -248,8 +256,87 @@ def save_data(data):
     tmp.write_text(json.dumps(data, ensure_ascii=False, indent=4), encoding="utf-8")
     tmp.replace(JSON_PATH)
 
+# =========================================================
+# Generación automática de feed CSV para Meta (Commerce Manager)
+# Incluye product_type y custom_label_0 para crear colecciones por categoría
+# =========================================================
+META_FEED_PATH = BASE_DIR / 'meta-feed.csv'
+
+def build_meta_feed(data_obj: dict):
+    """Genera meta-feed.csv a partir de productos.json.
+    Se publica en GitHub Pages (branch de Pages) y puede conectarse como Data Feed por URL.
+    """
+    products = (data_obj.get('products') or {})
+    cats = (data_obj.get('categories') or {})
+
+    # Mapa id -> categoría (primera ocurrencia)
+    id_to_cat = {}
+    for cat, ids in (cats or {}).items():
+        if not isinstance(ids, list):
+            continue
+        for pid in ids:
+            id_to_cat.setdefault(pid, cat)
+
+    fields = [
+        'id','title','description','availability','condition','price',
+        'link','image_link','brand','mpn','product_type','custom_label_0','additional_image_link'
+    ]
+
+    import csv
+    from urllib.parse import quote
+
+    def product_link(pid: str) -> str:
+        return f"{PAGES_BASE_URL.rstrip('/')}/?p={quote(pid)}"
+
+    def ensure_abs(u: str) -> str:
+        if not u:
+            return ''
+        s = str(u).strip()
+        if s.startswith('http://') or s.startswith('https://'):
+            return s
+        if s.startswith('./'):
+            s = s[2:]
+        return f"{PAGES_BASE_URL.rstrip('/')}/{s}"
+
+    with META_FEED_PATH.open('w', newline='', encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=fields)
+        w.writeheader()
+        for pid, p in products.items():
+            title = (p.get('title') or '').strip()
+            desc = (p.get('description') or '').strip()
+            try:
+                price_num = float(p.get('price') or 0)
+            except Exception:
+                price_num = 0.0
+            price = f"{price_num:.2f} {CATALOG_CURRENCY}"
+
+            main_img = ensure_abs(p.get('mainImg',''))
+            extras = [ensure_abs(x) for x in (p.get('extraImgs') or []) if x]
+
+            cat = id_to_cat.get(pid, '')
+            w.writerow({
+                'id': pid,
+                'title': title[:200],
+                'description': desc[:9999],
+                'availability': 'in stock',
+                'condition': 'new',
+                'price': price,
+                'link': product_link(pid),
+                'image_link': main_img,
+                'brand': CATALOG_BRAND,
+                'mpn': pid,
+                'product_type': cat,
+                'custom_label_0': cat,
+                'additional_image_link': ','.join(extras)
+            })
+
 
 data = load_data()
+# Genera/actualiza feed al iniciar (por si el repo se clona sin el CSV)
+try:
+    build_meta_feed(data)
+except Exception:
+    pass
 
 # =========================================================
 # .gitignore robusto
@@ -316,7 +403,7 @@ def save_images(uploaded_files, main_name: str):
         unique = f"prod_{int(time.time())}_{uuid4().hex[:8]}.{ext}"
         abs_path = IMG_DIR / unique
         abs_path.write_bytes(uf.getbuffer())
-        saved[uf.name] = f"./imagenes/{unique}"
+        saved[uf.name] = f"{PAGES_BASE_URL}/imagenes/{unique}"
     main_rel = saved.get(main_name)
     extras_rel = [url for name, url in saved.items() if name != main_name]
     return main_rel, extras_rel
@@ -493,11 +580,29 @@ def ensure_in_category(data_obj, prod_id: str, cat: str, position: int = 0):
     data_obj["categories"][cat] = arr
 
 
-def is_local_repo_image(path: str) -> bool:
+def normalize_repo_image_path(path: str) -> str | None:
+    """Convierte una URL (Pages) o ruta relativa a una ruta del repo './imagenes/...'.
+    Retorna None si no corresponde a una imagen local del repo.
+    """
     if not path:
-        return False
+        return None
     p = str(path).strip()
-    return p.startswith("./imagenes/") or p.startswith("imagenes/")
+    # rutas relativas
+    if p.startswith('./imagenes/'):
+        return p
+    if p.startswith('imagenes/'):
+        return './' + p
+    # URLs absolutas de GitHub Pages
+    base = str(PAGES_BASE_URL).rstrip('/') + '/'
+    if p.startswith(base):
+        rel = p[len(base):]
+        if rel.startswith('imagenes/'):
+            return './' + rel
+    return None
+
+
+def is_local_repo_image(path: str) -> bool:
+    return normalize_repo_image_path(path) is not None
 
 
 def image_used_elsewhere(data_obj, img_path: str, excluding_prod_id: str) -> bool:
@@ -515,14 +620,18 @@ def image_used_elsewhere(data_obj, img_path: str, excluding_prod_id: str) -> boo
 
 
 def delete_local_images_if_unused(data_obj, prod_id: str, paths: list[str]):
+    """Elimina archivos en /imagenes si pertenecen al repo y no están usados por otros productos.
+    Soporta rutas relativas y URLs absolutas de GitHub Pages.
+    """
     deleted, skipped = [], []
     for p in paths:
-        if not is_local_repo_image(p):
+        norm = normalize_repo_image_path(p)
+        if not norm:
             continue
         if image_used_elsewhere(data_obj, p, excluding_prod_id=prod_id):
             skipped.append(p)
             continue
-        rel = p.replace("./", "")
+        rel = norm.replace('./', '')
         abs_path = BASE_DIR / rel
         try:
             if abs_path.exists() and abs_path.is_file():
@@ -674,6 +783,7 @@ with TAB_ADD:
                     ensure_in_category(data, prod_id, nueva_cat, position=0)
 
                     save_data(data)
+                    build_meta_feed(data)
                     st.success("✅ Producto guardado localmente.")
 
                     try:
@@ -754,6 +864,7 @@ with TAB_MANAGE:
 
                     if moved:
                         save_data(data)
+                        build_meta_feed(data)
                         try:
                             msg = git_sync_commit_push(f"Auto: Reordenar {cat_reorder} ({sel_pid})")
                             st.success("✅ Orden actualizado y publicado.")
@@ -848,6 +959,7 @@ with TAB_MANAGE:
                     remove_product_from_all_categories(data, new_id)
                     ensure_in_category(data, new_id, dup_to_cat, position=0)
                     save_data(data)
+                    build_meta_feed(data)
 
                     try:
                         msg = git_sync_commit_push(f"Auto: Duplicar producto {pid} -> {new_id}")
@@ -954,6 +1066,7 @@ with TAB_MANAGE:
 
                     data["products"][pid] = p2
                     save_data(data)
+                    build_meta_feed(data)
 
                     try:
                         msg = git_sync_commit_push(f"Auto: Editar producto {pid}")
@@ -984,6 +1097,7 @@ with TAB_MANAGE:
                     deleted, skipped = delete_local_images_if_unused(data, pid, paths)
 
                     save_data(data)
+                    build_meta_feed(data)
 
                     try:
                         msg = git_sync_commit_push(f"Auto: Eliminar producto {pid}")
