@@ -1,837 +1,837 @@
 {
-    "products": {
-        "AutomataCupido": {
-            "title": "Carrusel de 'Cupido Enamorado'",
-            "price": 12,
-            "description": "Una obra maestra de ingeniería en madera. Cupido escribe su carta de amor mientras el escenario gira. Luces en el interior para más realce.",
-            "mainImg": "https://i.postimg.cc/bwL1S3QK/Carrusel_Love10.png",
-            "extraImgs": [
-                "https://i.postimg.cc/44rPXL59/Carrusel_Love1.png",
-                "https://i.postimg.cc/tRVdvdjT/Carrusel_Love2.png",
-                "https://i.postimg.cc/MpYmbWSz/Carrusel_Love4.png",
-                "https://i.postimg.cc/DfbQpQTP/Carrusel_Love6.png",
-                "https://i.postimg.cc/yY4mMJ1r/Carrusel_Love7.png",
-                "https://i.postimg.cc/wjFDR0XH/Carrusel_Love9.png"
-            ]
-        },
-        "CarruselFotos": {
-            "title": "Rueda de la fortuna de Fotos",
-            "price": 8,
-            "description": "Exhibidor de fotos giratorio con forma de estrella/rueda de la fortuna. Capacidad para múltiples fotos. Un regalo dinámico.",
-            "mainImg": "https://i.postimg.cc/L61PvmjD/Carrusel_Fotos1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/9QP7518Z/Carrusel_Fotos2.png"
-            ]
-        },
-        "CajaExplosiva": {
-            "title": "Caja Explosiva 'Sorpresa'",
-            "price": 9,
-            "description": "La caja que se convierte en una experiencia. Al quitar la tapa, las paredes caen revelando capas de mensajes y fotos.",
-            "mainImg": "https://i.postimg.cc/YCPJ7fvC/Caja_Explosiva1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/9fqsQR9f/Caja_Explosiva2.png",
-                "https://i.postimg.cc/SRmPdgv8/Caja_Explosiva4.png",
-                "https://i.postimg.cc/T1Q44r8d/Caja_Explosiva7.png",
-                "https://i.postimg.cc/nhNwgFW8/Caja_Explosiva12.png",
-                "https://i.postimg.cc/WbWym66D/Caja_Explosiva9.png"
-            ]
-        },
-        "CajaLove": {
-            "title": "Caja para regalo 'Love'",
-            "price": 9,
-            "description": "La caja ideal para regalar a ese alguien. Al abrir sus dos tapas tienes espacio para colocar lo que desees.",
-            "mainImg": "https://i.postimg.cc/vTJWr7Lg/Caja_Turquesa_Love1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/QC9QKY5K/Caja_Turquesa_Love2.png",
-                "https://i.postimg.cc/d3k2ZNdh/Caja_Turquesa_Love3.png",
-                "https://i.postimg.cc/0jMYKXm5/Caja_Turquesa_Love4.png",
-                "https://i.postimg.cc/3N4X0fph/Caja_Turquesa_Love5.png"
-            ]
-        },
-        "BuzonSnoopy": {
-            "title": "Buzón Decorativo Snoopy",
-            "price": 10,
-            "description": "Encantador buzón rojo con Snoopy durmiendo en el tejado. Ideal para entregar cartas de amor o dulces.",
-            "mainImg": "https://i.postimg.cc/FFg5SLBR/Buzon_Snoopy2.png",
-            "extraImgs": [
-                "https://i.postimg.cc/XqWRhjpF/Buzon_Snoopy1.png",
-                "https://i.postimg.cc/N0rZj9Xy/Buzon_Snoopy3.png",
-                "https://i.postimg.cc/sf9dWhNQ/Buzon_Snoopy4.jpg",
-                "https://i.postimg.cc/y6X4RZbP/Buzon_Snoopy5.png"
-            ]
-        },
-        "BuzonLove": {
-            "title": "Buzón Decorativo Love",
-            "price": 10,
-            "description": "Encantador buzón rosado con d'talles para mostrar amor. Ideal para entregar cartas de amor o dulces.",
-            "mainImg": "https://i.postimg.cc/1zmDr3wy/Buzon-Rosa-Amor2.png",
-            "extraImgs": [
-                "https://i.postimg.cc/R0SwLZf7/Buzon_Rosa_Amor3.png",
-                "https://i.postimg.cc/VNKnGPWn/Buzon_Rosa_Amor1.png",
-                "https://i.postimg.cc/BncxFK8m/Buzon_Rosa_Amor4.png",
-                "https://i.postimg.cc/FHgjSLfR/Buzon_Rosa_Amor5.png",
-                "https://i.postimg.cc/52MBj3tW/Buzon_Rosa_Amor6.png"
-            ]
-        },
-        "PortavelasLove": {
-            "title": "Adorno 'LOVE' con Rosa",
-            "price": 4.25,
-            "description": "Centro de mesa romántico. Palabra LOVE en cursiva roja con una rosa verde entrelazada.",
-            "mainImg": "https://i.postimg.cc/mD7x8zZK/Adorno_Love_Flor1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/JzhLMzK3/Adorno_Love_Flor3.png"
-            ]
-        },
-        "LamparaLove": {
-            "title": "Lámpara LED LOVE",
-            "price": 12,
-            "description": "Lámpara de mesa con la palabra LOVE iluminada. Crea un ambiente cálido y romántico.",
-            "mainImg": "https://i.postimg.cc/nMbGTrzT/Lampara_Love1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/LhK3v5XG/Lampara_Love2.png",
-                "https://i.postimg.cc/yW4ynxdM/Lampara_Love3.png",
-                "https://i.postimg.cc/gcX9M7j5/Lampara_Love5.png",
-                "https://i.postimg.cc/Kcd6C53q/Lampara_Love6.png",
-                "https://i.postimg.cc/FFdtP6zM/Lampara_Love7.png"
-            ]
-        },
-        "AmorBici": {
-            "title": "Adorno 'Amor en Bici'",
-            "price": 5.5,
-            "description": "Silueta decorativa de pareja paseando en bicicleta. Un detalle sencillo y lleno de amor.",
-            "mainImg": "https://i.postimg.cc/BQHr31xn/Love_Bici1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/jjdmygBM/Love_Bici2.png",
-                "https://i.postimg.cc/Vkw3kLR9/Love_Bici3.png",
-                "https://i.postimg.cc/ZKpGmyrW/Love_Bici4.png"
-            ]
-        },
-        "CarritoLove": {
-            "title": "Carrito del amor",
-            "price": 5.5,
-            "description": "Hermoso carrito funcional (se mueve), con lindas decoraciones y espacio para colocar otros objetos",
-            "mainImg": "https://i.postimg.cc/rwL1zJpV/Carrito_Lila1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/c437sj0Q/Carrito_Lila2.png",
-                "https://i.postimg.cc/dQpmcvPr/Carrito_Lila3.png",
-                "https://i.postimg.cc/VspBP1Q0/Carrito_Lila4.png"
-            ]
-        },
-        "LoveForever": {
-            "title": "Letrero 'Love Forever'",
-            "price": 3,
-            "description": "Letrero decorativo de mesa con la frase Love Forever y símbolo de infinito.",
-            "mainImg": "https://i.postimg.cc/LXJWbq98/Love_Forever1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/tgSfkdHc/Love_Forever2.png"
-            ]
-        },
-        "CupidoinLove": {
-            "title": "Adorno 'Cupido in love'",
-            "price": 5.5,
-            "description": "Silueta decorativa de un cupido tierno con un corazón. Un detalle sencillo y lleno de amor personalizable.",
-            "mainImg": "https://i.postimg.cc/HxP0x1Jd/Cupido_Corazon1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/tTmdTG1H/Cupido_Corazon2.png",
-                "https://i.postimg.cc/XJDKJ6Z6/Cupido_Corazon3.png"
-            ]
-        },
-        "AeroLove": {
-            "title": "Adorno 'Amor en vuelo'",
-            "price": 5.5,
-            "description": "Silueta decorativa de un globo aerostático del amor y su pareja. Un detalle sencillo y lleno de amor personalizable.",
-            "mainImg": "https://i.postimg.cc/sX0PXCMq/Globo_Aero_Love1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/3RbjRQk6/Globo_Aero_Love2.png",
-                "https://i.postimg.cc/fLg7LQVP/Globo_Aero_Love3.png",
-                "https://i.postimg.cc/MTr0TJck/Globo_Aero_Love4.png"
-            ]
-        },
-        "SiluetaEnamorados": {
-            "title": "Silueta Enamorados",
-            "price": 2,
-            "description": "Adorno decorativo de mesa con silueta de enamorados y corazón.",
-            "mainImg": "https://i.postimg.cc/KzhcGy1z/Enamorados.png",
-            "extraImgs": []
-        },
-        "TVAmor": {
-            "title": "Retro TV del Amor",
-            "price": 8,
-            "description": "Adorno con forma de televisión antigua que muestra un mensaje o escena romántica en la pantalla.",
-            "mainImg": "https://i.postimg.cc/hGDWpPQz/Tele_Love4.png",
-            "extraImgs": [
-                "https://i.postimg.cc/kG6dK16b/Tele_Love1.png",
-                "https://i.postimg.cc/1R2SsQ2G/Tele_Love2.jpg",
-                "https://i.postimg.cc/c12W0S2B/Tele_Love3.jpg",
-                "https://i.postimg.cc/5tscGd85/Tele_Love5.png",
-                "https://i.postimg.cc/rmHBV1n5/Tele_Love6.png"
-            ]
-        },
-        "TocadiscosAmor": {
-            "title": "Tocadiscos del amor",
-            "price": 11,
-            "description": "Decoración con forma de tocadiscos vintage. Pregunta por la opción de colocar bluetooth.",
-            "mainImg": "https://i.postimg.cc/59htpL4y/Tocadiscos1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/3J2xqNNq/Tocadiscos2.png",
-                "https://i.postimg.cc/HsbkNnnF/Tocadiscos3.png",
-                "https://i.postimg.cc/YqQCP0jB/Tocadiscos4.png",
-                "https://i.postimg.cc/3wzM7jby/Tocadiscos8.png",
-                "https://i.postimg.cc/CxYxp0n6/Tocadiscos5.jpg"
-            ]
-        },
-        "CestaSanValentin": {
-            "title": "Cesta Corazones",
-            "price": 3.5,
-            "description": "Cesta de madera decorada con corazones, ideal para armar anchetas con peluches y dulces.",
-            "mainImg": "https://i.postimg.cc/7ZXQP1bx/Porta_Pelu_A1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/JnHTQ9xk/Porta_Pelu_A2.png",
-                "https://i.postimg.cc/JnHTQ9xR/Porta_Pelu_A3.png",
-                "https://i.postimg.cc/KcLq3hRv/Porta_Pelu_A4.png",
-                "https://i.postimg.cc/cL1XzKh5/Porta_Pelu_A5.png",
-                "https://i.postimg.cc/3xrnqy9M/Porta_Pelu_A6.png"
-            ]
-        },
-        "CestaOsito": {
-            "title": "Cesta Osito",
-            "price": 3.5,
-            "description": "Cesta de madera decorada como un tierno oso rosado, ideal para armar anchetas.",
-            "mainImg": "https://i.postimg.cc/LsnvHrcS/Porta_Pelu_B1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/TPF0htx5/Porta_Pelu_B2.png",
-                "https://i.postimg.cc/ZK4c99Gw/Porta_Pelu_B3.png",
-                "https://i.postimg.cc/CLSNZZ3m/Porta_Pelu_B4.png"
-            ]
-        },
-        "CajaMorat": {
-            "title": "Caja Fan Morat",
-            "price": 15,
-            "description": "Caja organizadora de madera grabada con el logo y símbolos de la banda, incluye personajes e instrumentos.",
-            "mainImg": "https://i.postimg.cc/3w8CMNTB/1766516996960_Editado.png",
-            "extraImgs": [
-                "https://i.postimg.cc/1tTpNKNB/1766516997088_Editado.png",
-                "https://i.postimg.cc/SN9GCHdw/1766516996946_Editado.png",
-                "https://i.postimg.cc/KjMvRcmN/1766516996811_Editado.png",
-                "https://i.postimg.cc/xjhRk9vn/1766516996901_Editado.png",
-                "https://i.postimg.cc/8c6PjkTy/1766516996825_Editado.png"
-            ]
-        },
-        "CajaBTS": {
-            "title": "Caja Fan BTS",
-            "price": 15,
-            "description": "Caja de madera personalizada para ARMY con el logo de BTS símbolos de la banda, incluye personajes y decoraciones.",
-            "mainImg": "https://i.postimg.cc/FHm0cz7d/1766516997341_Editado.png",
-            "extraImgs": [
-                "https://i.postimg.cc/wj6sMrG5/1766516997367_Editado.png",
-                "https://i.postimg.cc/fRZYXykP/1766516997308_Editado.png",
-                "https://i.postimg.cc/jjSNg1H9/1766516997234_Editado.png",
-                "https://i.postimg.cc/T2LjvBZH/1766516997109_Editado.png",
-                "https://i.postimg.cc/pVhQM3gs/1766516997128_Editado.png"
-            ]
-        },
-        "CuadroGokuEvo": {
-            "title": "Cuadro Goku Evolución",
-            "price": 8,
-            "description": "Silueta impactante de Goku adulto en negro mate con Goku niño superpuesto en naranja y blanco. Fondo naranja vibrante.",
-            "mainImg": "https://i.postimg.cc/T3bZR5g2/Goku_Evo1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/KcVqRvZB/Goku_Evo2.png",
-                "https://i.postimg.cc/DfDj8y2D/Goku_Evo3.png",
-                "https://i.postimg.cc/52WsS7Q2/Goku_Evo4.png",
-                "https://i.postimg.cc/rp8gvDJK/Goku_Evo5.png"
-            ]
-        },
-        "CuadroAnimeAmor": {
-            "title": "Cuadro Amor Anime (Goku y Bulma)",
-            "price": 6,
-            "description": "Siluetas románticas estilo chibi de personajes de anime mirándose. Acabado brillante rojo y negro.",
-            "mainImg": "https://i.postimg.cc/JzX91HZ3/Goku_Bulma_Love1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/vHkJFtgD/Goku_Bulma_Love2.png",
-                "https://i.postimg.cc/gc5SnkYB/Goku_Bulma_Love3.png"
-            ]
-        },
-        "KitCuarentaQuito": {
-            "title": "Kit Viva Quito (40)",
-            "price": 10,
-            "description": "Kit de lujo para jugar cuarenta. Caja ilustrada a todo color con el Panecillo y la Chiva. Incluye fichas con frases típicas y baraja.",
-            "mainImg": "https://i.postimg.cc/bNYvTqF5/IMG_20251121_WA0012_Editada.png",
-            "extraImgs": [
-                "https://i.postimg.cc/JhH0kKYv/IMG_20251122_173006_Editada.png",
-                "https://i.postimg.cc/DwMm0R5K/IMG_20251121_WA0011_Editada.png",
-                "https://i.postimg.cc/BnVtbRN9/IMG_20251121_WA0008_Editada.png",
-                "https://i.postimg.cc/QxNMbjyr/IMG_20251121_WA0014_Editada.png",
-                "https://i.postimg.cc/Bbpn0ztr/IMG_20251122_002246_Editada.png",
-                "https://i.postimg.cc/ZKYqcJDH/IMG_20251124_184944_405_Editada_Editada.png"
-            ]
-        },
-        "CajaPaseNino": {
-            "title": "Caja Pase del Niño Rey de Reyes Riobamba",
-            "price": 15,
-            "description": "Hermosa caja cultural que rinde homenaje a la tradicional fiesta del Pase del Niño Rey de Reyes de Riobamba, incluye los personajes más importantes de la celebración.",
-            "mainImg": "https://i.postimg.cc/JhphFdTr/1766516996504_Editado.png",
-            "extraImgs": [
-                "https://i.postimg.cc/wjd3RNyL/1766516996413_Editado.png",
-                "https://i.postimg.cc/LXhsFBwF/1766516996712_Editado.png",
-                "https://i.postimg.cc/TwhPvqSS/1766516996731_Editado.png",
-                "https://i.postimg.cc/k5J4fdyD/1766516996490_Editado.png",
-                "https://i.postimg.cc/kgFGQ5Kv/1766516996428_Editado.png"
-            ]
-        },
-        "MamaNegra": {
-            "title": "Caja Mama Negra",
-            "price": 15,
-            "description": "Escena cultural de la Fiesta de la Mama Negra (Ecuador) en formato de caja expositora, un homenaje que incluye personajes y decoraciones de la fiesta.",
-            "mainImg": "https://i.postimg.cc/2yFddq7g/image112.png",
-            "extraImgs": [
-                "https://i.postimg.cc/Kjr77KDW/image111.jpg",
-                "https://i.postimg.cc/FHzYC14Q/55e35b7f-66be-4d3b-ad7a-039628a62641.png",
-                "https://i.postimg.cc/2yFddq7g/image112.png"
-            ]
-        },
-        "DiabladaPillaro": {
-            "title": "Caja Diablada Píllaro",
-            "price": 15,
-            "description": "Escena cultural de la Fiesta de la Diablada de Pillaro (Ecuador) en formato de caja expositora, un homenaje que incluye personajes y decoraciones de la fiesta.",
-            "mainImg": "https://i.postimg.cc/9XwsSr2P/image49.png",
-            "extraImgs": [
-                "https://i.postimg.cc/xjNB7cQK/image48.png",
-                "https://i.postimg.cc/BZPRyX31/image46.png",
-                "https://i.postimg.cc/SQYH5J4R/image44.png",
-                "https://i.postimg.cc/7PJjcf47/image47.png"
-            ]
-        },
-        "CajaDiabladaMiniatura": {
-            "title": "Diablada Miniatura",
-            "price": 10,
-            "description": "Versión más compacta de la caja cultural Diablada.",
-            "mainImg": "https://i.postimg.cc/j5Fdsc8N/IMG_20251115_190100_Editado.png",
-            "extraImgs": [
-                "https://i.postimg.cc/3N0rWG6k/IMG_20251115_190112_Editado.png",
-                "https://i.postimg.cc/668CCmxh/IMG_20251115_190148_Editado.png",
-                "https://i.postimg.cc/G36GKxb7/IMG_20251115_190202_Editado.png"
-            ]
-        },
-        "CarnavalGuaranda": {
-            "title": "Caja Carnaval Guaranda",
-            "price": 15,
-            "description": "Escena cultural de la Fiesta del Carnaval de Guaranda (Ecuador) en formato de caja expositora, un homenaje que incluye personajes y decoraciones de la fiesta.",
-            "mainImg": "https://i.postimg.cc/J0c33yQh/image119.png",
-            "extraImgs": [
-                "https://i.postimg.cc/ZnFPP9Lm/image117.jpg",
-                "https://i.postimg.cc/2yFddqxk/image118.png",
-                "https://i.postimg.cc/J0c33yQh/image119.png"
-            ]
-        },
-        "CajaSanPedro": {
-            "title": "Caja San Pedro / Inti Raymi",
-            "price": 15,
-            "description": "Escena cultural de la Fiesta de las fiestas de San Pedro / Inti Raymi (Ecuador) en formato de caja expositora, un homenaje que incluye personajes y decoraciones para representar las fiestas del sol y la cosecha.",
-            "mainImg": "https://i.postimg.cc/WbyhBCwD/San_Pedro1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/WzWhbHRJ/San_Pedro3.png",
-                "https://i.postimg.cc/rwtKMjft/San_Pedro4.png",
-                "https://i.postimg.cc/tRST6wfF/San_Pedro5.png",
-                "https://i.postimg.cc/3Rr84FFj/San_Pedro6.png",
-                "https://i.postimg.cc/bv9YwBkH/San_Pedro9.jpg"
-            ]
-        },
-        "RompecabezasDiablada": {
-            "title": "Puzzle Diablada (308pz)",
-            "price": 13,
-            "description": "Desafío cultural. Rompecabezas de madera de alta calidad con la imagen colorida de la Diablada, con todos sus personajes y decoraciones",
-            "mainImg": "https://i.postimg.cc/6pSnhTmn/Rompec_Pillaro1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/RhRw1RkF/Rompec_Pillaro3.jpg",
-                "https://i.postimg.cc/xCVmWhYK/Rompec_Pillaro4.png",
-                "https://i.postimg.cc/xCVmWhYR/Rompec_Pillaro5.png",
-                "https://i.postimg.cc/QNb7yfz5/Rompec_Pillaro6.png",
-                "https://i.postimg.cc/RhRw1RkF/Rompec_Pillaro3.jpg"
-            ]
-        },
-        "CajaCamaraBaby": {
-            "title": "Caja de regalo 'Cámara' Recién nacido",
-            "price": 14,
-            "description": "Tierna caja con forma de cámara para regalos de recién nacido. Detalles de osito, body y fecha de nacimiento. Un recuerdo para toda la vida.",
-            "mainImg": "https://i.postimg.cc/X7JHvBS9/Camara_Recien_Nac1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/Nj2d6hjb/Camara_Recien_Nac3.png",
-                "https://i.postimg.cc/SxYg60xt/Camara_Recien_Nac4.png",
-                "https://i.postimg.cc/cLtFRqLz/Camara_Recien_Nac2.png",
-                "https://i.postimg.cc/N0hpbNys/Camara_Recien_Nac5.png"
-            ]
-        },
-        "CuadroElefante": {
-            "title": "Cuadro 3D Elefante",
-            "price": 7.5,
-            "description": "Cuadro decorativo con capas en relieve. Elefante gris con alas rosas sobre nubes. Personalizable con nombre (Ej: Luna).",
-            "mainImg": "https://i.postimg.cc/Kjy1HMPH/Cuadro_Elefante1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/Px1xY5gr/Cuadro_Elefante2.png",
-                "https://i.postimg.cc/JnXyxqkR/Cuadro_Elefante3.png"
-            ]
-        },
-        "CuadroOso": {
-            "title": "Cuadro 3D Oso Vintage y globos",
-            "price": 7.5,
-            "description": "Cuadro infantil con osito estilo vintage, boina y tirantes. Fondo azul con globos aerostáticos. Personalizable (Ej: Elian).",
-            "mainImg": "https://i.postimg.cc/CMjBfc07/Cuadro_Osito1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/02P6G72N/Cuadro_Osito3.jpg"
-            ]
-        },
-        "OsitoLuna": {
-            "title": "Cuadro Osito en la Luna",
-            "price": 6,
-            "description": "Osito durmiendo en la luna.",
-            "mainImg": "https://i.postimg.cc/dQTXRTNC/Osito_Luna1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/02P6G72N/Cuadro_Osito3.jpg",
-                "https://i.postimg.cc/CLh1nYm1/Cuadro_Osito4.png",
-                "https://i.postimg.cc/HkPVCK0b/Cuadro_Osito2.png",
-                "https://i.postimg.cc/DyxzqDML/Cuadro_Osito5.png",
-                "https://i.postimg.cc/W4BzdkH4/Cuadro_Osito6.jpg"
-            ]
-        },
-        "CasaPequenaRosa": {
-            "title": "Casa de Cuento (Rosa)",
-            "price": 3.5,
-            "description": "Pequeña casa organizadora pintada en rosa y blanco con techo curvo y lazo. Ideal para guardar joyas o dulces.",
-            "mainImg": "https://i.postimg.cc/VsMMWYqJ/Casa_Rosadapeque1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/gkWhMfs7/Casa_Rosadapeque2.png",
-                "https://i.postimg.cc/3JTGLP1z/Casa_Rosadapeque3.png",
-                "https://i.postimg.cc/Kv2T9dQS/Casa_Rosadapeque4.png"
-            ]
-        },
-        "CasaPequenaLila": {
-            "title": "Casa de Cuento (Lila)",
-            "price": 3.5,
-            "description": "Versión en lila de nuestra casa de cuento. Un detalle delicado para decoración infantil.",
-            "mainImg": "https://i.postimg.cc/Mpt1fdy9/Casa_Morada_Peque1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/BnN2PMxr/Casa_Morada_Peque3.png",
-                "https://i.postimg.cc/1ztwGwBQ/Casa_Morada_Peque5.png",
-                "https://i.postimg.cc/TP4mC1Ng/Casa_Morada_Peque6.png",
-                "https://i.postimg.cc/GmzvTqkN/Casa_Morada_Peque2.png",
-                "https://i.postimg.cc/4xwpHB6G/Casa_Morada_Peque4.png"
-            ]
-        },
-        "CasaMedianaRosa": {
-            "title": "Casa Decorativa multiusos (Rosa)",
-            "price": 5,
-            "description": "Casa de tamaño mediano multiusos con apertura pintada en rosa y blanco. Ideal para guardar joyas o dulces.",
-            "mainImg": "https://i.postimg.cc/yd3R5K2p/Casa_Rosada_Med1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/cJbYXCkb/Casa_Rosada_Med2.png",
-                "https://i.postimg.cc/yxFZ1P1t/Casa_Rosada_Med3.png",
-                "https://i.postimg.cc/WbvZ9Q8Q/Casa_Rosada_Med4.png",
-                "https://i.postimg.cc/ZnrdbcYZ/Casa_Rosada_Med5.png"
-            ]
-        },
-        "CasaJugueteria": {
-            "title": "Casa Juguetería",
-            "price": 13,
-            "description": "Caja multiusos con diseño temático de tienda de juguetes. Ideal para colocar regalos, color personalizable.",
-            "mainImg": "https://i.postimg.cc/MTBTzrpz/40a9594a-472f-45cd-a01d-a88ad10aedad.png",
-            "extraImgs": [
-                "https://i.postimg.cc/4xFNVTKG/IMG-20251028-104013-Editado-Editado.png"
-            ]
-        },
-        "CajaCamaraXV": {
-            "title": "Caja de regalo 'Cámara' para XV Años",
-            "price": 14,
-            "description": "aja única con forma de cámara retro, personalizada para 15 años. Detalles calados de vestido, pastel y zapatilla. Perfecta para lluvia de sobres.",
-            "mainImg": "https://i.postimg.cc/13bY2mdN/Camara15años1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/tCMrnRpf/Camara15años4.png",
-                "https://i.postimg.cc/nhNwgFWB/Camara15años2.png",
-                "https://i.postimg.cc/d0dSYMM6/Camara15años3.png",
-                "https://i.postimg.cc/FsBPkFNb/Camara15años5.png"
-            ]
-        },
-        "CajaCamaraBoda": {
-            "title": "Caja de regalo 'Cámara' para Bodas",
-            "price": 14,
-            "description": "Elegante caja tipo cámara para bodas. Decorada en blanco y turquesa con anillos entrelazados en la parte superior y siluetas de novios.",
-            "mainImg": "https://i.postimg.cc/Wzf7ZSL4/Camara_Wedding1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/Xqv8XmPH/Camara_Wedding2.png",
-                "https://i.postimg.cc/XY5gZw2M/Camara_Wedding3.png",
-                "https://i.postimg.cc/Pqzzydsy/Camara_Wedding4.png"
-            ]
-        },
-        "PortaretratoGrado1": {
-            "title": "Adorno de mesa de Grado",
-            "price": 2.5,
-            "description": "Adorno de mesa decorativo de graduación con forma de estrella, incluye birrete y mensaje. Todo en relieve. Un recuerdo exclusivo.",
-            "mainImg": "https://i.postimg.cc/s2VKtMcf/Grado_A1.png",
-            "extraImgs": []
-        },
-        "PortaretratoGrado2": {
-            "title": "Portaregalos de Grado modelo capa",
-            "price": 2.5,
-            "description": "Marco para entregar regalos de graduación con capa y bufanda. Todo en relieve. Un recuerdo clásico.",
-            "mainImg": "https://i.postimg.cc/NMFDjZSZ/Grado_C1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/NFrx1mg6/Grado_C2.png"
-            ]
-        },
-        "PortaretratoGrado3": {
-            "title": "Portaregalos de Grado modelo birrete y diploma",
-            "price": 2.5,
-            "description": "Marco para entregar regalos de graduación con birrete 3D y diploma. Letras doradas en relieve. Un recuerdo clásico.",
-            "mainImg": "https://i.postimg.cc/zGw0tCT6/Grado_B1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/BvMNsJYt/Grado_B2.png"
-            ]
-        },
-        "PortavelasAngel": {
-            "title": "Portavelas Ángel de la Guarda",
-            "price": 3,
-            "description": "Figura de ángel o cruz con la oración calada. Proyecta una luz hermosa cuando se usa con velas LED (Añade la vela por 50 centavos).",
-            "mainImg": "https://i.postimg.cc/yNM4mXKc/Angel_Guarda1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/XYD0J6z4/Angel_Guarda2.png"
-            ]
-        },
-        "AdornoVirgen": {
-            "title": "Adorno de mesa 3D Virgen de Guadalupe",
-            "price": 5,
-            "description": "Adorno de mesa con capas en relieve. Virgen de Guadalupe vistosa con colores. Personalizable con nombre.",
-            "mainImg": "https://i.postimg.cc/3rmh86hm/Virgen_Guadalupe1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/Z57tszPh/Virgen_Guadalupe2.png",
-                "https://i.postimg.cc/0NhgxGHZ/Virgen_Guadalupe3.png"
-            ]
-        },
-        "CuadroVirgen": {
-            "title": "Cuadro 3D Virgen María",
-            "price": 5,
-            "description": "Cuadro decorativo con capas en relieve. Virgen María vistosa con colores. Personalizable con nombre.",
-            "mainImg": "https://i.postimg.cc/nzKFMwmM/Cuadro_Virgen1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/qqkkKXcW/Cuadro_Virgen2.png"
-            ]
-        },
-        "AdornoVirgen2": {
-            "title": "Adorno o candelabro de la Virgen María",
-            "price": 5,
-            "description": "Adorno de mesa con capas en relieve. Virgen María vistosa. Personalizable con nombre, también se puede colocar una vela LED.",
-            "mainImg": "https://i.postimg.cc/8cJRfXWg/Adorno_Virgen_Rosa1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/Gt8FTgDZ/Adorno_Virgen_Rosa2.png",
-                "https://i.postimg.cc/nrj49Smg/Adorno_Virgen_Rosa3.png"
-            ]
-        },
-        "CandelabroReligioso1": {
-            "title": "Colección Candelabros Religiosos Cruz con alas",
-            "price": 1.5,
-            "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión.",
-            "mainImg": "https://i.postimg.cc/RVk7zWvY/Candelabro_Relig7.png",
-            "extraImgs": [
-                "https://i.postimg.cc/RVk7zWvD/Candelabro_Relig8.png"
-            ]
-        },
-        "CandelabroReligioso2": {
-            "title": "Colección Candelabros Religiosos Niño Jesús a color",
-            "price": 1.5,
-            "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión.",
-            "mainImg": "https://i.postimg.cc/L8jz4mXP/Candelabro_Relig9.png",
-            "extraImgs": [
-                "https://i.postimg.cc/KjdMFWhR/Candelabro_Relig10.png"
-            ]
-        },
-        "CandelabroReligioso3": {
-            "title": "Colección Candelabros Religiosos Silueta de la Virgen María",
-            "price": 1.5,
-            "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión.",
-            "mainImg": "https://i.postimg.cc/4dWvCw3d/Candelabro_Relig1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/Y9rNyTtW/Candelabro_Relig2.png"
-            ]
-        },
-        "CandelabroReligioso4": {
-            "title": "Colección Candelabros Religiosos Cruz estilo 1",
-            "price": 1.5,
-            "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión. (Añade la vela por 50 centavos)",
-            "mainImg": "https://i.postimg.cc/zXbCMCYX/Candelabro_Relig3.png",
-            "extraImgs": [
-                "https://i.postimg.cc/Qx9QPQZ8/Candelabro_Relig4.png"
-            ]
-        },
-        "CandelabroReligioso5": {
-            "title": "Colección Candelabros Religiosos Cruz estilo 2",
-            "price": 1.5,
-            "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión. (Añade la vela por 50 centavos)",
-            "mainImg": "https://i.postimg.cc/Qx2QrFXZ/Candelabro_Relig5.png",
-            "extraImgs": [
-                "https://i.postimg.cc/VLrqTqPG/Candelabro_Relig6.png"
-            ]
-        },
-        "CandelabroReligioso6": {
-            "title": "Colección Candelabros Religiosos Silueta de la Virgen y Niño Jesús",
-            "price": 1.5,
-            "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión. (Añade la vela por 50 centavos)",
-            "mainImg": "https://i.postimg.cc/RC8fcWJh/Candelabro_Relig13.png",
-            "extraImgs": [
-                "https://i.postimg.cc/QxT7Sjcq/Candelabro_Relig15.png",
-                "https://i.postimg.cc/FKZ3cG0r/Candelabro_Relig12.png"
-            ]
-        },
-        "RecuerdoBautizo": {
-            "title": "Recuerdo de bautizo personalizado full color",
-            "price": 2.5,
-            "description": "Adorno de mesa con motivo de Ángel, ideal para recuerdo de bautizo.",
-            "mainImg": "https://i.postimg.cc/jjp6RC60/Recuerdo_Baut1.png",
-            "extraImgs": [
-                "https://i.postimg.cc/9fRt3y9W/Recuerdo_Baut2.png",
-                "https://i.postimg.cc/fRFmvkrX/Recuerdo_Baut3.png"
-            ]
-        },
-        "VelasDisenos": {
-            "title": "Velas con diseños y logos",
-            "price": 3,
-            "description": "Velas impresas para bautizos, Navidad o eventos corporativos. (Precio varia por tamaño y diseño, cotiza ahora)",
-            "mainImg": "https://i.postimg.cc/JnJjh06J/Velas.png",
-            "extraImgs": [
-                "https://i.postimg.cc/6qNLGVnH/image103.png",
-                "https://i.postimg.cc/nrtYQKBg/image107.png",
-                "https://i.postimg.cc/d3KmTRrB/image102.jpg"
-            ]
-        },
-        "RuedaFortuna": {
-            "title": "Rueda de la fortuna (Madera)",
-            "price": 20,
-            "description": "Rueda de la Fortuna armable de gran tamaño (versión sin pintar). Una pieza de ingeniería en madera.",
-            "mainImg": "https://i.postimg.cc/V6tW6Zr6/image89.png",
-            "extraImgs": [
-                "https://i.postimg.cc/V6tW6Zr6/image89.png",
-                "https://i.postimg.cc/HxM9xvcV/image90.png",
-                "https://i.postimg.cc/gcfdbJ89/1ff4f97a-3c2f-4579-b418-f49a25e4cfd9.png"
-            ]
-        },
-        "RuedaFortunaColor": {
-            "title": "Rueda de la fortuna a Color",
-            "price": 24,
-            "description": "Versión a todo color de la rueda armable. Acabados detallados.",
-            "mainImg": "https://i.postimg.cc/0QG9bCh5/1762286450907-Editado.png",
-            "extraImgs": [
-                "https://i.postimg.cc/505f6mDN/1762286450138-Editado.png"
-            ]
-        },
-        "BuzonConBase": {
-            "title": "Buzón de Deseos con Base",
-            "price": 12,
-            "description": "Buzón de madera sobre una base alta, ideal para colocar cartas o mensajes de deseos. Diseño clásico, decoración personalizable para otras ocasiones.",
-            "mainImg": "https://i.postimg.cc/HLRtT1LS/image72.png",
-            "extraImgs": [
-                "https://i.postimg.cc/pd4BPMdq/image71.png",
-                "https://i.postimg.cc/HLRtT1LS/image72.png",
-                "https://i.postimg.cc/zf6kqYf6/image76.png"
-            ]
-        },
-        "BuzonNavideno": {
-            "title": "Buzón Clásico",
-            "price": 12,
-            "description": "Buzón estilo barril 'Express Mail' o 'Buzón de los Deseos'. Decoración de madera pintada, ideal para la mesa o la entrada, se puede modificar según requerimiento.",
-            "mainImg": "https://i.postimg.cc/k5zy7P5H/image75.png",
-            "extraImgs": [
-                "https://i.postimg.cc/FK8xhXKC/image73.png",
-                "https://i.postimg.cc/k5zy7P5H/image75.png",
-                "https://i.postimg.cc/QMwqjZMy/image74.png"
-            ]
-        },
-        "BuzonNavidenoLargo": {
-            "title": "Buzón de deseos con base Largo",
-            "price": 16,
-            "description": "Buzón de mayor tamaño (largo), perfecto para recolectar cartas o como pieza central decorativa, se adapta a diversas ocasiones.",
-            "mainImg": "https://i.postimg.cc/zvJ3c6XC/1762788500808-Editado.png",
-            "extraImgs": [
-                "https://i.postimg.cc/NG4KHsp5/1762788500735-Editado.png",
-                "https://i.postimg.cc/zvJ3c6X0/1762788500721-Editado.png",
-                "https://i.postimg.cc/vTQDNkHn/1762788500721-Editado2.png",
-                "https://i.postimg.cc/d3qDxptd/1762788500735-Editado2.png"
-            ]
-        },
-        "CasaGrandeMultiusos": {
-            "title": "Casa grande multiusos",
-            "price": 5,
-            "description": "Casa alta decorativa (color azul y blanco), ideal para contener luces LED, pequeños regalos y dulces. Diseño de dos pisos con amplias ventanas y techo de nieve.",
-            "mainImg": "https://i.postimg.cc/268TFMzV/image17.png",
-            "extraImgs": [
-                "https://i.postimg.cc/jjhZftrV/image16.png",
-                "https://i.postimg.cc/Jn4Kcv1y/image18.png",
-                "https://i.postimg.cc/85PwB91s/image19.png"
-            ]
-        },
-        "CasaTechoBajo": {
-            "title": "Casa multiusos techo bajo",
-            "price": 5,
-            "description": "Casa decorativa de un piso con diseño de balcón y techo rústico. Ideal para luces LED, pequeños regalos y dulces. Presentada en color azul y blanco.",
-            "mainImg": "https://i.postimg.cc/FRsGg89j/image22.png",
-            "extraImgs": [
-                "https://i.postimg.cc/Hxs34Rpr/image20.png",
-                "https://i.postimg.cc/ZRKjF2T8/image21.png",
-                "https://i.postimg.cc/zBt7d7BW/image23.png"
-            ]
-        },
-        "CasaMultiusosRoja": {
-            "title": "Casa Multiusos Roja",
-            "price": 6.5,
-            "description": "Caja con diseño de casa simple en color rojo, ideal como envoltorio de regalo.",
-            "mainImg": "https://i.postimg.cc/t41H0ngk/IMG-20251028-103214-Editado.png",
-            "extraImgs": [
-                "https://i.postimg.cc/XNcjx5Zm/IMG-20251028-103233-Editado-Editado.png",
-                "https://i.postimg.cc/3xyHM0w6/IMG-20251028-103223-Editado.png",
-                "https://i.postimg.cc/g0ZdhLFj/228cf816-5538-431f-80ae-75ff04119521.png"
-            ]
-        },
-        "CasaMultiusosCafe": {
-            "title": "Casa Multiusos Café",
-            "price": 3.5,
-            "description": "Casa multiusos en tonos café (madera natural o pintada).",
-            "mainImg": "https://i.postimg.cc/vBKSqFvt/1762739112355-Editado.png",
-            "extraImgs": [
-                "https://i.postimg.cc/TPCsbW5T/1762739112308-Editado.png"
-            ]
-        },
-        "CajasOcasion": {
-            "title": "Cajas para toda ocasión",
-            "price": 2,
-            "description": "Amplia gama de cajas de regalo y organizadoras de madera, cotiza tu modelo ahora.",
-            "mainImg": "https://i.postimg.cc/J0WcB3ZN/image100.png",
-            "extraImgs": [
-                "https://i.postimg.cc/C18s1rBn/image92.png",
-                "https://i.postimg.cc/LXP3XQYz/image94.png",
-                "https://i.postimg.cc/brjH20kG/image96.png"
-            ]
-        },
-        "Candelabros": {
-            "title": "Candelabros",
-            "price": 2,
-            "description": "Portavelas decorativos de madera en varios modelos y tamaños.",
-            "mainImg": "https://i.postimg.cc/kXvwKHj8/image25.png",
-            "extraImgs": [
-                "https://i.postimg.cc/kXvwKHj8/image25.png",
-                "https://i.postimg.cc/sD4K7Ln7/image26.png"
-            ]
-        },
-        "Cuadroparacoleccionistaautos3847": {
-            "title": "Cuadro para coleccionista autos",
-            "price": 8.5,
-            "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
-            "mainImg": "./imagenes/prod_1770083847_5f675205.png",
-            "extraImgs": [
-                "./imagenes/prod_1770083847_724e19e5.png",
-                "./imagenes/prod_1770083847_e268ccf5.png",
-                "./imagenes/prod_1770083847_b6515cea.png"
-            ]
-        },
-        "Cuadroparacoleccionistaautosed8417": {
-            "title": "Cuadro para coleccionista autos edición Tesla",
-            "price": 8.5,
-            "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64, modelo Tesla. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
-            "mainImg": "./imagenes/prod_1770138416_3944bc1d.png",
-            "extraImgs": [
-                "./imagenes/prod_1770138416_2d90f89f.png",
-                "./imagenes/prod_1770138416_3aa84c35.png",
-                "./imagenes/prod_1770138416_d3301a43.png",
-                "./imagenes/prod_1770138417_ca57c7ab.png"
-            ]
-        },
-        "CuadrocoleccionistaNewBeet1556": {
-            "title": "Cuadro coleccionista New Beetle",
-            "price": 8.5,
-            "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
-            "mainImg": "./imagenes/prod_1770241555_2c7ddecc.png",
-            "extraImgs": [
-                "./imagenes/prod_1770241556_2f28e62c.png",
-                "./imagenes/prod_1770241556_020ba3ee.png"
-            ]
-        }
+  "products": {
+    "AutomataCupido": {
+      "title": "Carrusel de 'Cupido Enamorado'",
+      "price": 12,
+      "description": "Una obra maestra de ingeniería en madera. Cupido escribe su carta de amor mientras el escenario gira. Luces en el interior para más realce.",
+      "mainImg": "https://i.postimg.cc/bwL1S3QK/Carrusel_Love10.png",
+      "extraImgs": [
+        "https://i.postimg.cc/44rPXL59/Carrusel_Love1.png",
+        "https://i.postimg.cc/tRVdvdjT/Carrusel_Love2.png",
+        "https://i.postimg.cc/MpYmbWSz/Carrusel_Love4.png",
+        "https://i.postimg.cc/DfbQpQTP/Carrusel_Love6.png",
+        "https://i.postimg.cc/yY4mMJ1r/Carrusel_Love7.png",
+        "https://i.postimg.cc/wjFDR0XH/Carrusel_Love9.png"
+      ]
     },
-    "categories": {
-        "amor": [
-            "AutomataCupido",
-            "CarruselFotos",
-            "CajaExplosiva",
-            "CajaLove",
-            "BuzonSnoopy",
-            "BuzonLove",
-            "PortavelasLove",
-            "LamparaLove",
-            "CarritoLove",
-            "AmorBici",
-            "LoveForever",
-            "CupidoinLove",
-            "AeroLove",
-            "SiluetaEnamorados",
-            "TVAmor",
-            "TocadiscosAmor",
-            "CestaSanValentin",
-            "CestaOsito"
-        ],
-        "cultura": [
-            "KitCuarentaQuito",
-            "CajaPaseNino",
-            "MamaNegra",
-            "DiabladaPillaro",
-            "CajaDiabladaMiniatura",
-            "CarnavalGuaranda",
-            "CajaSanPedro",
-            "RompecabezasDiablada"
-        ],
-        "fandom": [
-            "CuadrocoleccionistaNewBeet1556",
-            "Cuadroparacoleccionistaautosed8417",
-            "Cuadroparacoleccionistaautos3847",
-            "CajaMorat",
-            "CajaBTS",
-            "CuadroGokuEvo",
-            "CuadroAnimeAmor"
-        ],
-        "eventos": [
-            "CajaCamaraXV",
-            "CajaCamaraBoda",
-            "PortaretratoGrado1",
-            "PortaretratoGrado2",
-            "PortaretratoGrado3",
-            "RecuerdoBautizo",
-            "AdornoVirgen",
-            "AdornoVirgen2",
-            "CuadroVirgen",
-            "PortavelasAngel",
-            "CandelabroReligioso1",
-            "CandelabroReligioso2",
-            "CandelabroReligioso3",
-            "CandelabroReligioso4",
-            "CandelabroReligioso5",
-            "VelasDisenos"
-        ],
-        "infantil": [
-            "CajaCamaraBaby",
-            "CuadroElefante",
-            "CuadroOso",
-            "OsitoLuna",
-            "CasaJugueteria",
-            "CasaPequenaRosa",
-            "CasaPequenaLila",
-            "CasaMedianaRosa"
-        ],
-        "navidad": [
-            "RuedaFortuna",
-            "RuedaFortunaColor",
-            "BuzonConBase",
-            "BuzonNavideno",
-            "BuzonNavidenoLargo",
-            "CasaGrandeMultiusos",
-            "CasaTechoBajo",
-            "CasaMultiusosRoja",
-            "CasaMultiusosCafe",
-            "CajasOcasion",
-            "Candelabros"
-        ]
+    "CarruselFotos": {
+      "title": "Rueda de la fortuna de Fotos",
+      "price": 8,
+      "description": "Exhibidor de fotos giratorio con forma de estrella/rueda de la fortuna. Capacidad para múltiples fotos. Un regalo dinámico.",
+      "mainImg": "https://i.postimg.cc/L61PvmjD/Carrusel_Fotos1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/9QP7518Z/Carrusel_Fotos2.png"
+      ]
+    },
+    "CajaExplosiva": {
+      "title": "Caja Explosiva 'Sorpresa'",
+      "price": 9,
+      "description": "La caja que se convierte en una experiencia. Al quitar la tapa, las paredes caen revelando capas de mensajes y fotos.",
+      "mainImg": "https://i.postimg.cc/YCPJ7fvC/Caja_Explosiva1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/9fqsQR9f/Caja_Explosiva2.png",
+        "https://i.postimg.cc/SRmPdgv8/Caja_Explosiva4.png",
+        "https://i.postimg.cc/T1Q44r8d/Caja_Explosiva7.png",
+        "https://i.postimg.cc/nhNwgFW8/Caja_Explosiva12.png",
+        "https://i.postimg.cc/WbWym66D/Caja_Explosiva9.png"
+      ]
+    },
+    "CajaLove": {
+      "title": "Caja para regalo 'Love'",
+      "price": 9,
+      "description": "La caja ideal para regalar a ese alguien. Al abrir sus dos tapas tienes espacio para colocar lo que desees.",
+      "mainImg": "https://i.postimg.cc/vTJWr7Lg/Caja_Turquesa_Love1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/QC9QKY5K/Caja_Turquesa_Love2.png",
+        "https://i.postimg.cc/d3k2ZNdh/Caja_Turquesa_Love3.png",
+        "https://i.postimg.cc/0jMYKXm5/Caja_Turquesa_Love4.png",
+        "https://i.postimg.cc/3N4X0fph/Caja_Turquesa_Love5.png"
+      ]
+    },
+    "BuzonSnoopy": {
+      "title": "Buzón Decorativo Snoopy",
+      "price": 10,
+      "description": "Encantador buzón rojo con Snoopy durmiendo en el tejado. Ideal para entregar cartas de amor o dulces.",
+      "mainImg": "https://i.postimg.cc/FFg5SLBR/Buzon_Snoopy2.png",
+      "extraImgs": [
+        "https://i.postimg.cc/XqWRhjpF/Buzon_Snoopy1.png",
+        "https://i.postimg.cc/N0rZj9Xy/Buzon_Snoopy3.png",
+        "https://i.postimg.cc/sf9dWhNQ/Buzon_Snoopy4.jpg",
+        "https://i.postimg.cc/y6X4RZbP/Buzon_Snoopy5.png"
+      ]
+    },
+    "BuzonLove": {
+      "title": "Buzón Decorativo Love",
+      "price": 10,
+      "description": "Encantador buzón rosado con d'talles para mostrar amor. Ideal para entregar cartas de amor o dulces.",
+      "mainImg": "https://i.postimg.cc/1zmDr3wy/Buzon-Rosa-Amor2.png",
+      "extraImgs": [
+        "https://i.postimg.cc/R0SwLZf7/Buzon_Rosa_Amor3.png",
+        "https://i.postimg.cc/VNKnGPWn/Buzon_Rosa_Amor1.png",
+        "https://i.postimg.cc/BncxFK8m/Buzon_Rosa_Amor4.png",
+        "https://i.postimg.cc/FHgjSLfR/Buzon_Rosa_Amor5.png",
+        "https://i.postimg.cc/52MBj3tW/Buzon_Rosa_Amor6.png"
+      ]
+    },
+    "PortavelasLove": {
+      "title": "Adorno 'LOVE' con Rosa",
+      "price": 4.25,
+      "description": "Centro de mesa romántico. Palabra LOVE en cursiva roja con una rosa verde entrelazada.",
+      "mainImg": "https://i.postimg.cc/mD7x8zZK/Adorno_Love_Flor1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/JzhLMzK3/Adorno_Love_Flor3.png"
+      ]
+    },
+    "LamparaLove": {
+      "title": "Lámpara LED LOVE",
+      "price": 12,
+      "description": "Lámpara de mesa con la palabra LOVE iluminada. Crea un ambiente cálido y romántico.",
+      "mainImg": "https://i.postimg.cc/nMbGTrzT/Lampara_Love1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/LhK3v5XG/Lampara_Love2.png",
+        "https://i.postimg.cc/yW4ynxdM/Lampara_Love3.png",
+        "https://i.postimg.cc/gcX9M7j5/Lampara_Love5.png",
+        "https://i.postimg.cc/Kcd6C53q/Lampara_Love6.png",
+        "https://i.postimg.cc/FFdtP6zM/Lampara_Love7.png"
+      ]
+    },
+    "AmorBici": {
+      "title": "Adorno 'Amor en Bici'",
+      "price": 5.5,
+      "description": "Silueta decorativa de pareja paseando en bicicleta. Un detalle sencillo y lleno de amor.",
+      "mainImg": "https://i.postimg.cc/BQHr31xn/Love_Bici1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/jjdmygBM/Love_Bici2.png",
+        "https://i.postimg.cc/Vkw3kLR9/Love_Bici3.png",
+        "https://i.postimg.cc/ZKpGmyrW/Love_Bici4.png"
+      ]
+    },
+    "CarritoLove": {
+      "title": "Carrito del amor",
+      "price": 5.5,
+      "description": "Hermoso carrito funcional (se mueve), con lindas decoraciones y espacio para colocar otros objetos",
+      "mainImg": "https://i.postimg.cc/rwL1zJpV/Carrito_Lila1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/c437sj0Q/Carrito_Lila2.png",
+        "https://i.postimg.cc/dQpmcvPr/Carrito_Lila3.png",
+        "https://i.postimg.cc/VspBP1Q0/Carrito_Lila4.png"
+      ]
+    },
+    "LoveForever": {
+      "title": "Letrero 'Love Forever'",
+      "price": 3,
+      "description": "Letrero decorativo de mesa con la frase Love Forever y símbolo de infinito.",
+      "mainImg": "https://i.postimg.cc/LXJWbq98/Love_Forever1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/tgSfkdHc/Love_Forever2.png"
+      ]
+    },
+    "CupidoinLove": {
+      "title": "Adorno 'Cupido in love'",
+      "price": 5.5,
+      "description": "Silueta decorativa de un cupido tierno con un corazón. Un detalle sencillo y lleno de amor personalizable.",
+      "mainImg": "https://i.postimg.cc/HxP0x1Jd/Cupido_Corazon1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/tTmdTG1H/Cupido_Corazon2.png",
+        "https://i.postimg.cc/XJDKJ6Z6/Cupido_Corazon3.png"
+      ]
+    },
+    "AeroLove": {
+      "title": "Adorno 'Amor en vuelo'",
+      "price": 5.5,
+      "description": "Silueta decorativa de un globo aerostático del amor y su pareja. Un detalle sencillo y lleno de amor personalizable.",
+      "mainImg": "https://i.postimg.cc/sX0PXCMq/Globo_Aero_Love1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/3RbjRQk6/Globo_Aero_Love2.png",
+        "https://i.postimg.cc/fLg7LQVP/Globo_Aero_Love3.png",
+        "https://i.postimg.cc/MTr0TJck/Globo_Aero_Love4.png"
+      ]
+    },
+    "SiluetaEnamorados": {
+      "title": "Silueta Enamorados",
+      "price": 2,
+      "description": "Adorno decorativo de mesa con silueta de enamorados y corazón.",
+      "mainImg": "https://i.postimg.cc/KzhcGy1z/Enamorados.png",
+      "extraImgs": []
+    },
+    "TVAmor": {
+      "title": "Retro TV del Amor",
+      "price": 8,
+      "description": "Adorno con forma de televisión antigua que muestra un mensaje o escena romántica en la pantalla.",
+      "mainImg": "https://i.postimg.cc/hGDWpPQz/Tele_Love4.png",
+      "extraImgs": [
+        "https://i.postimg.cc/kG6dK16b/Tele_Love1.png",
+        "https://i.postimg.cc/1R2SsQ2G/Tele_Love2.jpg",
+        "https://i.postimg.cc/c12W0S2B/Tele_Love3.jpg",
+        "https://i.postimg.cc/5tscGd85/Tele_Love5.png",
+        "https://i.postimg.cc/rmHBV1n5/Tele_Love6.png"
+      ]
+    },
+    "TocadiscosAmor": {
+      "title": "Tocadiscos del amor",
+      "price": 11,
+      "description": "Decoración con forma de tocadiscos vintage. Pregunta por la opción de colocar bluetooth.",
+      "mainImg": "https://i.postimg.cc/59htpL4y/Tocadiscos1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/3J2xqNNq/Tocadiscos2.png",
+        "https://i.postimg.cc/HsbkNnnF/Tocadiscos3.png",
+        "https://i.postimg.cc/YqQCP0jB/Tocadiscos4.png",
+        "https://i.postimg.cc/3wzM7jby/Tocadiscos8.png",
+        "https://i.postimg.cc/CxYxp0n6/Tocadiscos5.jpg"
+      ]
+    },
+    "CestaSanValentin": {
+      "title": "Cesta Corazones",
+      "price": 3.5,
+      "description": "Cesta de madera decorada con corazones, ideal para armar anchetas con peluches y dulces.",
+      "mainImg": "https://i.postimg.cc/7ZXQP1bx/Porta_Pelu_A1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/JnHTQ9xk/Porta_Pelu_A2.png",
+        "https://i.postimg.cc/JnHTQ9xR/Porta_Pelu_A3.png",
+        "https://i.postimg.cc/KcLq3hRv/Porta_Pelu_A4.png",
+        "https://i.postimg.cc/cL1XzKh5/Porta_Pelu_A5.png",
+        "https://i.postimg.cc/3xrnqy9M/Porta_Pelu_A6.png"
+      ]
+    },
+    "CestaOsito": {
+      "title": "Cesta Osito",
+      "price": 3.5,
+      "description": "Cesta de madera decorada como un tierno oso rosado, ideal para armar anchetas.",
+      "mainImg": "https://i.postimg.cc/LsnvHrcS/Porta_Pelu_B1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/TPF0htx5/Porta_Pelu_B2.png",
+        "https://i.postimg.cc/ZK4c99Gw/Porta_Pelu_B3.png",
+        "https://i.postimg.cc/CLSNZZ3m/Porta_Pelu_B4.png"
+      ]
+    },
+    "CajaMorat": {
+      "title": "Caja Fan Morat",
+      "price": 15,
+      "description": "Caja organizadora de madera grabada con el logo y símbolos de la banda, incluye personajes e instrumentos.",
+      "mainImg": "https://i.postimg.cc/3w8CMNTB/1766516996960_Editado.png",
+      "extraImgs": [
+        "https://i.postimg.cc/1tTpNKNB/1766516997088_Editado.png",
+        "https://i.postimg.cc/SN9GCHdw/1766516996946_Editado.png",
+        "https://i.postimg.cc/KjMvRcmN/1766516996811_Editado.png",
+        "https://i.postimg.cc/xjhRk9vn/1766516996901_Editado.png",
+        "https://i.postimg.cc/8c6PjkTy/1766516996825_Editado.png"
+      ]
+    },
+    "CajaBTS": {
+      "title": "Caja Fan BTS",
+      "price": 15,
+      "description": "Caja de madera personalizada para ARMY con el logo de BTS símbolos de la banda, incluye personajes y decoraciones.",
+      "mainImg": "https://i.postimg.cc/FHm0cz7d/1766516997341_Editado.png",
+      "extraImgs": [
+        "https://i.postimg.cc/wj6sMrG5/1766516997367_Editado.png",
+        "https://i.postimg.cc/fRZYXykP/1766516997308_Editado.png",
+        "https://i.postimg.cc/jjSNg1H9/1766516997234_Editado.png",
+        "https://i.postimg.cc/T2LjvBZH/1766516997109_Editado.png",
+        "https://i.postimg.cc/pVhQM3gs/1766516997128_Editado.png"
+      ]
+    },
+    "CuadroGokuEvo": {
+      "title": "Cuadro Goku Evolución",
+      "price": 8,
+      "description": "Silueta impactante de Goku adulto en negro mate con Goku niño superpuesto en naranja y blanco. Fondo naranja vibrante.",
+      "mainImg": "https://i.postimg.cc/T3bZR5g2/Goku_Evo1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/KcVqRvZB/Goku_Evo2.png",
+        "https://i.postimg.cc/DfDj8y2D/Goku_Evo3.png",
+        "https://i.postimg.cc/52WsS7Q2/Goku_Evo4.png",
+        "https://i.postimg.cc/rp8gvDJK/Goku_Evo5.png"
+      ]
+    },
+    "CuadroAnimeAmor": {
+      "title": "Cuadro Amor Anime (Goku y Bulma)",
+      "price": 6,
+      "description": "Siluetas románticas estilo chibi de personajes de anime mirándose. Acabado brillante rojo y negro.",
+      "mainImg": "https://i.postimg.cc/JzX91HZ3/Goku_Bulma_Love1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/vHkJFtgD/Goku_Bulma_Love2.png",
+        "https://i.postimg.cc/gc5SnkYB/Goku_Bulma_Love3.png"
+      ]
+    },
+    "KitCuarentaQuito": {
+      "title": "Kit Viva Quito (40)",
+      "price": 10,
+      "description": "Kit de lujo para jugar cuarenta. Caja ilustrada a todo color con el Panecillo y la Chiva. Incluye fichas con frases típicas y baraja.",
+      "mainImg": "https://i.postimg.cc/bNYvTqF5/IMG_20251121_WA0012_Editada.png",
+      "extraImgs": [
+        "https://i.postimg.cc/JhH0kKYv/IMG_20251122_173006_Editada.png",
+        "https://i.postimg.cc/DwMm0R5K/IMG_20251121_WA0011_Editada.png",
+        "https://i.postimg.cc/BnVtbRN9/IMG_20251121_WA0008_Editada.png",
+        "https://i.postimg.cc/QxNMbjyr/IMG_20251121_WA0014_Editada.png",
+        "https://i.postimg.cc/Bbpn0ztr/IMG_20251122_002246_Editada.png",
+        "https://i.postimg.cc/ZKYqcJDH/IMG_20251124_184944_405_Editada_Editada.png"
+      ]
+    },
+    "CajaPaseNino": {
+      "title": "Caja Pase del Niño Rey de Reyes Riobamba",
+      "price": 15,
+      "description": "Hermosa caja cultural que rinde homenaje a la tradicional fiesta del Pase del Niño Rey de Reyes de Riobamba, incluye los personajes más importantes de la celebración.",
+      "mainImg": "https://i.postimg.cc/JhphFdTr/1766516996504_Editado.png",
+      "extraImgs": [
+        "https://i.postimg.cc/wjd3RNyL/1766516996413_Editado.png",
+        "https://i.postimg.cc/LXhsFBwF/1766516996712_Editado.png",
+        "https://i.postimg.cc/TwhPvqSS/1766516996731_Editado.png",
+        "https://i.postimg.cc/k5J4fdyD/1766516996490_Editado.png",
+        "https://i.postimg.cc/kgFGQ5Kv/1766516996428_Editado.png"
+      ]
+    },
+    "MamaNegra": {
+      "title": "Caja Mama Negra",
+      "price": 15,
+      "description": "Escena cultural de la Fiesta de la Mama Negra (Ecuador) en formato de caja expositora, un homenaje que incluye personajes y decoraciones de la fiesta.",
+      "mainImg": "https://i.postimg.cc/2yFddq7g/image112.png",
+      "extraImgs": [
+        "https://i.postimg.cc/Kjr77KDW/image111.jpg",
+        "https://i.postimg.cc/FHzYC14Q/55e35b7f-66be-4d3b-ad7a-039628a62641.png",
+        "https://i.postimg.cc/2yFddq7g/image112.png"
+      ]
+    },
+    "DiabladaPillaro": {
+      "title": "Caja Diablada Píllaro",
+      "price": 15,
+      "description": "Escena cultural de la Fiesta de la Diablada de Pillaro (Ecuador) en formato de caja expositora, un homenaje que incluye personajes y decoraciones de la fiesta.",
+      "mainImg": "https://i.postimg.cc/9XwsSr2P/image49.png",
+      "extraImgs": [
+        "https://i.postimg.cc/xjNB7cQK/image48.png",
+        "https://i.postimg.cc/BZPRyX31/image46.png",
+        "https://i.postimg.cc/SQYH5J4R/image44.png",
+        "https://i.postimg.cc/7PJjcf47/image47.png"
+      ]
+    },
+    "CajaDiabladaMiniatura": {
+      "title": "Diablada Miniatura",
+      "price": 10,
+      "description": "Versión más compacta de la caja cultural Diablada.",
+      "mainImg": "https://i.postimg.cc/j5Fdsc8N/IMG_20251115_190100_Editado.png",
+      "extraImgs": [
+        "https://i.postimg.cc/3N0rWG6k/IMG_20251115_190112_Editado.png",
+        "https://i.postimg.cc/668CCmxh/IMG_20251115_190148_Editado.png",
+        "https://i.postimg.cc/G36GKxb7/IMG_20251115_190202_Editado.png"
+      ]
+    },
+    "CarnavalGuaranda": {
+      "title": "Caja Carnaval Guaranda",
+      "price": 15,
+      "description": "Escena cultural de la Fiesta del Carnaval de Guaranda (Ecuador) en formato de caja expositora, un homenaje que incluye personajes y decoraciones de la fiesta.",
+      "mainImg": "https://i.postimg.cc/J0c33yQh/image119.png",
+      "extraImgs": [
+        "https://i.postimg.cc/ZnFPP9Lm/image117.jpg",
+        "https://i.postimg.cc/2yFddqxk/image118.png",
+        "https://i.postimg.cc/J0c33yQh/image119.png"
+      ]
+    },
+    "CajaSanPedro": {
+      "title": "Caja San Pedro / Inti Raymi",
+      "price": 15,
+      "description": "Escena cultural de la Fiesta de las fiestas de San Pedro / Inti Raymi (Ecuador) en formato de caja expositora, un homenaje que incluye personajes y decoraciones para representar las fiestas del sol y la cosecha.",
+      "mainImg": "https://i.postimg.cc/WbyhBCwD/San_Pedro1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/WzWhbHRJ/San_Pedro3.png",
+        "https://i.postimg.cc/rwtKMjft/San_Pedro4.png",
+        "https://i.postimg.cc/tRST6wfF/San_Pedro5.png",
+        "https://i.postimg.cc/3Rr84FFj/San_Pedro6.png",
+        "https://i.postimg.cc/bv9YwBkH/San_Pedro9.jpg"
+      ]
+    },
+    "RompecabezasDiablada": {
+      "title": "Puzzle Diablada (308pz)",
+      "price": 13,
+      "description": "Desafío cultural. Rompecabezas de madera de alta calidad con la imagen colorida de la Diablada, con todos sus personajes y decoraciones",
+      "mainImg": "https://i.postimg.cc/6pSnhTmn/Rompec_Pillaro1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/RhRw1RkF/Rompec_Pillaro3.jpg",
+        "https://i.postimg.cc/xCVmWhYK/Rompec_Pillaro4.png",
+        "https://i.postimg.cc/xCVmWhYR/Rompec_Pillaro5.png",
+        "https://i.postimg.cc/QNb7yfz5/Rompec_Pillaro6.png",
+        "https://i.postimg.cc/RhRw1RkF/Rompec_Pillaro3.jpg"
+      ]
+    },
+    "CajaCamaraBaby": {
+      "title": "Caja de regalo 'Cámara' Recién nacido",
+      "price": 14,
+      "description": "Tierna caja con forma de cámara para regalos de recién nacido. Detalles de osito, body y fecha de nacimiento. Un recuerdo para toda la vida.",
+      "mainImg": "https://i.postimg.cc/X7JHvBS9/Camara_Recien_Nac1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/Nj2d6hjb/Camara_Recien_Nac3.png",
+        "https://i.postimg.cc/SxYg60xt/Camara_Recien_Nac4.png",
+        "https://i.postimg.cc/cLtFRqLz/Camara_Recien_Nac2.png",
+        "https://i.postimg.cc/N0hpbNys/Camara_Recien_Nac5.png"
+      ]
+    },
+    "CuadroElefante": {
+      "title": "Cuadro 3D Elefante",
+      "price": 7.5,
+      "description": "Cuadro decorativo con capas en relieve. Elefante gris con alas rosas sobre nubes. Personalizable con nombre (Ej: Luna).",
+      "mainImg": "https://i.postimg.cc/Kjy1HMPH/Cuadro_Elefante1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/Px1xY5gr/Cuadro_Elefante2.png",
+        "https://i.postimg.cc/JnXyxqkR/Cuadro_Elefante3.png"
+      ]
+    },
+    "CuadroOso": {
+      "title": "Cuadro 3D Oso Vintage y globos",
+      "price": 7.5,
+      "description": "Cuadro infantil con osito estilo vintage, boina y tirantes. Fondo azul con globos aerostáticos. Personalizable (Ej: Elian).",
+      "mainImg": "https://i.postimg.cc/CMjBfc07/Cuadro_Osito1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/02P6G72N/Cuadro_Osito3.jpg"
+      ]
+    },
+    "OsitoLuna": {
+      "title": "Cuadro Osito en la Luna",
+      "price": 6,
+      "description": "Osito durmiendo en la luna.",
+      "mainImg": "https://i.postimg.cc/dQTXRTNC/Osito_Luna1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/02P6G72N/Cuadro_Osito3.jpg",
+        "https://i.postimg.cc/CLh1nYm1/Cuadro_Osito4.png",
+        "https://i.postimg.cc/HkPVCK0b/Cuadro_Osito2.png",
+        "https://i.postimg.cc/DyxzqDML/Cuadro_Osito5.png",
+        "https://i.postimg.cc/W4BzdkH4/Cuadro_Osito6.jpg"
+      ]
+    },
+    "CasaPequenaRosa": {
+      "title": "Casa de Cuento (Rosa)",
+      "price": 3.5,
+      "description": "Pequeña casa organizadora pintada en rosa y blanco con techo curvo y lazo. Ideal para guardar joyas o dulces.",
+      "mainImg": "https://i.postimg.cc/VsMMWYqJ/Casa_Rosadapeque1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/gkWhMfs7/Casa_Rosadapeque2.png",
+        "https://i.postimg.cc/3JTGLP1z/Casa_Rosadapeque3.png",
+        "https://i.postimg.cc/Kv2T9dQS/Casa_Rosadapeque4.png"
+      ]
+    },
+    "CasaPequenaLila": {
+      "title": "Casa de Cuento (Lila)",
+      "price": 3.5,
+      "description": "Versión en lila de nuestra casa de cuento. Un detalle delicado para decoración infantil.",
+      "mainImg": "https://i.postimg.cc/Mpt1fdy9/Casa_Morada_Peque1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/BnN2PMxr/Casa_Morada_Peque3.png",
+        "https://i.postimg.cc/1ztwGwBQ/Casa_Morada_Peque5.png",
+        "https://i.postimg.cc/TP4mC1Ng/Casa_Morada_Peque6.png",
+        "https://i.postimg.cc/GmzvTqkN/Casa_Morada_Peque2.png",
+        "https://i.postimg.cc/4xwpHB6G/Casa_Morada_Peque4.png"
+      ]
+    },
+    "CasaMedianaRosa": {
+      "title": "Casa Decorativa multiusos (Rosa)",
+      "price": 5,
+      "description": "Casa de tamaño mediano multiusos con apertura pintada en rosa y blanco. Ideal para guardar joyas o dulces.",
+      "mainImg": "https://i.postimg.cc/yd3R5K2p/Casa_Rosada_Med1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/cJbYXCkb/Casa_Rosada_Med2.png",
+        "https://i.postimg.cc/yxFZ1P1t/Casa_Rosada_Med3.png",
+        "https://i.postimg.cc/WbvZ9Q8Q/Casa_Rosada_Med4.png",
+        "https://i.postimg.cc/ZnrdbcYZ/Casa_Rosada_Med5.png"
+      ]
+    },
+    "CasaJugueteria": {
+      "title": "Casa Juguetería",
+      "price": 13,
+      "description": "Caja multiusos con diseño temático de tienda de juguetes. Ideal para colocar regalos, color personalizable.",
+      "mainImg": "https://i.postimg.cc/MTBTzrpz/40a9594a-472f-45cd-a01d-a88ad10aedad.png",
+      "extraImgs": [
+        "https://i.postimg.cc/4xFNVTKG/IMG-20251028-104013-Editado-Editado.png"
+      ]
+    },
+    "CajaCamaraXV": {
+      "title": "Caja de regalo 'Cámara' para XV Años",
+      "price": 14,
+      "description": "aja única con forma de cámara retro, personalizada para 15 años. Detalles calados de vestido, pastel y zapatilla. Perfecta para lluvia de sobres.",
+      "mainImg": "https://i.postimg.cc/13bY2mdN/Camara15años1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/tCMrnRpf/Camara15años4.png",
+        "https://i.postimg.cc/nhNwgFWB/Camara15años2.png",
+        "https://i.postimg.cc/d0dSYMM6/Camara15años3.png",
+        "https://i.postimg.cc/FsBPkFNb/Camara15años5.png"
+      ]
+    },
+    "CajaCamaraBoda": {
+      "title": "Caja de regalo 'Cámara' para Bodas",
+      "price": 14,
+      "description": "Elegante caja tipo cámara para bodas. Decorada en blanco y turquesa con anillos entrelazados en la parte superior y siluetas de novios.",
+      "mainImg": "https://i.postimg.cc/Wzf7ZSL4/Camara_Wedding1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/Xqv8XmPH/Camara_Wedding2.png",
+        "https://i.postimg.cc/XY5gZw2M/Camara_Wedding3.png",
+        "https://i.postimg.cc/Pqzzydsy/Camara_Wedding4.png"
+      ]
+    },
+    "PortaretratoGrado1": {
+      "title": "Adorno de mesa de Grado",
+      "price": 2.5,
+      "description": "Adorno de mesa decorativo de graduación con forma de estrella, incluye birrete y mensaje. Todo en relieve. Un recuerdo exclusivo.",
+      "mainImg": "https://i.postimg.cc/s2VKtMcf/Grado_A1.png",
+      "extraImgs": []
+    },
+    "PortaretratoGrado2": {
+      "title": "Portaregalos de Grado modelo capa",
+      "price": 2.5,
+      "description": "Marco para entregar regalos de graduación con capa y bufanda. Todo en relieve. Un recuerdo clásico.",
+      "mainImg": "https://i.postimg.cc/NMFDjZSZ/Grado_C1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/NFrx1mg6/Grado_C2.png"
+      ]
+    },
+    "PortaretratoGrado3": {
+      "title": "Portaregalos de Grado modelo birrete y diploma",
+      "price": 2.5,
+      "description": "Marco para entregar regalos de graduación con birrete 3D y diploma. Letras doradas en relieve. Un recuerdo clásico.",
+      "mainImg": "https://i.postimg.cc/zGw0tCT6/Grado_B1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/BvMNsJYt/Grado_B2.png"
+      ]
+    },
+    "PortavelasAngel": {
+      "title": "Portavelas Ángel de la Guarda",
+      "price": 3,
+      "description": "Figura de ángel o cruz con la oración calada. Proyecta una luz hermosa cuando se usa con velas LED (Añade la vela por 50 centavos).",
+      "mainImg": "https://i.postimg.cc/yNM4mXKc/Angel_Guarda1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/XYD0J6z4/Angel_Guarda2.png"
+      ]
+    },
+    "AdornoVirgen": {
+      "title": "Adorno de mesa 3D Virgen de Guadalupe",
+      "price": 5,
+      "description": "Adorno de mesa con capas en relieve. Virgen de Guadalupe vistosa con colores. Personalizable con nombre.",
+      "mainImg": "https://i.postimg.cc/3rmh86hm/Virgen_Guadalupe1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/Z57tszPh/Virgen_Guadalupe2.png",
+        "https://i.postimg.cc/0NhgxGHZ/Virgen_Guadalupe3.png"
+      ]
+    },
+    "CuadroVirgen": {
+      "title": "Cuadro 3D Virgen María",
+      "price": 5,
+      "description": "Cuadro decorativo con capas en relieve. Virgen María vistosa con colores. Personalizable con nombre.",
+      "mainImg": "https://i.postimg.cc/nzKFMwmM/Cuadro_Virgen1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/qqkkKXcW/Cuadro_Virgen2.png"
+      ]
+    },
+    "AdornoVirgen2": {
+      "title": "Adorno o candelabro de la Virgen María",
+      "price": 5,
+      "description": "Adorno de mesa con capas en relieve. Virgen María vistosa. Personalizable con nombre, también se puede colocar una vela LED.",
+      "mainImg": "https://i.postimg.cc/8cJRfXWg/Adorno_Virgen_Rosa1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/Gt8FTgDZ/Adorno_Virgen_Rosa2.png",
+        "https://i.postimg.cc/nrj49Smg/Adorno_Virgen_Rosa3.png"
+      ]
+    },
+    "CandelabroReligioso1": {
+      "title": "Colección Candelabros Religiosos Cruz con alas",
+      "price": 1.5,
+      "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión.",
+      "mainImg": "https://i.postimg.cc/RVk7zWvY/Candelabro_Relig7.png",
+      "extraImgs": [
+        "https://i.postimg.cc/RVk7zWvD/Candelabro_Relig8.png"
+      ]
+    },
+    "CandelabroReligioso2": {
+      "title": "Colección Candelabros Religiosos Niño Jesús a color",
+      "price": 1.5,
+      "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión.",
+      "mainImg": "https://i.postimg.cc/L8jz4mXP/Candelabro_Relig9.png",
+      "extraImgs": [
+        "https://i.postimg.cc/KjdMFWhR/Candelabro_Relig10.png"
+      ]
+    },
+    "CandelabroReligioso3": {
+      "title": "Colección Candelabros Religiosos Silueta de la Virgen María",
+      "price": 1.5,
+      "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión.",
+      "mainImg": "https://i.postimg.cc/4dWvCw3d/Candelabro_Relig1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/Y9rNyTtW/Candelabro_Relig2.png"
+      ]
+    },
+    "CandelabroReligioso4": {
+      "title": "Colección Candelabros Religiosos Cruz estilo 1",
+      "price": 1.5,
+      "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión. (Añade la vela por 50 centavos)",
+      "mainImg": "https://i.postimg.cc/zXbCMCYX/Candelabro_Relig3.png",
+      "extraImgs": [
+        "https://i.postimg.cc/Qx9QPQZ8/Candelabro_Relig4.png"
+      ]
+    },
+    "CandelabroReligioso5": {
+      "title": "Colección Candelabros Religiosos Cruz estilo 2",
+      "price": 1.5,
+      "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión. (Añade la vela por 50 centavos)",
+      "mainImg": "https://i.postimg.cc/Qx2QrFXZ/Candelabro_Relig5.png",
+      "extraImgs": [
+        "https://i.postimg.cc/VLrqTqPG/Candelabro_Relig6.png"
+      ]
+    },
+    "CandelabroReligioso6": {
+      "title": "Colección Candelabros Religiosos Silueta de la Virgen y Niño Jesús",
+      "price": 1.5,
+      "description": "Variedad de diseños: Cruz con alas, Silueta de la Virgen, Jesús de Praga. Ideales para altar o recuerdos de primera comunión. (Añade la vela por 50 centavos)",
+      "mainImg": "https://i.postimg.cc/RC8fcWJh/Candelabro_Relig13.png",
+      "extraImgs": [
+        "https://i.postimg.cc/QxT7Sjcq/Candelabro_Relig15.png",
+        "https://i.postimg.cc/FKZ3cG0r/Candelabro_Relig12.png"
+      ]
+    },
+    "RecuerdoBautizo": {
+      "title": "Recuerdo de bautizo personalizado full color",
+      "price": 2.5,
+      "description": "Adorno de mesa con motivo de Ángel, ideal para recuerdo de bautizo.",
+      "mainImg": "https://i.postimg.cc/jjp6RC60/Recuerdo_Baut1.png",
+      "extraImgs": [
+        "https://i.postimg.cc/9fRt3y9W/Recuerdo_Baut2.png",
+        "https://i.postimg.cc/fRFmvkrX/Recuerdo_Baut3.png"
+      ]
+    },
+    "VelasDisenos": {
+      "title": "Velas con diseños y logos",
+      "price": 3,
+      "description": "Velas impresas para bautizos, Navidad o eventos corporativos. (Precio varia por tamaño y diseño, cotiza ahora)",
+      "mainImg": "https://i.postimg.cc/JnJjh06J/Velas.png",
+      "extraImgs": [
+        "https://i.postimg.cc/6qNLGVnH/image103.png",
+        "https://i.postimg.cc/nrtYQKBg/image107.png",
+        "https://i.postimg.cc/d3KmTRrB/image102.jpg"
+      ]
+    },
+    "RuedaFortuna": {
+      "title": "Rueda de la fortuna (Madera)",
+      "price": 20,
+      "description": "Rueda de la Fortuna armable de gran tamaño (versión sin pintar). Una pieza de ingeniería en madera.",
+      "mainImg": "https://i.postimg.cc/V6tW6Zr6/image89.png",
+      "extraImgs": [
+        "https://i.postimg.cc/V6tW6Zr6/image89.png",
+        "https://i.postimg.cc/HxM9xvcV/image90.png",
+        "https://i.postimg.cc/gcfdbJ89/1ff4f97a-3c2f-4579-b418-f49a25e4cfd9.png"
+      ]
+    },
+    "RuedaFortunaColor": {
+      "title": "Rueda de la fortuna a Color",
+      "price": 24,
+      "description": "Versión a todo color de la rueda armable. Acabados detallados.",
+      "mainImg": "https://i.postimg.cc/0QG9bCh5/1762286450907-Editado.png",
+      "extraImgs": [
+        "https://i.postimg.cc/505f6mDN/1762286450138-Editado.png"
+      ]
+    },
+    "BuzonConBase": {
+      "title": "Buzón de Deseos con Base",
+      "price": 12,
+      "description": "Buzón de madera sobre una base alta, ideal para colocar cartas o mensajes de deseos. Diseño clásico, decoración personalizable para otras ocasiones.",
+      "mainImg": "https://i.postimg.cc/HLRtT1LS/image72.png",
+      "extraImgs": [
+        "https://i.postimg.cc/pd4BPMdq/image71.png",
+        "https://i.postimg.cc/HLRtT1LS/image72.png",
+        "https://i.postimg.cc/zf6kqYf6/image76.png"
+      ]
+    },
+    "BuzonNavideno": {
+      "title": "Buzón Clásico",
+      "price": 12,
+      "description": "Buzón estilo barril 'Express Mail' o 'Buzón de los Deseos'. Decoración de madera pintada, ideal para la mesa o la entrada, se puede modificar según requerimiento.",
+      "mainImg": "https://i.postimg.cc/k5zy7P5H/image75.png",
+      "extraImgs": [
+        "https://i.postimg.cc/FK8xhXKC/image73.png",
+        "https://i.postimg.cc/k5zy7P5H/image75.png",
+        "https://i.postimg.cc/QMwqjZMy/image74.png"
+      ]
+    },
+    "BuzonNavidenoLargo": {
+      "title": "Buzón de deseos con base Largo",
+      "price": 16,
+      "description": "Buzón de mayor tamaño (largo), perfecto para recolectar cartas o como pieza central decorativa, se adapta a diversas ocasiones.",
+      "mainImg": "https://i.postimg.cc/zvJ3c6XC/1762788500808-Editado.png",
+      "extraImgs": [
+        "https://i.postimg.cc/NG4KHsp5/1762788500735-Editado.png",
+        "https://i.postimg.cc/zvJ3c6X0/1762788500721-Editado.png",
+        "https://i.postimg.cc/vTQDNkHn/1762788500721-Editado2.png",
+        "https://i.postimg.cc/d3qDxptd/1762788500735-Editado2.png"
+      ]
+    },
+    "CasaGrandeMultiusos": {
+      "title": "Casa grande multiusos",
+      "price": 5,
+      "description": "Casa alta decorativa (color azul y blanco), ideal para contener luces LED, pequeños regalos y dulces. Diseño de dos pisos con amplias ventanas y techo de nieve.",
+      "mainImg": "https://i.postimg.cc/268TFMzV/image17.png",
+      "extraImgs": [
+        "https://i.postimg.cc/jjhZftrV/image16.png",
+        "https://i.postimg.cc/Jn4Kcv1y/image18.png",
+        "https://i.postimg.cc/85PwB91s/image19.png"
+      ]
+    },
+    "CasaTechoBajo": {
+      "title": "Casa multiusos techo bajo",
+      "price": 5,
+      "description": "Casa decorativa de un piso con diseño de balcón y techo rústico. Ideal para luces LED, pequeños regalos y dulces. Presentada en color azul y blanco.",
+      "mainImg": "https://i.postimg.cc/FRsGg89j/image22.png",
+      "extraImgs": [
+        "https://i.postimg.cc/Hxs34Rpr/image20.png",
+        "https://i.postimg.cc/ZRKjF2T8/image21.png",
+        "https://i.postimg.cc/zBt7d7BW/image23.png"
+      ]
+    },
+    "CasaMultiusosRoja": {
+      "title": "Casa Multiusos Roja",
+      "price": 6.5,
+      "description": "Caja con diseño de casa simple en color rojo, ideal como envoltorio de regalo.",
+      "mainImg": "https://i.postimg.cc/t41H0ngk/IMG-20251028-103214-Editado.png",
+      "extraImgs": [
+        "https://i.postimg.cc/XNcjx5Zm/IMG-20251028-103233-Editado-Editado.png",
+        "https://i.postimg.cc/3xyHM0w6/IMG-20251028-103223-Editado.png",
+        "https://i.postimg.cc/g0ZdhLFj/228cf816-5538-431f-80ae-75ff04119521.png"
+      ]
+    },
+    "CasaMultiusosCafe": {
+      "title": "Casa Multiusos Café",
+      "price": 3.5,
+      "description": "Casa multiusos en tonos café (madera natural o pintada).",
+      "mainImg": "https://i.postimg.cc/vBKSqFvt/1762739112355-Editado.png",
+      "extraImgs": [
+        "https://i.postimg.cc/TPCsbW5T/1762739112308-Editado.png"
+      ]
+    },
+    "CajasOcasion": {
+      "title": "Cajas para toda ocasión",
+      "price": 2,
+      "description": "Amplia gama de cajas de regalo y organizadoras de madera, cotiza tu modelo ahora.",
+      "mainImg": "https://i.postimg.cc/J0WcB3ZN/image100.png",
+      "extraImgs": [
+        "https://i.postimg.cc/C18s1rBn/image92.png",
+        "https://i.postimg.cc/LXP3XQYz/image94.png",
+        "https://i.postimg.cc/brjH20kG/image96.png"
+      ]
+    },
+    "Candelabros": {
+      "title": "Candelabros",
+      "price": 2,
+      "description": "Portavelas decorativos de madera en varios modelos y tamaños.",
+      "mainImg": "https://i.postimg.cc/kXvwKHj8/image25.png",
+      "extraImgs": [
+        "https://i.postimg.cc/kXvwKHj8/image25.png",
+        "https://i.postimg.cc/sD4K7Ln7/image26.png"
+      ]
+    },
+    "Cuadroparacoleccionistaautos3847": {
+      "title": "Cuadro para coleccionista autos",
+      "price": 8.5,
+      "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
+      "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770083847_5f675205.png",
+      "extraImgs": [
+        "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770083847_724e19e5.png",
+        "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770083847_e268ccf5.png",
+        "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770083847_b6515cea.png"
+      ]
+    },
+    "Cuadroparacoleccionistaautosed8417": {
+      "title": "Cuadro para coleccionista autos edición Tesla",
+      "price": 8.5,
+      "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64, modelo Tesla. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
+      "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770138416_3944bc1d.png",
+      "extraImgs": [
+        "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770138416_2d90f89f.png",
+        "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770138416_3aa84c35.png",
+        "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770138416_d3301a43.png",
+        "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770138417_ca57c7ab.png"
+      ]
+    },
+    "CuadrocoleccionistaNewBeet1556": {
+      "title": "Cuadro coleccionista New Beetle",
+      "price": 8.5,
+      "description": "Lleva tu colección al siguiente nivel con este imponente cuadro para coleccionistas de autos a escala 1:64. Diseñado con una estructura detallada y funcional, permite exhibir tus piezas favoritas con gran estilo. Este es el complemento definitivo para quienes viven la pasión por los autos y el modelismo",
+      "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770241555_2c7ddecc.png",
+      "extraImgs": [
+        "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770241556_2f28e62c.png",
+        "https://ideasydtalles.github.io/catalogo/imagenes/prod_1770241556_020ba3ee.png"
+      ]
     }
+  },
+  "categories": {
+    "amor": [
+      "AutomataCupido",
+      "CarruselFotos",
+      "CajaExplosiva",
+      "CajaLove",
+      "BuzonSnoopy",
+      "BuzonLove",
+      "PortavelasLove",
+      "LamparaLove",
+      "CarritoLove",
+      "AmorBici",
+      "LoveForever",
+      "CupidoinLove",
+      "AeroLove",
+      "SiluetaEnamorados",
+      "TVAmor",
+      "TocadiscosAmor",
+      "CestaSanValentin",
+      "CestaOsito"
+    ],
+    "cultura": [
+      "KitCuarentaQuito",
+      "CajaPaseNino",
+      "MamaNegra",
+      "DiabladaPillaro",
+      "CajaDiabladaMiniatura",
+      "CarnavalGuaranda",
+      "CajaSanPedro",
+      "RompecabezasDiablada"
+    ],
+    "fandom": [
+      "CuadrocoleccionistaNewBeet1556",
+      "Cuadroparacoleccionistaautosed8417",
+      "Cuadroparacoleccionistaautos3847",
+      "CajaMorat",
+      "CajaBTS",
+      "CuadroGokuEvo",
+      "CuadroAnimeAmor"
+    ],
+    "eventos": [
+      "CajaCamaraXV",
+      "CajaCamaraBoda",
+      "PortaretratoGrado1",
+      "PortaretratoGrado2",
+      "PortaretratoGrado3",
+      "RecuerdoBautizo",
+      "AdornoVirgen",
+      "AdornoVirgen2",
+      "CuadroVirgen",
+      "PortavelasAngel",
+      "CandelabroReligioso1",
+      "CandelabroReligioso2",
+      "CandelabroReligioso3",
+      "CandelabroReligioso4",
+      "CandelabroReligioso5",
+      "VelasDisenos"
+    ],
+    "infantil": [
+      "CajaCamaraBaby",
+      "CuadroElefante",
+      "CuadroOso",
+      "OsitoLuna",
+      "CasaJugueteria",
+      "CasaPequenaRosa",
+      "CasaPequenaLila",
+      "CasaMedianaRosa"
+    ],
+    "navidad": [
+      "RuedaFortuna",
+      "RuedaFortunaColor",
+      "BuzonConBase",
+      "BuzonNavideno",
+      "BuzonNavidenoLargo",
+      "CasaGrandeMultiusos",
+      "CasaTechoBajo",
+      "CasaMultiusosRoja",
+      "CasaMultiusosCafe",
+      "CajasOcasion",
+      "Candelabros"
+    ]
+  }
 }
