@@ -38,27 +38,6 @@ IMG_DIR.mkdir(exist_ok=True)
 STREAMLIT_DIR.mkdir(exist_ok=True)
 
 # =========================================================
-# GitHub Pages base (para URLs absolutas, links y feed Meta)
-# =========================================================
-PAGES_BASE_URL = get_secret("PAGES_BASE_URL", "https://ideasydtalles.github.io/catalogo")
-CATALOG_CURRENCY = get_secret("CATALOG_CURRENCY", "USD")
-CATALOG_BRAND = get_secret("CATALOG_BRAND", "Ideas & D'talles")
-
-def normalize_pages_base_url(url: str) -> str:
-    import re as _re
-    u = (url or '').strip()
-    if 'github.com/ideasydtalles/catalogo' in u:
-        u = 'https://ideasydtalles.github.io/catalogo'
-    u = _re.sub(r'/tree/[^/]+/?$', '', u)
-    u = _re.sub(r'/blob/[^/]+/?$', '', u)
-    u = _re.sub(r'/tree/[^/]+(?=/|$)', '', u)
-    u = _re.sub(r'/blob/[^/]+(?=/|$)', '', u)
-    return u.rstrip('/')
-
-PAGES_BASE_URL = normalize_pages_base_url(PAGES_BASE_URL)
-
-
-# =========================================================
 # Helpers: secrets/env (SIN hardcode)
 # =========================================================
 
@@ -71,6 +50,29 @@ def get_secret(key: str, default=None):
     except Exception:
         pass
     return os.environ.get(key, default)
+
+# =========================================================
+# GitHub Pages base (para URLs absolutas, links y feed Meta)
+# =========================================================
+PAGES_BASE_URL = get_secret("PAGES_BASE_URL", "https://ideasydtalles.github.io/catalogo")
+CATALOG_CURRENCY = get_secret("CATALOG_CURRENCY", "USD")
+CATALOG_BRAND = get_secret("CATALOG_BRAND", "Ideas & D'talles")
+
+def normalize_pages_base_url(url: str) -> str:
+    import re as _re
+    u = (url or '').strip()
+    # Si alguien pegó URL del repo, forzamos Pages (caso de este proyecto)
+    if 'github.com/ideasydtalles/catalogo' in u:
+        u = 'https://ideasydtalles.github.io/catalogo'
+    # limpia /tree/<branch> o /blob/<branch>
+    u = _re.sub(r'/tree/[^/]+/?$', '', u)
+    u = _re.sub(r'/blob/[^/]+/?$', '', u)
+    u = _re.sub(r'/tree/[^/]+(?=/|$)', '', u)
+    u = _re.sub(r'/blob/[^/]+(?=/|$)', '', u)
+    return u.rstrip('/')
+
+PAGES_BASE_URL = normalize_pages_base_url(PAGES_BASE_URL)
+
 
 # =========================================================
 # (Opcional) Login simple (3–4 personas)
@@ -271,6 +273,9 @@ def save_data(data):
 
 # =========================================================
 # Feed Meta (meta-feed.csv): categorías + no devoluciones (forzado)
+# - product_type y custom_label_0 (categorías madre)
+# - returnable=false, return_policy_days=0, return_policy_info=''
+# - additional_image_link incluye SIEMPRE primero la imagen principal
 # =========================================================
 META_FEED_PATH = BASE_DIR / 'meta-feed.csv'
 
