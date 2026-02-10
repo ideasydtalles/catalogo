@@ -38,11 +38,24 @@ IMG_DIR.mkdir(exist_ok=True)
 STREAMLIT_DIR.mkdir(exist_ok=True)
 
 # =========================================================
-# GitHub Pages base (para URLs absolutas de imágenes y links)
+# GitHub Pages base (para URLs absolutas, links y feed Meta)
 # =========================================================
 PAGES_BASE_URL = get_secret("PAGES_BASE_URL", "https://ideasydtalles.github.io/catalogo")
 CATALOG_CURRENCY = get_secret("CATALOG_CURRENCY", "USD")
 CATALOG_BRAND = get_secret("CATALOG_BRAND", "Ideas & D'talles")
+
+def normalize_pages_base_url(url: str) -> str:
+    import re as _re
+    u = (url or '').strip()
+    if 'github.com/ideasydtalles/catalogo' in u:
+        u = 'https://ideasydtalles.github.io/catalogo'
+    u = _re.sub(r'/tree/[^/]+/?$', '', u)
+    u = _re.sub(r'/blob/[^/]+/?$', '', u)
+    u = _re.sub(r'/tree/[^/]+(?=/|$)', '', u)
+    u = _re.sub(r'/blob/[^/]+(?=/|$)', '', u)
+    return u.rstrip('/')
+
+PAGES_BASE_URL = normalize_pages_base_url(PAGES_BASE_URL)
 
 
 # =========================================================
@@ -257,19 +270,14 @@ def save_data(data):
     tmp.replace(JSON_PATH)
 
 # =========================================================
-# Generación automática de feed CSV para Meta (Commerce Manager)
-# Incluye product_type y custom_label_0 para crear colecciones por categoría
+# Feed Meta (meta-feed.csv): categorías + no devoluciones (forzado)
 # =========================================================
 META_FEED_PATH = BASE_DIR / 'meta-feed.csv'
 
 def build_meta_feed(data_obj: dict):
-    """Genera meta-feed.csv a partir de productos.json.
-    Se publica en GitHub Pages (branch de Pages) y puede conectarse como Data Feed por URL.
-    """
     products = (data_obj.get('products') or {})
     cats = (data_obj.get('categories') or {})
 
-    # Mapa id -> categoría (primera ocurrencia)
     id_to_cat = {}
     for cat, ids in (cats or {}).items():
         if not isinstance(ids, list):
@@ -279,14 +287,14 @@ def build_meta_feed(data_obj: dict):
 
     fields = [
         'id','title','description','availability','condition','price',
-        'link','image_link','brand','mpn','product_type','custom_label_0','additional_image_link'
+        'link','image_link','brand','mpn',
+        'product_type','custom_label_0',
+        'returnable','return_policy_days','return_policy_info',
+        'additional_image_link'
     ]
 
     import csv
     from urllib.parse import quote
-
-    def product_link(pid: str) -> str:
-        return f"{PAGES_BASE_URL.rstrip('/')}/?p={quote(pid)}"
 
     def ensure_abs(u: str) -> str:
         if not u:
@@ -296,7 +304,10 @@ def build_meta_feed(data_obj: dict):
             return s
         if s.startswith('./'):
             s = s[2:]
-        return f"{PAGES_BASE_URL.rstrip('/')}/{s}"
+        return f"{PAGES_BASE_URL}/{s}"
+
+    def product_link(pid: str) -> str:
+        return f"{PAGES_BASE_URL}/?p={quote(pid)}"
 
     with META_FEED_PATH.open('w', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=fields)
@@ -312,8 +323,18 @@ def build_meta_feed(data_obj: dict):
 
             main_img = ensure_abs(p.get('mainImg',''))
             extras = [ensure_abs(x) for x in (p.get('extraImgs') or []) if x]
+            all_imgs = []
+            if main_img:
+                all_imgs.append(main_img)
+            all_imgs.extend(extras)
+            seen = set()
+            dedup = []
+            for u in all_imgs:
+                if u and u not in seen:
+                    seen.add(u)
+                    dedup.append(u)
 
-            cat = id_to_cat.get(pid, '')
+            cat = id_to_cat.get(pid,'')
             w.writerow({
                 'id': pid,
                 'title': title[:200],
@@ -327,12 +348,15 @@ def build_meta_feed(data_obj: dict):
                 'mpn': pid,
                 'product_type': cat,
                 'custom_label_0': cat,
-                'additional_image_link': ','.join(extras)
+                'returnable': 'false',
+                'return_policy_days': '0',
+                'return_policy_info': '',
+                'additional_image_link': ','.join(dedup)
             })
 
 
 data = load_data()
-# Genera/actualiza feed al iniciar (por si el repo se clona sin el CSV)
+# Genera/actualiza feed al iniciar
 try:
     build_meta_feed(data)
 except Exception:
@@ -580,29 +604,11 @@ def ensure_in_category(data_obj, prod_id: str, cat: str, position: int = 0):
     data_obj["categories"][cat] = arr
 
 
-def normalize_repo_image_path(path: str) -> str | None:
-    """Convierte una URL (Pages) o ruta relativa a una ruta del repo './imagenes/...'.
-    Retorna None si no corresponde a una imagen local del repo.
-    """
-    if not path:
-        return None
-    p = str(path).strip()
-    # rutas relativas
-    if p.startswith('./imagenes/'):
-        return p
-    if p.startswith('imagenes/'):
-        return './' + p
-    # URLs absolutas de GitHub Pages
-    base = str(PAGES_BASE_URL).rstrip('/') + '/'
-    if p.startswith(base):
-        rel = p[len(base):]
-        if rel.startswith('imagenes/'):
-            return './' + rel
-    return None
-
-
 def is_local_repo_image(path: str) -> bool:
-    return normalize_repo_image_path(path) is not None
+    if not path:
+        return False
+    p = str(path).strip()
+    return p.startswith("./imagenes/") or p.startswith("imagenes/")
 
 
 def image_used_elsewhere(data_obj, img_path: str, excluding_prod_id: str) -> bool:
@@ -620,18 +626,14 @@ def image_used_elsewhere(data_obj, img_path: str, excluding_prod_id: str) -> boo
 
 
 def delete_local_images_if_unused(data_obj, prod_id: str, paths: list[str]):
-    """Elimina archivos en /imagenes si pertenecen al repo y no están usados por otros productos.
-    Soporta rutas relativas y URLs absolutas de GitHub Pages.
-    """
     deleted, skipped = [], []
     for p in paths:
-        norm = normalize_repo_image_path(p)
-        if not norm:
+        if not is_local_repo_image(p):
             continue
         if image_used_elsewhere(data_obj, p, excluding_prod_id=prod_id):
             skipped.append(p)
             continue
-        rel = norm.replace('./', '')
+        rel = p.replace("./", "")
         abs_path = BASE_DIR / rel
         try:
             if abs_path.exists() and abs_path.is_file():
