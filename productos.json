@@ -760,10 +760,21 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777411993_de04b683.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777411993_b6168b62.png"
             ]
+        },
+        "Portarretratosmam8643": {
+            "title": "Portarretratos mamá",
+            "price": 3.5,
+            "description": "Portarretratos ideal para regalar a mamá, se puede incluir una fotografía a tu gusto y pregunta por nuestra opción con regalo digital incluído.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777418643_b2c0818b.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777418643_4641d70c.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777418643_329bd69d.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Portarretratosmam8643",
             "Organizadormaquillaje1993",
             "AutomataCupido",
             "CarruselFotos",
