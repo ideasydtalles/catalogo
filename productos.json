@@ -871,10 +871,22 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432455_eb8e6c84.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432455_5b1566dc.png"
             ]
+        },
+        "TorreEiffelconadornos3036": {
+            "title": "Torre Eiffel con adornos",
+            "price": 16.0,
+            "description": "Hermosa Torre Eiffel con adornos, luces y base personalizable, recuerda que puedes seleccionar el mensaje y colores. Además esta versión incluye nuestro regalo digital.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777433036_de0587bf.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777433036_c095391b.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777433036_ce26f78a.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777433036_fcd76c50.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "TorreEiffelconadornos3036",
             "Caballetegrande2455",
             "Caballetemediano2145",
             "Pianotipocajitajoyero1684",
