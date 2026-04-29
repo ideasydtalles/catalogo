@@ -892,10 +892,21 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777433473_a7ced41c.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777433473_df6ce8bd.png"
             ]
+        },
+        "Peceraconflores4081": {
+            "title": "Pecera con flores",
+            "price": 3.5,
+            "description": "Hermosa pecerita decorada con flores artificiales y un lin topper personalizable. Recuerda preguntar por nuestra opción con regalo digital.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434081_7fa12207.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434081_4a1e74bc.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434081_8245ea7f.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Peceraconflores4081",
             "TorreEiffelsola3473",
             "TorreEiffelconadornos3036",
             "Caballetegrande2455",
