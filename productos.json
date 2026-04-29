@@ -829,10 +829,21 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430968_f919f1c3.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430968_7478b2dd.png"
             ]
+        },
+        "Minisillaconflores1504": {
+            "title": "Mini silla con flores",
+            "price": 4.0,
+            "description": "Hermosa mini silla decorada con flores artificiales y un topper personalizable, recuerda que puedes personalizar el color, el topper y un nombre. Recuerda consultar por la opción con regalo digital",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777431504_ece5626f.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777431504_89c25b6c.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777431504_95a01ee5.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Minisillaconflores1504",
             "Minicaballeteconflores0968",
             "Portavinoconflores0771",
             "Carterademadera0520",
