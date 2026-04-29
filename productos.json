@@ -819,10 +819,21 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430771_c8f6747a.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430771_74475228.png"
             ]
+        },
+        "Minicaballeteconflores0968": {
+            "title": "Mini caballete con flores",
+            "price": 4.0,
+            "description": "Hermoso caballete decorado con flores artificiales. Completamente personalizable, puedes cambiar el color, además del nombre de tu ser querido. Recuerda preguntar por la opción con regalo digital",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430967_c3b4f277.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430968_f919f1c3.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430968_7478b2dd.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Minicaballeteconflores0968",
             "Portavinoconflores0771",
             "Carterademadera0520",
             "Adornoflormam0080",
