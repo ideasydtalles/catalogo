@@ -860,10 +860,22 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432145_b0348540.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432145_2ed4248c.png"
             ]
+        },
+        "Caballetegrande2455": {
+            "title": "Caballete grande",
+            "price": 8.0,
+            "description": "Hermoso caballete decorado con flores artificiales y un diseño tipo maceta personalizable. Recuerda preguntar por nuestra opción con regalo digital.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432455_22e2c329.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432455_3f1c6469.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432455_eb8e6c84.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432455_5b1566dc.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Caballetegrande2455",
             "Caballetemediano2145",
             "Pianotipocajitajoyero1684",
             "Minisillaconflores1504",
