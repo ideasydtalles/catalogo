@@ -882,10 +882,21 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777433036_ce26f78a.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777433036_fcd76c50.png"
             ]
+        },
+        "TorreEiffelsola3473": {
+            "title": "Torre Eiffel (sola)",
+            "price": 9.0,
+            "description": "Hermosa torre Eiffel de 56 centímetros de altura.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777433473_8da4669e.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777433473_a7ced41c.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777433473_df6ce8bd.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "TorreEiffelsola3473",
             "TorreEiffelconadornos3036",
             "Caballetegrande2455",
             "Caballetemediano2145",
