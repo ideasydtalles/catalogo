@@ -770,10 +770,20 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777418643_4641d70c.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777418643_329bd69d.png"
             ]
+        },
+        "Cajaconfotodadelamadre8899": {
+            "title": "Caja con foto día de la madre",
+            "price": 3.5,
+            "description": "Práctica cajita para regalar a tu mami en su día, tiene un espacio para colocar algún artículo especial y un espacio para su fotografía (la incluimos sin costo adicional) además recuerda preguntar por la opción con regalo digital.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777428899_f58a6e9d.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777428899_c68a36f5.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Cajaconfotodadelamadre8899",
             "Portarretratosmam8643",
             "Organizadormaquillaje1993",
             "AutomataCupido",
