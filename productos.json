@@ -799,10 +799,21 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430080_30e177c0.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430080_ec6495c7.png"
             ]
+        },
+        "Carterademadera0520": {
+            "title": "Cartera de madera",
+            "price": 4.0,
+            "description": "Hermosa caja de madera con forma de cartera, regalo ideal para que lo llenes con detalles y objetos para regalar, hermoso diseño en forma de cartera.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430520_929fe405.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430520_a54bbd75.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430520_335c5c62.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Carterademadera0520",
             "Adornoflormam0080",
             "Adornominiflorero9296",
             "Cajaconfotodadelamadre8899",
