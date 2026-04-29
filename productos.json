@@ -912,10 +912,20 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434226_34ffc41e.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434226_c260b181.png"
             ]
+        },
+        "Copaconfloresartificiales4318": {
+            "title": "Copa con flores artificiales",
+            "price": 3.0,
+            "description": "Hermosa copa con flores artificiales, incluye un topper personalizable. Recuerda preguntar por nuestra opción con regalo digital.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434318_992c0f67.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434318_e3ac9959.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Copaconfloresartificiales4318",
             "Vasoconfloresartificiales4226",
             "Peceraconflores4081",
             "TorreEiffelsola3473",
