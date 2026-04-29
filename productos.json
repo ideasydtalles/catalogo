@@ -849,10 +849,22 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777431684_cfbe3c95.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777431684_bb318d9a.png"
             ]
+        },
+        "Caballetemediano2145": {
+            "title": "Caballete mediano",
+            "price": 5.5,
+            "description": "Hermoso caballete decorado con flores artificiales y personalizable. Recuerda que puedes elegir el nombre y colores. Recuerda que puedes preguntar por la opción con regalo digital.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432145_44edb69f.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432145_8e8585b1.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432145_b0348540.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777432145_2ed4248c.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Caballetemediano2145",
             "Pianotipocajitajoyero1684",
             "Minisillaconflores1504",
             "Minicaballeteconflores0968",
