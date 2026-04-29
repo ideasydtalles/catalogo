@@ -779,10 +779,21 @@
             "extraImgs": [
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777428899_c68a36f5.png"
             ]
+        },
+        "Adornominiflorero9296": {
+            "title": "Adorno mini florero",
+            "price": 4.0,
+            "description": "Hermoso detalle para tu ser querido, ideal para personalizar y regalarlo a tu mamita en estas fechas.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777429296_a1a4d885.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777429296_e33a7f57.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777429296_d7963e84.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Adornominiflorero9296",
             "Cajaconfotodadelamadre8899",
             "Portarretratosmam8643",
             "Organizadormaquillaje1993",
