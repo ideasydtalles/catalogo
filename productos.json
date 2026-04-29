@@ -902,10 +902,21 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434081_4a1e74bc.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434081_8245ea7f.png"
             ]
+        },
+        "Vasoconfloresartificiales4226": {
+            "title": "Vaso con flores artificiales",
+            "price": 2.5,
+            "description": "Hermoso vasito con flores artificiales para toda ocasión, incluye un topper personalizable. Pregunta también por nuestra opción con regalo digital.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434226_6fb07f88.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434226_34ffc41e.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777434226_c260b181.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Vasoconfloresartificiales4226",
             "Peceraconflores4081",
             "TorreEiffelsola3473",
             "TorreEiffelconadornos3036",
