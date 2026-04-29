@@ -809,10 +809,21 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430520_a54bbd75.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430520_335c5c62.png"
             ]
+        },
+        "Portavinoconflores0771": {
+            "title": "Portavino con flores",
+            "price": 5.5,
+            "description": "Hermoso detalle para colocar una botella o artículo favorito de tu ser querido, el detalle no incluye la botella, va decorado con las flores y colores a elegir. Recuerda preguntar por la opción con regalo digital.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430771_e09ab9ab.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430771_c8f6747a.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430771_74475228.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Portavinoconflores0771",
             "Carterademadera0520",
             "Adornoflormam0080",
             "Adornominiflorero9296",
