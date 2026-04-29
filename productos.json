@@ -789,10 +789,21 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777429296_e33a7f57.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777429296_d7963e84.png"
             ]
+        },
+        "Adornoflormam0080": {
+            "title": "Adorno flor mamá",
+            "price": 3.5,
+            "description": "Regalo perfecto para mamá, una cajita en la que podrás colocar cualquier regalito ideal para tu mami. Considera que los colores son personalizables y además puedes incluir el nombre de tu ser querido. Pregunta por nuestra opción con regalo digital.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430080_5ff9348b.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430080_30e177c0.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1777430080_ec6495c7.png"
+            ]
         }
     },
     "categories": {
         "amor": [
+            "Adornoflormam0080",
             "Adornominiflorero9296",
             "Cajaconfotodadelamadre8899",
             "Portarretratosmam8643",
