@@ -1259,13 +1259,6 @@
             "mainImg": "https://i.postimg.cc/4dcQd277/image91.png",
             "extraImgs": []
         },
-        "EscenaNavidenaMini": {
-            "title": "Escena navideña (Miniatura)",
-            "price": 1.5,
-            "description": "Miniaturas de madera para armar escenas.",
-            "mainImg": "https://i.postimg.cc/CLsJk2v5/image22.png",
-            "extraImgs": []
-        },
         "CasitasLuz": {
             "title": "Casitas navideñas con luz",
             "price": 4,
@@ -1503,7 +1496,6 @@
             "Arbolitos",
             "BombillosAdornos",
             "NacimientoColgante",
-            "EscenaNavidenaMini",
             "CasitasLuz",
             "CasasMedianas",
             "CajaCopos",
