@@ -432,7 +432,7 @@
         },
         "CasaJugueteria": {
             "title": "Casa Juguetería Multiusos",
-            "price": 13,
+            "price": 13.0,
             "description": "Caja multiusos con diseño temático de tienda de juguetes ('Toy Store'). Ideal para guardar o entregar peluches y otros regalos.",
             "mainImg": "https://i.postimg.cc/MTBTzrpz/40a9594a-472f-45cd-a01d-a88ad10aedad.png",
             "extraImgs": [
@@ -1461,6 +1461,7 @@
     },
     "categories": {
         "navidad": [
+            "CasaJugueteria",
             "RuedaFortunaColor",
             "RuedaFortuna",
             "BuzonConBase",
@@ -1605,7 +1606,6 @@
             "CuadroElefante",
             "CuadroOso",
             "OsitoLuna",
-            "CasaJugueteria",
             "CasaPequenaRosa",
             "CasaPequenaLila",
             "CasaMedianaRosa"
