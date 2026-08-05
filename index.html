@@ -143,10 +143,6 @@
         
         /* Precios */
         .price-normal { font-size: 1.25rem; font-weight: 800; color: var(--primary-dark); }
-        .price-offer { display: flex; flex-direction: column; }
-        .badge-offer { background: #ef4444; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; width: fit-content; margin-bottom: 2px; }
-        .price-old { font-size: 0.9rem; text-decoration: line-through; color: #9ca3af; }
-        .price-new { font-size: 1.4rem; font-weight: 800; color: #1f2937; }
 
         .card-actions { padding: 0 1.25rem 1.25rem; display: flex; gap: 0.5rem; }
 
@@ -231,12 +227,12 @@
     <a href="#cat-fandom" class="cat-link">🎵 Fandom (Música/Anime)</a>
     <a href="#cat-eventos" class="cat-link">✝️ Eventos & Religioso</a>
     <a href="#cat-infantil" class="cat-link">🧸 Infantil & Bebés</a>
-    <a href="#cat-navidad" class="cat-link">    Otros Productos</a>
+    <a href="#cat-navidad" class="cat-link">🎁 Otros Productos</a>
 </nav>
 
 <div style="max-width: 85rem; margin: 0 auto;">
     <main id="main-content">
-        <!-- El contenido se inyectará aquí -->
+        <!-- El contenido se inyectará aquí desde productos.json -->
     </main>
 </div>
 
@@ -313,14 +309,13 @@ function findCategoryForProduct(prodId) {
   return null;
 }
 
-
 const categoryTitles = {
   amor: "❤️ San Valentín & Amor",
   cultura: "🇪🇨 Cultura Ecuatoriana",
   fandom: "🎵 Fandom: Música & Anime",
   eventos: "✝️ Eventos & Religioso",
   infantil: "🧸 Infantil & Bebés",
-  navidad: "Otros productos"
+  navidad: "🎁 Otros productos"
 };
 
 // =========================================================
