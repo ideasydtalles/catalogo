@@ -704,16 +704,6 @@
                 "https://i.postimg.cc/x1Gh0Z0q/1762739112240-Editado.png"
             ]
         },
-        "Candelabros": {
-            "title": "Candelabros y Portavelas",
-            "price": 2,
-            "description": "Portavelas decorativos de madera en varios modelos y tamaños. Ideal para velas LED o pequeñas. Los precios varían según el diseño simple o con casitas integradas.",
-            "mainImg": "https://i.postimg.cc/kXvwKHj8/image25.png",
-            "extraImgs": [
-                "https://i.postimg.cc/kXvwKHj8/image25.png",
-                "https://i.postimg.cc/sD4K7Ln7/image26.png"
-            ]
-        },
         "Cuadroparacoleccionistaautos3847": {
             "title": "Cuadro para coleccionista autos",
             "price": 8.5,
@@ -1453,7 +1443,6 @@
             "CasaMultiusosRoja",
             "CasaMultiusosCafe",
             "CasaJugueteria",
-            "Candelabros",
             "CiudadCompleta",
             "CastilloNavidad",
             "CalendarioAdvientoArbolCasas",
