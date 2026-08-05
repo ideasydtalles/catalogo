@@ -704,17 +704,6 @@
                 "https://i.postimg.cc/x1Gh0Z0q/1762739112240-Editado.png"
             ]
         },
-        "CajasOcasion": {
-            "title": "Cajas Decorativas (Toda Ocasión)",
-            "price": 2,
-            "description": "Amplia gama de cajas de regalo y organizadoras de madera. Incluye modelos con tapas caladas, cierres de corazón y diferentes formas. Precio base para el modelo más sencillo.",
-            "mainImg": "https://i.postimg.cc/J0WcB3ZN/image100.png",
-            "extraImgs": [
-                "https://i.postimg.cc/C18s1rBn/image92.png",
-                "https://i.postimg.cc/LXP3XQYz/image94.png",
-                "https://i.postimg.cc/brjH20kG/image96.png"
-            ]
-        },
         "Candelabros": {
             "title": "Candelabros y Portavelas",
             "price": 2,
@@ -1464,7 +1453,6 @@
             "CasaTechoBajo",
             "CasaMultiusosRoja",
             "CasaMultiusosCafe",
-            "CajasOcasion",
             "Candelabros",
             "CiudadCompleta",
             "CastilloNavidad",
