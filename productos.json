@@ -1434,6 +1434,7 @@
     "categories": {
         "navidad": [
             "RuedaFortunaColor",
+            "CastilloNavidad",
             "RuedaFortuna",
             "BuzonConBase",
             "BuzonNavideno",
@@ -1447,7 +1448,6 @@
             "CasaParaDulcesVerde",
             "CasaJugueteria",
             "CiudadCompleta",
-            "CastilloNavidad",
             "CalendarioAdvientoArbolCasas",
             "ArbolEscenaPesebre",
             "CalendarioAdviento",
