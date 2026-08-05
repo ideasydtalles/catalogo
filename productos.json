@@ -1443,7 +1443,6 @@
     },
     "categories": {
         "navidad": [
-            "CasaJugueteria",
             "RuedaFortunaColor",
             "RuedaFortuna",
             "BuzonConBase",
@@ -1453,6 +1452,7 @@
             "CasaTechoBajo",
             "CasaMultiusosRoja",
             "CasaMultiusosCafe",
+            "CasaJugueteria",
             "Candelabros",
             "CiudadCompleta",
             "CastilloNavidad",
