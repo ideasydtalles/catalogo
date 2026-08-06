@@ -1429,10 +1429,23 @@
                 "https://i.postimg.cc/nc6jKFGj/1763252484708_Editado.png",
                 "https://i.postimg.cc/g28wNCgs/1763252484903_Editado.png"
             ]
+        },
+        "Nacimientoacolorporniveles7020": {
+            "title": "Nacimiento a color por niveles con luz led",
+            "price": 13.0,
+            "description": "Pesebre a todo color con figuras tradicionales estilo 'chibi' distribuidas en varios niveles. Incluye iluminación LED cálida.",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1785987019_94d39fdd.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1785987019_8aef9b67.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1785987019_0f5e2ab1.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1785987020_df44ea44.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1785987020_929a9c03.png"
+            ]
         }
     },
     "categories": {
         "navidad": [
+            "Nacimientoacolorporniveles7020",
             "RuedaFortunaColor",
             "CastilloNavidad",
             "RuedaFortuna",
