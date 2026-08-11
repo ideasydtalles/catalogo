@@ -1441,10 +1441,25 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1785987020_df44ea44.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1785987020_929a9c03.png"
             ]
+        },
+        "Nacimientotradicionalencaj6527": {
+            "title": "Nacimiento tradicional en caja por niveles",
+            "price": 8.0,
+            "description": "Hermoso nacimiento o pesebre de temática tradicional en caja, práctica para llevar a cualquier lugar o colocar en espacios reducidos, cada nivel tiene una serie de personajes tradicionales del pesebre, posibilidad de personalizar interior y exterior",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786486526_fbdd7bad.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786486526_d3b5905e.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786486526_a7f95921.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786486527_957c63df.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786486527_9fc616c0.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786486527_986f12ba.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786486527_079e2e3b.png"
+            ]
         }
     },
     "categories": {
         "navidad": [
+            "Nacimientotradicionalencaj6527",
             "Nacimientoacolorporniveles7020",
             "RuedaFortunaColor",
             "CastilloNavidad",
