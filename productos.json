@@ -1511,10 +1511,22 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937945_34cfd628.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937946_f75e5f76.png"
             ]
+        },
+        "Nacimientoencapas8359": {
+            "title": "Nacimiento en capas",
+            "price": 5.0,
+            "description": "Escena de Nacimiento en 6 capas, incluye los personajes más tradicionales del pesebre, de colores personalizables, un adorno minimalista que se soporta solo",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938358_8fe77d52.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938359_51099c4c.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938359_896fe08a.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938359_bde6c5a7.png"
+            ]
         }
     },
     "categories": {
         "navidad": [
+            "Nacimientoencapas8359",
             "Cuentaregresivaderbolnavid7946",
             "Adornodepesebreencapas7832",
             "Buznnavideodemes7711",
