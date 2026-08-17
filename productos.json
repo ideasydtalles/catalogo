@@ -1499,10 +1499,23 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937832_487b664c.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937832_e99dbcd2.png"
             ]
+        },
+        "Cuentaregresivaderbolnavid7946": {
+            "title": "Cuenta regresiva de árbol navideño",
+            "price": 5.0,
+            "description": "Adorno de hogar que contiene una cuenta regresiva a la navidad que vas formando con los cubos incluidos, mensaje y colores modificables",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937945_f9a61ca7.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937945_8fc0acef.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937945_7be6280a.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937945_34cfd628.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937946_f75e5f76.png"
+            ]
         }
     },
     "categories": {
         "navidad": [
+            "Cuentaregresivaderbolnavid7946",
             "Adornodepesebreencapas7832",
             "Buznnavideodemes7711",
             "Cajaderegaloconlazo7464",
