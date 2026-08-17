@@ -1533,10 +1533,24 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938495_9db9b1ec.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938496_c82ca073.png"
             ]
+        },
+        "NacimientotemticoOtavaloen8742": {
+            "title": "Nacimiento temático Otavalo en caja por niveles",
+            "price": 8.0,
+            "description": "Hermoso nacimiento o pesebre de temática cultura Otavalo en caja, práctica para llevar a cualquier lugar o colocar en espacios reducidos, cada nivel tiene una serie de personajes del pesebre, posibilidad de personalizar interior y exterior",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938742_b420f1cf.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938741_6505289c.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938741_639cf580.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938741_ebea58f5.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938742_2384e69e.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938742_82834b49.png"
+            ]
         }
     },
     "categories": {
         "navidad": [
+            "NacimientotemticoOtavaloen8742",
             "CuentaatrslargatrineodeSan8496",
             "Nacimientoencapas8359",
             "Cuentaregresivaderbolnavid7946",
