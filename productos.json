@@ -1466,10 +1466,22 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937319_f0765407.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937319_21c780a3.png"
             ]
+        },
+        "Cajaderegaloconlazo7464": {
+            "title": "Caja de regalo con lazo",
+            "price": 2.5,
+            "description": "Hermosa cajita con forma de regalo con laso, colores variados, personalizable, con un espacio para almacenar regalos pequeños",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937463_293d1c02.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937463_7156ca4f.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937464_a9e1f1d5.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937464_150c5a40.png"
+            ]
         }
     },
     "categories": {
         "navidad": [
+            "Cajaderegaloconlazo7464",
             "PuestodeferiaMuecodenieve7319",
             "Nacimientotradicionalencaj6527",
             "Nacimientoacolorporniveles7020",
