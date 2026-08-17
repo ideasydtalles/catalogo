@@ -1488,10 +1488,22 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937710_bf40f38e.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937710_7fbdb37d.png"
             ]
+        },
+        "Adornodepesebreencapas7832": {
+            "title": "Adorno de pesebre en capas",
+            "price": 5.0,
+            "description": "Hermoso adorno con la escena tradicional del pesebre de Belén en capas, a todo color, colores y mensaje personalizable, un práctico adorno de mesa",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937832_c85cb3e9.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937832_1e17cdd6.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937832_487b664c.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937832_e99dbcd2.png"
+            ]
         }
     },
     "categories": {
         "navidad": [
+            "Adornodepesebreencapas7832",
             "Buznnavideodemes7711",
             "Cajaderegaloconlazo7464",
             "PuestodeferiaMuecodenieve7319",
