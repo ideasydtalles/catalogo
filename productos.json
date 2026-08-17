@@ -1455,10 +1455,22 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786486527_986f12ba.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786486527_079e2e3b.png"
             ]
+        },
+        "PuestodeferiaMuecodenieve7319": {
+            "title": "Puesto de feria Muñeco de nieve",
+            "price": 4.0,
+            "description": "Hermoso adorno a todo color similar a un puesto de juegos de un parque de diversiones, completamente personalizable.  Un adorno diferente a lo tradicional",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937319_888f0295.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937319_ab23b49f.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937319_f0765407.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937319_21c780a3.png"
+            ]
         }
     },
     "categories": {
         "navidad": [
+            "PuestodeferiaMuecodenieve7319",
             "Nacimientotradicionalencaj6527",
             "Nacimientoacolorporniveles7020",
             "RuedaFortunaColor",
