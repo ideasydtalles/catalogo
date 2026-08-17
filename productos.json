@@ -1477,10 +1477,22 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937464_a9e1f1d5.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937464_150c5a40.png"
             ]
+        },
+        "Buznnavideodemes7711": {
+            "title": "Buzón navideño de mes",
+            "price": 2.0,
+            "description": "Adorno pequeño con mucho detalle de un buzón de correo tradicional, colores personalizables, un adorno que cabe en escritorios, mesas y otros sin robarte espacio",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937711_df924aa8.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937710_a138f1c8.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937710_bf40f38e.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786937710_7fbdb37d.png"
+            ]
         }
     },
     "categories": {
         "navidad": [
+            "Buznnavideodemes7711",
             "Cajaderegaloconlazo7464",
             "PuestodeferiaMuecodenieve7319",
             "Nacimientotradicionalencaj6527",
