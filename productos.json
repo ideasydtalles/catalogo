@@ -1546,10 +1546,22 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938742_2384e69e.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938742_82834b49.png"
             ]
+        },
+        "CalendariodeadvientoPesebr8944": {
+            "title": "Calendario de adviento Pesebre",
+            "price": 7.0,
+            "description": "Adorno de hogar que contiene una cuenta regresiva al nacimiento de Jesús que vas formando con los cubos incluidos, mensaje y colores modificables, incluye luz led en el adorno",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938944_08ae9d3d.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938944_5ebb3034.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938944_8d6adfe2.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938944_95321373.png"
+            ]
         }
     },
     "categories": {
         "navidad": [
+            "CalendariodeadvientoPesebr8944",
             "NacimientotemticoOtavaloen8742",
             "CuentaatrslargatrineodeSan8496",
             "Nacimientoencapas8359",
