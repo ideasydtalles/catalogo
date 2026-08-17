@@ -1522,10 +1522,22 @@
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938359_896fe08a.png",
                 "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938359_bde6c5a7.png"
             ]
+        },
+        "CuentaatrslargatrineodeSan8496": {
+            "title": "Cuenta atrás larga trineo de Santa",
+            "price": 3.5,
+            "description": "Hermoso adorno con luces LED que permite llevar la cuenta regresiva a la fecha de navidad, personalizable y a todo color",
+            "mainImg": "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938495_575bc249.png",
+            "extraImgs": [
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938495_924708ff.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938495_9db9b1ec.png",
+                "https://ideasydtalles.github.io/catalogo/imagenes/prod_1786938496_c82ca073.png"
+            ]
         }
     },
     "categories": {
         "navidad": [
+            "CuentaatrslargatrineodeSan8496",
             "Nacimientoencapas8359",
             "Cuentaregresivaderbolnavid7946",
             "Adornodepesebreencapas7832",
